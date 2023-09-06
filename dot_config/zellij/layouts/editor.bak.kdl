@@ -1,0 +1,24 @@
+layout {
+    cwd "./"
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab name="Build" {
+        pane
+    }
+
+    tab name="Version Control"  {
+        pane command="gitui"
+    }
+
+    tab name="Editor" focus=true {
+        pane command="hx" name="Editor" focus=true
+    }
+}

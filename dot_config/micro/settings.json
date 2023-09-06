@@ -1,0 +1,15 @@
+{
+    "colorscheme": "gruvbox",
+    "eofnewline": false,
+    "fastdirty": true,
+    "ignorecase": false,
+    "matchbrace": false,
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [],
+    "softwrap": true,
+    "splitBottom": true,
+    "splitRight": true,
+    "termtitle": false
+}

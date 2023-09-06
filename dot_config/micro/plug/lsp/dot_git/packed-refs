@@ -1,0 +1,13 @@
+# pack-refs with: peeled fully-peeled sorted 
+4f1b7c3f4eb06381bd805306bfe140b8cbc4cb30 refs/remotes/origin/feature/implement-folding
+aadae1aaee6fc99e51cd2522237fd29b4b3ccf6b refs/remotes/origin/master
+9f394292e1a51cede7f2b0f1960d08c1d210aafd refs/tags/v0.4.1
+0b738cadff543bc0377b622160f125c68426b7e5 refs/tags/v0.4.2
+b4b902c764097c941cfcfb3dfa19158f926281d7 refs/tags/v0.4.3
+7b3b1750d8ffb5a0a97b145649eb62139ac6f078 refs/tags/v0.5.0
+4d1e82e2f9b41401fa2153a195df718365fc87d7 refs/tags/v0.5.1
+a9e37e69b464b93156eab395d2e33310dc487180 refs/tags/v0.5.2
+d99be82c9d937d68a52eeb8498cc0906f7790bed refs/tags/v0.5.3
+986140e4d4dfc970ad5a6ef567840dd01e051fd4 refs/tags/v0.6.0
+f488c0533e1a89d7f5e73eaf681738c818e73742 refs/tags/v0.6.1
+aadae1aaee6fc99e51cd2522237fd29b4b3ccf6b refs/tags/v0.6.2
