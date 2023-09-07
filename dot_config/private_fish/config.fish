@@ -49,11 +49,9 @@ end
 alias zshconfig="hx ~/.zshrc"
 alias editor="zellij --layout editor"
 alias zj="zellij"
-alias kittyconfig="hx ~/.config/kitty/kitty.conf"
 alias j="jump"
-alias filetree="xplr"
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias fishconfig="hx ~/.config/fish/config.fish"
-alias s="kitty +kitten ssh"
+alias chezfig="cd ~/.local/share/chezmoi/dot_files"
 alias litexl='"/Applications/Lite XL.app/Contents/MacOS/lite-xl" &; disown'
 alias prag='"/Applications/Pragtical.app/Contents/MacOS/pragtical" &; disown'
