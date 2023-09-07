@@ -1,0 +1,158 @@
+==================
+visual host key = yes
+==================
+
+VisualHostKey yes
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = Yes
+==================
+
+VisualHostKey Yes
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = true
+==================
+
+VisualHostKey true
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = True
+==================
+
+VisualHostKey True
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = no
+==================
+
+VisualHostKey no
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = No
+==================
+
+VisualHostKey No
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = false
+==================
+
+VisualHostKey false
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+visual host key = False
+==================
+
+VisualHostKey False
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+use irregular casing
+==================
+
+viSUalHostKey yes
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+can use equals sign
+==================
+
+viSUalHostKey=yes
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+viSUalHostKey = yes
+
+---
+
+(client_config
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  VisualHostKey no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (visual_host_key
+    (visual_host_key_value)))
+
+==================
+detect invalid values
+==================
+
+viSUalHostKey ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

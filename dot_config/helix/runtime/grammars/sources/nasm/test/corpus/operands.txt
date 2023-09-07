@@ -1,0 +1,239 @@
+===
+register
+===
+	inc	rax
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register)))))))
+===
+constant_numeric
+===
+	add	7, 6
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (number_literal))
+          (operand
+            (number_literal)))))))
+===
+constant_charstr (simple quote)
+===
+	mov	al, 'yes'
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (string_literal)))))))
+===
+constant_charstr (double quote)
+===
+	mov	"no", bl
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (string_literal))
+          (operand
+            (register)))))))
+===
+effective_address
+===
+	mov	[buf], rsi
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (effective_address
+              (word)))
+          (operand
+            (register)))))))
+===
+operand_prefix
+===
+	mov	rax, qword '*'
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (operand_prefix
+              (size_hint))
+            (string_literal)))))))
+===
+operand_prefix strict
+===
+	mov	rax, strict byte '*'
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (operand_prefix
+              (size_hint))
+            (string_literal)))))))
+===
+effective addresses
+===
+wordvar dw      123
+        mov     ax,[wordvar]
+        mov     ax,[wordvar+1]
+        mov     ax,[es:wordvar+bx]
+
+        mov     eax,[ebx*2+ecx+offset]
+        mov     ax,[bp+di+8]
+
+    mov     eax,[ebx*5]             ; assembles as [ebx*4+ebx]
+    mov     eax,[label1*2-label2]   ; ie [label1+(label1-label2)]
+
+     mov eax,[ebx+8,ecx*4]   ; ebx=base, ecx=index, 4=scale, 8=disp
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (pseudo_instruction_dx
+        (number_literal))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (word)))))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (word)
+                (number_literal))))))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (word)
+                (register))))))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (binary_expression
+                  (binary_expression
+                    (register)
+                    (number_literal))
+                  (register))
+                (word))))))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (binary_expression
+                  (register)
+                  (register))
+                (number_literal))))))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (register)
+                (number_literal))))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (binary_expression
+                  (word)
+                  (number_literal))
+                (word))))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (effective_address
+              (binary_expression
+                (register)
+                (number_literal))
+              (binary_expression
+                (register)
+                (number_literal))))))))
+  (comment))

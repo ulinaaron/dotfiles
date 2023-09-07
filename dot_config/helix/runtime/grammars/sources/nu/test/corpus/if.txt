@@ -1,0 +1,73 @@
+================================================================================
+Parse if_simple
+================================================================================
+if $a { echo hello } else { echo world }
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (value_path
+      (identifier))
+    (block
+      (command
+        (identifier)
+        (identifier)))
+    (block
+      (command
+        (identifier)
+        (identifier)))))
+
+================================================================================
+Parse if1
+================================================================================
+if $incorrect_count > 0 {
+    exit 1
+} else {
+	exit 0
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (binary_expression
+      (value_path
+        (identifier))
+      (number_literal))
+    (block
+      (command
+        (identifier)
+        (number_literal)))
+    (block
+      (command
+        (identifier)
+        (number_literal)))))
+
+================================================================================
+Parse if2
+================================================================================
+if $incorrect_count > 0 {
+    exit 1
+    build-string one two
+} else {
+	exit 0
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (binary_expression
+      (value_path
+        (identifier))
+      (number_literal))
+    (block
+      (command
+        (identifier)
+        (number_literal))
+      (command
+        (identifier)
+        (identifier)
+        (identifier)))
+    (block
+      (command
+        (identifier)
+        (number_literal)))))

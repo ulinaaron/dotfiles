@@ -1,0 +1,51 @@
+================================================================================
+Single filter
+================================================================================
+
+from employees
+filter age > 25
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (field
+            (identifier))
+          (literal
+            (integer)))))))
+
+================================================================================
+Multiple filter
+================================================================================
+
+from employees
+filter (age > 25 or department != "IT")
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (binary_expression
+            (field
+              (identifier))
+            (literal
+              (integer)))
+          (keyword_or)
+          (binary_expression
+            (field
+              (identifier))
+            (literal)))))))

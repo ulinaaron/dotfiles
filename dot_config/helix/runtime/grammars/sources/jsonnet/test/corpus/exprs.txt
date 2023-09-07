@@ -1,0 +1,70 @@
+======================
+Parses example 2
+======================
+{
+  person1: {
+    name: "Alice",
+    welcome: "Hello " + self.name + "!",
+  },
+  person2: self.person1 { name: "Bob" },
+}
+
+---
+
+
+(document
+  (expr
+    (member
+      (field
+        (fieldname
+          (id))
+        (expr
+          (member
+            (field
+              (fieldname
+                (id))
+              (expr
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end)))))
+          (member
+            (field
+              (fieldname
+                (id))
+              (expr
+                (expr
+                  (expr
+                    (string
+                      (string_start)
+                      (string_content)
+                      (string_end)))
+                  (binaryop)
+                  (expr
+                    (expr
+                      (self))
+                    (id)))
+                (binaryop)
+                (expr
+                  (string
+                    (string_start)
+                    (string_content)
+                    (string_end)))))))))
+    (member
+      (field
+        (fieldname
+          (id))
+        (expr
+          (expr
+            (expr
+              (self))
+            (id))
+          (member
+            (field
+              (fieldname
+                (id))
+              (expr
+                (string
+                  (string_start)
+                  (string_content)
+                  (string_end))))))))))

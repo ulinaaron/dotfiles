@@ -16,10 +16,8 @@ layout {
         }
         pane split_direction="Vertical" { 
             pane size="15%" borderless=true {
-                // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
-                // command "nnn"
-                // args "-A" "-a" "-u" "-F" "0" "-c" "-S"
                 command "ranger"
+                args "-r" "/Users/aaronmazade/.config/ranger/helix" // Ranger can't read shorthand ~/ $HOME
             }
             children
         }

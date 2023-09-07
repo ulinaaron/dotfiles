@@ -12,9 +12,10 @@ fish_add_path -g ~/.config/emacs/bin
 fish_add_path -g ~/.config/nnn/scripts
 fish_add_path -g /opt/local/bin
 fish_add_path -g /Users/aaronmazade/.npm-global/lib/node_modules
+fish_add_path -g ~/.config/scripts
 
-set -gx VISUAL ewrap
-set -gx EDITOR ewrap
+set -gx VISUAL helix-ide
+set -gx EDITOR helix-ide
 set -gx COLORTERM truecolor
 set -gx DEFAULT_USER $USER
 

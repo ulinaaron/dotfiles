@@ -1,0 +1,193 @@
+================================================================================
+Empty message
+================================================================================
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment)
+  (comment)
+  (comment)
+  (comment
+    (branch))
+  (comment
+    (branch))
+  (comment))
+
+================================================================================
+Freeform subject, closes item
+================================================================================
+add LICENSE
+
+closes #123
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (message
+    (item))
+  (comment)
+  (comment))
+
+================================================================================
+Subject and body collide
+================================================================================
+add LICENSE
+closes #123
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (message
+    (item))
+  (comment)
+  (comment))
+
+================================================================================
+Subject and comment collide
+================================================================================
+add LICENSE
+# highlight comment goes here
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment))
+
+================================================================================
+Single-line subject with no terminator
+================================================================================
+add LICENSE
+--------------------------------------------------------------------------------
+
+(source
+  (subject))
+
+================================================================================
+Subject and body with no terminator
+================================================================================
+add LICENSE
+
+closes #123
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (message
+    (item)))
+
+================================================================================
+Body messages interspersed with comments
+================================================================================
+add LICENSE
+
+# this won't show up
+closes #123
+# but the issue number there will because it isn't a comment
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment)
+  (message
+    (item))
+  (comment))
+
+================================================================================
+Real rebase commit body
+================================================================================
+add submodule on tree-sitter-rebase, add to languages
+
+# Conflicts:
+#	languages.toml
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# interactive rebase in progress; onto 34766e2
+# Last command done (1 command done):
+#    pick 1bc0b2c add submodule on tree-sitter-rebase, add to languages
+# Next commands to do (5 remaining commands):
+#    pick e339083 add basic highlights query
+#    pick 00c5a26 inject bash in execute statements
+# You are currently rebasing branch 'md-tree-sitter-rebase' on '34766e2'.
+#
+# Changes to be committed:
+#	modified:   .gitmodules
+#	new file:   helix-syntax/languages/tree-sitter-rebase
+#	modified:   languages.toml
+#
+# Untracked files:
+#	COMMIT_EDITMSG
+#
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment
+    (summary
+      (header)
+      (path)))
+  (comment)
+  (comment)
+  (comment)
+  (comment
+    (summary
+      (commit)
+      (header)
+      (rebase_command)
+      (header)
+      (rebase_command)
+      (rebase_command)
+      (branch)
+      (commit)))
+  (comment
+    (summary
+      (header)
+      (change
+        (path))
+      (change
+        (path))
+      (change
+        (path))))
+  (comment
+    (summary
+      (header)
+      (path))))
+
+================================================================================
+User mention
+================================================================================
+add LICENSE
+
+recommended by @my-lawyer
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (message
+    (user))
+  (comment)
+  (comment))

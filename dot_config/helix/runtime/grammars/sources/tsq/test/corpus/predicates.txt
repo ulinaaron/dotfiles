@@ -1,0 +1,24 @@
+================================================================================
+Injection predicate
+================================================================================
+
+((node) @injection.content
+ (#set! injection.include-children)
+ (#set! injection.language "javascript"))
+
+--------------------------------------------------------------------------------
+
+(query
+  (pattern
+    (group
+      (pattern
+        (named_node
+          (node_name))
+        (capture))
+      (predicate
+        (predicate_name)
+        (variable))
+      (predicate
+        (predicate_name)
+        (variable)
+        (string)))))

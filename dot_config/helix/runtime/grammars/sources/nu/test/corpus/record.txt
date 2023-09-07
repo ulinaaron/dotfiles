@@ -1,0 +1,123 @@
+================================================================================
+Test simple record1
+================================================================================
+{
+    a : 1
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (record_or_block
+    (record_entry
+      (identifier)
+      (number_literal))))
+
+================================================================================
+Test simple record2
+================================================================================
+{
+    a : 1
+    b : { c : 2 }
+    d : $var.a
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (record_or_block
+    (record_entry
+      (identifier)
+      (number_literal))
+    (record_entry
+      (identifier)
+      (record_or_block
+        (record_entry
+          (identifier)
+          (number_literal))))
+    (record_entry
+      (identifier)
+      (value_path
+        (identifier)
+        (identifier)))))
+
+================================================================================
+Test record with dynamic field
+================================================================================
+{
+    $var : 1 # TODO this testcase doesn't work
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (record_or_block
+    (record_entry
+      (value_path
+        (identifier))
+      (number_literal))
+    (comment)))
+
+================================================================================
+Test record in def
+================================================================================
+export def from-file [base-txt: duration] {
+    let base16-lines = (open $base-txt | lines | where ($it | str length) > 0)
+    {
+        base00 : $base16-lines.0 # Default Background
+    }
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (signature
+      (parameter
+        (identifier)
+        (type)))
+    (block
+      (variable_declaration
+        (identifier)
+        (cmd_invocation
+          (command
+            (identifier)
+            (value_path
+              (identifier)))
+          (command
+            (identifier))
+          (command
+            (identifier)
+            (binary_expression
+              (cmd_invocation
+                (value_path
+                  (identifier))
+                (command
+                  (identifier)
+                  (identifier)))
+              (number_literal)))))
+      (record_or_block
+        (record_entry
+          (identifier)
+          (value_path
+            (identifier)
+            (number_literal)))
+        (comment)))))
+
+================================================================================
+Test record one line
+================================================================================
+{ a: $var.b b: 1 c: e}
+--------------------------------------------------------------------------------
+
+(source_file
+  (record_or_block
+    (record_entry
+      (identifier)
+      (value_path
+        (identifier)
+        (identifier)))
+    (record_entry
+      (identifier)
+      (number_literal))
+    (record_entry
+      (identifier)
+      (command
+        (identifier)))))

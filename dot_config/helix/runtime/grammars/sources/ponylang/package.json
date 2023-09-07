@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-ponylang",
+  "version": "1.0.0",
+  "description": "Treesitter Grammar for ponylang",
+  "main": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "keywords": [
+    "treesitter",
+    "ponylang"
+  ],
+  "author": "Matthias Wahl",
+  "license": "MIT",
+  "devDependencies": {
+    "tree-sitter-cli": "^0.19.5"
+  },
+  "tree-sitter": [
+    {
+      "file-types": [
+        "pony"
+      ],
+      "content-regex": "^actor Main$",
+      "scope": "source.pony"
+    }
+  ],
+  "dependencies": {
+    "nan": "^2.17.0"
+  }
+}

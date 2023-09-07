@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '31 1 * * *'
+
+jobs:
+  ubuntu-gcc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      VFLAGS: -cc gcc
+    steps:
+      - name: Install Boehm GC
+        run: sudo apt-get install libgc-dev
+      - name: Checkout V
+        uses: actions/checkout@v2
+        with:
+          repository: vlang/v
+      - name: Checkout VLS
+        uses: actions/checkout@v2
+        with:
+          path: vls
+      - name: Build local V
+        run: make
+      - name: Symlink VLS to ~/.vmodules/vls
+        run: ln -s $(realpath vls) ~/.vmodules/vls
+      # - name: Ensure VLS code is formatted
+      #   run: ./v fmt -verify vls/
+      - name: Run VLS tests
+        run: ./v test vls
+      - name: Check VLS compiles
+        run: ./v vls/cmd/vls/
+      - name: Check VLS compiles with -prod
+        run: ./v -prod vls/cmd/vls/
+
+  macos-clang:
+    runs-on: macOS-latest
+    timeout-minutes: 30
+    env:
+      VFLAGS: -cc clang
+    steps:
+      - name: Install Boehm GC
+        run: brew install bdw-gc
+      - name: Checkout V
+        uses: actions/checkout@v2
+        with:
+          repository: vlang/v
+      - name: Checkout VLS
+        uses: actions/checkout@v2
+        with:
+          path: vls
+      - name: Build local v
+        run: make
+      - name: Run tests
+        run: ./v test vls
+      - name: Check VLS compiles
+        run: ./v vls/cmd/vls/
+      - name: Check VLS compiles with -prod
+        run: ./v -prod vls/cmd/vls/
+
+  windows-msvc:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      VFLAGS: -cc msvc
+    steps:
+      - name: Checkout V
+        uses: actions/checkout@v2
+        with:
+          repository: vlang/v
+      - name: Checkout VLS
+        uses: actions/checkout@v2
+        with:
+          path: vls
+      - name: Build local v
+        run: .\make.bat -msvc
+      - name: Run tests
+        run: |
+          .\v.exe test vls\lsp\
+          .\v.exe test vls\analyzer\
+          .\v.exe test vls\server\tests\
+          .\v.exe test vls\server\general_test.v
+          .\v.exe test vls\server\window_test.v

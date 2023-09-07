@@ -1,0 +1,179 @@
+============================================
+comment
+============================================
+{{ /* comment */ }}
+text
+{{ /* multi
+line
+comment */ }}
+text
+---
+(source_file
+    (template
+        (comment))
+    (template
+        (text))
+    (template
+        (comment))
+    (template
+        (text)))
+
+============================================
+pipeline
+============================================
+{{ pipeline }}
+---
+(source_file
+    (template
+        (function_call (identifier))))
+
+=============================================
+if
+=============================================
+{{if pipeline}} t1 {{end}}
+---
+(source_file
+    (template
+        (if_action
+            (function_call (identifier))
+            (text))))
+
+=============================================
+if else
+=============================================
+{{if pipeline}} t1 {{ else }} t2 {{ end }}
+---
+(source_file
+    (template
+        (if_action
+            (function_call (identifier))
+            (text)
+            (text))))
+
+=============================================
+if-else
+=============================================
+{{if pipeline}} t1 {{ else if pipeline }} t2 {{ end }}
+---
+(source_file
+    (template
+        (if_action
+            (function_call (identifier))
+            (text)
+            (function_call (identifier))
+            (text))))
+
+=============================================
+if-else else
+=============================================
+{{if pipeline}} t1 {{ else if pipeline }} t2 {{ else }} t3 {{ end }}
+---
+(source_file
+    (template
+        (if_action
+            (function_call (identifier))
+            (text)
+            (function_call (identifier))
+            (text)
+            (text))))
+
+=============================================
+range
+=============================================
+{{range pipeline}} t1 {{ end }}
+---
+(source_file
+    (template
+        (range_action
+            (function_call (identifier))
+            (text))))
+
+=============================================
+range else
+=============================================
+{{range pipeline}} t1 {{ else }} t2 {{ end }}
+---
+(source_file
+    (template
+        (range_action
+            (function_call (identifier))
+            (text)
+            (text))))
+
+=============================================
+template
+=============================================
+{{template "name"}}
+---
+(source_file
+    (template
+        (template_action
+            (interpreted_string_literal))))
+
+=============================================
+template with argument
+=============================================
+{{template "name" pipeline}}
+---
+(source_file
+    (template
+        (template_action
+            (interpreted_string_literal)
+            (function_call (identifier)))))
+
+=============================================
+define
+=============================================
+{{define "name"}} t1 {{ end }}
+---
+(source_file
+    (template
+        (define_action
+            (interpreted_string_literal)
+            (text))))
+
+=============================================
+block
+=============================================
+{{block "name"}} T1 {{end}}
+---
+(source_file
+    (template
+        (block_action
+            (interpreted_string_literal)
+            (text))))
+
+=============================================
+block with argument
+=============================================
+{{block "name" pipeline }} T1 {{end}}
+---
+(source_file
+    (template
+        (block_action
+        (interpreted_string_literal)
+        (function_call (identifier))
+        (text))))
+
+=============================================
+with
+=============================================
+{{with pipeline}} T1 {{end}}
+---
+(source_file
+    (template
+        (with_action
+        (function_call (identifier))
+        (text))))
+
+=============================================
+with else
+=============================================
+{{with pipeline}} T1 {{else}} T0 {{end}}
+---
+(source_file
+    (template
+        (with_action
+        (function_call (identifier))
+        (text)
+        (text))))

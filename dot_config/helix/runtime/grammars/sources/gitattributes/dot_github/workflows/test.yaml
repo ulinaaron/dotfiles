@@ -1,0 +1,20 @@
+name: Test against corpus
+on:
+  push:
+    branches: [ "**" ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: npm install
+    - name: Generate parser
+      run: npm run generate
+    - name: Ensure no generate changes
+      run: git --no-pager diff --exit-code
+    - name: Test against corpus
+      run: npm run test

@@ -1,0 +1,334 @@
+===
+label: instruction operands comment
+===
+label:	mov	rax, 60 ; sys_EXIT
+
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal))))))
+  (comment))
+===
+label instruction operand
+===
+label	add	rax, rbx
+
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (register)))))))
+===
+instruction operand
+===
+	inc	rax
+
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register)))))))
+===
+instruction
+===
+	syscall
+
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)))))
+===
+label:
+===
+label:
+
+---
+(source_file
+  (source_line
+    (label
+      (word))))
+===
+prefix instruction
+===
+repne	scasb
+
+---
+(source_file
+  (source_line
+    (instruction
+      (instruction_prefix)
+      (actual_instruction
+        (word)))))
+===
+line \ continuation
+===
+label:	mov	rax, \
+		60
+
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal)))))))
+===
+label unknown operands
+===
+exit:	sys_exit	rax
+
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register)))))))
+===
+unknown operands
+===
+	sys_write	2, buf, BUFSIZE
+
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (number_literal))
+          (operand
+            (word))
+          (operand
+            (word)))))))
+===
+coucou
+===
+coucou
+
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)))))
+===
+comment
+===
+; comment
+
+---
+(source_file
+  (comment))
+===
+com \ ment
+===
+; com \
+  ment
+
+---
+(source_file
+  (comment))
+===
+multi-line snippet
+===
+no_file:
+	mov	rax, 60	; sys_EXIT
+	mov	rdi, 2	; ENOENT
+	syscall
+
+---
+(source_file
+  (source_line
+    (label
+      (word)))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)))))
+===
+ambiguous label
+===
+coucou
+	mov	rax, 42
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal)))))))
+===
+ambiguous known_instruction
+===
+syscall
+	mov	rax, 42
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word))))
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (number_literal)))))))
+===
+floating-point instructions
+===
+        fadd    st1             ; this sets st0 := st0 + st1
+        fadd    st0,st1         ; so does this
+
+        fadd    st1,st0         ; this sets st1 := st1 + st0
+        fadd    to st1          ; so does this
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))))))
+  (comment))
+===
+floating point
+===
+        fadd    st1             ; this sets st0 := st0 + st1
+        fadd    st0,st1         ; so does this
+
+        fadd    st1,st0         ; this sets st1 := st1 + st0
+        fadd    to st1          ; so does this
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))
+          (operand
+            (register))))))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register))))))
+  (comment))

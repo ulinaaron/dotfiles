@@ -1,0 +1,275 @@
+==================
+Function application with one argument (unit/FunctionApplicationOneArgA.dhall)
+==================
+
+f x
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Function application with multiple argument (unit/FunctionApplicationMultipleArgsA.dhall)
+==================
+
+f x y z
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Merge statement (unit/MergeA.dhall)
+==================
+
+merge x y
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Annotated merge statement (unit/MergeAnnotationA.dhall)
+==================
+
+merge x y : t
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+Annotated merge statement precendence (unit/MergeAnnotationPrecedenceA.dhall)
+==================
+
+merge x y : t a
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))))
+
+==================
+Merge statement precendence with parens (unit/MergeParenAnnotationA.dhall)
+==================
+
+(merge x y) : t
+
+---
+
+(expression
+  (primitive_expression (expression (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+Merge statement applied to parameter (unit/MergeXYZA.dhall)
+==================
+
+merge x y z
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Comprehensive merge statement test (mergeA.dhall)
+==================
+
+  λ(x : <>)
+→ { bar = merge {=} x : Integer
+  , foo =
+	  merge
+	  { Left = λ(b : Bool) → b, Right = Natural/even }
+	  (< Left : Bool | Right : Natural >.Left True)
+  }
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (union_type)))
+    (arrow_operator)
+    expression: (expression (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator) (expression
+        (application_expression (builtin_function)
+          (primitive_expression (record_literal (empty_record_literal)))
+          (primitive_expression (identifier (label))))
+        (type_operator)
+        type: (expression (primitive_expression (identifier (builtin))))))
+      (record_literal_entry (label) (assign_operator) (expression
+        (application_expression (builtin_function)
+          (primitive_expression (record_literal
+            (record_literal_entry (label) (assign_operator)
+              (expression (lambda_expression
+                (lambda_operator)
+                label: (label)
+                (type_operator)
+                type: (expression (primitive_expression (identifier (builtin))))
+                (arrow_operator)
+                expression: (expression (primitive_expression (identifier (label)))))))
+            (record_literal_entry (label) (assign_operator)
+              (expression (primitive_expression (identifier (builtin)))))))
+          (primitive_expression (expression (application_expression
+            (primitive_expression
+              (union_type
+                (union_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (builtin)))))
+                (union_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (builtin))))))
+              selector: (selector (selector_dot) (label)))
+            (primitive_expression (boolean_literal)))))))))))))
+
+==================
+Some statement (unit/SomeXA.dhall)
+==================
+
+Some x
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))))
+
+==================
+Some statement with too many arguments (unit/SomeXYZA.dhall)
+==================
+
+{-
+This is always a type error, but if this
+was a parse error it would be quite confusing
+because Some looks like a builtin.
+-}
+Some x y z
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+toMap statement (unit/ToMapA.dhall)
+==================
+
+toMap x
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))))
+
+==================
+Annotated toMap statement (unit/ToMapAnnotA.dhall)
+==================
+
+toMap x : T
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+toMap statement on a record literal (toMapA.dhall)
+==================
+
+toMap { foo= 1, bar= 4, baz= 9 }
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))))
+
+==================
+showConstructor statement
+==================
+
+showConstructor <A>.A
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression
+      (union_type (union_type_entry (label)))
+      (selector (selector_dot) (label)))))
+
+==================
+showConstructor statement with a value
+==================
+
+showConstructor (<A : Bool>.A False)
+
+---
+
+(expression
+  (application_expression
+    (builtin_function)
+    (primitive_expression (expression (application_expression
+      (primitive_expression
+        (union_type (union_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (builtin))))))
+        selector: (selector (selector_dot) (label)))
+      (primitive_expression (boolean_literal)))))))

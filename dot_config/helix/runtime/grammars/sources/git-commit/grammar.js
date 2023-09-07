@@ -1,0 +1,236 @@
+/* glossary:
+   - subject: the first line of a commit
+   - message: the body of a commit
+     - usually starts on the third line of the file (1-indexed)
+     - may be interspersed with comments
+   - item: an issue or PR
+   - change: how a file will change with this commit
+     - either 'new file', 'modified', 'renamed' or 'deleted'
+ */
+
+const WHITE_SPACE = /[\t\f\v ]+/;
+const ANYTHING = /[^\n\r]+/;
+const PREC = {
+  NONSENSE: -1,
+  PATH: 5,
+  PATH_SEPARATOR_ARROW: 6,
+  ITEM: 10,
+  USER: 11,
+  SUBJECT: 15,
+};
+
+const SCISSORS =
+  /# -+ >8 -+\r?\n# Do not modify or remove the line above.\r?\n# Everything below it will be ignored.\r?\n?/;
+
+module.exports = grammar({
+  name: "git_commit",
+
+  extras: ($) => [WHITE_SPACE],
+
+  rules: {
+    source: ($) =>
+      seq(
+        optional(choice($.comment, $.subject)),
+        repeat($._body_line),
+        optional(
+          seq(alias(SCISSORS, $.scissors), optional(alias($._rest, $.message)))
+        )
+      ),
+
+    _body_line: ($) => seq(/[\r\n]+/, optional(choice($.message, $.comment))),
+
+    subject: ($) =>
+      seq(token(prec(PREC.SUBJECT, /[^#\r\n]/)), repeat(ANYTHING)),
+
+    message: ($) =>
+      choice(
+        // Lines starting with spaces are certainly messages and may start with any characters.
+        seq(WHITE_SPACE, repeat($._text)),
+        // Otherwise message lines must not start with '#'.
+        seq(choice($.user, /[^\s#]+/), repeat($._text))
+      ),
+
+    _text: ($) => choice($.user, $.item, $._word),
+
+    comment: ($) => seq("#", optional($._comment_body)),
+
+    _comment_body: ($) =>
+      choice(
+        alias($._rebase_summary, $.summary),
+        $.summary,
+        $._branch_declaration,
+        // fallback to regular comment words if the words are nonsense
+        repeat1($._word)
+      ),
+
+    _rebase_summary: ($) =>
+      seq(
+        seq(
+          "interactive",
+          "rebase",
+          "in",
+          "progress",
+          ";",
+          "onto",
+          $.commit,
+          $._newline
+        ),
+        seq("#", alias($._rebase_header, $.header), $._newline),
+        repeat(seq("#", $.rebase_command, $._newline)),
+        seq("#", alias($._rebase_header, $.header), $._newline),
+        repeat(seq("#", $.rebase_command, $._newline)),
+        seq(
+          "#",
+          "You",
+          "are",
+          "currently",
+          repeat(/\S+/),
+          "rebasing",
+          "branch",
+          "'",
+          $.branch,
+          "'",
+          "on",
+          "'",
+          $.commit,
+          "'",
+          "."
+        ),
+        $._newline,
+        optional("#")
+      ),
+
+    _rebase_header: ($) =>
+      choice(
+        seq(
+          "Last",
+          /commands?/,
+          "done",
+          "(",
+          /\d+/,
+          /commands?/,
+          "done",
+          ")",
+          ":"
+        ),
+        seq(
+          "Next",
+          /commands?/,
+          "to",
+          "do",
+          "(",
+          /\d+/,
+          "remaining",
+          /commands?/,
+          ")",
+          ":"
+        ),
+        seq("No", "commands", "remaining", ".")
+      ),
+
+    summary: ($) =>
+      choice(
+        seq(
+          alias($._change_header, $.header),
+          $._newline,
+          repeat1(seq("#", $.change, $._newline)),
+          optional("#")
+        ),
+        seq(
+          $.header,
+          $._newline,
+          repeat1(seq("#", $.path, $._newline)),
+          optional("#")
+        )
+      ),
+
+    _change_header: ($) =>
+      choice(
+        seq("Changes", "to", "be", "committed", ":"),
+        seq("Changes", "not", "staged", "for", "commit", ":")
+      ),
+
+    _branch_declaration: ($) =>
+      choice(
+        seq("On", "branch", alias($._word, $.branch)),
+        seq(
+          "Your",
+          "branch",
+          "is",
+          "up",
+          "to",
+          "date",
+          "with",
+          "'",
+          $.branch,
+          "'."
+        ),
+        seq(
+          "Your",
+          "branch",
+          "is",
+          choice(seq("ahead", "of"), "behind"),
+          "'",
+          $.branch,
+          "'",
+          "by",
+          /\d+/,
+          /commits?/,
+          "."
+        ),
+        seq(
+          "Your",
+          "branch",
+          "and",
+          "'",
+          $.branch,
+          "'",
+          "have",
+          "diverged",
+          ","
+        ),
+        // # HEAD detached at upstream/gh-pages
+        seq("HEAD", "detached", "at", choice($.commit, $.branch))
+      ),
+
+    header: ($) => seq(choice("Conflicts", seq("Untracked", "files")), ":"),
+
+    change: ($) =>
+      seq(
+        field("kind", choice("new file", "modified", "renamed", "deleted")),
+        ":",
+        $.path,
+        optional(seq(token(prec(PREC.PATH_SEPARATOR_ARROW, "->")), $.path))
+      ),
+
+    commit: ($) => /[a-f0-9]{7,40}/,
+
+    _word: ($) => token(prec(PREC.NONSENSE, /\S+/)),
+    branch: ($) => /[^\.\s']+/,
+
+    rebase_command: ($) =>
+      seq(
+        choice(
+          "pick",
+          "edit",
+          "squash",
+          "merge",
+          "fixup",
+          "drop",
+          "reword",
+          "exec",
+          "label",
+          "reset"
+        ),
+        repeat1(/\S+/)
+      ),
+
+    path: ($) => repeat1(token(prec(PREC.PATH, /\S+/))),
+
+    user: ($) => token(prec(PREC.USER, /@[^\s@]+/)),
+    item: ($) => token(prec(PREC.ITEM, /#\d+/)),
+
+    _rest: ($) => repeat1(choice(/.*/, $._newline)),
+    _newline: ($) => /\r?\n/,
+  },
+});

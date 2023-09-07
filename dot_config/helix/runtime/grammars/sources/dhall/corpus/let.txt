@@ -1,0 +1,139 @@
+==================
+Basic let statement (unit/LetA.dhall)
+==================
+
+let x: T = v in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Un-annotated let statement (unit/LetNoAnnotA.dhall)
+==================
+
+let x = y in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Annotated let statement (unit/LetAnnotA.dhall)
+==================
+
+let x: T = y in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Quoted let statement labels (quotedLabelA.dhall)
+==================
+
+{ example1 = let `let` = 1 in `let`
+, example2 = let `:.` = 1 in `:.`
+, example3 = let `$ref` = 1 in `$ref`
+, example4 = let `` = 1 in ``
+}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (let_expression
+        (let_binding label: (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (expression (primitive_expression (identifier (label)))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (let_expression
+        (let_binding label: (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (expression (primitive_expression (identifier (label)))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (let_expression
+        (let_binding label: (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (expression (primitive_expression (identifier (label)))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (let_expression
+        (let_binding label: (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (expression (primitive_expression (identifier (label))))))))))
+
+==================
+Multi-clause let statement (unit/LetMultiA.dhall)
+==================
+
+let x: T = v let y: U = w in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Nested let statements (unit/LetNestedA.dhall)
+==================
+
+let x: T = v in let y: U = w in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assign_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (let_expression
+      (let_binding
+        label: (label)
+        (type_operator)
+        type: (expression (primitive_expression (identifier (label))))
+        (assign_operator)
+        (expression (primitive_expression (identifier (label)))))
+      (expression (primitive_expression (identifier (label))))))))

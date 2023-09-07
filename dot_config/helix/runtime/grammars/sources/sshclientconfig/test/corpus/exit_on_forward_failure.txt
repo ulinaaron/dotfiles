@@ -1,0 +1,158 @@
+==================
+exit on forward failure = yes
+==================
+
+ExitOnForwardFailure yes
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = Yes
+==================
+
+ExitOnForwardFailure Yes
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = true
+==================
+
+ExitOnForwardFailure true
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = True
+==================
+
+ExitOnForwardFailure True
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = no
+==================
+
+ExitOnForwardFailure no
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = No
+==================
+
+ExitOnForwardFailure No
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = false
+==================
+
+ExitOnForwardFailure false
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+exit on forward failure = False
+==================
+
+ExitOnForwardFailure False
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+use irregular casing
+==================
+
+exITonFORwardfAIlure yes
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+can use equals sign
+==================
+
+exITonFORwardfAIlure=yes
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+exITonFORwardfAIlure = yes
+
+---
+
+(client_config
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  exITonFORwardfAIlure no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (exit_on_forward_failure
+    (exit_on_forward_failure_value)))
+
+==================
+detect invalid values
+==================
+
+exITonFORwardfAIlure ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

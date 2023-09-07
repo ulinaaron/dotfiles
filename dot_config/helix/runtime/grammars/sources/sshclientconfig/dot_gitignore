@@ -1,0 +1,8 @@
+.idea/
+node_modules/
+build/
+target/
+.nyc_output/
+crash.txt
+fuzz/aflplusplus/out
+/.build/

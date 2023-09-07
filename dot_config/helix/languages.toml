@@ -29,6 +29,16 @@ auto-format = true
 formatter = { command = "prettier", args = ["--parser", "json"] }
 
 [[language]]
+name = "php"
+scope = "source.php"
+injection-regex = "php"
+file-types = ["php", "inc", "tpl"]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+language-server = { command = "intelephense", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
 name = "bash"
 auto-format = true
 

@@ -1,0 +1,42 @@
+{
+  "name": "tree-sitter-cpon",
+  "version": "0.0.1",
+  "description": "cpon grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parsing",
+    "cpon",
+    "incremental"
+  ],
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fvacek/tree-sitter-cpon"
+  },
+  "author": "Fanda Vacek",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.14.0"
+  }, "devDependencies": {
+    "tree-sitter-cli": "^0.20.6"
+  },
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.cpon",
+      "file-types": [
+        "cpon"
+      ],
+      "highlights": [
+        "queries/vim/highlights.scm"
+      ],
+      "indents": [
+        "queries/vim/indents.scm"
+      ]
+    }
+  ]
+}

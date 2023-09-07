@@ -1,0 +1,647 @@
+==================
+if expr
+==================
+
+discard if true:
+    true
+  elif false:
+    true
+  elif false:
+    true
+  elif false:
+    true
+  else: true
+discard 
+  if true:
+    true
+  elif false:
+    true
+  else: true
+discard if true:
+  true
+elif false:
+  true
+else: true
+discard if true: true else: true
+discard if true: true elif true: true else: true
+
+---
+
+(module
+  (stmt
+    (simpleStmts
+      (discardStmt
+        (keyw)
+        (expr
+          (ifExpr
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (block
+              (stmt
+                (simpleStmts
+                  (exprStmt
+                    (primary
+                      (literal
+                        (bool_lit)))))))
+            (elifStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit))))
+              (block
+                (stmt
+                  (simpleStmts
+                    (exprStmt
+                      (primary
+                        (literal
+                          (bool_lit))))))))
+            (elifStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit))))
+              (block
+                (stmt
+                  (simpleStmts
+                    (exprStmt
+                      (primary
+                        (literal
+                          (bool_lit))))))))
+            (elifStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit))))
+              (block
+                (stmt
+                  (simpleStmts
+                    (exprStmt
+                      (primary
+                        (literal
+                          (bool_lit))))))))
+            (elseStmt
+              (keyw)
+              (block
+                (exprStmt
+                  (primary
+                    (literal
+                      (bool_lit)))))))))))
+  (stmt
+    (simpleStmts
+      (discardStmt
+        (keyw)
+        (expr
+          (ifExpr
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (block
+              (stmt
+                (simpleStmts
+                  (exprStmt
+                    (primary
+                      (literal
+                        (bool_lit)))))))
+            (elifStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit))))
+              (block
+                (stmt
+                  (simpleStmts
+                    (exprStmt
+                      (primary
+                        (literal
+                          (bool_lit))))))))
+            (elseStmt
+              (keyw)
+              (block
+                (exprStmt
+                  (primary
+                    (literal
+                      (bool_lit)))))))))))
+  (stmt
+    (simpleStmts
+      (discardStmt
+        (keyw)
+        (expr
+          (ifExpr
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (block
+              (stmt
+                (simpleStmts
+                  (exprStmt
+                    (primary
+                      (literal
+                        (bool_lit)))))))
+            (elifStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit))))
+              (block
+                (stmt
+                  (simpleStmts
+                    (exprStmt
+                      (primary
+                        (literal
+                          (bool_lit))))))))
+            (elseStmt
+              (keyw)
+              (block
+                (exprStmt
+                  (primary
+                    (literal
+                      (bool_lit)))))))))))
+  (stmt
+    (simpleStmts
+      (discardStmt
+        (keyw)
+        (expr
+          (ifExpr
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (inlineSimpleStmts
+              (exprStmt
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (keyw)
+            (inlineSimpleStmts
+              (exprStmt
+                (primary
+                  (literal
+                    (bool_lit))))))))))
+  (stmt
+    (simpleStmts
+      (discardStmt
+        (keyw)
+        (expr
+          (ifExpr
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (inlineSimpleStmts
+              (exprStmt
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (inlineSimpleStmts
+              (exprStmt
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (keyw)
+            (inlineSimpleStmts
+              (exprStmt
+                (primary
+                  (literal
+                    (bool_lit)))))))))))
+
+==================
+block expr
+==================
+
+discard block test: 
+  discard true
+  discard true
+  discard true
+  discard true
+  true
+discard block: true
+
+---
+
+(module
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (blockExpr
+          (keyw)
+          (symbol
+            (ident))
+          (stmt
+            (discardStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (discardStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (discardStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (discardStmt
+              (keyw)
+              (expr
+                (primary
+                  (literal
+                    (bool_lit)))))
+            (exprStmt
+              (primary
+                (literal
+                  (bool_lit)))))))))
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (blockExpr
+          (keyw)
+          (stmt
+            (exprStmt
+              (primary
+                (literal
+                  (bool_lit))))))))))
+
+==================
+when expr
+==================
+
+discard when true:
+  true
+elif false:
+  true
+elif false:
+  true
+elif false:
+  true
+else: true
+discard when true: true else: true
+discard when true: true elif true: true else: true
+
+---
+
+(module
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (whenExpr
+          (keyw)
+          (condExpr
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit)))))))))
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (whenExpr
+          (keyw)
+          (condExpr
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit)))))))))
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (whenExpr
+          (keyw)
+          (condExpr
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))))))))
+
+==================
+for expr
+==================
+
+discard for foo_bar, soo_sar in true:
+  discard true
+  discard true
+
+---
+
+(module
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (forExpr
+            (keyw)
+            (symbol
+              (ident))
+            (symbol
+              (ident))
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (stmt
+              (discardStmt
+                (keyw)
+                (expr
+                  (primary
+                    (literal
+                      (bool_lit)))))
+              (discardStmt
+                (keyw)
+                (expr
+                  (primary
+                    (literal
+                      (bool_lit)))))))))))
+
+==================
+caseExpr
+==================
+
+discard case a:
+  of 0:
+    "hi"
+  of 0:
+    "hi"
+  of 0:
+    discard true; discard true; discard true
+    "hi"
+  of 0, 1, 3:
+    discard true
+    "hi"
+  elif true:
+    discard true
+    "bye"
+  else:
+    discard true
+    discard true
+    "bye"
+discard 
+  case a
+  of 0: discard true; "hi"
+  else: discard true; "no"
+
+---
+
+(module
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (caseExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))
+          (ofBranch
+            (exprList
+              (expr
+                (primary
+                  (literal
+                    (int_lit)))))
+            (block
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))
+          (ofBranch
+            (exprList
+              (expr
+                (primary
+                  (literal
+                    (int_lit)))))
+            (block
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))
+          (ofBranch
+            (exprList
+              (expr
+                (primary
+                  (literal
+                    (int_lit)))))
+            (block
+              (stmt
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit)))))
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit)))))
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit))))))
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))
+          (ofBranch
+            (exprList
+              (expr
+                (primary
+                  (literal
+                    (int_lit))))
+              (expr
+                (primary
+                  (literal
+                    (int_lit))))
+              (expr
+                (primary
+                  (literal
+                    (int_lit)))))
+            (block
+              (stmt
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit))))))
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))
+          (elifStmt
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))
+            (block
+              (stmt
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit))))))
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))
+          (elseStmt
+            (keyw)
+            (block
+              (stmt
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit))))))
+              (stmt
+                (discardStmt
+                  (keyw)
+                  (expr
+                    (primary
+                      (literal
+                        (bool_lit))))))
+              (stmt
+                (exprStmt
+                  (primary
+                    (literal
+                      (str_lit)))))))))))
+  (stmt
+    (discardStmt
+      (keyw)
+      (expr
+        (caseExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))
+          (ofBranch
+            (exprList
+              (expr
+                (primary
+                  (literal
+                    (int_lit)))))
+            (block
+              (discardStmt
+                (keyw)
+                (expr
+                  (primary
+                    (literal
+                      (bool_lit)))))
+              (exprStmt
+                (primary
+                  (literal
+                    (str_lit))))))
+          (elseStmt
+            (keyw)
+            (block
+              (discardStmt
+                (keyw)
+                (expr
+                  (primary
+                    (literal
+                      (bool_lit)))))
+              (exprStmt
+                (primary
+                  (literal
+                    (str_lit)))))))))))
+

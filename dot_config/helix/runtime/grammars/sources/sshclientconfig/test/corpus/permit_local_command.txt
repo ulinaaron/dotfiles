@@ -1,0 +1,158 @@
+==================
+permit local command = yes
+==================
+
+PermitLocalCommand yes
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = Yes
+==================
+
+PermitLocalCommand Yes
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = true
+==================
+
+PermitLocalCommand true
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = True
+==================
+
+PermitLocalCommand True
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = no
+==================
+
+PermitLocalCommand no
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = No
+==================
+
+PermitLocalCommand No
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = false
+==================
+
+PermitLocalCommand false
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+permit local command = False
+==================
+
+PermitLocalCommand False
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+use irregular casing
+==================
+
+PermitLocALcommand yes
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+can use equals sign
+==================
+
+PermitLocALcommand=yes
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+PermitLocALcommand = yes
+
+---
+
+(client_config
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  PermitLocalCommand no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (permit_local_command
+    (permit_local_command_value)))
+
+==================
+detect invalid values
+==================
+
+PermitLocALcommand ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

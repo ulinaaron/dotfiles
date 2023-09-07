@@ -1,0 +1,158 @@
+==================
+stream local bind unlink = yes
+==================
+
+StreamLocalBindUnlink yes
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = Yes
+==================
+
+StreamLocalBindUnlink Yes
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = true
+==================
+
+StreamLocalBindUnlink true
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = True
+==================
+
+StreamLocalBindUnlink True
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = no
+==================
+
+StreamLocalBindUnlink no
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = No
+==================
+
+StreamLocalBindUnlink No
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = false
+==================
+
+StreamLocalBindUnlink false
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+stream local bind unlink = False
+==================
+
+StreamLocalBindUnlink False
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+use irregular casing
+==================
+
+StreamLOCAlBindUnlink yes
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+can use equals sign
+==================
+
+StreamLOCAlBindUnlink=yes
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+StreamLOCAlBindUnlink = yes
+
+---
+
+(client_config
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  StreamLocalBindUnlink no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (stream_local_bind_unlink
+    (stream_local_bind_unlink_value)))
+
+==================
+detect invalid values
+==================
+
+StreamLOCAlBindUnlink ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

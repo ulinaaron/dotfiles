@@ -1,0 +1,158 @@
+==================
+keyboard interactive authentication = yes
+==================
+
+KbdInteractiveAuthentication yes
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = Yes
+==================
+
+KbdInteractiveAuthentication Yes
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = true
+==================
+
+KbdInteractiveAuthentication true
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = True
+==================
+
+KbdInteractiveAuthentication True
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = no
+==================
+
+KbdInteractiveAuthentication no
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = No
+==================
+
+KbdInteractiveAuthentication No
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = false
+==================
+
+KbdInteractiveAuthentication false
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+keyboard interactive authentication = False
+==================
+
+KbdInteractiveAuthentication False
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+use irregular casing
+==================
+
+KbdInteractiveAuthentiCATion yes
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+can use equals sign
+==================
+
+KbdInteractiveAuthentiCATion=yes
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+KbdInteractiveAuthentiCATion = yes
+
+---
+
+(client_config
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  KbdInteractiveAuthentication no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (kbd_interactive_authentication
+    (kbd_interactive_authentication_value)))
+
+==================
+detect invalid values
+==================
+
+KbdInteractiveAuthentiCATion ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

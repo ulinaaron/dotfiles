@@ -1,0 +1,436 @@
+==================
+Record literals (recordA.dhall)
+==================
+
+{ foo = +1
+, bar = 2
+, baz = True
+} : { foo : Integer, bar : Natural, baz : Bool }
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (integer_literal)))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression (boolean_literal))))))
+  (type_operator)
+  type: (expression (primitive_expression (record_type
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))))))
+
+==================
+Basic record literal (unit/RecordLitA.dhall)
+==================
+
+{ x = 1, y = 2 }
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Quoted record labels (quotedRecordLabelA.dhall)
+==================
+
+{foo = 1, `` = 2, ` ` = 3}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Dotted record labels (unit/RecordLitDottedA.dhall)
+==================
+
+{-  The purpose of this test is to illustrate that dotted fields are syntactic
+    sugar that does not survive the parsing stage.  The underlying expression is
+    actually represented and encoded as:
+
+    { x = { y = { z = 1 } } }
+-}
+{ x.y.z = 1 }
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label) (selector_dot) (label))
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Multiple dotted record labels (unit/RecordLitNixLikeA.dhall)
+==================
+
+{- The purpose of this test is to verify that the combination of the dotted
+   field notation and the duplicate record fields desugar to the desired syntax
+   tree
+-}
+{ x.y = 1, x.z = True }
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label))
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label))
+      (assign_operator)
+      (expression (primitive_expression (boolean_literal)))))))
+
+==================
+Quoted dotted record labels (unit/RecordLitDottedEscapeA.dhall)
+==================
+
+{ `x.y`.z = 1 }
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label))
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Record literal with duplicate fields (unit/RecordLitDuplicatesA.dhall)
+==================
+
+{-  The purpose of this test is to illustrate that duplicate fields are
+    syntactic sugar that does not survive the parsing stage.  The underlying
+    expression is actually represented and encoded as:
+
+    { x = { y = 1 } ∧ { z = 1 } }
+-}
+{ x = { y = 1 }, x = { z = 1 } }
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression (record_literal
+        (record_literal_entry
+          (label)
+          (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))))))
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression (record_literal
+        (record_literal_entry
+          (label)
+          (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal))))))))))))
+
+==================
+Record literal with Some field (unit/RecordLitSomeA.dhall)
+==================
+
+{ Some = 0 }
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry
+      (label)
+      (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Record literal with a leading comma (unit/RecordLitLeadingCommaA.dhall)
+==================
+
+{ , x = 0, y = 1 }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))))))
+
+==================
+Record literal with a trailing comma (unit/RecordLitTrailingCommaA.dhall)
+==================
+
+{ x = 0, y = 1, }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))))))
+
+==================
+Record literal with a trailing and leading comma (unit/RecordLitTrailingAndLeadingCommasA.dhall)
+==================
+
+{ , x = 0, y = 1, }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))))))
+
+==================
+Record literal puns (unit/RecordLitPunA.dhall)
+==================
+
+{ x, y, z }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label))
+  (record_literal_entry (label))
+  (record_literal_entry (label)))))
+
+==================
+Record literal puns with duplicate fields (unit/RecordLitPunDuplicateA.dhall)
+==================
+
+{ x, y, x }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label))
+  (record_literal_entry (label))
+  (record_literal_entry (label)))))
+
+==================
+Record literal puns mixed with regular fields (unit/RecordLitPunMixedA.dhall)
+==================
+
+{ x, y = 1, z, w.a.b = 2 }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label))
+  (record_literal_entry (label) (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))
+  (record_literal_entry (label))
+  (record_literal_entry
+    (label) (selector (selector_dot) (label) (selector_dot) (label))
+    (assign_operator)
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))))))
+
+==================
+Record literal Some pun (unit/RecordLitPunSomeA.dhall)
+==================
+
+{ Some }
+
+---
+
+(expression (primitive_expression (record_literal
+  (record_literal_entry (label)))))
+
+==================
+Record type (unit/RecordTypeA.dhall)
+==================
+
+{ x: T, y: U }
+
+---
+
+(expression (primitive_expression (record_type
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label)))))
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label))))))))
+
+==================
+Record type with a leading comma (unit/RecordTypeLeadingCommaA.dhall)
+==================
+
+{ , x : T, y : U }
+
+---
+
+(expression (primitive_expression (record_type
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label)))))
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label))))))))
+
+==================
+Record type with a trailing comma (unit/RecordTypeTrailingCommaA.dhall)
+==================
+
+{ x : T, y : U, }
+
+---
+
+(expression (primitive_expression (record_type
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label)))))
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label))))))))
+
+==================
+Record type with a leading comma (unit/RecordTypeTrailingAndLeadingCommasA.dhall)
+==================
+
+{ , x : T, y : U, }
+
+---
+
+(expression (primitive_expression (record_type
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label)))))
+  (record_type_entry (label) (type_operator)
+    (expression (primitive_expression (identifier (label))))))))
+
+==================
+Empty record literal (unit/EmptyRecordLiteralA.dhall)
+==================
+
+{=}
+
+---
+
+(expression
+  (primitive_expression (record_literal (empty_record_literal))))
+
+==================
+Empty record literal with a leading comma (unit/RecordLitEmptyLeadingCommaA.dhall)
+==================
+
+{ , = }
+
+---
+
+(expression
+  (primitive_expression (record_literal (empty_record_literal))))
+
+==================
+Empty record literal with a trailing comma (unit/RecordLitEmptyTrailingCommaA.dhall)
+==================
+
+{ =, }
+
+---
+
+(expression
+  (primitive_expression (record_literal (empty_record_literal))))
+
+==================
+Empty record literal with a trailing and leading comma
+==================
+
+{ , =, }
+
+---
+
+(expression
+  (primitive_expression (record_literal (empty_record_literal))))
+
+==================
+Empty record type
+==================
+
+{}
+
+---
+
+(expression (primitive_expression (record_type)))
+
+==================
+Empty record type with a comma (unit/RecordTypeEmptyCommaA.dhall)
+==================
+
+{ , }
+
+---
+
+(expression (primitive_expression (record_type)))

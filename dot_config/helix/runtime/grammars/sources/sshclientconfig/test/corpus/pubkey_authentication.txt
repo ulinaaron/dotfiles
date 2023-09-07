@@ -1,0 +1,182 @@
+==================
+try public key authentication
+==================
+
+PubkeyAuthentication yes
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+try public key authentication w/ bool
+==================
+
+PubkeyAuthentication true
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+Try Public Key Authentication w/ Bool
+==================
+
+PubkeyAuthentication TrUe
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+do not try public key authentication
+==================
+
+PubkeyAuthentication no
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+do not try public key authentication w/ bool
+==================
+
+PubkeyAuthentication false
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+Do Not Try Public Key Authentication w/ Bool
+==================
+
+PubkeyAuthentication fAlSe
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+use unbound public key authentication
+==================
+
+PubkeyAuthentication unbound
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+Use Unbound Public Key Authentication
+==================
+
+PubkeyAuthentication unBoUnd
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+use host-bound public key authentication
+==================
+
+PubkeyAuthentication host-bound
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+Use Host-Bound Public Key Authentication
+==================
+
+PubkeyAuthentication hOsT-bOund
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+use irregular casing
+==================
+
+PubkeyAuTHEntication yes
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+can use equals sign
+==================
+
+PubkeyAuTHEntication=yes
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+PubkeyAuTHEntication = yes
+
+---
+
+(client_config
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  PubkeyAuthentication no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (pubkey_authentication
+    (pubkey_authentication_value)))
+
+==================
+detect invalid values
+==================
+
+PubkeyAuTHEntication ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

@@ -1,0 +1,107 @@
+================================
+Declarations of variables
+================================
+
+a = 3
+
+---
+
+(source_file
+  (expression (identifier) (factor (number)))
+)
+
+========================================
+Declarations of variables with semicolon
+========================================
+
+a = 3;
+
+---
+
+(source_file
+  (expression (identifier) (factor (number)))
+)
+
+========================================
+Declarations of variables with operation
+========================================
+
+a = 3 == a;
+
+---
+
+(source_file
+  (expression (identifier) (operation (factor (number)) (factor (identifier))))
+)
+
+========================================
+Declarations of variables as computation
+========================================
+
+a = 3 * f;
+
+---
+
+(source_file
+  (expression (identifier) (operation (factor (number)) (factor (identifier))))
+)
+
+===================
+Vector declarations
+===================
+
+a = [1 2 3;1, 2, 3];
+
+---
+
+(source_file
+  (expression (identifier) (vector_definition (factor (number)) (factor (number)) (factor (number)) (factor (number)) (factor (number)) (factor (number))))
+)
+
+===================
+Rotated vector declarations
+===================
+
+a = [1 2 3;1, 2, 3]';
+
+---
+
+(source_file
+  (expression (identifier) (vector_definition (factor (number)) (factor (number)) (factor (number)) (factor (number)) (factor (number)) (factor (number))))
+)
+
+==================
+Vector as variable
+==================
+
+[t, k] = func();
+
+---
+
+(source_file
+  (expression (vector_definition (factor (identifier)) (factor (identifier))) (factor (function_call (identifier) (argument_list))))
+)
+
+==============
+Declare string
+==============
+
+a = '';
+a = 'c';
+b = 'a ''b'' c' 
+
+---
+(source_file
+  (expression (identifier) (factor (string)))
+  (expression (identifier) (factor (string)))
+  (expression (identifier) (factor (string))))
+
+==============
+Declare char vector
+==============
+
+a = ['b', 'c'];
+
+---
+(source_file
+  (expression (identifier) (vector_definition (factor (string)) (factor (string)))))

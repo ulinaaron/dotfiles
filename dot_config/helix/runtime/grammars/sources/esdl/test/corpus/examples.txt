@@ -1,0 +1,24 @@
+==================
+Example 1
+==================
+
+module default {
+    type Movie {
+        required property title -> str;
+    }
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (declarations
+          (property
+            (modifier)
+            (identifier)
+            (type)))))))
+

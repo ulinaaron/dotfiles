@@ -1,0 +1,866 @@
+================================================================================
+statements of expressions
+================================================================================
+
+{erl_opts, [warnings_as_errors]}.
+ok.
+error.
+
+--------------------------------------------------------------------------------
+
+(source
+  (tuple
+    (atom)
+    (list
+      (atom)))
+  (atom)
+  (atom))
+
+================================================================================
+function declarations
+================================================================================
+
+ok_this(Term) -> {ok, Term}.
+
+factorial(N) when N>0 ->
+    N * factorial(N - 1);
+factorial(1) -> 0.
+
+do_effects(Effects) ->
+    Effects1 = do_effects1(Effects),
+    do_effects2(Effects1).
+
+dupe(List) when is_list(List) ->
+    [X || X <- List]
+      ++ List;
+dupe(Term) -> {Term, Term}.
+
+--------------------------------------------------------------------------------
+
+(source
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (tuple
+        (atom)
+        (variable))))
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (guard
+        (binary_operator
+          (variable)
+          (integer)))
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments
+            (binary_operator
+              (variable)
+              (integer))))))
+    (function_clause
+      (atom)
+      (arguments
+        (integer))
+      (integer)))
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (body
+        (binary_operator
+          (variable)
+          (call
+            (atom)
+            (arguments
+              (variable))))
+        (call
+          (atom)
+          (arguments
+            (variable))))))
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (guard
+        (call
+          (atom)
+          (arguments
+            (variable))))
+      (binary_operator
+        (list
+          (binary_operator
+            (binary_operator
+              (variable)
+              (variable))
+            (variable)))
+        (variable)))
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (tuple
+        (variable)
+        (variable)))))
+
+================================================================================
+statement flexibility with newlines
+================================================================================
+
+%% Without the newline choice in the statement rule, the second call would
+%% be misparsed.
+hd([a]),
+tl([a])
+maps:get(date,DateTime).
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (call
+    (atom)
+    (arguments
+      (list
+        (atom))))
+  (call
+    (atom)
+    (arguments
+      (list
+        (atom))))
+  (call
+    (atom)
+    (atom)
+    (arguments
+      (atom)
+      (variable))))
+
+================================================================================
+specs
+================================================================================
+
+-spec ok_this(term()) -> {ok, term()}.
+-spec(ok_this(term()) -> {ok, term()}). %% wrapping in parens is allowed.
+-callback after(Reason :: atom()) -> ok.
+
+%% multiple clauses with 'when's
+%% https://github.com/erlang/otp/blob/9e381125bbd93dfa2f17d4954b54aead749bf012/lib/stdlib/src/c.erl#L1080-L1086
+-spec memory(Type) -> Size when
+               Type :: atom(),
+               Size :: non_neg_integer()
+          ; (Types) -> [{Type, Size}] when
+               Types :: [Type],
+               Type :: atom(),
+               Size :: non_neg_integer().
+
+%% https://github.com/erlang/otp/blob/9e381125bbd93dfa2f17d4954b54aead749bf012/erts/preloaded/src/erlang.erl#L423-L428
+-spec erlang:adler32(Data) -> non_neg_integer() when
+      Data :: iodata().
+adler32(_Data) ->
+    erlang:nif_error(undefined).
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (call
+          (atom)
+          (arguments)))
+      (tuple
+        (atom)
+        (call
+          (atom)
+          (arguments)))))
+  (attribute
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (call
+          (atom)
+          (arguments)))
+      (tuple
+        (atom)
+        (call
+          (atom)
+          (arguments)))))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (binary_operator
+          (variable)
+          (call
+            (atom)
+            (arguments))))
+      (atom)))
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (variable))
+      (variable))
+    (guard
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments)))
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments))))
+    (stab_clause
+      (arguments
+        (variable))
+      (list
+        (tuple
+          (variable)
+          (variable))))
+    (guard
+      (binary_operator
+        (variable)
+        (list
+          (variable)))
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments)))
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments)))))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (variable))
+      (call
+        (atom)
+        (arguments)))
+    (guard
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments)))))
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (call
+        (atom)
+        (atom)
+        (arguments
+          (atom))))))
+
+================================================================================
+spec with when clause
+================================================================================
+
+-spec function(Arg) -> Result when
+      Result :: any().
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (stab_clause
+      (atom)
+      (arguments
+        (variable))
+      (variable))
+    (guard
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments))))))
+
+================================================================================
+attributes
+================================================================================
+
+-module(ok).
+-include("records.hrl").
+-export([ok_this/1]).
+-dialyzer({nowarn_function, [ok_this/1]}).
+-ifdef(debug).
+-define(LOG(X), io:format("~80p~n", [X])).
+-else.
+-define(LOG(X), _ = X).
+-endif.
+-if(?DEBUG).
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (arguments
+      (atom)))
+  (attribute
+    (atom)
+    (arguments
+      (string
+        (quoted_content))))
+  (attribute
+    (atom)
+    (arguments
+      (list
+        (binary_operator
+          (atom)
+          (integer)))))
+  (attribute
+    (atom)
+    (arguments
+      (tuple
+        (atom)
+        (list
+          (binary_operator
+            (atom)
+            (integer))))))
+  (attribute
+    (atom)
+    (arguments
+      (atom)))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)))
+      (call
+        (atom)
+        (atom)
+        (arguments
+          (string
+            (quoted_content))
+          (list
+            (variable))))))
+  (attribute
+    (atom))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)))
+      (binary_operator
+        (variable)
+        (variable))))
+  (attribute
+    (atom))
+  (attribute
+    (arguments
+      (macro
+        (variable)))))
+
+================================================================================
+type declarations
+================================================================================
+
+-type arity() :: non_neg_integer().
+-type(arity() :: non_neg_integer()). %% wrapping in parens is allowed.
+-type integer() :: neg_integer()
+                   | 0
+                   | pos_integer().
+-type mylist() :: [integer(), ...].
+-type base8() :: 0..7.
+-type base16() :: $0..$9 | $a..$f.
+-type days() :: 0..?DAYS.
+-type negative_range() :: -5..-1.
+-type my_fun() :: fun() | fun((atom()) -> term()) | atom().
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (call
+          (atom)
+          (arguments)))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (call
+          (atom)
+          (arguments)))))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (binary_operator
+            (call
+              (atom)
+              (arguments))
+            (integer))
+          (call
+            (atom)
+            (arguments))))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (list
+          (call
+            (atom)
+            (arguments))
+          (tripledot)))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (integer)
+          (integer)))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (binary_operator
+            (character)
+            (character))
+          (binary_operator
+            (character)
+            (character))))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (integer)
+          (macro
+            (variable))))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (integer)
+          (integer)))))
+  (attribute
+    (atom)
+    (arguments
+      (binary_operator
+        (call
+          (atom)
+          (arguments))
+        (binary_operator
+          (binary_operator
+            (function_type)
+            (function_type
+              (arguments
+                (call
+                  (atom)
+                  (arguments)))
+              (call
+                (atom)
+                (arguments))))
+          (call
+            (atom)
+            (arguments)))))))
+
+================================================================================
+macro declarations
+================================================================================
+
+-define(MIN(X, Y), if X < Y -> X; true -> Y end).
+-define(STRING(X), ?UINT32((size(X))), (X)/binary).
+
+%% this is a funny/cool usage from the ssh test suite in OTP:
+-define(BAD_PASSWORD, "NOT-"?PASSWORD).
+
+-define(GOOD_FORMAT(Format),
+        Format =:= ?GOOD;
+        binary_part(Format, 0, 4) =:= <<"good">>).
+
+%% This comes up throughout the OTP stdlib test suites.
+%% I'm not really sure it makes sense though, it never gets used.
+-define(line, put(line, ?LINE), ).
+
+%% Used to define a guard.
+-define(ASCII(CP1,CP2), CP1 < 256, CP2 < 256, CP1 =/= $\r).
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)
+          (variable)))
+      (if
+        (clause
+          (guard
+            (binary_operator
+              (variable)
+              (variable)))
+          (variable))
+        (clause
+          (guard
+            (atom))
+          (variable)))))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)))
+      (body
+        (macro
+          (variable)
+          (arguments
+            (parenthesized_expression
+              (call
+                (atom)
+                (arguments
+                  (variable))))))
+        (binary_operator
+          (parenthesized_expression
+            (variable))
+          (atom)))))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (arguments
+      (variable)
+      (string
+        (quoted_content))
+      (macro
+        (variable))))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)))
+      (body
+        (binary_operator
+          (variable)
+          (macro
+            (variable)))
+        (binary_operator
+          (call
+            (atom)
+            (arguments
+              (variable)
+              (integer)
+              (integer)))
+          (bitstring
+            (string
+              (quoted_content)))))))
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (arguments
+      (atom)
+      (call
+        (atom)
+        (arguments
+          (atom)
+          (macro
+            (variable))))))
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (variable)
+        (arguments
+          (variable)
+          (variable)))
+      (body
+        (binary_operator
+          (variable)
+          (integer))
+        (binary_operator
+          (variable)
+          (integer))
+        (binary_operator
+          (variable)
+          (character
+            (escape_sequence)))))))
+
+================================================================================
+macro declaration of a function clause
+================================================================================
+
+-define(allow(X), is_x_allowed(X) -> true).
+
+-define(allow(X, Y), is_x_allowed(X) -> true;
+                     is_x_allowed(Y) -> true).
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (atom)
+        (arguments
+          (variable)))
+      (function
+        (atom)
+        (arguments
+          (variable))
+        (atom))))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (atom)
+        (arguments
+          (variable)
+          (variable)))
+      (body
+        (function
+          (function_clause
+            (atom)
+            (arguments
+              (variable))
+            (atom)))
+        (function
+          (function_clause
+            (atom)
+            (arguments
+              (variable))
+            (atom)))))))
+
+================================================================================
+assert.hrl macro declaration
+================================================================================
+
+%% https://github.com/erlang/otp/blob/9e381125bbd93dfa2f17d4954b54aead749bf012/lib/stdlib/include/assert.hrl#L59-L76
+-define(assert(BoolExpr),
+        begin
+        ((fun () ->
+            X__T = is_process_alive(self()),  % cheap source of truth
+            case (BoolExpr) of
+                X__T -> ok;
+                X__V -> erlang:error({assert,
+                                     [{module, ?MODULE},
+                                      {line, ?LINE},
+                                      {expression, (??BoolExpr)},
+                                      {expected, true},
+                                      case not X__T of
+                                          X__V -> {value, false};
+                                          _ -> {not_boolean, X__V}
+                                      end]})
+            end
+          end)())
+        end).
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (attribute
+    (atom)
+    (arguments
+      (call
+        (atom)
+        (arguments
+          (variable)))
+      (block
+        (parenthesized_expression
+          (call
+            (parenthesized_expression
+              (anonymous_function
+                (stab_clause
+                  (arguments)
+                  (body
+                    (binary_operator
+                      (variable)
+                      (call
+                        (atom)
+                        (arguments
+                          (call
+                            (atom)
+                            (arguments)))))
+                    (comment
+                      (comment_content))
+                    (case
+                      (parenthesized_expression
+                        (variable))
+                      (clause
+                        (variable)
+                        (atom))
+                      (clause
+                        (variable)
+                        (call
+                          (atom)
+                          (atom)
+                          (arguments
+                            (tuple
+                              (atom)
+                              (list
+                                (tuple
+                                  (atom)
+                                  (macro
+                                    (variable)))
+                                (tuple
+                                  (atom)
+                                  (macro
+                                    (variable)))
+                                (tuple
+                                  (atom)
+                                  (parenthesized_expression
+                                    (macro
+                                      (variable))))
+                                (tuple
+                                  (atom)
+                                  (atom))
+                                (case
+                                  (unary_operator
+                                    (variable))
+                                  (clause
+                                    (variable)
+                                    (tuple
+                                      (atom)
+                                      (atom)))
+                                  (clause
+                                    (variable)
+                                    (tuple
+                                      (atom)
+                                      (variable))))))))))))))
+            (arguments)))))))
+
+================================================================================
+function declaration via macro
+================================================================================
+
+%% using a macro for writing function clauses
+?write_clause(x);
+?write_clause(y);
+?write_clause(z);
+defined_by_macro(_) -> error.
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (function
+    (macro
+      (atom)
+      (arguments
+        (atom)))
+    (macro
+      (atom)
+      (arguments
+        (atom)))
+    (macro
+      (atom)
+      (arguments
+        (atom)))
+    (function_clause
+      (atom)
+      (arguments
+        (variable))
+      (atom))))
+
+================================================================================
+record definitions
+================================================================================
+
+-record(person, {name = "a" :: string(), age = 0 :: non_neg_integer()}).
+
+--------------------------------------------------------------------------------
+
+(source
+  (attribute
+    (atom)
+    (arguments
+      (atom)
+      (tuple
+        (binary_operator
+          (binary_operator
+            (atom)
+            (string
+              (quoted_content)))
+          (call
+            (atom)
+            (arguments)))
+        (binary_operator
+          (binary_operator
+            (atom)
+            (integer))
+          (call
+            (atom)
+            (arguments)))))))

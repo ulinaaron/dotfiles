@@ -1,0 +1,44 @@
+{
+  "name": "tree-sitter-edoc",
+  "version": "0.0.1",
+  "description": "A tree-sitter grammar for the Erlang documentation generator (Edoc) syntax",
+  "main": "bindings/node",
+  "keywords": [
+    "parser",
+    "lexer",
+    "erlang",
+    "edoc",
+    "tree-sitter"
+  ],
+  "scripts": {
+    "test": "tree-sitter test",
+    "format": "prettier --trailing-comma es5 --write grammar.js",
+    "format-check": "prettier --trailing-comma es5 --check grammar.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-mikedavis/tree-sitter-edoc.git"
+  },
+  "author": "Michael Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-mikedavis/tree-sitter-edoc/issues"
+  },
+  "homepage": "https://github.com/the-mikedavis/tree-sitter-edoc#readme",
+  "dependencies": {
+    "nan": "^2.16.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "tree-sitter-cli": "^0.20.7"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.edoc",
+      "file-types": [
+        "edoc"
+      ],
+      "injection-regex": "edoc"
+    }
+  ]
+}

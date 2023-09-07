@@ -1,0 +1,204 @@
+[
+  {
+    "type": "checked_task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "checked_checkbox",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "indent",
+          "named": true
+        },
+        {
+          "type": "main_line",
+          "named": true
+        },
+        {
+          "type": "priority",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "document",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "headline",
+          "named": true
+        },
+        {
+          "type": "task",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "headline",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "indent",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "other_line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "obsolete_task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "obsolete_checkbox",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ongoing_task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "ongoing_checkbox",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "open_task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "open_checkbox",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "priority",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "checked_task",
+          "named": true
+        },
+        {
+          "type": "obsolete_task",
+          "named": true
+        },
+        {
+          "type": "ongoing_task",
+          "named": true
+        },
+        {
+          "type": "open_task",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": " ",
+    "named": false
+  },
+  {
+    "type": "checked_checkbox",
+    "named": true
+  },
+  {
+    "type": "main_line",
+    "named": true
+  },
+  {
+    "type": "obsolete_checkbox",
+    "named": true
+  },
+  {
+    "type": "ongoing_checkbox",
+    "named": true
+  },
+  {
+    "type": "open_checkbox",
+    "named": true
+  },
+  {
+    "type": "other_line",
+    "named": true
+  }
+]

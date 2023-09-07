@@ -1,0 +1,324 @@
+================================================================================
+Current branch
+================================================================================
+# On branch main
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (branch)))
+
+================================================================================
+Branch is up to date with remote
+================================================================================
+# Your branch is up to date with 'origin/main'.
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (branch)))
+
+================================================================================
+Branch diverged from remote
+================================================================================
+# Your branch and 'origin/md-top-level-expressions' have diverged,
+# and have 10 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (branch))
+  (comment)
+  (comment))
+
+================================================================================
+Head detached at commit
+================================================================================
+# HEAD detached at f5d1c0b8
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (commit)))
+
+================================================================================
+Changing files
+================================================================================
+# Changes to be committed:
+#	deleted:    Cargo.lock
+#	modified:   Cargo.toml
+#	renamed:    LICENSE -> LICENSE.md
+#	modified:   cli/Cargo.toml
+#	new file:   tmp.txt
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (change
+        (path))
+      (change
+        (path))
+      (change
+        (path)
+        (path))
+      (change
+        (path))
+      (change
+        (path)))))
+
+================================================================================
+New file with space in name
+================================================================================
+# Changes to be committed:
+#	new file:   file with space.txt
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (change
+        (path)))))
+
+================================================================================
+Renamed file with arrow in name
+================================================================================
+# Changes to be committed:
+#	renamed:    a->b.tx -> a->b.txt
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (change
+        (path)
+        (path)))))
+
+================================================================================
+Merge conflict paths
+================================================================================
+# Conflicts:
+#	languages.toml
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (path))))
+
+================================================================================
+Untracked paths
+================================================================================
+# Untracked files:
+#	languages.toml
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (path))))
+
+================================================================================
+Scissors
+================================================================================
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+
+--------------------------------------------------------------------------------
+
+(source
+  (scissors))
+
+================================================================================
+Verbose amend commit with diff
+================================================================================
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Dec 23 08:06:48 2021 -0600
+#
+# ..snip..
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git a/tmp.txt b/tmp.txt
+new file mode 100644
+index 00000000..ee9808dc
+--- /dev/null
++++ b/tmp.txt
+@@ -0,0 +1 @@
++aaaaaa
+\ No newline at end of file
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (scissors)
+  (message))
+
+================================================================================
+Commit with scissors cleanup
+================================================================================
+tmp
+
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+#
+# Date:      Thu Dec 23 08:06:48 2021 -0600
+# ..snip..
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (scissors)
+  (message))
+
+================================================================================
+Changes not staged for commit
+================================================================================
+# Changes not staged for commit:
+#	modified:   flake.nix
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (header)
+      (change
+        (path)))))
+
+================================================================================
+Comment starting after column one is not a column
+================================================================================
+add LICENSE
+
+    # done
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (message))
+
+================================================================================
+Rebase with multiple commands done, one command to go
+================================================================================
+Update onedark theme to use new scopes (#1297)
+
+# interactive rebase in progress; onto 176fbe7
+# Last commands done (10 commands done):
+#    reword 02f24e1 Fix match brackets comment (#1346)
+#    reword b2f8f2b Update onedark theme to use new scopes (#1297)
+# Next command to do (1 remaining command):
+#    reword 13d8044 Enable Rust proc macro support (#1350)
+# You are currently editing a commit while rebasing branch 'master' on '176fbe7'.
+#
+# Changes to be committed:
+#	modified:   runtime/themes/onedark.toml
+#
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment
+    (summary
+      (commit)
+      (header)
+      (rebase_command)
+      (rebase_command)
+      (header)
+      (rebase_command)
+      (branch)
+      (commit)))
+  (comment
+    (summary
+      (header)
+      (change
+        (path)))))
+
+================================================================================
+Rebase with multiple commands done, zero commands to go
+================================================================================
+# interactive rebase in progress; onto 176fbe7
+# Last commands done (11 commands done):
+#    reword b2f8f2b Update onedark theme to use new scopes (#1297)
+#    reword 13d8044 Enable Rust proc macro support (#1350)
+# No commands remaining.
+# You are currently editing a commit while rebasing branch 'master' on '176fbe7'.
+#
+# Changes to be committed:
+#	modified:   languages.toml
+#
+
+--------------------------------------------------------------------------------
+
+(source
+  (comment
+    (summary
+      (commit)
+      (header)
+      (rebase_command)
+      (rebase_command)
+      (header)
+      (branch)
+      (commit)))
+  (comment
+    (summary
+      (header)
+      (change
+        (path)))))
+
+================================================================================
+Comment without separating space
+================================================================================
+Title
+
+#This is a comment without the space separating the '#' and comment.
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment))
+
+================================================================================
+Comment without separating space with extra newline
+================================================================================
+Title
+
+
+#This case failed in the past because of bad handling of multiple newlines
+
+--------------------------------------------------------------------------------
+
+(source
+  (subject)
+  (comment))

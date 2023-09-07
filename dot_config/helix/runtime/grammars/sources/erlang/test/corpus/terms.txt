@@ -1,0 +1,471 @@
+================================================================================
+strings
+================================================================================
+
+""       %% empty string
+"hello, world!"
+"hello ""world"
+"hello, \"tree-sitter\"\n"
+"hello, 'tree-sitter'"
+
+--------------------------------------------------------------------------------
+
+(source
+  (string)
+  (comment
+    (comment_content))
+  (string
+    (quoted_content))
+  (string
+    (quoted_content))
+  (string
+    (quoted_content))
+  (string
+    (quoted_content)
+    (escape_sequence)
+    (quoted_content)
+    (escape_sequence)
+    (escape_sequence))
+  (string
+    (quoted_content)
+    (quoted_content)
+    (quoted_content)
+    (quoted_content)))
+
+================================================================================
+atoms
+================================================================================
+
+ok
+hello
+félicien
+östen
+'%'      %% escaping '%'
+'123'
+'\''     %% these confusing atoms are used in Erlang scanners
+'\\'
+''
+
+--------------------------------------------------------------------------------
+
+(source
+  (atom)
+  (atom)
+  (atom)
+  (atom)
+  (atom
+    (quoted_content))
+  (comment
+    (comment_content))
+  (atom
+    (quoted_content))
+  (atom
+    (escape_sequence))
+  (comment
+    (comment_content))
+  (atom
+    (escape_sequence))
+  (atom))
+
+================================================================================
+numbers
+================================================================================
+
+$a        %% erlang docs consider characters to be numbers
+$-
+$\n
+$$
+$%
+$\%
+$\.
+$\_
+$^
+$`
+$~
+$&
+$÷        %% unicode allowed
+$         %% space character
+$\^A      %% ctrl+A
+$\^G      %% ctrl+G
+$\^[      %% ctrl+[
+1
+100
+1_000_000
+2#101101
+02#00011110
+16#deadbeef
+1.01
+2.3e3
+2.3e-3
+0.1
+2_000.000_002
+1.0000000000000000e+00
+1.18575755E-316
+-1
+
+--------------------------------------------------------------------------------
+
+(source
+  (character)
+  (comment
+    (comment_content))
+  (character)
+  (character
+    (escape_sequence))
+  (character)
+  (character)
+  (character
+    (escape_sequence))
+  (character
+    (escape_sequence))
+  (character
+    (escape_sequence))
+  (character)
+  (character)
+  (character)
+  (character)
+  (character)
+  (comment
+    (comment_content))
+  (character)
+  (comment
+    (comment_content))
+  (character
+    (escape_sequence))
+  (comment
+    (comment_content))
+  (character
+    (escape_sequence))
+  (comment
+    (comment_content))
+  (character
+    (escape_sequence))
+  (comment
+    (comment_content))
+  (integer)
+  (integer)
+  (integer)
+  (integer)
+  (integer)
+  (integer)
+  (float)
+  (float)
+  (float)
+  (float)
+  (float)
+  (float)
+  (float)
+  (integer))
+
+================================================================================
+variables
+================================================================================
+
+Variable
+_
+_Ignore
+Var1
+Var@1
+
+--------------------------------------------------------------------------------
+
+(source
+  (variable)
+  (variable)
+  (variable)
+  (variable)
+  (variable))
+
+================================================================================
+bitstrings
+================================================================================
+
+<<>>
+<<"hello, binaries!">>
+<<MyBinary>>
+<<$a, $b, $c>>
+<<String0/bitstring,0:(8-Rem)>>
+<<N:Bytes/unit:8>>
+<<0.1:10/native-unsigned>>
+<<"hello" ++ _>>
+
+--------------------------------------------------------------------------------
+
+(source
+  (bitstring)
+  (bitstring
+    (string
+      (quoted_content)))
+  (bitstring
+    (variable))
+  (bitstring
+    (character)
+    (character)
+    (character))
+  (bitstring
+    (binary_operator
+      (variable)
+      (atom))
+    (binary_operator
+      (integer)
+      (parenthesized_expression
+        (binary_operator
+          (integer)
+          (variable)))))
+  (bitstring
+    (binary_operator
+      (binary_operator
+        (variable)
+        (variable))
+      (binary_operator
+        (atom)
+        (integer))))
+  (bitstring
+    (binary_operator
+      (binary_operator
+        (binary_operator
+          (float)
+          (integer))
+        (atom))
+      (atom)))
+  (bitstring
+    (binary_operator
+      (string
+        (quoted_content))
+      (variable))))
+
+================================================================================
+tuples
+================================================================================
+
+{}
+{a, b, c}
+{{{}}}
+
+--------------------------------------------------------------------------------
+
+(source
+  (tuple)
+  (tuple
+    (atom)
+    (atom)
+    (atom))
+  (tuple
+    (tuple
+      (tuple))))
+
+================================================================================
+lists
+================================================================================
+
+[]
+[a, b, c]
+[[[]]]
+[a | [b | [c]]]
+[from_asm, {validate, false}]
+
+--------------------------------------------------------------------------------
+
+(source
+  (list)
+  (list
+    (atom)
+    (atom)
+    (atom))
+  (list
+    (list
+      (list)))
+  (list
+    (binary_operator
+      (atom)
+      (list
+        (binary_operator
+          (atom)
+          (list
+            (atom))))))
+  (list
+    (atom)
+    (tuple
+      (atom)
+      (atom))))
+
+================================================================================
+maps
+================================================================================
+
+#{}
+#{a => b, c => d}
+MyMap#{a => b}
+MyMap#{a := b}
+
+--------------------------------------------------------------------------------
+
+(source
+  (map)
+  (map
+    (map_content
+      (binary_operator
+        (atom)
+        (atom))
+      (binary_operator
+        (atom)
+        (atom))))
+  (binary_operator
+    (variable)
+    (map_update
+      (map_content
+        (binary_operator
+          (atom)
+          (atom)))))
+  (binary_operator
+    (variable)
+    (map_update
+      (map_content
+        (binary_operator
+          (atom)
+          (atom))))))
+
+================================================================================
+records
+================================================================================
+
+#function{entry = 1}
+#Var{}
+#function
+MyFunction#function{entry = 1}
+#function.entry     %% syntax for the element's index in the tuple
+ok.
+Name = (Mod#mod.name)#literal.val,
+Mod#mod.name#literal.val.
+
+--------------------------------------------------------------------------------
+
+(source
+  (record
+    (atom)
+    (record_content
+      (binary_operator
+        (atom)
+        (integer))))
+  (record
+    (variable))
+  (record
+    (atom))
+  (record
+    (variable)
+    (atom)
+    (record_content
+      (binary_operator
+        (atom)
+        (integer))))
+  (record
+    (atom)
+    (atom))
+  (comment
+    (comment_content))
+  (atom)
+  (binary_operator
+    (variable)
+    (record
+      (parenthesized_expression
+        (record
+          (variable)
+          (atom)
+          (atom)))
+      (atom)
+      (atom)))
+  (binary_operator
+    (record
+      (variable)
+      (atom)
+      (atom))
+    (record
+      (atom)
+      (atom))))
+
+================================================================================
+functions
+================================================================================
+
+fun (X) -> X end
+fun (X) when X > 0 -> X; (Y) -> 0 - Y end
+fun
+  Last([_H|T]) -> Last(T);
+  Last([H]) -> H
+end
+fun (X) ->
+  Y = X + 1,
+  Y
+end
+
+--------------------------------------------------------------------------------
+
+(source
+  (anonymous_function
+    (stab_clause
+      (arguments
+        (variable))
+      (variable)))
+  (anonymous_function
+    (stab_clause
+      (arguments
+        (variable))
+      (guard
+        (binary_operator
+          (variable)
+          (integer)))
+      (variable))
+    (stab_clause
+      (arguments
+        (variable))
+      (binary_operator
+        (integer)
+        (variable))))
+  (anonymous_function
+    (stab_clause
+      (variable)
+      (arguments
+        (list
+          (binary_operator
+            (variable)
+            (variable))))
+      (call
+        (variable)
+        (arguments
+          (variable))))
+    (stab_clause
+      (variable)
+      (arguments
+        (list
+          (variable)))
+      (variable)))
+  (anonymous_function
+    (stab_clause
+      (arguments
+        (variable))
+      (body
+        (binary_operator
+          (variable)
+          (binary_operator
+            (variable)
+            (integer)))
+        (variable)))))
+
+================================================================================
+function captures
+================================================================================
+
+fun Module:Name/Arity
+fun lists:map/2
+
+--------------------------------------------------------------------------------
+
+(source
+  (function_capture
+    (variable)
+    (variable)
+    (variable))
+  (function_capture
+    (atom)
+    (atom)
+    (integer)))

@@ -1,0 +1,43 @@
+struct Foo {
+	name int = 5
+}
+struct Bar {
+	Foo
+	Foo2
+}
+
+struct Foo2 {
+	name string
+}
+fn (f Foo2) test() {
+	println(f)
+}
+
+fn (f Foo) test() {
+	println(f)
+}
+
+fn main() {
+	b := Bar{}
+	b.test()
+	n := b.name
+	println(b.sdd())
+	println(b.ada)
+	println(abc().status_code)
+}
+
+struct HttpResult {
+	status_code int
+}
+
+fn abc() ?HttpResult {
+	return HttpResult{}
+}
+
+---
+
+(error "ambiguous method `test`" [21,1]-[21,9])
+(error "ambiguous field `name`" [22,8]-[22,12])
+(error "unknown method or field: `Bar.sdd`" [23,9]-[23,14])
+(error "type `Bar` has no field named `ada`" [24,9]-[24,14])
+(error "cannot access fields of an optional, handle the error with `or {...}` or propagate it with `?`" [25,15]-[25,26])

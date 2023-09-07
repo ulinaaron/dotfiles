@@ -1,0 +1,350 @@
+====
+Main
+====
+
+"""
+module docstring
+"""
+
+actor Main
+  """
+  actor docstring
+  """
+
+  let x: U8
+    "field docstring"
+  var y: String ref = "default"
+    """
+    long field docstring of field with default value
+    """
+  embed z: (U8 & Real[U8])
+
+  new ref create(env: Env) =>
+    """
+    constructor docstring
+    """
+    consume env
+
+  be with_param[Type: Constraint](arg: Type) =>
+    "snot"
+
+---
+
+(source_file 
+  docstring: (string) 
+  (entity 
+    entity_type: (entity_type)
+    name: (identifier) 
+    docstring: (string) 
+    members: (members
+      fields: (fields 
+        (field 
+          name: (identifier) 
+          type: (type (nominal_type name: (identifier)))
+          docstring: (string)
+        )
+        (field 
+          name: (identifier)
+          type: (type 
+            (nominal_type
+                name: (identifier) 
+                cap: (cap))
+            )
+          default: (string)
+          docstring: (string)
+        )
+        (field 
+          name: (identifier) 
+          type: (type (isect_type (nominal_type name: (identifier)) (nominal_type name: (identifier) typeargs: (typeargs (type (nominal_type name: (identifier)))))))
+        )
+      )
+      methods: (methods
+        (constructor 
+          receiver_cap: (cap)
+          name: (identifier) 
+          params: (params 
+            (param 
+              name: (identifier) 
+              type: (type (nominal_type name: (identifier)))
+            )
+          )
+          body: (block 
+            (string)
+            (consume (identifier))
+          )
+        )
+        (behavior
+          name: (identifier)
+          typeparams: (typeparams
+           (typeparam
+             name: (identifier)
+             constraint: (type (nominal_type name: (identifier)))
+           )
+          )
+          params: (params
+           (param 
+             name: (identifier) 
+             type: (type (nominal_type name: (identifier)))
+           )
+          )
+          body: (block (string))
+        )
+      )
+    )
+  )
+)
+
+=============
+Method quirks
+=============
+
+use "collection" if windows
+
+actor Main
+  new create(env: Env) =>
+    env.out.print("awesome" * 2)
+
+  fun ref awesome(): Bool => true
+
+  be yeah[Arg: Constraint](foo: Array[U8]) =>
+    foo~partial(56.7)
+
+---
+(source_file
+  (use 
+    specifier: (string)
+    condition: (identifier))
+  (entity 
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (constructor
+          name: (identifier)
+          params: (params 
+            (param 
+              name: (identifier) 
+              type: (type (nominal_type name: (identifier)))
+            )
+          )
+          body: (block
+            (call
+              callee: (field_access
+                         base: (field_access
+                                  base: (identifier)
+                                  field: (identifier))
+                         field: (identifier)
+              )
+              arguments: (arguments
+                positional: (positional_args
+                  (block
+                    (binop
+                      lhs: (string)
+                      rhs: (integer)
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+        (method
+          receiver_cap: (cap)
+          name: (identifier)
+          return_type: (type (nominal_type name: (identifier)))
+          body: (block (bool))
+        )
+        (behavior
+          name: (identifier)
+          typeparams: (typeparams
+            (typeparam
+              name: (identifier)
+              constraint: (type (nominal_type name: (identifier)))
+            )
+          )
+          params: (params
+            (param
+              name: (identifier)
+              type: (type
+                (nominal_type
+                  name: (identifier)
+                  typeargs: (typeargs
+                    (type (nominal_type name: (identifier)))
+                  )
+                )
+              )
+            )
+          )
+          body: (block
+            (call
+              callee: (partial_application 
+                base: (identifier) 
+                function: (identifier)
+              )
+              arguments: (arguments
+                positional: (positional_args
+                  (block (float))
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+======
+MT
+======
+
+class MT is Random
+  """
+  bla
+  bla
+  bla
+  """
+  embed _state: Array[U64]
+  var _index: USize
+
+  new create(x: U64 = 5489, y: U64 = 0) =>
+    """
+    docstring
+    """
+    _state = Array[U64](_n())
+    _index = _n()
+---
+
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    provides: (type (nominal_type name: (identifier)))
+    docstring: (string)
+    members: (members
+      fields: (fields
+        (field
+          name: (identifier)
+          type: (type
+            (nominal_type
+              name: (identifier)
+              typeargs: (typeargs
+                (type (nominal_type name: (identifier)))
+              )
+            )
+          )
+        )
+        (field
+          name: (identifier)
+          type: (type (nominal_type name: (identifier)))
+        )
+      )
+      methods: (methods
+        (constructor
+          name: (identifier)
+          params: (params
+            (param
+              name: (identifier)
+              type: (type (nominal_type name: (identifier)))
+              default: (integer)
+            )
+            (param
+              name: (identifier)
+              type: (type (nominal_type name: (identifier)))
+              default: (integer)
+            )
+          )
+          body: (block
+            (string)
+            (assignment
+              left: (identifier)
+              right: (call
+                callee: (term_with_typeargs
+                  base: (identifier)
+                  (typeargs
+                    (type (nominal_type name: (identifier)))
+                  )
+                )
+                arguments: (arguments
+                  positional: (positional_args
+                    (block
+                      (call 
+                        callee: (identifier)
+                        arguments: (arguments)
+                      )
+                    )
+                  )
+                )
+              )
+            )
+            (assignment
+              left: (identifier)
+              right: (call
+                callee: (identifier)
+                arguments: (arguments)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+=========
+Interface
+=========
+
+interface Notify
+  """
+  Notify
+  """
+  fun ref apply(section: String, key: String, value: String): Bool
+    """
+    docstring
+    """
+---
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    docstring: (string)
+    members: (members
+      methods: (methods
+        (method
+          receiver_cap: (cap)
+          name: (identifier)
+          params: (params
+            (param 
+              name: (identifier)
+              type: (type (nominal_type name: (identifier))))
+            (param 
+              name: (identifier)
+              type: (type (nominal_type name: (identifier))))
+            (param 
+              name: (identifier)
+              type: (type (nominal_type name: (identifier))))
+          )
+          return_type: (type (nominal_type name: (identifier)))
+          docstring: (string)
+        )
+      )
+    )
+  )
+)
+
+=========
+Annotated
+=========
+
+actor \nodoc\ Main is TestList
+
+---
+(source_file
+  (entity
+    entity_type: (entity_type)
+    (annotations (identifier))
+    name: (identifier)
+    provides: (type (nominal_type name: (identifier)))
+  )
+)

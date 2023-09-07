@@ -1,0 +1,158 @@
+==================
+proxy use fdpass = yes
+==================
+
+ProxyUseFdpass yes
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = Yes
+==================
+
+ProxyUseFdpass Yes
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = true
+==================
+
+ProxyUseFdpass true
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = True
+==================
+
+ProxyUseFdpass True
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = no
+==================
+
+ProxyUseFdpass no
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = No
+==================
+
+ProxyUseFdpass No
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = false
+==================
+
+ProxyUseFdpass false
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+proxy use fdpass = False
+==================
+
+ProxyUseFdpass False
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+use irregular casing
+==================
+
+ProxyUSEfdpass yes
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+can use equals sign
+==================
+
+ProxyUSEfdpass=yes
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+ProxyUSEfdpass = yes
+
+---
+
+(client_config
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  ProxyUseFdpass no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (proxy_use_fdpass
+    (proxy_use_fdpass_value)))
+
+==================
+detect invalid values
+==================
+
+ProxyUSEfdpass ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

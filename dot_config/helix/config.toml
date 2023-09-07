@@ -85,6 +85,9 @@ C-n = ":new"
 
 A-e = ":sh zellij action focus-previous-pane"
 
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
 #Buffer Navigation
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
@@ -100,12 +103,8 @@ A-e = ":sh zellij action focus-previous-pane"
   "search_next",
 ]
 
-S-up = [
-  "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up"
-] 
-S-down = [
-  "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down"
-]
+S-up =   [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down" ]
 
 C-S-down = "goto_last_line"
 C-S-up = "goto_file_start"
@@ -134,6 +133,9 @@ C-P = "command_mode"
 # VSCode-like auto-completeion (pretty much all IDEs do it on C-space)
 "C-space" = "completion"
 
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
 #Buffer Navigation
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
@@ -145,17 +147,12 @@ C-S-up = "goto_file_start"
 C-S-left = "goto_line_start"
 C-S-right = "goto_line_end"
 
-S-up = [
-  "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up"
-] 
-S-down = [
-  "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down"
-]
-
+S-up =   [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down"]
 
 [keys.select]
 # Escape selections as expected
-esc = ["collapse_selection", "keep_primary_selection"]
+esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
 C-D = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "paste_clipboard_after"]
 C-c = "yank_main_selection_to_clipboard"
 C-x = ["yank_main_selection_to_clipboard", "delete_selection_noyank"]
@@ -178,6 +175,9 @@ C-n = ":new"
 "C-]" = "indent"
 "C-[" = "unindent"
 
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
 #Buffer Navigation
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
@@ -189,9 +189,5 @@ C-S-up = "goto_file_start"
 C-S-left = "goto_line_start"
 C-S-right = "goto_line_end"
 
-S-up = [
-  "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up"
-] 
-S-down = [
-  "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down"
-]
+S-up = [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down" ]

@@ -1,0 +1,147 @@
+==================
+Use primitive type
+==================
+
+use @primitve_types[Bool](a: U64, b: I128, c: Main ref, d: U8 iso^, e: I8 tag!)
+
+---
+
+(source_file
+  (use 
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type (nominal_type name: (identifier))))
+      params: (params 
+        (param name: (identifier) type: (type (nominal_type name: (identifier))))
+        (param name: (identifier) type: (type (nominal_type name: (identifier))))
+        (param name: (identifier) type: (type (nominal_type name: (identifier) cap: (cap))))
+        (param name: (identifier) type: (type (nominal_type name: (identifier) cap: (cap) modifier: (ephemeral))))
+        (param name: (identifier) type: (type (nominal_type name: (identifier) cap: (cap) modifier: (aliased))))
+      )
+    )
+  )
+)
+
+==============
+Use Union type
+==============
+
+use @union_type[(U8 | I8)]()
+
+---
+
+(source_file
+  (use
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type 
+          (union_type 
+            (nominal_type name: (identifier))
+            (nominal_type name: (identifier))
+          )
+        )
+      )
+    )
+  )
+)
+
+=====================
+Use Intersection type
+=====================
+
+use @union_type[(U8 & I8)]()
+
+---
+
+(source_file
+  (use
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type
+          (isect_type
+            (nominal_type name: (identifier))
+            (nominal_type name: (identifier))
+          )
+        )
+      )
+    )
+  )
+)
+
+==============
+Use tuple type
+==============
+
+use @tuple_type[(Foo, (Bar | Baz))]()
+
+---
+
+(source_file
+  (use
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type 
+          (tuple_type 
+            (nominal_type name: (identifier))
+            (union_type 
+              (nominal_type name: (identifier))
+              (nominal_type name: (identifier))
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+================
+Use grouped type
+================
+
+use @grouped[(Foo)]()
+
+---
+
+(source_file 
+  (use
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type (nominal_type name: (identifier)))
+      )
+    )
+  )
+)
+
+==================
+Use ephemeral type
+==================
+
+use @snot[Iterator[this->A]^]()
+---
+(source_file 
+  (use
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs
+        (type 
+          (nominal_type 
+            name: (identifier)
+            typeargs: (typeargs
+              (type 
+                (this)
+                viewpoint: (nominal_type name: (identifier))
+              )
+            )
+            modifier: (ephemeral)
+          )
+        )
+      )
+    )
+  )
+)
+

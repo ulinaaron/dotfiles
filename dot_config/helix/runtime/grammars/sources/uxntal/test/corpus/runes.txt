@@ -1,0 +1,34 @@
+======
+Runes
+======
+
+|10
+
+|0100
+
+"h "Long
+
+#10
+
+#1030
+
+@Console &vector $2 &read
+
+---
+
+(source_file
+  (absolute_pad
+    (number))
+  (absolute_pad
+    (number))
+  (raw_character)
+  (raw_character)
+  (literal_hex
+    (number))
+  (literal_hex
+    (number))
+  (label_definition)
+  (sub_label_definition)
+  (relative_pad
+    (number))
+  (sub_label_definition))

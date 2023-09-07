@@ -1,0 +1,77 @@
+====================
+Directives
+====================
+
+<div>
+  <% names.each do |name| _%>
+    <div>
+      <%= name -%>
+    </div>
+    <span>
+      <% something() -%>
+    </span>
+  <%_ end %>
+</div>
+
+---
+
+(template
+  (content)
+  (directive (code))
+  (content)
+  (output_directive (code))
+  (content)
+  (directive (code))
+  (content)
+  (directive (code))
+  (content))
+
+===============================
+Escaped directive start strings
+===============================
+
+This "<%%" is not a directive
+
+---
+
+(template (content))
+
+===============================
+Comment directives
+===============================
+
+<span><%# a comment %></span>
+
+---
+
+(template
+  (content)
+  (comment_directive (comment))
+  (content))
+
+===============================
+Underscores in code
+===============================
+
+<div>
+<% page_info :selected_link %>
+</div>
+
+---
+
+(template
+  (content)
+  (directive (code))
+  (content))
+
+===============================
+Empty comment
+===============================
+
+<%# %>
+
+---
+
+(template
+  (comment_directive)
+  (content))

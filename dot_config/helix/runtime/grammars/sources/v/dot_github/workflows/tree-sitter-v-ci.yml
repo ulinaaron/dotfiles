@@ -1,0 +1,62 @@
+# Taken from: https://github.com/tree-sitter/tree-sitter-go/tree/eb306e6e60f393df346cfc8cbfaf52667a37128a/.github/workflows
+name: tree-sitter-v/build/test
+on:
+  push:
+    branches:
+      - "**"
+env:
+  EM_VERSION: 1.39.18
+  EM_CACHE_FOLDER: "emsdk-cache"
+
+jobs:
+  tree_sitter_v_test:
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ./tree_sitter_v
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: npm install
+      - run: npm test
+
+  tree_sitter_v_test_windows:
+    runs-on: windows-2019
+    defaults:
+      run:
+        working-directory: ./tree_sitter_v
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: npm install
+      - run: npm run-script test
+
+  tree_sitter_v_vlib_test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tree_sitter_v
+    strategy:
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Clone & Build vmaster/v
+        run: |
+          git clone --depth=1 https://github.com/vlang/v vmaster/
+      - run: npm install
+      - name: Run VLib parsing test
+        id: run_vlib_test
+        continue-on-error: true
+        run: |
+          node tools/project-checker.js vmaster/vlib/ --hideRanges --errorsOnly

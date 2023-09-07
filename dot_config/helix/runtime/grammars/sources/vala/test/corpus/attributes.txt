@@ -1,0 +1,22 @@
+==========
+Attributes
+==========
+
+[Annotation]
+[GIR (name = "attrs", some_property = false)]
+namespace Attributes {
+}
+
+---
+(source_file
+  (namespace_member
+    (attribute (identifier))
+    (attribute (identifier)
+      (attribute_argument
+        (identifier)
+        (literal (string)))
+      (attribute_argument
+        (identifier)
+        (literal (boolean))))
+    (namespace_declaration
+      (symbol (identifier)))))

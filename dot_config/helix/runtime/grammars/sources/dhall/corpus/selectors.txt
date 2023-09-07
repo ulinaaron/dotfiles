@@ -1,0 +1,220 @@
+==================
+Field selection (unit/FieldA.dhall)
+==================
+
+r.x
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Record field selection (unit/RecordFieldAccessA.dhall)
+==================
+
+r.x
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Field names can be quoted (unit/FieldQuotedA.dhall)
+==================
+
+r.`x`
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Fields can use builtin names (unit/FieldBuiltinNameA.dhall)
+==================
+
+r.List
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Fields can use keyword names (builtinNameAsFieldA.dhall)
+==================
+
+let Prelude = https://prelude.dhall-lang.org/package.dhall
+
+in  Prelude.List.map
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (import (http_import (http_raw)))))
+    (expression (primitive_expression
+      (identifier (label))
+      selector: (selector (selector_dot) (label) (selector_dot) (label))))))
+
+==================
+Field projection (unit/RecordProjectFieldsA.dhall)
+==================
+
+r.{ x, y, z }
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label) (label) (label)))))
+
+==================
+Field projection without spaces (unit/ProjectionA.dhall)
+==================
+
+r.{x, y, z}
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label) (label) (label)))))
+
+==================
+Field projection with a leading comma (unit/ProjectionLeadingCommaA.dhall)
+==================
+
+foo.{ , x, y }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Field projection with a trailing comma (unit/ProjectionTrailingCommaA.dhall)
+==================
+
+foo.{ x, y, }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Field projection with a trailing and leading comma (unit/ProjectionTrailingAndLeadingCommasA.dhall)
+==================
+
+foo.{ , x, y, }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Project Some field (unit/SelectionSomeA.dhall)
+==================
+
+record.{ Some }
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label)))))
+
+==================
+Field projection by type (unit/RecordProjectionByTypeA.dhall)
+==================
+
+{ a = 1, b = 2 }.({ a : Natural })
+
+---
+
+(expression
+  (primitive_expression
+    (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))
+    (selector
+      (selector_dot)
+      (type_selector (expression
+        (primitive_expression (record_type
+          (record_type_entry
+            (label)
+            (type_operator)
+            (expression (primitive_expression (identifier (builtin))))))))))))
+
+==================
+Empty field projection by type (unit/RecordProjectionByTypeEmptyA.dhall)
+==================
+
+{ a = 1, b = 2 }.({})
+
+---
+
+(expression
+  (primitive_expression
+    (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))
+    (selector
+      (selector_dot)
+      (type_selector (expression
+        (primitive_expression (record_type)))))))
+
+==================
+Nested selections (fieldsA.dhall)
+==================
+
+({ foo = { bar = { baz = 1 } } }).foo. bar .baz
+
+---
+
+(expression
+  (primitive_expression
+    (expression (primitive_expression (record_literal
+      (record_literal_entry
+        (label)
+        (assign_operator)
+        (expression (primitive_expression (record_literal
+          (record_literal_entry
+            (label)
+            (assign_operator)
+            (expression (primitive_expression (record_literal
+              (record_literal_entry
+                (label)
+                (assign_operator)
+                (expression (primitive_expression
+                  (numeric_literal (natural_literal))))))))))))))))
+    (selector
+      (selector_dot) (label)
+      (selector_dot) (label)
+      (selector_dot) (label))))

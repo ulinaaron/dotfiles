@@ -1,0 +1,14 @@
+========
+Opcodes
+========
+
+LIT DEO
+NEQ2 INC2k
+
+---
+
+(source_file
+  (identifier)
+  (identifier)
+  (identifier)
+  (identifier))

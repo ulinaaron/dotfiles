@@ -1,0 +1,158 @@
+==================
+fork after authentication = yes
+==================
+
+ForkAfterAuthentication yes
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = Yes
+==================
+
+ForkAfterAuthentication Yes
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = true
+==================
+
+ForkAfterAuthentication true
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = True
+==================
+
+ForkAfterAuthentication True
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = no
+==================
+
+ForkAfterAuthentication no
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = No
+==================
+
+ForkAfterAuthentication No
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = false
+==================
+
+ForkAfterAuthentication false
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+fork after authentication = False
+==================
+
+ForkAfterAuthentication False
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+use irregular casing
+==================
+
+fORkAftERAuthentication yes
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+can use equals sign
+==================
+
+fORkAftERAuthentication=yes
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+fORkAftERAuthentication = yes
+
+---
+
+(client_config
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  fORkAftERAuthentication no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (fork_after_authentication
+    (fork_after_authentication_value)))
+
+==================
+detect invalid values
+==================
+
+fORkAftERAuthentication ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

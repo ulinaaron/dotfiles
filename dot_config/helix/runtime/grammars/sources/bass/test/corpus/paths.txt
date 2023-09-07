@@ -1,0 +1,72 @@
+===
+Paths
+===
+
+.cmd
+/file
+./file
+../file
+/dir/
+./dir/
+../dir/
+./sub/file
+./sub/dir/
+
+---
+
+(source
+  (command)
+  (path
+    path:
+      (subpath
+        (slash)
+        (symbol)))
+  (path
+    form: (dot)
+    path:
+      (subpath
+        (slash)
+        (symbol)))
+  (path
+    form: (dotdot)
+    path:
+      (subpath
+        (slash)
+        (symbol)))
+  (path
+    path:
+      (subpath
+        (slash)
+        (symbol)
+        (slash)))
+  (path
+    form: (dot)
+    path:
+      (subpath
+        (slash)
+        (symbol)
+        (slash)))
+  (path
+    form: (dotdot)
+    path:
+      (subpath
+        (slash)
+        (symbol)
+        (slash)))
+  (path
+    form: (dot)
+    path:
+      (subpath
+        (slash)
+        (symbol)
+        (slash)
+        (symbol)))
+  (path
+    form: (dot)
+    path:
+      (subpath
+        (slash)
+        (symbol)
+        (slash)
+        (symbol)
+        (slash))))

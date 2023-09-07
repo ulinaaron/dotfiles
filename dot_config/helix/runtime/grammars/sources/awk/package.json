@@ -1,0 +1,44 @@
+{
+  "name": "tree-sitter-awk",
+  "version": "0.5.1",
+  "author": "Beaglefoot <ch-e-st@yandex.ru>",
+  "license": "MIT",
+  "keywords": [
+    "parser",
+    "awk",
+    "gawk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Beaglefoot/tree-sitter-awk.git"
+  },
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "build": "yarn generate && node-gyp build",
+    "build:wasm": "tree-sitter build-wasm",
+    "parse": "tree-sitter parse",
+    "types": "node scripts/generate_types.js",
+    "types:watch": "node scripts/generate_types_watch.js",
+    "trim": "sed ' s/ \\[.*\\]//; s/\\w\\+:// '",
+    "test": "tree-sitter test",
+    "version": "./scripts/update_highlights_version.sh",
+    "prepublishOnly": "yarn build:wasm"
+  },
+  "dependencies": {
+    "nan": "2.14.2"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2",
+    "tree-sitter-cli": "0.20.6"
+  },
+  "main": "bindings/node",
+  "tree-sitter": [
+    {
+      "scope": "source.awk",
+      "file-types": [
+        "awk",
+        "gawk"
+      ]
+    }
+  ]
+}

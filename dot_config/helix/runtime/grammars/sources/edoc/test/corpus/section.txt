@@ -1,0 +1,32 @@
+================================================================================
+sections
+================================================================================
+== Heading ==
+=== Sub-heading ===
+==== Sub-sub-heading ====
+
+--------------------------------------------------------------------------------
+
+(source
+  (section
+    (section_marker)
+    (section_content)
+    (section_marker))
+  (section
+    (section_marker)
+    (section_content)
+    (section_marker))
+  (section
+    (section_marker)
+    (section_content)
+    (section_marker)))
+
+================================================================================
+Equals signs used as dividers are not sections
+================================================================================
+%% Fairly common pattern, especially when preceeded by '%%%'
+=====================================
+
+--------------------------------------------------------------------------------
+
+(source)

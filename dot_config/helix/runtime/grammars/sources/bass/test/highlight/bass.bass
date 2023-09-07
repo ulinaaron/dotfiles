@@ -1,0 +1,180 @@
+; see https://www.sublimetext.com/docs/scope_naming.html
+;
+; see https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/highlight.lua
+
+_
+; <- constant.builtin
+
+true
+; <- constant.builtin.boolean
+
+false
+; <- constant.builtin.boolean
+
+null
+; <- constant.builtin
+
+42
+; <- constant.numeric.integer
+
+:foo
+; <- string.special.symbol
+
+"foo"
+; <- string
+
+"foo\nbar"
+; <- string
+;    ^ constant.character.escape
+
+(foo & bar)
+; <- punctuation.bracket
+; ^ function
+;    ^ operator
+;         ^ punctuation.bracket
+
+[foo & bar]
+; <- punctuation.bracket
+; ^ variable
+;    ^ operator
+;       ^ variable
+;         ^ punctuation.bracket
+
+{foo bar}
+; <- punctuation.bracket
+; ^ variable
+;     ^ variable
+;       ^ punctuation.bracket
+
+; foo
+; <- comment.line
+
+.bash
+; <- string.special.path
+
+./foo
+; <- string.special.path
+;^ function
+; ^ string.special.path
+
+../foo
+; <- string.special.path
+; ^ function
+;  ^ string.special.path
+
+./foo/
+; <- string.special.path
+;^ function
+; ^ string.special.path
+;    ^ function
+
+../foo/
+; <- string.special.path
+; ^ function
+;  ^ string.special.path
+;     ^ function
+
+/foo
+; <- function
+; ^ string.special.path
+
+foo/bar
+; <- variable
+;  ^ function
+;   ^ string.special.path
+
+foo:bar
+; <- variable
+;  ^ string.special.symbol
+
+foo:bar:baz
+; <- variable
+;  ^ string.special.symbol
+;      ^ string.special.symbol
+
+foo:bar/baz/buzz
+; <- variable
+;  ^ string.special.symbol
+;      ^ function
+;       ^ string.special.path
+;          ^ function
+;           ^ string.special.path
+
+foo:bar/baz/buzz/
+; <- variable
+;  ^ string.special.symbol
+;      ^ function
+;       ^ string.special.path
+;          ^ function
+;           ^ string.special.path
+;               ^ function
+
+(def foo 42)
+; ^ define
+
+[def foo 42]
+; ^ define
+
+(defn foo 42)
+; ^ define
+
+[defn foo 42]
+; ^ define
+
+(use (.strings))
+; ^ include
+
+[use (.strings)]
+; ^ include
+
+(load (.strings))
+; ^ include
+
+[load (.strings)]
+; ^ include
+
+(import (load (.strings)))
+; ^ include
+;        ^ include
+
+[import (load (.strings))]
+; ^ include
+;        ^ include
+
+(if a b c)
+; ^ conditional
+
+[if a b c]
+; ^ conditional
+
+(when a b c)
+; ^ conditional
+
+[when a b c]
+; ^ conditional
+
+(cond a b c)
+; ^ conditional
+
+[cond a b c]
+; ^ conditional
+
+(case a b c)
+; ^ conditional
+
+[case a b c]
+; ^ conditional
+
+(-> hi foo (bar baz) quux)
+; ^ function.macro
+;   ^ variable.parameter
+;      ^ function
+;           ^ function
+;                    ^ function
+
+(-> 42 foo (bar baz) quux)
+; ^ function.macro
+;   ^ constant.numeric.integer
+;      ^ function
+;           ^ function
+;                    ^ function

@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Ayu Mirage",
+  "theme": "Rosé Pine Moon",
   "buffer_font_size": 13,
   "buffer_font_family": "FiraCode Nerd Font Mono",
   "vim_mode": false

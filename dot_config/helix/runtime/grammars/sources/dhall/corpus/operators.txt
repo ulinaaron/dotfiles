@@ -1,0 +1,727 @@
+==================
+Boolean and operator (unit/operators/BoolAndA.dhall)
+==================
+
+x && y
+
+---
+
+(expression
+  (and_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean and operator associativity (unit/operators/BoolAndAssocA.dhall)
+==================
+
+w && x && y && z
+
+---
+
+(expression
+  (and_expression
+    (and_expression
+      (and_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean or operator (unit/operators/BoolOrA.dhall)
+==================
+
+x || y
+
+---
+
+(expression
+  (or_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean or operator associativity (unit/operators/BoolOrAssocA.dhall)
+==================
+
+w || x || y || z
+
+---
+
+(expression
+  (or_expression
+    (or_expression
+      (or_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean equals operator (unit/operators/BoolEQA.dhall)
+==================
+
+x == y
+
+---
+
+(expression
+  (equal_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean equal operator associativity (unit/operators/BoolEQAssocA.dhall)
+==================
+
+w == x == y == z
+
+---
+
+(expression
+  (equal_expression
+    (equal_expression
+      (equal_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean not equal operator (unit/operators/BoolNEA.dhall)
+==================
+
+x != y
+
+---
+
+(expression
+  (not_equal_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean not equal operator associativity (unit/operators/BoolNEAssocA.dhall)
+==================
+
+w != x != y != z
+
+---
+
+(expression
+  (not_equal_expression
+    (not_equal_expression
+      (not_equal_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic plus operator (unit/operators/NaturalPlusA.dhall)
+==================
+
+x + y
+
+---
+
+(expression
+  (plus_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic plus operator associativity (unit/operators/NaturalPlusAssocA.dhall)
+==================
+
+w + x + y + z
+
+---
+
+(expression
+  (plus_expression
+    (plus_expression
+      (plus_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic times operator (unit/operators/NaturalTimesA.dhall)
+==================
+
+x * y
+
+---
+
+(expression
+  (times_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic times operator associativity (unit/operators/NaturalTimesAssocA.dhall)
+==================
+
+w * x * y * z
+
+---
+
+(expression
+  (times_expression
+    (times_expression
+      (times_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Combine record types operator (unit/operators/RecursiveRecordMergeA.dhall)
+==================
+
+x //\\ y
+
+---
+
+(expression
+  (combine_types_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Combine record types operator associativity (unit/operators/RecursiveRecordMergeAssocA.dhall)
+==================
+
+w //\\ x //\\ y //\\ z
+
+---
+
+(expression
+  (combine_types_expression
+    (combine_types_expression
+      (combine_types_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode combine record types operator (unit/operators/RecursiveRecordTypeMergeUnicodeA.dhall)
+==================
+
+x ⩓ y
+
+---
+
+(expression
+  (combine_types_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode combine record types operator associativity (unit/operators/RecursiveRecordTypeMergeUnicodeAssocA.dhall)
+==================
+
+w ⩓ x //\\ y ⩓ z
+
+---
+
+(expression
+  (combine_types_expression
+    (combine_types_expression
+      (combine_types_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Combine records operator (unit/operators/RecursiveRecordTypeMergeA.dhall)
+==================
+
+x /\ y
+
+---
+
+(expression
+  (combine_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Combine records operator associativity (unit/operators/RecursiveRecordTypeMergeAssocA.dhall)
+==================
+
+w /\ x /\ y /\ z
+
+---
+
+(expression
+  (combine_expression
+    (combine_expression
+      (combine_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode combine records operator (unit/operators/RecursiveRecordMergeUnicodeA.dhall)
+==================
+
+x ∧ y
+
+---
+
+(expression
+  (combine_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode combine records operator associativity (unit/operators/RecursiveRecordMergeUnicodeAssocA.dhall)
+==================
+
+w ∧ x /\ y ∧ z
+
+---
+
+(expression
+  (combine_expression
+    (combine_expression
+      (combine_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Right-biased record merge operator (unit/operators/RightBiasedRecordMergeA.dhall)
+==================
+
+x // y
+
+---
+
+(expression
+  (prefer_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Right-biased record merge operator associativity (unit/operators/RightBiasedRecordMergeAssocA.dhall)
+==================
+
+w // x // y // z
+
+---
+
+(expression
+  (prefer_expression
+    (prefer_expression
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode right-biased record merge operator (unit/operators/RightBiasedRecordMergeUnicodeA.dhall)
+==================
+
+x ⫽ y
+
+---
+
+(expression
+  (prefer_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Unicode right-biased record merge operator associativity (unit/operators/RightBiasedRecordMergeUnicodeAssocA.dhall)
+==================
+
+w ⫽ x // y ⫽ z
+
+---
+
+(expression
+  (prefer_expression
+    (prefer_expression
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Equivalence operator (unit/operators/EquivalenceA.dhall)
+==================
+
+x === y
+
+---
+
+(expression
+  (equivalence_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Equivalence operator associativity
+==================
+
+w === x === y === z
+
+---
+
+(expression
+  (equivalence_expression
+    (equivalence_expression
+      (equivalence_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Import alternative operator (unit/operators/ImportAltA.dhall)
+==================
+
+x ? y
+
+---
+
+(expression
+  (import_alt_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Import alternative operator associativity (unit/operators/ImportAltAssocA.dhall)
+==================
+
+w ? x ? y ? z
+
+---
+
+(expression
+  (import_alt_expression
+    (import_alt_expression
+      (import_alt_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+List append operator (unit/operators/ListAppendA.dhall)
+==================
+
+x # y
+
+---
+
+(expression
+  (list_append_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+List append operator associativity (unit/operators/ListAppendAssocA.dhall)
+==================
+
+w # x # y # z
+
+---
+
+(expression
+  (list_append_expression
+    (list_append_expression
+      (list_append_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Text append operator (unit/operators/TextAppendA.dhall)
+==================
+
+x ++ y
+
+---
+
+(expression
+  (text_append_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Text append operator associativity (unit/operators/TextAppendAssocA.dhall)
+==================
+
+w ++ x ++ y ++ z
+
+---
+
+(expression
+  (text_append_expression
+    (text_append_expression
+      (text_append_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (identifier (label))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Boolean operator precedence (unit/operators/PrecedenceBoolA.dhall)
+==================
+
+a && b || c d == e || f != g && h || i
+
+---
+
+(expression
+  (or_expression
+    (or_expression
+      (or_expression
+        (and_expression
+          (primitive_expression (identifier (label)))
+          (infix_operator)
+          (primitive_expression (identifier (label))))
+        (infix_operator)
+        (equal_expression
+          (application_expression
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label))))
+          (infix_operator)
+          (primitive_expression (identifier (label)))))
+      (infix_operator)
+      (and_expression
+        (not_equal_expression
+          (primitive_expression (identifier (label)))
+          (infix_operator)
+          (primitive_expression (identifier (label))))
+        (infix_operator)
+        (primitive_expression (identifier (label)))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic operator precedence (unit/operators/PrecedenceNatA.dhall)
+==================
+
+a + b * d + e f * (g + h)
+
+---
+
+(expression
+  (plus_expression
+    (plus_expression
+      (primitive_expression (identifier (label)))
+      (infix_operator)
+      (times_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label)))))
+    (infix_operator)
+    (times_expression
+      (application_expression
+        (primitive_expression (identifier (label)))
+        (primitive_expression (identifier (label))))
+      (infix_operator)
+      (primitive_expression (expression (plus_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression (identifier (label)))))))))
+
+==================
+Record operator precedence (unit/operators/PrecedenceRecordA.dhall)
+==================
+
+a // b c /\ d ⫽ e.{x} ∧ f
+
+---
+
+(expression
+  (combine_expression
+    (combine_expression
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (application_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label)))))
+      (infix_operator)
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (infix_operator)
+        (primitive_expression
+          (identifier (label))
+          (selector (selector_dot) (label_set (label))))))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Equivalence operator precedence (unit/operators/PrecedenceEquivalenceA.dhall)
+==================
+
+2 + 3 * 4 === 4 * 3 + 2
+
+---
+
+(expression
+  (equivalence_expression
+    (plus_expression
+      (primitive_expression (numeric_literal (natural_literal)))
+      (infix_operator)
+      (times_expression
+        (primitive_expression (numeric_literal (natural_literal)))
+        (infix_operator)
+        (primitive_expression (numeric_literal (natural_literal)))))
+    (infix_operator)
+    (plus_expression
+      (times_expression
+        (primitive_expression (numeric_literal (natural_literal)))
+        (infix_operator)
+        (primitive_expression (numeric_literal (natural_literal))))
+      (infix_operator)
+      (primitive_expression (numeric_literal (natural_literal))))))
+
+==================
+General operator precedence (operatorsA.dhall)
+==================
+
+  { foo = False && Natural/even (1 + 2 * 3) || True == False != True }
+∧ { bar = [ "ABC" ++ "DEF" ] # [ "GHI" ] } ⫽ { baz = True }
+: { foo : Bool, baz: Bool } ⩓ { bar : List Text }
+
+---
+
+(expression
+  (combine_expression
+    (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (or_expression
+          (and_expression
+            (primitive_expression (boolean_literal))
+            (infix_operator)
+            (application_expression
+              (primitive_expression (identifier (builtin)))
+              (primitive_expression (expression (plus_expression
+                (primitive_expression (numeric_literal (natural_literal)))
+                (infix_operator)
+                (times_expression
+                  (primitive_expression (numeric_literal (natural_literal)))
+                  (infix_operator)
+                  (primitive_expression (numeric_literal (natural_literal)))))))))
+          (infix_operator)
+          (equal_expression
+            (primitive_expression (boolean_literal))
+            (infix_operator)
+            (not_equal_expression
+              (primitive_expression (boolean_literal))
+              (infix_operator)
+              (primitive_expression (boolean_literal)))))))))
+    (infix_operator)
+    (prefer_expression
+      (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (list_append_expression
+            (primitive_expression (list_literal
+              (expression (text_append_expression
+                (primitive_expression
+                  (text_literal (double_quote_literal)))
+                (infix_operator)
+                (primitive_expression
+                  (text_literal (double_quote_literal)))))))
+            (infix_operator)
+            (primitive_expression (list_literal (expression
+              (primitive_expression
+                (text_literal (double_quote_literal)))))))))))
+      (infix_operator)
+      (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression (boolean_literal))))))))
+  (type_operator)
+  type: (expression (combine_types_expression
+    (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))))
+    (infix_operator)
+    (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
+        type: (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (primitive_expression (identifier (builtin)))))))))))

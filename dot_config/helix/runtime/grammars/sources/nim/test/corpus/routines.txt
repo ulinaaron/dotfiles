@@ -1,0 +1,899 @@
+==================
+all routine kewords
+==================
+
+proc a
+method b
+func c
+iterator d
+macro e
+template f
+converter g
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident)))))
+
+==================
+simple
+==================
+
+proc a() =
+  discard true
+  discard true
+proc b(): int
+proc c(a: int): int
+proc d(a, b: int): int
+proc e(a: int, b: int): int
+proc f(a: int; b, c: int; d: int): int
+proc g(a: int = 1; b, c: int = 2; d: int): int
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList)
+      (block
+        (stmt
+          (discardStmt
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit))))))
+        (stmt
+          (discardStmt
+            (keyw)
+            (expr
+              (primary
+                (literal
+                  (bool_lit)))))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList)
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident))))))))
+
+==================
+with pragmas
+==================
+
+proc a(): int {.inline.}
+proc b() {.inline.} =
+  discard
+proc c(a{.gc}: int): int
+proc d(a{.gc}: int): int {.inline.} =
+  discard
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList)
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))
+      (pragma
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList)
+      (pragma
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))))
+      (block
+        (stmt
+          (discardStmt
+            (keyw))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (pragma
+            (exprColonEqExpr
+              (expr
+                (primary
+                  (symbol
+                    (ident))))))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (pragma
+            (exprColonEqExpr
+              (expr
+                (primary
+                  (symbol
+                    (ident))))))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))
+      (pragma
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))))
+      (block
+        (stmt
+          (discardStmt
+            (keyw)))))))
+
+==================
+with generic parameter
+==================
+
+proc a[T](): T
+proc b[T]() =
+  discard
+proc c[T](): T =
+  discard
+proc d[]()
+proc e[T, S; P]()
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList)
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList)
+      (block
+        (stmt
+          (discardStmt
+            (keyw))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList)
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))
+      (block
+        (stmt
+          (discardStmt
+            (keyw))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (genericParamList)
+      (paramList)))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList))))
+
+==================
+with pattern/ term rewriting macros
+==================
+
+proc a{discard}()
+proc b{
+  discard
+  discard
+  discard
+}()
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (pattern
+        (discardStmt
+          (keyw)))
+      (paramList)))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (pattern
+        (block
+          (stmt
+            (discardStmt
+              (keyw)))
+          (stmt
+            (discardStmt
+              (keyw)))
+          (stmt
+            (discardStmt
+              (keyw)))))
+      (paramList))))
+
+==================
+with parameter constraint
+==================
+
+proc c(a: int{~nkStrLit}): int
+proc d(a, b: int{let}): int
+proc e(a: int, b: int{~nkRStrLit & ~ nkStrLit}): int
+proc f(a: int; b, c: int{~nkRStrLit & ~ nkStrLit}; d: int): int
+proc g(a: int = 1; b, c: int{~nkRStrLit & ~ nkStrLit} = 2; d: int{~nkRStrLit & ~ nkStrLit}): int
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident))))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (symbol
+                    (ident))))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident)))
+                (operator)
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident))))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident)))
+                (operator)
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident)))))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))))
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident)))
+                (operator)
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident))))))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident)))
+                (operator)
+                (primary
+                  (primaryPrefix
+                    (prefixOperator
+                      (operator)))
+                  (symbol
+                    (ident))))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident))))))))
+
+==================
+everything together
+==================
+
+template ex{discard; discard}[T,S;R](a{.gc}: T{noalias} not nil =1; b, c: int): int {.gc} =
+  discard
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (pattern
+        (discardStmt
+          (keyw))
+        (discardStmt
+          (keyw)))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (pragma
+            (exprColonEqExpr
+              (expr
+                (primary
+                  (symbol
+                    (ident))))))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (symbol
+                    (ident)))))
+            (keyw)
+            (nil_lit))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))
+      (pragma
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))))
+      (block
+        (stmt
+          (discardStmt
+            (keyw)))))))
+
+==================
+nightmare formatting
+==================
+
+template 
+  ex
+  {
+    discard
+    discard
+  }
+  [
+  T,
+  S;
+  R
+  ](
+  a
+  {.
+  gc
+  }
+  :
+  ref
+  int{
+  nkIntLit
+  }
+  not
+  nil
+  =
+  1
+  ;
+  b
+  ,
+  c
+  :
+  int
+  ):
+  int
+  {.
+  gc
+  }
+  =
+  discard
+
+---
+
+(module
+  (stmt
+    (routine
+      (keyw)
+      (symbol
+        (ident))
+      (pattern
+        (block
+          (stmt
+            (discardStmt
+              (keyw)))
+          (stmt
+            (discardStmt
+              (keyw)))))
+      (genericParamList
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident)))
+        (genericParam
+          (symbol
+            (ident))))
+      (paramList
+        (paramColonEquals
+          (symbol
+            (ident))
+          (pragma
+            (exprColonEqExpr
+              (expr
+                (primary
+                  (symbol
+                    (ident))))))
+          (typeDesc
+            (primaryTypeDesc
+              (primaryPrefix
+                (keyw))
+              (symbol
+                (ident)))
+            (paramConstraint
+              (expr
+                (primary
+                  (symbol
+                    (ident)))))
+            (keyw)
+            (nil_lit))
+          (expr
+            (primary
+              (literal
+                (int_lit)))))
+        (paramColonEquals
+          (symbol
+            (ident))
+          (symbol
+            (ident))
+          (typeDesc
+            (primaryTypeDesc
+              (symbol
+                (ident))))))
+      (paramListColon
+        (typeDesc
+          (primaryTypeDesc
+            (symbol
+              (ident)))))
+      (pragma
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol
+                (ident))))))
+      (block
+        (stmt
+          (discardStmt
+            (keyw)))))))

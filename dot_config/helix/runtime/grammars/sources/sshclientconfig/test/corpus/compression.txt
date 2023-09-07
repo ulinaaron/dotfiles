@@ -1,0 +1,158 @@
+==================
+compression = yes
+==================
+
+Compression yes
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = Yes
+==================
+
+Compression Yes
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = true
+==================
+
+Compression true
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = True
+==================
+
+Compression True
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = no
+==================
+
+Compression no
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = No
+==================
+
+Compression No
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = false
+==================
+
+Compression false
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+compression = False
+==================
+
+Compression False
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+use irregular casing
+==================
+
+CompressiON yes
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+can use equals sign
+==================
+
+CompressiON=yes
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+CompressiON = yes
+
+---
+
+(client_config
+  (compression
+    (compression_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  Compression no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (compression
+    (compression_value)))
+
+==================
+detect invalid values
+==================
+
+CompressiON ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

@@ -1,0 +1,127 @@
+==================
+Empty type declaration
+==================
+
+module default {
+    type Movie {}
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (declarations)))))
+
+==================
+Abstract type declaration
+==================
+
+module default {
+    abstract type Movie {}
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (modifier)
+        (identifier)
+        (declarations)))))
+
+==================
+Extending type declaration
+==================
+
+module default {
+    type Movie extending Reviewable {}
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (extending
+          (type (identifier)))
+        (declarations)))))
+
+==================
+Multiple inheritance type declaration
+==================
+
+module default {
+    type Movie extending Reviewable, Commentable {}
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (extending
+          (type (identifier))
+          (type (identifier)))
+        (declarations)))))
+
+==================
+Property
+==================
+
+module default {
+    type Movie {
+      property address -> str;
+    }
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (declarations
+          (property
+            (identifier)
+            (type)))))))
+
+
+==================
+Extending Property 
+==================
+
+module default {
+    type Movie {
+      property address extending address_base -> str;
+    }
+}
+
+---
+
+(source_file
+  (module
+    (identifier)
+    (schema_declarations
+      (object_type
+        (identifier)
+        (declarations
+          (property
+            (identifier)
+            (extending
+              (type
+                (identifier)))
+            (type)))))))

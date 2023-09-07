@@ -1,0 +1,7 @@
+/node_modules/
+/tmp/
+/build/
+/log.html
+/*.wasm
+/gh-pages/
+/tmp/

@@ -1,0 +1,57 @@
+# This workflow will
+# - test tree sitter grammar
+# - upload build native binaries as an artifact for each major platform
+# - download artifacts for each major platform and bundle them to be published
+#   to npm
+# when a new version tag is pushed to the master branch.
+name: Test Build Publish
+
+on:
+  push:
+    tags: [v*]
+
+jobs:
+
+  build_native_binaries:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+          node --version
+          npm --version
+          npm ci
+      - run: npm test
+      - run: npm run prebuild
+      - uses: actions/upload-artifact@v3
+        with:
+          path: prebuilds
+          retention-days: 5
+
+
+  publish_npm:
+    needs: build_native_binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+      - run: |
+          node --version
+          npm --version
+          npm ci
+      - run: npm test
+      - uses: actions/download-artifact@v3
+      - run: |
+          mv artifact prebuilds
+          ls prebuilds
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

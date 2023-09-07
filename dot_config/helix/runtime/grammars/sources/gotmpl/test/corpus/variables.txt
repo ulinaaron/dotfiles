@@ -1,0 +1,37 @@
+====================================
+Variable definition
+====================================
+{{ $variable := pipeline }}
+---
+(source_file
+    (template
+        (variable_definition
+            (variable (identifier))
+            (function_call (identifier)))))
+
+====================================
+Variable assignment
+====================================
+{{ $variable = pipeline }}
+---
+(source_file
+    (template
+        (assignment
+            (variable (identifier))
+            (function_call (identifier)))))
+
+====================================
+Range pipeline assignment
+====================================
+{{ range $index, $element := pipeline }}{{ $index }}{{ $element }}{{ end }}
+---
+(source_file
+    (template
+        (range_action
+            (range_variable_definition
+                (variable (identifier))
+                (variable (identifier))
+                (function_call
+                    (identifier)))
+            (variable (identifier))
+            (variable (identifier)))))

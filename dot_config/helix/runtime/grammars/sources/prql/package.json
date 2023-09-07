@@ -1,0 +1,30 @@
+{
+  "name": "tree-sitter-prql",
+  "version": "0.0.1",
+  "description": "A treesitter grammar for PRQL",
+  "main": "grammar.js",
+  "scripts": {
+    "test": "tree-sitter test",
+    "install": "tree-sitter generate && node-gyp rebuild"
+  },
+  "author": "Matthias Queitsch",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.0"
+  },
+  "gypfile": true,
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthias-Q/tree-sitter-prql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matthias-Q/tree-sitter-prql/issues"
+  },
+  "homepage": "https://github.com/matthias-Q/tree-sitter-prql#readme"
+}

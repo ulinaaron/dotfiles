@@ -1,0 +1,158 @@
+==================
+use key exchange based on GSSAPI = yes
+==================
+
+GSSAPIKeyExchange yes
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = Yes
+==================
+
+GSSAPIKeyExchange Yes
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = true
+==================
+
+GSSAPIKeyExchange true
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = True
+==================
+
+GSSAPIKeyExchange True
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = no
+==================
+
+GSSAPIKeyExchange no
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = No
+==================
+
+GSSAPIKeyExchange No
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = false
+==================
+
+GSSAPIKeyExchange false
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use key exchange based on GSSAPI = False
+==================
+
+GSSAPIKeyExchange False
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+use irregular casing
+==================
+
+GSSAPIKeyEXCHange yes
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+can use equals sign
+==================
+
+GSSAPIKeyEXCHange=yes
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+GSSAPIKeyEXCHange = yes
+
+---
+
+(client_config
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  GSSAPIKeyExchange no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (gssapi_key_exchange
+    (gssapi_key_exchange_value)))
+
+==================
+detect invalid values
+==================
+
+GSSAPIKeyEXCHange ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

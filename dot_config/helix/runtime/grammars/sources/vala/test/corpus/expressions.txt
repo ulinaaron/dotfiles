@@ -1,0 +1,73 @@
+===========
+Expressions
+===========
+
+void main() {
+    3 + b.c;
+    a in b();
+    3 = 3;
+    x.y.z();
+    (3 + 1).to_string();
+    if (!yield x()) {
+    }
+    10u + 10f + 10U + 10.F + 10e-3f;
+}
+
+---
+
+(source_file
+  (namespace_member
+    (method_declaration
+      (type)
+      (symbol (identifier))
+      (block
+        (expression_statement
+          (arithmetic_expression
+            (literal (integer))
+            (member_access_expression (member_access_expression (identifier)) (identifier))))
+        (expression_statement
+          (in_expression 
+            (member_access_expression (identifier))
+            (method_call_expression (member_access_expression (identifier)))))
+        (expression_statement
+          (assignment_expression
+            (literal (integer))
+            (literal (integer))))
+        (expression_statement
+          (method_call_expression
+            (member_access_expression
+              (member_access_expression
+                (member_access_expression (identifier))
+                (identifier))
+              (identifier))))
+        (expression_statement
+          (method_call_expression
+            (member_access_expression
+              (arithmetic_expression
+                (literal (integer))
+                (literal (integer)))
+              (identifier))))
+        (if_statement
+          (logical_negation_expression
+            (yield_expression
+              (method_call_expression
+                (member_access_expression
+                  (identifier)))))
+          (block))
+            (expression_statement
+              (arithmetic_expression
+                (arithmetic_expression
+                  (arithmetic_expression
+                    (arithmetic_expression
+                      (literal
+                        (integer))
+                      (literal
+                        (real)))
+                    (literal
+                      (integer)))
+                  (member_access_expression
+                    (literal
+                      (integer))
+                    (identifier)))
+                (literal
+                  (real))))))))

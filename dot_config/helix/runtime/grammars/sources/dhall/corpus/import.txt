@@ -1,0 +1,710 @@
+==================
+Missing import (unit/import/MissingA.dhall)
+==================
+
+missing
+
+---
+
+(expression
+  (import (missing_import)))
+
+==================
+Missing import in parens (missingInParenthesesA.dhall)
+==================
+
+(missing)
+
+---
+
+(expression
+  (primitive_expression (expression (import (missing_import)))))
+
+==================
+Missing import must be followed by a space (preferMissingNoSpacesA.dhall)
+==================
+
+missing//foo
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Missing import with a slash is invalid (missingSlashA.dhall)
+==================
+
+missing/
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Absolute path import (unit/import/pathAbsoluteA.dhall)
+==================
+
+/absolute/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative path import (unit/import/pathHereA.dhall)
+==================
+
+./relative/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative home path import (unit/import/pathHomeA.dhall)
+==================
+
+~/home/anchored/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative parent path import (unit/import/pathParentA.dhall)
+==================
+
+../parent/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Paths can contain quoted segments (unit/import/quotedPathsA.dhall)
+==================
+
+/"foo"/bar/"baz qux"
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Paths can contain unicode (unit/import/unicodePathsA.dhall)
+==================
+
+./families/"禺.dhall"
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Paths are terminated by lambda characters (unit/import/pathTerminationLambdaA.dhall)
+==================
+
+-- Verify that certain punctuation marks terminate paths correctly
+λ(x : ./example) -> x
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (lambda_expression (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (import (local_import)))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Paths are terminated by list characters (unit/import/pathTerminationListA.dhall)
+==================
+
+-- Verify that certain punctuation marks terminate paths correctly
+[./example,./example, ./example]
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (list_literal
+    (expression (import (local_import)))
+    (expression (import (local_import)))
+    (expression (import (local_import))))))
+
+==================
+Paths are terminated by record characters (unit/import/pathTerminationRecordA.dhall)
+==================
+
+-- Verify that certain punctuation marks terminate paths correctly
+{foo = ./example, bar = ./example}
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (import (local_import))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (import (local_import)))))))
+
+==================
+Paths are terminated by union characters (unit/import/pathTerminationUnionA.dhall)
+==================
+
+-- Verify that certain punctuation marks terminate paths correctly
+<foo: ./example| bar: ./example>
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression
+        (application_expression
+          (import (local_import))
+          (primitive_expression (identifier (label))))
+        (type_operator)
+        (expression (import (local_import))))))))
+
+==================
+Remote http import (unit/import/urls/basicHttpA.dhall)
+==================
+
+http://example.com/someFile.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import (unit/import/urls/basicHttpsA.dhall)
+==================
+
+https://raw.githubusercontent.com/dhall-lang/dhall-haskell/18e4e9a18dc53271146df3ccf5b4177c3552236b/examples/True
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from an ipv4 address (unit/import/urls/ipv4A.dhall)
+==================
+
+https://127.0.0.1/index.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from an ipv4 address with high-valued octets (unit/import/urls/ipv4upperoctetsA.dhall)
+==================
+
+https://200.249.250.255/index.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from an ipv6 address in long form (unit/import/urls/ipv6longA.dhall)
+==================
+
+https://[2001:db8:85a3:0:0:8a2e:370:7334]/tutorial.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from an ipv6 address in abbreviated form (unit/import/urls/ipv6mediumA.dhall)
+==================
+
+https://[2001:db8:85a3::8a2e:370:7334]/tutorial.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from the ipv6 zero address (unit/import/urls/ipv6shortA.dhall)
+==================
+
+https://[::]/index.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from a maximum length ipv6 address (unit/import/urls/ipv6verylongA.dhall)
+==================
+
+http://[AAAA:BBBB:CCCC:DDDD:EEEE:FFFF:0000::]/tutorial.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import from an ipv6 address with an ipv4 component (unit/import/urls/ipv6withipv4A.dhall)
+==================
+
+https://[2001:db8:85a3::8a2e:3.112.115.52]/tutorial.dhall
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with a port (unit/import/urls/portA.dhall)
+==================
+
+https://example.com:1234/foo
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with user info (unit/import/urls/userinfoA.dhall)
+==================
+
+https://john:doe@example.com/foo
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with a url-escaped path (unit/import/urls/escapedPathA.dhall)
+==================
+
+https://example.com/a%20b/c%2fd/e+f/g%2dh
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with a url-escaped query (unit/import/urls/escapedQueryA.dhall)
+==================
+
+https://example.com/foo?a%20b=c%2fd&e+f/?
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with an empty path segment (unit/import/urls/emptyPathSegmentA.dhall)
+==================
+
+-- empty path segments are not equivalent to missing path segments
+https://example.com/foo//bar
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with an empty path (unit/import/urls/emptyPath1A.dhall)
+==================
+
+https://example.com/
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with a missing path (unit/import/urls/emptyPath0A.dhall)
+==================
+
+-- the normal form for an empty path is a path of `/`
+-- see RFC7230 section 2.7.3
+https://example.com
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with an empty query (unit/import/urls/emptyQueryA.dhall)
+==================
+
+-- an empty query string is not the same as a missing one
+-- see RFC 3986 section 6.2.3
+https://example.com/foo?
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (import (http_import (http_raw))))
+
+==================
+Remote https import with a fragment identifier (unit/import/urls/fragmentParsesAsListAppendA.dhall)
+==================
+
+{- Fragment identifiers are not allowed in URLs because they serve no purpose
+   for Dhall and they could lead to ambiguity if a parser interprets them as
+   the list append operator (`#`)
+
+   The following expression therefore only has one valid parse, which is to
+   interpret the `#` as a list append.  In other words, the following expression
+   is parsed as:
+
+   (https://example.com/foo) # bar
+-}
+https://example.com/foo#bar
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (list_append_expression
+    (import (http_import (http_raw)))
+    (infix_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Remote https import with many unusual characters (unit/import/urls/potPourriA.dhall)
+==================
+
+https://-._~%2C!$&'*+;=:@0abc1--12a------a-a--a-0/foo?/-._~%2C!$&'*+;=:@/?
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
+Bash-style environment variable import (unit/import/environmentVariableBashA.dhall)
+==================
+
+env:FOO
+
+---
+
+(expression
+  (import (env_import (env_variable))))
+
+==================
+Posix-style environment variable import (unit/import/environmentVariablePosixA.dhall)
+==================
+
+-- Yes, this is legal
+env:"\"\\\a\b\f\n\r\t\v!<[~"
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (import (env_import (env_variable))))
+
+==================
+Relative path import with hash (unit/import/hashA.dhall)
+==================
+
+./a.dhall sha256:16173e984d35ee3ffd8b6b79167df89480e67d1cd03ea5d0fc93689e4d928e61
+
+---
+
+(expression
+  (import (local_import) (import_hash)))
+
+==================
+Missing import as location (unit/import/AsLocationMissingA.dhall)
+==================
+
+missing as Location
+
+---
+
+(expression
+  (import (missing_import) (import_as_location)))
+
+==================
+Absolute path import as location (unit/import/AsLocationAbsoluteA.dhall)
+==================
+
+/absolute/import as Location
+
+---
+
+(expression
+  (import (local_import) (import_as_location)))
+
+==================
+Relative path import as location (unit/import/AsLocationLocalA.dhall)
+==================
+
+./local/import as Location
+
+---
+
+(expression
+  (import (local_import) (import_as_location)))
+
+==================
+Remote import as location (unit/import/AsLocationRemoteA.dhall)
+==================
+
+https://prelude.dhall-lang.org/package.dhall as Location
+
+---
+
+(expression
+  (import (http_import (http_raw)) (import_as_location)))
+
+==================
+Remote import as text (unit/import/asTextA.dhall)
+==================
+
+https://example.com/foo as Text
+
+---
+
+(expression
+  (import (http_import (http_raw)) (import_as_text)))
+
+==================
+Environment variable import as location (unit/import/AsLocationEnvA.dhall)
+==================
+
+env:HOME as Location
+
+---
+
+(expression
+  (import (env_import (env_variable)) (import_as_location)))
+
+==================
+Relative path import as location with hash (unit/import/AsLocationHashA.dhall)
+==================
+
+./some/import sha256:0000000000000000000000000000000000000000000000000000000000000000 as Location
+
+---
+
+(expression
+  (import (local_import) (import_hash) (import_as_location)))
+
+==================
+Import as without a space (unit/import/ImportAsNoSpaceA.dhall)
+==================
+
+./import asText
+
+---
+
+(expression
+  (application_expression
+    (import (local_import))
+    (primitive_expression (identifier (label)))))
+
+==================
+Remote import using headers (unit/import/HeadersA.dhall)
+==================
+
+https://example.com/foo using x
+
+---
+
+(expression
+  (import
+    (http_import (http_raw) (primitive_expression (identifier (label))))))
+
+==================
+Remote import using inline headers (unit/import/inlineUsingA.dhall)
+==================
+
+{- The language standard used to require that custom headers were provided via
+   an external import, but was later amended to support inline headers as part
+   of:
+
+   https://github.com/dhall-lang/dhall-lang/pull/560
+
+   This test verifies that an implementation supports such inline custom headers
+-}
+
+https://example.com/foo using
+    [ { mapKey   = "Authorization"
+      , mapValue = "token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4"
+      }
+    ]
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (import (http_import
+    (http_raw)
+    (primitive_expression (list_literal (expression (primitive_expression
+      (record_literal
+        (record_literal_entry
+          (label)
+          (assign_operator)
+          (expression (primitive_expression
+            (text_literal (double_quote_literal)))))
+        (record_literal_entry
+          (label)
+          (assign_operator)
+          (expression (primitive_expression
+            (text_literal (double_quote_literal)))))))))))))
+
+==================
+Remote import using toMap (usingToMapA.dhall)
+==================
+
+https://example.com using (toMap { Foo = "Bar" })
+
+---
+
+(expression
+  (import (http_import
+    (http_raw)
+    (primitive_expression (expression
+      (application_expression
+        (builtin_function)
+        (primitive_expression (record_literal
+          (record_literal_entry (label) (assign_operator)
+            (expression (primitive_expression
+              (text_literal (double_quote_literal)))))))))))))
+
+==================
+Remote import using hashed, imported headers (unit/import/HeadersInteriorHashA.dhall)
+==================
+
+https://example.com/foo using (./headers sha256:0000000000000000000000000000000000000000000000000000000000000000)
+
+---
+
+(expression
+  (import (http_import
+    (http_raw)
+    (primitive_expression (expression
+      (import (local_import) (import_hash)))))))
+
+==================
+Remote import using hashed, imported headers precedence (unit/import/HeadersHashPrecedenceA.dhall)
+==================
+
+https://example.com/foo using ./headers sha256:0000000000000000000000000000000000000000000000000000000000000000
+
+---
+
+(expression
+  (import (http_import (http_raw) (import (local_import) (import_hash)))))
+
+==================
+Hashed remote import using hashed, imported headers (unit/import/HeadersDoubleHashA.dhall)
+==================
+
+https://example.com/foo using (./headers sha256:0000000000000000000000000000000000000000000000000000000000000000) sha256:1111111111111111111111111111111111111111111111111111111111111111
+
+---
+
+(expression
+  (import
+    (http_import
+      (http_raw)
+      (primitive_expression (expression
+        (import (local_import) (import_hash)))))
+    (import_hash)))
+
+==================
+Hashed remote import using hashed, imported headers precedence (unit/import/HeadersDoubleHashPrecedenceA.dhall)
+==================
+
+https://example.com/foo using ./headers sha256:0000000000000000000000000000000000000000000000000000000000000000 sha256:1111111111111111111111111111111111111111111111111111111111111111
+
+---
+
+(expression
+  (import
+    (http_import (http_raw) (import (local_import) (import_hash)))
+    (import_hash)))
+
+==================
+Importing types (collectionImportTypeA.dhall)
+==================
+
+{ example0 = None ./type.dhall
+, example1 = [] : List ./type.dhall
+}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (application_expression
+        (primitive_expression (identifier (builtin)))
+        (import (local_import)))))
+    (record_literal_entry (label) (assign_operator)
+      (expression
+        (primitive_expression (list_literal))
+        (type_operator)
+        type: (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (import (local_import)))))))))
+
+==================
+Import alternative expressions (unit/import/importAltA.dhall)
+==================
+
+env:UNSET1 as Text ? env:UNSET2 ? missing ? env:UNSET3 ? 2
+
+---
+
+(expression
+  (import_alt_expression
+    (import_alt_expression
+      (import_alt_expression
+        (import_alt_expression
+          (import (env_import (env_variable)) (import_as_text))
+          (infix_operator)
+          (import (env_import (env_variable))))
+        (infix_operator)
+        (import (missing_import)))
+      (infix_operator)
+      (import (env_import (env_variable))))
+    (infix_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))

@@ -1,0 +1,158 @@
+==================
+batch mode = yes
+==================
+
+BatchMode yes
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = Yes
+==================
+
+BatchMode Yes
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = true
+==================
+
+BatchMode true
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = True
+==================
+
+BatchMode True
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = no
+==================
+
+BatchMode no
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = No
+==================
+
+BatchMode No
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = false
+==================
+
+BatchMode false
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+batch mode = False
+==================
+
+BatchMode False
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+use irregular casing
+==================
+
+BaTCHmode yes
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+can use equals sign
+==================
+
+BaTCHmode=yes
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+BaTCHmode = yes
+
+---
+
+(client_config
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  BaTCHmode no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (batch_mode
+    (batch_mode_value)))
+
+==================
+detect invalid values
+==================
+
+BaTCHmode ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

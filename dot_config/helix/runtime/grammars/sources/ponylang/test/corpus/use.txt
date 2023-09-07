@@ -1,0 +1,90 @@
+=============
+Use statement
+=============
+
+use "math"
+
+---
+(source_file
+  (use 
+    specifier: (string)))
+
+=======================
+Use statement with name
+=======================
+
+use 
+foo = "foo"
+
+---
+
+(source_file 
+  (use 
+    name: (identifier)
+    specifier: (string)
+  ))
+
+=======================
+Multiple Use statements
+=======================
+
+use "foo"
+use bla12 
+= "blubb"
+use "foo"
+
+---
+
+(source_file
+  (use
+    specifier: (string))
+  (use
+    name: (identifier)
+    specifier: (string))
+  (use
+    specifier: (string))
+)
+
+========
+Use FFI
+========
+
+use @println[U64](i: U64, u: U64, ...)?
+
+---
+
+(source_file
+  (use 
+    specifier: (use_ffi
+      name: (identifier)
+      return_type: (typeargs 
+        (type (nominal_type name: (identifier))))
+      params: (params
+        (param
+          name: (identifier) 
+          type: (type (nominal_type name: (identifier))))
+        (param 
+          name: (identifier) 
+          type: (type (nominal_type name: (identifier))))
+        (param)
+      )
+      partial: (partial)
+    )
+  )
+)
+
+======
+Use if
+======
+
+use "package" if consume iso foo
+
+---
+
+(source_file
+  (use
+    specifier: (string)
+    condition: (consume (cap) (identifier))
+  )
+)
+

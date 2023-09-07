@@ -1,0 +1,198 @@
+==================
+Variable (unit/VariableA.dhall)
+==================
+
+x
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing spaces (unit/VariableQuotedWithSpaceA.dhall)
+==================
+
+` x `
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing an operator (unit/QuotedVariableA.dhall)
+==================
+
+`x+y`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin value (unit/QuotedTrueA.dhall)
+==================
+
+`True`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin type (unit/QuotedBoolA.dhall)
+==================
+
+`Bool`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin function (quotedBoundVariableA.dhall)
+==================
+
+(\(`Natural/even`: Natural -> Bool) -> `Natural/even`) Natural/odd 0
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (function_type
+        left: (primitive_expression (identifier (builtin)))
+        (arrow_operator)
+        right: (expression (primitive_expression (identifier (builtin))))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label)))))))
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Quoted variable with Type (unit/QuotedTypeA.dhall)
+==================
+
+`Type`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Variable name starts with Type (reservedPrefixA.dhall)
+==================
+
+let TypeSynonym = Integer in +1 : TypeSynonym
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (expression
+      (primitive_expression (numeric_literal (integer_literal)))
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label)))))))
+
+==================
+Underscore is a valid variable name (unit/VariableUnderscoreA.dhall)
+==================
+
+_
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Labels are alphanumeric (labelA.dhall)
+==================
+
+let _ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/ = 1
+in  _ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/
+
+---
+
+(expression
+  (let_expression
+    (let_binding (label) (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Label containing reserved keywords (missingFooA.dhall)
+==================
+
+missingFoo
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+de Bruijn indices
+==================
+
+x == x@0
+
+---
+
+(expression
+  (equal_expression
+    (primitive_expression (identifier (label)))
+    (infix_operator)
+    (primitive_expression (identifier
+      (label) (de_bruijn_index (natural_literal))))))
+
+==================
+de Bruijn indices don't apply to builtins
+==================
+
+Bool@0
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (identifier (builtin)))
+    (ERROR)
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Using a de Bruijn index in another expression (identifierA.dhall)
+==================
+
+λ(a : Type) → λ(a : Type) → a@1
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression
+        (identifier (label) (de_bruijn_index (natural_literal)))))))))

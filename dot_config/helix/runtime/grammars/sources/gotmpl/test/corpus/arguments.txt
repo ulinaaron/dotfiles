@@ -1,0 +1,108 @@
+====================================
+Nil
+====================================
+{{ nil }}
+---
+(source_file
+    (template
+        (nil)))
+
+====================================
+Dot field
+====================================
+{{ . }}
+---
+(source_file
+    (template
+        (dot)))
+
+====================================
+Field
+====================================
+{{ .Field }}
+---
+(source_file
+    (template
+        (field
+            (identifier))))
+
+====================================
+Chained fields
+====================================
+{{ .Field.Field2 }}
+---
+(source_file
+    (template
+        (selector_expression
+            (field
+                (identifier))
+            (field_identifier))))
+
+====================================
+Variable without name
+====================================
+{{ $ }}
+---
+(source_file
+    (template
+        (variable)))
+
+====================================
+Unnamed variable with field
+====================================
+{{ $.Field }}
+---
+(source_file
+    (template
+        (selector_expression
+            (variable)
+            (field_identifier))))
+
+====================================
+Unnamed variable with chained field
+====================================
+{{ $.Field.Field2 }}
+---
+(source_file
+    (template
+        (selector_expression
+            (selector_expression
+                (variable)
+                (field_identifier))
+            (field_identifier))))
+
+====================================
+Named variable
+====================================
+{{ $var }}
+---
+(source_file
+    (template
+        (variable
+            (identifier))))
+
+====================================
+Named variable with field
+====================================
+{{ $var.Field }}
+---
+(source_file
+    (template
+        (selector_expression
+            (variable
+                (identifier))
+            (field_identifier))))
+
+====================================
+Named variable with chained field
+====================================
+{{ $var.Field.Field2 }}
+---
+(source_file
+    (template
+        (selector_expression
+            (selector_expression
+                (variable
+                    (identifier))
+                (field_identifier))
+            (field_identifier))))

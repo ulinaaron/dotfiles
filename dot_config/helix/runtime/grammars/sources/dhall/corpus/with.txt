@@ -1,0 +1,177 @@
+==================
+Basic with statement (unit/WithA.dhall)
+==================
+
+{ a = 1 } with a = 2
+
+---
+
+(expression
+  (with_expression
+    (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+    (label)
+    (assign_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Chained with statements (unit/WithMultipleA.dhall)
+==================
+
+{- This test verifies that an implementation correctly encodes chained
+   `with` expressions in a left-associative way.
+-}
+{ a.b = 1, c.d = 2 } with a.b = 3 with c.e = 4
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (with_expression
+    (with_expression
+      (primitive_expression (record_literal
+        (record_literal_entry
+          (label) (selector (selector_dot) (label))
+          (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (record_literal_entry
+          (label) (selector (selector_dot) (label))
+          (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))))
+      (label) (selector (selector_dot) (label))
+      (assign_operator)
+      (primitive_expression (numeric_literal (natural_literal))))
+    (label) (selector (selector_dot) (label))
+    (assign_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Chained with statement precedence (unit/WithPrecedence1A.dhall)
+==================
+
+{-  The purpose of this test is to illustrate that function application has
+    higher precedence than `with` so that chained with expressions parse
+    correctly
+
+    The following expression should parse as:
+
+        ({ a = Some 1 } with a = Some 2) with a = Some 3
+
+    ... and not parse as:
+
+        { a = Some 1 } with a = (Some 2 with a = Some 3)
+-}
+{ a = Some 1 } with a = Some 2 with a = Some 3
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (with_expression
+    (with_expression
+      (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (application_expression
+            (builtin_function)
+            (primitive_expression
+              (numeric_literal (natural_literal))))))))
+      (label)
+      (assign_operator)
+      (application_expression
+        (builtin_function)
+        (primitive_expression (numeric_literal (natural_literal)))))
+    (label)
+    (assign_operator)
+    (application_expression
+      (builtin_function)
+      (primitive_expression (numeric_literal (natural_literal))))))
+
+==================
+With statement operator precedence (unit/WithPrecedence2A.dhall)
+==================
+
+{ x = 0 } with x = 1 + 1
+
+---
+
+(expression
+  (with_expression
+    (primitive_expression (record_literal
+      (record_literal_entry
+        (label)
+        (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+    (label)
+    (assign_operator)
+    (plus_expression
+      (primitive_expression (numeric_literal (natural_literal)))
+      (infix_operator)
+      (primitive_expression (numeric_literal (natural_literal))))))
+
+==================
+With statement completion precedence (unit/WithPrecedence3A.dhall)
+==================
+
+foo::{ x = 0 } with x = 1
+
+---
+
+(expression
+  (with_expression
+    (completion
+      type: (primitive_expression (identifier (label)))
+      (completion_operator)
+      (primitive_expression
+        (record_literal
+          (record_literal_entry
+            (label)
+            (assign_operator)
+            (expression (primitive_expression
+              (numeric_literal (natural_literal))))))))
+    (label)
+    (assign_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+With statement using Some (unit/WithSomeA.dhall)
+==================
+
+{ Some = 0 } with Some = 1
+
+---
+
+(expression
+  (with_expression
+    (primitive_expression (record_literal
+      (record_literal_entry
+        (label)
+        (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+    (label)
+    (assign_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+With statement question mark (withQuestionMarkA.dhall)
+==================
+
+(Some 0) with ? = 1
+
+---
+
+(expression
+  (with_expression
+    (primitive_expression (expression (application_expression
+      (builtin_function)
+      (primitive_expression (numeric_literal (natural_literal))))))
+    (question_mark)
+    (assign_operator)
+    (primitive_expression (numeric_literal (natural_literal)))))

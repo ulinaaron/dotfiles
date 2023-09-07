@@ -1,0 +1,53 @@
+layout {
+    cwd "~/.nb"
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab_template name="sidebar_tab" {            
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        pane split_direction="Vertical" { 
+            // pane size="50%" borderless=true {
+            //     command "ranger"
+            //     // args "/Users/aaronmazade/.nb/"
+            // }
+            children
+        }
+        // pane size=1 borderless=true {
+        //     plugin location="zellij:status-bar"
+        // }
+    }
+   
+    // sidebar_tab name="Dashboard" focus=true {
+    //     pane command="echo Welcome!" focus=true
+    // }
+
+    sidebar_tab focus=true name="Editor" {
+         pane split_direction="Vertical" {   
+            pane command="hx" size="50%" name="Editor" focus=true
+            pane command="nb" name="Notes" {
+                args "browse"
+            }
+        }
+    }
+
+    sidebar_tab name="Git" {
+        pane command="lazygit" name="Git" focus=true
+    }
+}
+
+keybinds clear-defaults=true {
+    shared_except "locked" {
+        bind "Ctrl q" { Quit; }
+        bind "Alt n" { NewPane; }
+    }
+   
+}

@@ -1,0 +1,158 @@
+==================
+use keychain = yes
+==================
+
+UseKeychain yes
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = Yes
+==================
+
+UseKeychain Yes
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = true
+==================
+
+UseKeychain true
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = True
+==================
+
+UseKeychain True
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = no
+==================
+
+UseKeychain no
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = No
+==================
+
+UseKeychain No
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = false
+==================
+
+UseKeychain false
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use keychain = False
+==================
+
+UseKeychain False
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+use irregular casing
+==================
+
+usekEYChain yes
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+can use equals sign
+==================
+
+usekEYChain=yes
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+usekEYChain = yes
+
+---
+
+(client_config
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  UseKeychain no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (use_keychain
+    (use_keychain_value)))
+
+==================
+detect invalid values
+==================
+
+usekEYChain ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

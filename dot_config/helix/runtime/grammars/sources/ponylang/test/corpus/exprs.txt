@@ -1,0 +1,275 @@
+=========
+Unary ops
+=========
+
+use "snot" if not badger
+
+---
+
+(source_file
+  (use 
+    specifier: (string)
+    condition: (unary_op
+      operand: (identifier)
+    )
+  )
+)
+
+==============
+Array Literals
+==============
+
+use "snot" if [
+  []
+  [
+    1
+    2
+    3
+  ]
+]
+
+---
+(source_file
+  (use
+    specifier: (string)
+    condition: (array
+      (block
+        (array)
+        (array (block (integer) (integer) (integer)))
+      )
+    )
+  )
+)
+
+=======================
+Array Literals In Block
+=======================
+
+primitive Snot
+  fun foo() =>
+    []
+    []
+
+---
+
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (method
+          name: (identifier)
+          body: (block
+            (array)
+            (array)
+          )
+        )
+      )
+    )
+  )
+)
+
+=======================
+Strings In Block
+=======================
+
+primitive Snot
+  fun foo() =>
+    "foo"
+    "bar"
+
+---
+
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (method
+          name: (identifier)
+          body: (block
+            (string)
+            (string)
+          )
+        )
+      )
+    )
+  )
+)
+
+===================
+Empty Array Literal
+===================
+
+use "" if []
+
+---
+(source_file
+  (use 
+    specifier: (string)
+    condition: (array)
+  )
+)
+
+===============
+Array Type Hint
+===============
+
+use "" if [as U8: 
+  13
+  12
+]
+---
+(source_file
+  (use 
+    specifier: (string)
+    condition: (array 
+      (type (nominal_type name: (identifier)))
+      (block (integer) (integer))
+    )
+  )
+)
+
+========
+If Block
+========
+
+primitive Foo
+  fun bar() =>
+    if "first_line"
+       true
+    then
+      "then"
+    end
+---
+
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (method
+          name: (identifier)
+          body: (block
+            (if
+              condition: (block
+                (string)
+                (bool))
+              if_block: (block (string))
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+
+================================
+Partial Application in Arguments
+================================
+
+primitive Foo
+  fun foo() =>
+    Promises[A].join(
+      [this]
+        .> concat(ps)
+        .values())
+---
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (method
+          name: (identifier)
+          body: (block
+            (call
+              callee: (field_access
+                base: (term_with_typeargs
+                  base: (identifier)
+                  (typeargs
+                    (type (nominal_type name: (identifier)))
+                  )
+                )
+                field: (identifier)
+              )
+              arguments: (arguments
+                positional: (positional_args
+                  (block
+                    (call
+                      callee: (field_access
+                        base: (call
+                          callee: (chain
+                            base: (array
+                              (block (this))
+                            )
+                            function: (identifier)
+                          )
+                          arguments: (arguments
+                            positional: (positional_args
+                              (block (identifier))
+                            )
+                          )
+                        )
+                        field: (identifier)
+                      )
+                      arguments: (arguments)
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+===================
+Block with ffi call
+===================
+
+primitive Foo
+  fun bar() =>
+    let f = Foo.bar()
+    @baz("argument")
+---
+(source_file
+  (entity
+    entity_type: (entity_type)
+    name: (identifier)
+    members: (members
+      methods: (methods
+        (method
+          name: (identifier)
+          body: (block
+            (assignment
+              left: (local name: (identifier))
+              right: (call
+                callee: (field_access
+                  base: (identifier)
+                  field: (identifier)
+                )
+                arguments: (arguments)
+              )
+            )
+            (ffi_call
+              name: (identifier)
+              arguments: (arguments
+                positional: (positional_args
+                  (block (string))
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)

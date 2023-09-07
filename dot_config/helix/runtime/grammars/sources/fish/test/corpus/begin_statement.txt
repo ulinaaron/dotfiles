@@ -1,0 +1,100 @@
+================================================================================
+Begin Statement - simple
+================================================================================
+
+begin ;; end;
+
+begin
+    true
+end
+
+;; begin; # this is a begin statement
+    # comment inside the block
+end
+
+--------------------------------------------------------------------------------
+
+(program
+  (begin_statement)
+  (begin_statement
+    (command
+      name: (word)))
+  (begin_statement
+    (comment)
+    (comment)))
+
+================================================================================
+Begin Statement - nested
+================================================================================
+
+begin; begin; end; end
+
+begin
+    begin; true; end
+end
+
+begin; begin; end; end
+begin;;; begin;;  end; end
+
+--------------------------------------------------------------------------------
+
+(program
+  (begin_statement
+    (begin_statement))
+  (begin_statement
+    (begin_statement
+      (command
+        name: (word))))
+  (begin_statement
+    (begin_statement))
+  (begin_statement
+    (begin_statement)))
+
+================================================================================
+Begin Statement - with conditional execution
+================================================================================
+
+begin; end || true
+true && begin; end || true
+
+--------------------------------------------------------------------------------
+
+(program
+  (conditional_execution
+    (begin_statement)
+    (command
+      name: (word)))
+  (conditional_execution
+    (command
+      name: (word))
+    (conditional_execution
+      (begin_statement)
+      (command
+        name: (word)))))
+
+================================================================================
+Begin Statement - with redirection
+================================================================================
+
+begin; end >&-
+
+--------------------------------------------------------------------------------
+
+(program
+  (redirected_statement
+    (begin_statement)
+    (stream_redirect)))
+
+================================================================================
+Begin Statement - with pipe
+================================================================================
+
+begin; end | echo
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipe
+    (begin_statement)
+    (command
+      name: (word))))

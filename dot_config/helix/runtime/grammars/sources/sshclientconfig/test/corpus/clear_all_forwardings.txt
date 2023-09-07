@@ -1,0 +1,158 @@
+==================
+clear all forwardings = yes
+==================
+
+ClearAllForwardings yes
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = Yes
+==================
+
+ClearAllForwardings Yes
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = true
+==================
+
+ClearAllForwardings true
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = True
+==================
+
+ClearAllForwardings True
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = no
+==================
+
+ClearAllForwardings no
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = No
+==================
+
+ClearAllForwardings No
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = false
+==================
+
+ClearAllForwardings false
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+clear all forwardings = False
+==================
+
+ClearAllForwardings False
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+use irregular casing
+==================
+
+ClearAllForwARDings yes
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+can use equals sign
+==================
+
+ClearAllForwARDings=yes
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+ClearAllForwARDings = yes
+
+---
+
+(client_config
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  ClearAllForwardings no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (clear_all_forwardings
+    (clear_all_forwardings_value)))
+
+==================
+detect invalid values
+==================
+
+ClearAllForwARDings ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

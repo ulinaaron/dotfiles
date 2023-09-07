@@ -1,0 +1,148 @@
+===
+labl1:			; label
+===
+labl1:
+---
+(source_file
+  (source_line
+    (label
+      (word))))
+===
+	inst1	rax	; instruction operand
+===
+	inst1	rax
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (register)))))))
+===
+	inst2	ray	; instruction operand
+===
+	inst2	ray
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (word)))))))
+===
+labl2	inst2	ray	; label instruction operand
+===
+labl2	inst2	ray
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (word)))))))
+===
+	inst3	raz, 1	; instruction operand operand
+===
+	inst3	raz, 1
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (word))
+          (operand
+            (number_literal)))))))
+===
+labl3	inst3	raz, 1	; label instruction operand operand
+===
+labl3	inst3	raz, 1
+---
+(source_file
+  (source_line
+    (label
+      (word))
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (word))
+          (operand
+            (number_literal)))))))
+===
+	inst3	1, raz	; instruction operand operand
+===
+	inst3	1, raz
+---
+(source_file
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (number_literal))
+          (operand
+            (word)))))))
+===
+rep	inst1		; prefix instruction
+===
+rep	inst1
+---
+(source_file
+  (source_line
+    (instruction
+      (instruction_prefix)
+      (actual_instruction
+        (word)))))
+===
+labels
+===
+label1:                         ; a non-local label
+.local:                         ; this is really label1.local
+..@foo:                         ; this is a special symbol (still a label)
+label2:                         ; another non-local label
+.local:                         ; this is really label2.local
+
+        jmp     ..@foo          ; this will jump three lines up
+---
+(source_file
+  (source_line
+    (label
+      (word)))
+  (comment)
+  (source_line
+    (label
+      (word)))
+  (comment)
+  (source_line
+    (label
+      (word)))
+  (comment)
+  (source_line
+    (label
+      (word)))
+  (comment)
+  (source_line
+    (label
+      (word)))
+  (comment)
+  (source_line
+    (instruction
+      (actual_instruction
+        (word)
+        (operands
+          (operand
+            (word))))))
+  (comment))

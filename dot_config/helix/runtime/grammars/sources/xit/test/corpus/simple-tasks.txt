@@ -1,0 +1,216 @@
+=========
+Open task
+=========
+[ ] Open task
+---
+(document
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+============
+Checked task
+============
+[x] Checked task
+---
+(document
+  (task
+    (checked_task
+      (checked_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+============
+Ongoing task
+============
+[@] Ongoing task
+---
+(document
+  (task
+    (ongoing_task
+      (ongoing_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+=============
+Obsolete task
+=============
+[~] Obsolete task
+---
+(document
+  (task
+    (obsolete_task
+      (obsolete_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+=========
+Task list
+=========
+[ ] Task 1
+[ ] Task 2
+[ ] Task 3
+---
+(document
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+==============
+Multiline task
+==============
+[ ] Task 1
+[ ] Task 2 with some long description
+    that spans multiple lines
+    like this
+[ ] Task 3
+---
+(document
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+        (indent
+          (other_line)
+        )
+        (indent
+          (other_line)
+        )
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+================
+Empty lines etc.
+================
+
+[ ] Task 1
+
+[ ] Task 2 with some long description
+    that spans multiple lines
+    like this
+
+
+[ ] Task 3
+
+---
+(document
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+        (indent
+          (other_line)
+        )
+        (indent
+          (other_line)
+        )
+      )
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)
+
+==================
+Absent description
+==================
+
+[ ]
+[ ] 
+[ ]       
+
+---
+(document
+  (task
+    (open_task
+      (open_checkbox)
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+    )
+  )
+  (task
+    (open_task
+      (open_checkbox)
+      (description
+        (main_line)
+      )
+    )
+  )
+)

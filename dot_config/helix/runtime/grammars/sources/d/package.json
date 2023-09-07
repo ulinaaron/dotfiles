@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-d",
+  "version": "0.0.1",
+  "description": "d grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parsing",
+    "incremental"
+  ],
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "tree-sitter-cli": "^0.20.7"
+  },
+  "scripts": {
+    "test": "tree-sitter test",
+    "format": "prettier --trailing-comma es5 --write grammar.js",
+    "format-check": "prettier --trailing-comma es5 --check grammar.js"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.d",
+      "file-types": [
+        "d",
+        "dd"
+      ]
+    }
+  ]
+}

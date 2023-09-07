@@ -1,0 +1,19 @@
+.DS_Store
+
+# Editor files
+*.code-workspace
+
+# Debugging
+*.dSYM
+
+# Other
+cmd/vls/vls
+.vscode
+
+bin/*
+
+*.so
+
+*.dll
+
+vls.log

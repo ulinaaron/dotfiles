@@ -1,0 +1,1034 @@
+=====================================
+Math Expressions
+=====================================
+
+1 + x + 1
+0xDEAD * x / 0.01
+0xDEAD * (x / 0.01)
+
+---
+
+(source
+  (expression_statement
+    (binary_operator (binary_operator (integer) (identifier)) (integer)))
+  (expression_statement
+    (binary_operator (binary_operator (integer) (identifier)) (float)))
+  (expression_statement
+    (binary_operator (integer) (parenthesized_expression
+      (binary_operator (identifier) (float))))))
+
+=====================================
+Operators Boolean
+=====================================
+
+x and (x && true)
+x or (x || true)
+not x and (!x)
+
+---
+
+(source
+  (expression_statement
+    (binary_operator
+      (identifier)
+      (parenthesized_expression
+        (binary_operator
+          (identifier)
+          (true)))))
+  (expression_statement
+    (binary_operator
+      (identifier)
+      (parenthesized_expression
+        (binary_operator
+          (identifier)
+          (true)))))
+  (expression_statement
+    (binary_operator
+      (unary_operator (identifier))
+      (parenthesized_expression
+        (unary_operator (identifier))))))
+
+=====================================
+Operators Is
+=====================================
+
+x is y
+x is int()
+(1 + 1) is Name
+
+---
+
+(source
+  (expression_statement (binary_operator (identifier) (identifier)))
+  (expression_statement (binary_operator (identifier) (call (identifier) (arguments))))
+  (expression_statement (binary_operator
+    (parenthesized_expression
+      (binary_operator (integer) (integer)))
+    (identifier))))
+
+=====================================
+Operators As
+=====================================
+
+x as Y
+x() as Y
+
+---
+
+(source
+  (expression_statement (binary_operator (identifier) (identifier)))
+  (expression_statement (binary_operator (call (identifier) (arguments)) (identifier))))
+
+=====================================
+Array
+=====================================
+
+[1]
+[1, 2]
+[1, "a", 2]
+[
+	1,
+]
+[,]
+
+---
+
+(source
+  (expression_statement (array (integer)))
+  (expression_statement (array (integer) (integer)))
+  (expression_statement (array (integer) (string) (integer)))
+  (expression_statement (array (integer)))
+  (expression_statement (array (ERROR)))
+  )
+
+=====================================
+Dictionary
+=====================================
+
+{a = 0.1, c:1, "e":$hello}
+{a = 0xBEEF, c:1 + 1, "e":f,}
+{(1 + 1) : "a"}
+{(1 + 1) = "a"}
+{,}
+
+---
+
+(source
+  (expression_statement
+    (dictionary
+      (pair (identifier) (float))
+      (pair (identifier) (integer))
+      (pair (string) (get_node))))
+  (expression_statement
+    (dictionary
+      (pair (identifier) (integer))
+      (pair (identifier) (binary_operator (integer) (integer)))
+      (pair (string) (identifier))))
+  (expression_statement
+    (dictionary
+      (pair
+        (parenthesized_expression (binary_operator (integer) (integer)))
+        (string))))
+  (expression_statement
+    (dictionary
+      (ERROR
+        (parenthesized_expression (binary_operator (integer) (integer)))
+        (string))))
+  (expression_statement
+    (dictionary (ERROR))))
+
+=====================================
+StringName
+=====================================
+
+&"string name"
+&'string name'
+
+---
+
+(source
+  (expression_statement (string_name))
+  (expression_statement (string_name)))
+
+=====================================
+NodePath
+=====================================
+
+@"Node/Path"
+@'Node/Path'
+@ 'node/path'
+var x = @"NodePath"
+^"node/path"
+
+---
+
+(source
+  (expression_statement (node_path))
+  (expression_statement (node_path))
+  (ERROR) (expression_statement (string))
+  (variable_statement (name) (node_path))
+  (expression_statement (node_path)))
+
+=====================================
+Get Node
+=====================================
+
+$node/path
+$'node/path'
+$"node/path"
+$ "node/path"
+var x = $"node/path"
+
+%node
+
+---
+
+(source
+  (expression_statement (get_node))
+  (expression_statement (get_node))
+  (expression_statement (get_node))
+  (ERROR (UNEXPECTED '$')) (expression_statement (string))
+  (variable_statement (name) (get_node))
+  (expression_statement (get_node)))
+
+=====================================
+Await Expressions
+=====================================
+
+await hello()
+await $node/hello.sig
+var x = await call()
+var x = await $node/hello.sig
+
+func x():
+	if true:
+		await call()
+		var x = await $"node/hello".sig
+
+---
+
+(source
+	(expression_statement
+		(await_expression
+			(call (identifier) (arguments))))
+	(expression_statement
+		(await_expression
+			(attribute (get_node) (identifier))))
+	(variable_statement (name)
+		(await_expression (call (identifier) (arguments))))
+	(variable_statement (name)
+		(await_expression (attribute (get_node) (identifier))))
+	(function_definition (name) (parameters) (body
+		(if_statement (true) (body
+			(expression_statement
+				(await_expression (call (identifier) (arguments))))
+			(variable_statement (name)
+				(await_expression (attribute (get_node) (identifier)))))))))
+
+=====================================
+Breakpoint Statement
+=====================================
+
+breakpoint
+breakpoint; hi()
+
+---
+
+(source
+  (breakpoint_statement)
+  (breakpoint_statement)
+  (expression_statement (call (identifier) (arguments))))
+
+=====================================
+Variables
+=====================================
+
+var x
+var x = "hello"
+var x := "hello"
+var x: Type
+var x: Type = "hello"
+
+---
+
+(source
+  (variable_statement (name))
+  (variable_statement (name) (string))
+  (variable_statement (name) (inferred_type) (string))
+  (variable_statement (name) (type))
+  (variable_statement (name) (type) (string)))
+
+=====================================
+Variables Assign Expressions
+=====================================
+
+var x = 1 + x + 1
+
+---
+
+(source
+  (variable_statement (name)
+      (binary_operator (binary_operator (integer) (identifier)) (integer))))
+
+=====================================
+Variables Remote
+=====================================
+
+remote var hello
+master var hello
+puppet var hello
+remotesync var hello
+mastersync var hello
+puppetsync var hello
+
+---
+
+(source
+  (variable_statement (remote_keyword) (name))
+  (variable_statement (remote_keyword) (name))
+  (variable_statement (remote_keyword) (name))
+  (variable_statement (remote_keyword) (name))
+  (variable_statement (remote_keyword) (name))
+  (variable_statement (remote_keyword) (name)))
+
+=====================================
+Variables Export
+=====================================
+
+export var a
+export var a = "a"
+export remote var a
+
+export(Type) var a
+export(Type) var a = "a"
+export(Type) remote var a
+
+export(Type, Param) var a
+export(Type, "Param") var a = "a"
+
+export(Type,) var a
+
+---
+
+(source
+  (export_variable_statement (name))
+  (export_variable_statement (name) (string))
+  (export_variable_statement (remote_keyword) (name))
+  (export_variable_statement (arguments (identifier)) (name))
+  (export_variable_statement (arguments (identifier)) (name) (string))
+  (export_variable_statement (arguments (identifier)) (remote_keyword) (name))
+  (export_variable_statement (arguments (identifier) (identifier)) (name))
+  (export_variable_statement (arguments (identifier) (string)) (name) (string))
+  (export_variable_statement (arguments (identifier)) (name)))
+
+=====================================
+Variables Annotations
+=====================================
+
+@onready var a
+@export(FILE, "") @onready var a := 0
+
+@export(FILE, 0) @hello
+@onready
+var a := 0
+
+---
+
+(source
+  (variable_statement
+    (annotations
+      (annotation (identifier)))
+    (name))
+  (variable_statement
+    (annotations
+      (annotation (identifier)
+        (arguments (identifier) (string)))
+      (annotation (identifier)))
+    (name)
+    (inferred_type)
+    (integer))
+  (annotation (identifier)
+    (arguments (identifier) (integer)))
+  (annotation (identifier))
+  (annotation (identifier))
+  (variable_statement
+    (name)
+    (inferred_type)
+    (integer)))
+
+=====================================
+Variables SetGet
+=====================================
+
+var x setget setter,getter
+var x setget setter
+var x setget ,getter
+
+---
+
+(source
+  (variable_statement (name) (setget (setter) (getter)))
+  (variable_statement (name) (setget (setter)))
+  (variable_statement (name) (setget (getter)))
+)
+
+=====================================
+Variables SetGet V2
+=====================================
+
+var x: int:
+    get:
+        pass
+    set(value):
+        pass
+
+var x: int = 0:
+    get: pass
+    set(value): pass
+
+var x = 0:
+    get: pass
+    set(value): pass
+
+var x:
+  get:
+    pass
+
+var x:
+  get: pass
+
+var x:
+  get: pass; pass
+
+var x: int:
+  set(val):
+    pass
+
+var my_prop:
+    get = get_my_prop, set = set_my_prop
+
+---
+
+(source
+  (variable_statement
+    (name)
+    (type)
+    (setget
+      (get_body
+        (pass_statement))
+      (set_body
+        (parameters (identifier))
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (type)
+    (integer)
+    (setget
+      (get_body
+        (pass_statement))
+      (set_body
+        (parameters (identifier))
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (integer)
+    (setget
+      (get_body
+        (pass_statement))
+      (set_body
+        (parameters (identifier))
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (setget
+      (get_body
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (setget
+      (get_body
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (setget
+      (get_body
+        (pass_statement)
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (type)
+    (setget
+      (set_body
+        (parameters
+          (identifier))
+        (pass_statement))))
+  (variable_statement
+    (name)
+    (setget
+      (getter)
+      (setter))))
+
+=====================================
+Variables Onready
+=====================================
+
+onready var hello
+onready var hello: World
+
+---
+
+(source
+  (onready_variable_statement (name))
+  (onready_variable_statement (name) (type)))
+
+=====================================
+Variables Const
+=====================================
+
+const CONST = 1
+const CONST := 1
+const CONST : int = 1
+
+---
+
+(source
+  (const_statement (name) (integer))
+  (const_statement (name) (inferred_type) (integer))
+  (const_statement (name) (type) (integer)))
+
+
+=====================================
+Variables Invalid
+=====================================
+
+var x = var y
+var x :=
+
+---
+
+(source
+  (variable_statement (name) (ERROR (identifier)) (identifier))
+  (ERROR (name)  (inferred_type)))
+
+=====================================
+Functions
+=====================================
+
+func hello():
+  pass
+
+func hello() -> Type:
+  pass
+
+func hello(param):
+  pass
+
+func hello(param) -> Type:
+  pass
+
+func hello(default_param="string"):
+  pass
+
+func hello(default_param="string") -> Type:
+  pass
+
+func hello(typed_param: Type):
+  pass
+
+func hello(typed_param: Type) -> Type:
+  pass
+
+func hello(typed_default_param: Type="string"):
+  pass
+
+func hello(typed_default_param: Type="string") -> Type:
+  pass
+
+---
+
+(source
+  (function_definition (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (name) (parameters) (type)
+    (body (pass_statement)))
+  (function_definition (name) (parameters (identifier))
+    (body (pass_statement)))
+  (function_definition (name) (parameters (identifier)) (type)
+    (body (pass_statement)))
+  (function_definition (name) (parameters (default_parameter (identifier) (string)))
+    (body (pass_statement)))
+  (function_definition (name) (parameters (default_parameter (identifier) (string))) (type)
+    (body (pass_statement)))
+  (function_definition (name) (parameters (typed_parameter (identifier) (type)))
+    (body (pass_statement)))
+  (function_definition (name) (parameters (typed_parameter (identifier) (type))) (type)
+    (body (pass_statement)))
+  (function_definition (name) (parameters (typed_default_parameter (identifier) (type) (string)))
+    (body (pass_statement)))
+  (function_definition (name) (parameters (typed_default_parameter (identifier) (type) (string))) (type)
+    (body (pass_statement))))
+
+=====================================
+Functions Remote
+=====================================
+
+remote func hello(): pass
+master func hello(): pass
+puppet func hello(): pass
+remotesync func hello(): pass
+mastersync func hello(): pass
+puppetsync func hello(): pass
+
+---
+
+(source
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement)))
+  (function_definition (remote_keyword) (name) (parameters)
+    (body (pass_statement))))
+
+=====================================
+Functions Static
+=====================================
+
+static func hello(): pass
+
+---
+
+(source
+  (function_definition (static_keyword) (name) (parameters)
+    (body (pass_statement))))
+
+=====================================
+Functions Annotations
+=====================================
+
+@rpc func hello(): pass
+@script_level
+@rpc("remote") func hello():
+	pass
+
+func test():
+	return
+	@warning_ignore("unreachable_code")
+	print("unreachable")
+
+---
+
+(source
+  (function_definition
+    (annotations
+      (annotation (identifier)))
+    (name)
+    (parameters)
+    (body
+      (pass_statement)))
+  (annotation (identifier))
+  (function_definition
+    (annotations
+      (annotation
+        (identifier)
+        (arguments
+          (string))))
+    (name)
+    (parameters)
+    (body
+      (pass_statement)))
+  (function_definition
+    (name)
+    (parameters)
+    (body
+      (return_statement)
+      (annotation
+        (identifier)
+        (arguments
+          (string)))
+      (expression_statement
+        (call (identifier)
+          (arguments (string)))))))
+
+=====================================
+Constructor Definitions
+=====================================
+
+func _init(): pass
+func _init().(): pass
+func _init(a, b).(a,b): pass
+
+---
+
+(source
+  (constructor_definition
+    (parameters)
+    (body (pass_statement)))
+  (constructor_definition
+    (parameters)
+    (arguments)
+    (body (pass_statement)))
+  (constructor_definition
+    (parameters (identifier) (identifier))
+    (arguments (identifier) (identifier))
+    (body (pass_statement))))
+
+=====================================
+Base Calls
+=====================================
+
+.hello()
+var x = .hello()
+var x = hello(.hello())
+
+---
+
+(source
+  (expression_statement (base_call (identifier) (arguments)))
+  (variable_statement (name) (base_call (identifier) (arguments)))
+  (variable_statement
+    (name)
+    (call (identifier) (arguments (base_call (identifier) (arguments))))))
+
+=====================================
+Function Calls
+=====================================
+
+hello()
+hello(world)
+hello("world")
+hello(1 + 1, "world")
+hello(hello())
+hello(hello("world"))
+
+---
+
+(source
+  (expression_statement (call (identifier) (arguments)))
+  (expression_statement (call (identifier) (arguments (identifier))))
+  (expression_statement (call (identifier) (arguments (string))))
+  (expression_statement (call (identifier) (arguments (binary_operator (integer) (integer)) (string))))
+  (expression_statement (call (identifier) (arguments (call (identifier) (arguments)))))
+  (expression_statement (call (identifier) (arguments (call (identifier) (arguments (string))))))
+)
+
+=====================================
+Attribute Accessors
+=====================================
+
+x.y
+x.y.z
+x.y.z()
+x.y().z
+x().y
+
+x.y[0]
+x[0].z
+x.y.z[0]
+x['s'].y.z[0]
+
+---
+
+(source
+  (expression_statement (attribute (identifier) (identifier)))
+  (expression_statement (attribute (identifier) (identifier) (identifier)))
+  (expression_statement (attribute (identifier) (identifier) (attribute_call (identifier) (arguments))))
+  (expression_statement (attribute (identifier) (attribute_call (identifier) (arguments)) (identifier)))
+  (expression_statement (attribute (call (identifier) (arguments)) (identifier)))
+
+  (expression_statement (attribute (identifier) (attribute_subscript (identifier) (integer))))
+  (expression_statement (attribute (subscript (identifier) (integer)) (identifier)))
+  (expression_statement (attribute (identifier) (identifier) (attribute_subscript (identifier) (integer))))
+  (expression_statement (attribute (subscript (identifier) (string)) (identifier) (attribute_subscript (identifier) (integer))))
+)
+
+=====================================
+Match Statements
+=====================================
+
+match x:
+    1: pass
+    _: pass
+    TYPE_ARRAY: pass
+    var new_var: pass
+
+    []: pass
+    [1, 3, "test", null]: pass
+    [var start, _]: pass
+    [42, ..]: pass
+
+    {}: pass
+    {"name": "Dennis"}: pass
+    {"name": "Dennis", "age": var age}: pass
+    {"key": "godotisawesome", ..}: pass
+
+    1, 2, 3: pass
+
+---
+
+(source
+  (match_statement (identifier) (match_body
+    (pattern_section (integer) (body (pass_statement)))
+    (pattern_section (underscore) (body (pass_statement)))
+    (pattern_section (identifier) (body (pass_statement)))
+    (pattern_section (pattern_binding (identifier)) (body (pass_statement)))
+
+    (pattern_section (pattern_array) (body (pass_statement)))
+    (pattern_section
+      (pattern_array (integer) (integer) (string) (null))
+      (body (pass_statement)))
+    (pattern_section
+      (pattern_array (pattern_binding (identifier)) (underscore))
+      (body (pass_statement)))
+    (pattern_section
+      (pattern_array (integer) (pattern_open_ending))
+      (body (pass_statement)))
+
+    (pattern_section (pattern_dictionary) (body (pass_statement)))
+    (pattern_section
+      (pattern_dictionary (pattern_pair (string) (string)))
+      (body (pass_statement)))
+    (pattern_section
+      (pattern_dictionary
+        (pattern_pair (string) (string))
+        (pattern_pair (string) (pattern_binding (identifier))))
+      (body (pass_statement)))
+    (pattern_section
+      (pattern_dictionary
+        (pattern_pair (string) (string))
+        (pattern_open_ending))
+      (body (pass_statement)))
+
+    (pattern_section
+      (integer)
+      (integer)
+      (integer)
+      (body (pass_statement))))))
+
+
+=====================================
+If Statements
+=====================================
+
+if true:
+  pass
+  if true:
+    if true:
+      pass
+  elif true:
+    pass
+elif true:
+  for i in array:
+    if null:
+      pass
+    else:
+      pass
+else:
+  pass
+
+---
+
+(source
+  (if_statement
+    (true)
+    (body
+      (pass_statement)
+      (if_statement
+        (true)
+        (body
+          (if_statement
+            (true)
+            (body
+              (pass_statement))))
+        (elif_clause
+          (true)
+          (body
+            (pass_statement)))))
+    (elif_clause
+      (true)
+      (body
+        (for_statement
+          (identifier)
+          (identifier)
+          (body
+            (if_statement
+              (null)
+              (body
+                (pass_statement))
+              (else_clause
+                (body
+                  (pass_statement))))))))
+    (else_clause
+      (body
+        (pass_statement)))))
+
+=====================================
+Signal Statements
+=====================================
+
+signal x
+signal x()
+signal x(a, b)
+
+signal x(a,)
+
+signal x(a: Type)
+signal x(a: Type,)
+signal x(a, b: Type)
+
+---
+
+(source
+  (signal_statement (name))
+  (signal_statement (name) (parameters))
+  (signal_statement (name) (parameters (identifier) (identifier)))
+  (signal_statement (name) (parameters (identifier)))
+  (signal_statement
+   (name)
+   (parameters
+    (typed_parameter
+     (identifier)
+     (type))))
+  (signal_statement
+   (name)
+   (parameters
+    (typed_parameter
+     (identifier)
+     (type))))
+  (signal_statement
+   (name)
+   (parameters
+    (identifier)
+    (typed_parameter
+     (identifier)
+     (type)))))
+
+=====================================
+Class Name
+=====================================
+
+class_name Name
+class_name Name, "icon"
+
+---
+
+(source
+  (class_name_statement (name))
+  (class_name_statement (name) (string)))
+
+=====================================
+Tool and Extend
+=====================================
+
+tool
+extends "class/path"
+extends "class/path".Attr
+extends "class/path".Attr.Attr
+extends Ident
+extends Ident.Attr
+extends Ident.Attr.Attr
+
+---
+(source
+  (tool_statement)
+  (extends_statement (string))
+  (extends_statement (string) (dotted_type (type)))
+  (extends_statement (string) (dotted_type (type) (type)))
+  (extends_statement (dotted_type (type)))
+  (extends_statement (dotted_type (type) (type)))
+  (extends_statement (dotted_type (type) (type) (type))))
+
+=====================================
+Inner Class
+=====================================
+
+class Name:
+  func hello(): pass
+
+class Name extends Type:
+  func hello(): pass
+
+class Name:
+  extends Type
+
+---
+
+(source
+  (class_definition (name)
+    (body
+      (function_definition (name) (parameters)
+        (body (pass_statement)))))
+  (class_definition (name) (extends_statement (dotted_type (type)))
+    (body
+      (function_definition (name) (parameters)
+        (body (pass_statement)))))
+  (class_definition (name)
+    (body
+      (extends_statement (dotted_type (type))))))
+
+============================================
+Enum declarations
+============================================
+
+enum Hello {
+  val1,
+  val2 = 5,
+  val3
+}
+
+enum {
+  val1,
+  val2 = 5,
+  val3
+}
+
+enum A {
+  val1 = 1,
+}
+
+---
+
+(source
+  (enum_definition (name)
+    (enumerator_list
+      (enumerator (identifier))
+      (enumerator (identifier) (integer))
+      (enumerator (identifier))))
+  (enum_definition
+    (enumerator_list
+      (enumerator (identifier))
+      (enumerator (identifier) (integer))
+      (enumerator (identifier))))
+  (enum_definition (name)
+    (enumerator_list
+      (enumerator (identifier) (integer)))))
+
+============================================
+Enumerator Expressions
+============================================
+
+enum {
+  A = 1 + 1,
+  B = Hello.World,
+  C = (Hello.World | 0xDEADBEEF),
+  D = int(true),
+  E = const_arr[0],
+  F = {one = 1},
+}
+
+---
+
+(source
+  (enum_definition
+    (enumerator_list
+      (enumerator (identifier) (binary_operator (integer) (integer)))
+      (enumerator (identifier) (attribute (identifier) (identifier)))
+      (enumerator (identifier) (parenthesized_expression (binary_operator (attribute (identifier) (identifier)) (integer))))
+      (enumerator (identifier) (call (identifier) (arguments (true))))
+      (enumerator (identifier) (subscript (identifier) (integer)))
+      (enumerator (identifier)) (ERROR (dictionary (pair (identifier) (integer)))))))

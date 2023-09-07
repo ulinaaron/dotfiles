@@ -1,0 +1,109 @@
+===
+declaration
+===
+struc	mytype
+
+	mt_long:	resd	1
+	mt_word:	resw	1
+	mt_byte:	resb	1
+	mt_str:		resb	32
+
+endstruc
+---
+(source_file
+  (struc_declaration
+    (word)
+    (struc_declaration_body
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal)))))
+===
+struc instance
+===
+mystruc:
+istruc	mytype
+
+	at mt_long,	dd	123456
+	at mt_word,	dw	1024
+	at mt_byte,	db	'x'
+	at mt_str,	db	'hello, world', 13, 10, 0
+
+iend
+---
+(source_file
+  (source_line
+    (label
+      (word)))
+  (struc_instance
+    (word)
+    (struc_instance_body
+      (word)
+      (pseudo_instruction_dx
+        (number_literal))
+      (word)
+      (pseudo_instruction_dx
+        (number_literal))
+      (word)
+      (pseudo_instruction_dx
+        (string_literal))
+      (word)
+      (pseudo_instruction_dx
+        (string_literal)
+        (number_literal)
+        (number_literal)
+        (number_literal)))))
+===
+declaration 2
+===
+struc mytype2
+
+mt_byte:
+	resb	1
+	alignb	2
+mt_word:
+	resw	1
+	alignb	4
+mt_long:
+	resd	1
+mt_str:
+	resb	32
+
+endstruc
+---
+(source_file
+  (struc_declaration
+    (word)
+    (struc_declaration_body
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (pseudo_instruction_alignx_macro
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (pseudo_instruction_alignx_macro
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal))
+      (label
+        (word))
+      (pseudo_instruction_resx
+        (number_literal)))))

@@ -1,0 +1,158 @@
+==================
+keep alive = yes
+==================
+
+TCPKeepAlive yes
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = Yes
+==================
+
+TCPKeepAlive Yes
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = true
+==================
+
+TCPKeepAlive true
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = True
+==================
+
+TCPKeepAlive True
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = no
+==================
+
+TCPKeepAlive no
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = No
+==================
+
+TCPKeepAlive No
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = false
+==================
+
+TCPKeepAlive false
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+keep alive = False
+==================
+
+TCPKeepAlive False
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+use irregular casing
+==================
+
+TCPKeEPAlive yes
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+can use equals sign
+==================
+
+TCPKeEPAlive=yes
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+can use equals sign with whitespace
+==================
+
+TCPKeEPAlive = yes
+
+---
+
+(client_config
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+can be specified after host
+==================
+
+Host example.com
+  TCPKeepAlive no
+
+---
+
+(client_config
+  (host
+    (host_value))
+  (tcp_keep_alive
+    (tcp_keep_alive_value)))
+
+==================
+detect invalid values
+==================
+
+TCPKeEPAlive ja
+
+---
+
+(client_config
+  (ERROR
+    (UNEXPECTED 'j')))

@@ -1,0 +1,518 @@
+================================================================================
+Simple pipeline
+================================================================================
+
+from employees
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))))
+
+================================================================================
+From with backticks
+================================================================================
+
+from `employees`
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))))
+
+================================================================================
+From with schema.table
+================================================================================
+
+from `employees.names`
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))))
+
+================================================================================
+Simple pipeline with tansform
+================================================================================
+
+from employees
+derive gross_salary
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (field
+            (identifier)))))))
+
+================================================================================
+Simple pipeline with tansform and sort
+================================================================================
+
+from employees
+derive gross_salary
+sort gross_salary
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (field
+            (identifier))))
+      (sorts
+        (keyword_sort)
+        (identifier)))))
+
+================================================================================
+Full example CTE
+================================================================================
+
+from e = employees
+derive gross_salary
+sort gross_salary
+take 10..100
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (field
+            (identifier))))
+      (sorts
+        (keyword_sort)
+        (identifier))
+      (takes
+        (keyword_take)
+        (range
+          (integer)
+          (integer))))))
+
+================================================================================
+Pipeline with aliased column select
+================================================================================
+
+from e = employees
+select e.first_name
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier)
+      (identifier))
+    (transforms
+      (select
+        (keyword_select)
+        (term
+          (field
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Pipeline with column select
+================================================================================
+
+from employees
+filter department == "Product"
+select [first_name, last_name]
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (field
+            (identifier))
+          (literal)))
+      (select
+        (keyword_select)
+        (term
+          (field
+            (identifier)))
+        (term
+          (field
+            (identifier)))))))
+
+================================================================================
+Lists
+================================================================================
+
+from numbers
+derive [x = 1, y = 2]
+derive [
+  a = x,
+  b = y
+]
+derive [
+  c = a,
+  d = b,
+]
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (literal
+              (integer))))
+        (term
+          (assignment
+            (field
+              (identifier))
+            (literal
+              (integer)))))
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (field
+              (identifier))))
+        (term
+          (assignment
+            (field
+              (identifier))
+            (field
+              (identifier)))))
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (field
+              (identifier))))
+        (term
+          (assignment
+            (field
+              (identifier))
+            (field
+              (identifier))))))))
+
+================================================================================
+Aggregates
+================================================================================
+
+from employees
+aggregate [
+  average salary,
+  ct = count
+]
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (aggregate
+        (keyword_aggregate)
+        (aggregate_operation
+          (keyword_average)
+          (field
+            (identifier)))
+        (assignment
+          (field
+            (identifier))
+          (field
+            (identifier)))))))
+
+================================================================================
+Comments
+================================================================================
+
+from employees # comment
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier)))
+  (comment))
+
+================================================================================
+Basic Example
+================================================================================
+from employees
+select [id, first_name, age]
+sort age
+take 10
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (select
+        (keyword_select)
+        (term
+          (field
+            (identifier)))
+        (term
+          (field
+            (identifier)))
+        (term
+          (field
+            (identifier))))
+      (sorts
+        (keyword_sort)
+        (identifier))
+      (takes
+        (keyword_take)
+        (integer)))))
+
+================================================================================
+Expressions
+================================================================================
+from track_plays
+derive [
+  finished = started + unfinished,
+  fin_share = finished / started,        # Use previous definitions
+  fin_ratio = fin_share / (1-fin_share), # BTW, hanging commas are optional!
+]
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (binary_expression
+              (field
+                (identifier))
+              (field
+                (identifier)))))
+        (term
+          (assignment
+            (field
+              (identifier))
+            (binary_expression
+              (field
+                (identifier))
+              (field
+                (identifier)))))
+        (comment)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (binary_expression
+              (field
+                (identifier))
+              (binary_expression
+                (literal
+                  (integer))
+                (field
+                  (identifier))))))
+        (comment)))))
+
+================================================================================
+Friendly Numbers
+================================================================================
+
+from invoices
+filter salary >= 1000_000
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (field
+            (identifier))
+          (literal
+            (integer)))))))
+
+================================================================================
+Expressions
+================================================================================
+
+from employees
+group role (
+  sort join_date
+  take 1
+)
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (group
+        (keyword_group)
+        (term
+          (field
+            (identifier)))
+        (sorts
+          (keyword_sort)
+          (identifier))
+        (takes
+          (keyword_take)
+          (integer))))))
+
+================================================================================
+Joins
+================================================================================
+from employees
+join b=benefits [==employee_id]
+join side:left p=positions [p.id==employees.employee_id]
+select [employees.employee_id, p.role, b.vision_coverage]
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (joins
+        (keyword_join)
+        (term
+          (identifier)
+          (identifier))
+        (conditions
+          (term
+            (field
+              (identifier)))))
+      (joins
+        (keyword_join)
+        (keyword_side)
+        (keyword_left)
+        (term
+          (identifier)
+          (identifier))
+        (conditions
+          (binary_expression
+            (field
+              (identifier)
+              (identifier))
+            (field
+              (identifier)
+              (identifier)))))
+      (select
+        (keyword_select)
+        (term
+          (field
+            (identifier)
+            (identifier)))
+        (term
+          (field
+            (identifier)
+            (identifier)))
+        (term
+          (field
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Null handling
+================================================================================
+from users
+filter last_login != null
+filter deleted_at == null
+derive channel = channel ?? "unknown"
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (field
+            (identifier))
+          (literal
+            (keyword_null))))
+      (filter
+        (keyword_filter)
+        (binary_expression
+          (field
+            (identifier))
+          (literal
+            (keyword_null))))
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (binary_expression
+              (field
+                (identifier))
+              (literal))))))))

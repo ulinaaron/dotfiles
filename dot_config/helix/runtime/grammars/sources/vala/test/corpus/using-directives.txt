@@ -1,0 +1,21 @@
+================
+Using directives
+================
+
+using A;
+using A.B;
+using global::A.B;
+using A, B;
+
+---
+
+(source_file
+ (using_directive
+  (symbol (identifier)))
+ (using_directive
+  (symbol (symbol (identifier)) (identifier)))
+ (using_directive
+  (symbol (symbol (identifier)) (identifier)))
+ (using_directive
+  (symbol (identifier))
+  (symbol (identifier))))

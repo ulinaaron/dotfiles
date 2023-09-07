@@ -1,0 +1,61 @@
+================================================================================
+F Strings
+================================================================================
+
+from invoices
+derive name = f"{c.last_name}, {c.first_name}"
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (derives
+        (keyword_derive)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (f_string)))))))
+
+================================================================================
+S Strings
+================================================================================
+
+from my_table
+select db_version = s"version()"
+
+--------------------------------------------------------------------------------
+
+(program
+  (pipeline
+    (from
+      (keyword_from)
+      (identifier))
+    (transforms
+      (select
+        (keyword_select)
+        (term
+          (assignment
+            (field
+              (identifier))
+            (s_string)))))))
+
+================================================================================
+S Strings functions
+================================================================================
+
+func average column -> s"AVG({column})"
+
+--------------------------------------------------------------------------------
+
+(program
+  (function_definition
+    (keyword_func)
+    (identifier)
+    (parameter
+      (identifier))
+    (s_string)))

@@ -1,0 +1,15 @@
+=========================================================
+Multiple declarations of variables(operation, expression)
+=========================================================
+
+a = 3;
+b = 3 * a;
+c = a + 3 * b;
+
+---
+
+(source_file
+  (expression (identifier) (factor (number)))
+  (expression (identifier) (operation (factor (number)) (factor (identifier))))
+  (expression (identifier) (operation (factor (identifier)) (factor (operation (factor (number)) (factor (identifier))))))
+)

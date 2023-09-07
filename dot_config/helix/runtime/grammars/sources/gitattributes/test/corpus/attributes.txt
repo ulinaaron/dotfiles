@@ -1,0 +1,140 @@
+==============
+quoted pattern
+==============
+
+"abc"
+
+---
+
+(document
+  (attributes_line
+    (quoted_pattern
+      (pattern
+        (pattern_char)
+        (pattern_char)
+        (pattern_char)))))
+    
+===
+set
+===
+
+abc attr
+
+---
+
+(document
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_set
+      (attribute))))
+
+=====
+unset
+=====
+
+abc -attr
+abc !attr
+
+---
+
+(document
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_unset
+      (attribute)))
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_unset
+      (attribute))))
+
+======
+set to
+======
+
+abc attr=va4l*u_e?
+
+---
+
+(document
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_set_to
+      (attribute)
+      (value))))
+
+================
+manpage examples
+================
+
+a*	foo !bar -baz
+
+# (in .gitattributes)
+abc	foo bar baz
+
+# (in t/.gitattributes)
+ab*	merge=filfre
+abc	-foo -bar
+*.c	frotz
+
+---
+
+(document
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (wildcard_chars))
+    (attribute_set
+      (attribute))
+    (attribute_unset
+      (attribute))
+    (attribute_unset
+      (attribute)))
+  (comment)
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_set
+      (attribute))
+    (attribute_set
+      (attribute))
+    (attribute_set
+      (attribute)))
+  (comment)
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (wildcard_chars))
+    (attribute_set_to
+      (attribute)
+      (value)))
+  (attributes_line
+    (pattern
+      (pattern_char)
+      (pattern_char)
+      (pattern_char))
+    (attribute_unset
+      (attribute))
+    (attribute_unset
+      (attribute)))
+  (attributes_line
+    (pattern
+      (wildcard_chars)
+      (pattern_char)
+      (pattern_char))
+    (attribute_set
+      (attribute))))

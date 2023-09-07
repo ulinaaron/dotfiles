@@ -1,0 +1,232 @@
+==================
+Non-empty list (unit/ListLitNonEmptyA.dhall)
+==================
+
+[x, y]
+
+---
+
+(expression
+  (primitive_expression
+    (list_literal
+      (expression (primitive_expression (identifier (label))))
+      (expression (primitive_expression (identifier (label)))))))
+
+==================
+Annotated non-empty list (unit/ListLitNonEmptyAnnotatedA.dhall)
+==================
+
+[x, y] : List T
+
+---
+
+(expression
+  (primitive_expression
+    (list_literal
+      (expression (primitive_expression (identifier (label))))
+      (expression (primitive_expression (identifier (label))))))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (identifier (label))))))
+
+==================
+Multi-line lists
+==================
+
+[ [
+    1,
+    2,
+    3,
+  ]
+, [
+  , 1
+  , 2
+  , 3
+  ]
+]
+
+---
+
+(expression (primitive_expression
+  (list_literal
+    (expression (primitive_expression
+      (list_literal
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+    (expression (primitive_expression
+      (list_literal
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))))
+
+==================
+Comments in lists
+==================
+
+[
+  1, -- item one
+{- foo -} 2, 3 ]
+
+---
+
+(expression (primitive_expression
+  (list_literal
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (line_comment (line_comment_prefix) (line_comment_content))
+    (block_comment
+      (block_comment_open)
+      (block_comment_content)
+      (block_comment_close))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))))
+
+==================
+List literal with a leading comma (unit/ListLitLeadingCommaA.dhall)
+==================
+
+[ , x, y ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+List literal with a trailing comma (unit/ListLitTrailingCommaA.dhall)
+==================
+
+[ x, y, ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+List literal with a leading and trailing comma (unit/ListLitTrailingAndLeadingCommasA.dhall)
+==================
+
+[ , x, y, ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+Empty list (unit/ListLitEmpty1A.dhall)
+==================
+
+[] : List T
+
+---
+
+(expression
+  (primitive_expression (list_literal))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (identifier (label))))))
+
+==================
+Empty list with a pre-defined type (unit/ListLitEmpty2A.dhall)
+==================
+
+[] : T
+
+---
+
+(expression
+  (primitive_expression (list_literal))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+Empty list with a comma (unit/ListLitEmptyCommaA.dhall)
+==================
+
+[ , ] : List Bool
+
+---
+
+(expression
+  (primitive_expression (list_literal))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (identifier (builtin))))))
+
+==================
+Empty list type operator precedence (unit/ListLitEmptyPrecedenceA.dhall)
+==================
+
+[] : List T U
+
+---
+
+(expression
+  (primitive_expression (list_literal))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))))
+
+==================
+Complex list (listA.dhall)
+==================
+
+[ [+1, +2, +3]
+, [+1, +2, +3] : List Integer
+, [] : List Integer
+]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression
+      (primitive_expression
+        (list_literal
+          (expression (primitive_expression
+            (numeric_literal (integer_literal))))
+          (expression (primitive_expression
+            (numeric_literal (integer_literal))))
+          (expression (primitive_expression
+            (numeric_literal (integer_literal)))))))
+    (expression
+      (primitive_expression
+        (list_literal
+          (expression (primitive_expression
+            (numeric_literal (integer_literal))))
+          (expression (primitive_expression
+            (numeric_literal (integer_literal))))
+          (expression (primitive_expression
+            (numeric_literal (integer_literal))))))
+      (type_operator)
+      type: (expression (application_expression
+        (primitive_expression (identifier (builtin)))
+        (primitive_expression (identifier (builtin))))))
+    (expression
+      (primitive_expression (list_literal))
+      (type_operator)
+      type: (expression (application_expression
+        (primitive_expression (identifier (builtin)))
+        (primitive_expression (identifier (builtin)))))))))

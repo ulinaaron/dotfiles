@@ -1,0 +1,738 @@
+================================================================================
+function calls
+================================================================================
+
+self()
+hd([a])
+tl([a])
+maps:get(date,DateTime)
+(fun (X) -> X end)(1).
+%% believe it or not these are valid:
+fun () -> X end().
+[ X || X <- Y ]().
+{erlang,apply}(src,dest).
+catch 42().
+?line X = 2.
+try
+    error
+catch
+    Reason ->
+        error
+after
+    After
+end(0).
+
+--------------------------------------------------------------------------------
+
+(source
+  (call
+    (atom)
+    (arguments))
+  (call
+    (atom)
+    (arguments
+      (list
+        (atom))))
+  (call
+    (atom)
+    (arguments
+      (list
+        (atom))))
+  (call
+    (atom)
+    (atom)
+    (arguments
+      (atom)
+      (variable)))
+  (call
+    (parenthesized_expression
+      (anonymous_function
+        (stab_clause
+          (arguments
+            (variable))
+          (variable))))
+    (arguments
+      (integer)))
+  (line_comment
+    (comment_content))
+  (call
+    (anonymous_function
+      (stab_clause
+        (arguments)
+        (variable)))
+    (arguments))
+  (call
+    (list
+      (binary_operator
+        (binary_operator
+          (variable)
+          (variable))
+        (variable)))
+    (arguments))
+  (call
+    (tuple
+      (atom)
+      (atom))
+    (arguments
+      (atom)
+      (atom)))
+  (unary_operator
+    (call
+      (integer)
+      (arguments)))
+  (unary_operator
+    (macro
+      (atom))
+    (binary_operator
+      (variable)
+      (integer)))
+  (call
+    (try
+      (atom)
+      (clause
+        (variable)
+        (atom))
+      (after
+        (variable)))
+    (arguments
+      (integer))))
+
+================================================================================
+local function call with no terminator newline
+================================================================================
+min(A, B)
+--------------------------------------------------------------------------------
+
+(source
+  (call
+    (atom)
+    (arguments
+      (variable)
+      (variable))))
+
+================================================================================
+remote function call with no terminator newline
+================================================================================
+erlang:min(A, B)
+--------------------------------------------------------------------------------
+
+(source
+  (call
+    (atom)
+    (atom)
+    (arguments
+      (variable)
+      (variable))))
+
+================================================================================
+case embedded in a function call
+================================================================================
+
+%% https://github.com/erlang/otp/blob/9e381125bbd93dfa2f17d4954b54aead749bf012/lib/kernel/test/inet_sockopt_SUITE.erl#L617-L621
+ipv6_v6only_open(Module, Opts) ->
+    Module:case Module of
+           gen_tcp -> listen;
+             _ -> open
+           end(0, [inet6|Opts]).
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (function
+    (function_clause
+      (atom)
+      (arguments
+        (variable)
+        (variable))
+      (call
+        (variable)
+        (case
+          (variable)
+          (clause
+            (atom)
+            (atom))
+          (clause
+            (variable)
+            (atom)))
+        (arguments
+          (integer)
+          (list
+            (binary_operator
+              (atom)
+              (variable))))))))
+
+================================================================================
+blocks
+================================================================================
+
+begin
+  _ = 1 + 1,
+  _ = 2 + 2
+end
+
+--------------------------------------------------------------------------------
+
+(source
+  (block
+    (binary_operator
+      (variable)
+      (binary_operator
+        (integer)
+        (integer)))
+    (binary_operator
+      (variable)
+      (binary_operator
+        (integer)
+        (integer)))))
+
+================================================================================
+comprehensions
+================================================================================
+
+%% Comprehensions are parsed very simply by treating '||' as a (right-assoc)
+%% binary operator.
+%% We could structure this rule more and make syntax assertions about the
+%% generator(s) and qualifier(s) but I don't really see a point.
+[ X * 2 || X <- [1, 2, 3]]
+<< << (X * 2) >> || << X >> <= << 1, 2, 3 >> >>
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (line_comment
+    (comment_content))
+  (list
+    (binary_operator
+      (binary_operator
+        (binary_operator
+          (variable)
+          (integer))
+        (variable))
+      (list
+        (integer)
+        (integer)
+        (integer))))
+  (bitstring
+    (binary_operator
+      (binary_operator
+        (bitstring
+          (parenthesized_expression
+            (binary_operator
+              (variable)
+              (integer))))
+        (bitstring
+          (variable)))
+      (bitstring
+        (integer)
+        (integer)
+        (integer)))))
+
+================================================================================
+if
+================================================================================
+
+if
+  X > Y -> X;
+  X =< Y -> Y
+end.
+
+if X =:= ok; Y =:= ok -> ok; true -> error end.
+
+--------------------------------------------------------------------------------
+
+(source
+  (if
+    (clause
+      (guard
+        (binary_operator
+          (variable)
+          (variable)))
+      (variable))
+    (clause
+      (guard
+        (binary_operator
+          (variable)
+          (variable)))
+      (variable)))
+  (if
+    (clause
+      (guard
+        (binary_operator
+          (variable)
+          (atom))
+        (binary_operator
+          (variable)
+          (atom)))
+      (atom))
+    (clause
+      (guard
+        (atom))
+      (atom))))
+
+================================================================================
+case
+================================================================================
+
+case Var of
+  {ok, X} when is_integer(X) -> X;
+  {error, Reason} -> {error, Reason}
+end
+
+--------------------------------------------------------------------------------
+
+(source
+  (case
+    (variable)
+    (clause
+      (tuple
+        (atom)
+        (variable))
+      (guard
+        (call
+          (atom)
+          (arguments
+            (variable))))
+      (variable))
+    (clause
+      (tuple
+        (atom)
+        (variable))
+      (tuple
+        (atom)
+        (variable)))))
+
+================================================================================
+receive
+================================================================================
+
+receive
+  ok ->
+    ok;
+  timeout ->
+    error
+end.
+
+receive
+  ok ->
+    ok
+after
+  5_000 -> error
+end.
+
+receive
+after
+  0 -> ok
+end.
+
+--------------------------------------------------------------------------------
+
+(source
+  (receive
+    (clause
+      (atom)
+      (atom))
+    (clause
+      (atom)
+      (atom)))
+  (receive
+    (clause
+      (atom)
+      (atom))
+    (after
+      (integer)
+      (atom)))
+  (receive
+    (after
+      (integer)
+      (atom))))
+
+================================================================================
+try
+================================================================================
+
+try Expr
+catch
+  Pattern when Guard -> ok
+end.
+
+try Expr of
+  Pattern when Guard -> ok
+after
+  error
+end.
+
+try
+  Expr,
+  Expr1
+of
+  Pattern when Guard -> ok
+end.
+
+try Expr
+catch
+  throw:Thrown -> Thrown;
+  exit:_Reason -> exit;
+  error:{error,Reason}:Stacktrace -> Stacktrace
+end.
+
+try Expr of
+  _ -> ?MACRO
+catch
+  _:_ -> erlang:error(badarg)
+end.
+
+--------------------------------------------------------------------------------
+
+(source
+  (try
+    (variable)
+    (clause
+      (variable)
+      (guard
+        (variable))
+      (atom)))
+  (try
+    (variable)
+    (clause
+      (variable)
+      (guard
+        (variable))
+      (atom))
+    (after
+      (atom)))
+  (try
+    (body
+      (variable)
+      (variable))
+    (clause
+      (variable)
+      (guard
+        (variable))
+      (atom)))
+  (try
+    (variable)
+    (clause
+      (binary_operator
+        (atom)
+        (variable))
+      (variable))
+    (clause
+      (binary_operator
+        (atom)
+        (variable))
+      (atom))
+    (clause
+      (binary_operator
+        (binary_operator
+          (atom)
+          (tuple
+            (atom)
+            (variable)))
+        (variable))
+      (variable)))
+  (try
+    (variable)
+    (clause
+      (variable)
+      (macro
+        (variable)))
+    (clause
+      (binary_operator
+        (variable)
+        (variable))
+      (call
+        (atom)
+        (atom)
+        (arguments
+          (atom))))))
+
+================================================================================
+unary operators
+================================================================================
+
+-1,
+-2.3e-3,
+not true,
+-1 + 2,
+2 + -1,
+false or not true,
+catch throw(bye).
+
+--------------------------------------------------------------------------------
+
+(source
+  (integer)
+  (float)
+  (unary_operator
+    (atom))
+  (binary_operator
+    (integer)
+    (integer))
+  (binary_operator
+    (integer)
+    (integer))
+  (binary_operator
+    (atom)
+    (unary_operator
+      (atom)))
+  (unary_operator
+    (call
+      (atom)
+      (arguments
+        (atom)))))
+
+================================================================================
+macros
+================================================================================
+
+?MODULE,
+#?MODULE{},
+?MIN(2, 3).
+
+?MODULE() ->
+    ok.
+
+?assert(true)() ->
+    ok.
+
+?assertMatch({foo, N} when N > 0, {foo, 1}).
+%% testing precedence against the unaries:
+?assertMatch(not {foo, N} when N > 0, {foo, 1}).
+?assertMatch(?NOT {foo, N} when N > 0, {foo, 1}).
+
+--------------------------------------------------------------------------------
+
+(source
+  (macro
+    (variable))
+  (record
+    (macro
+      (variable)))
+  (macro
+    (variable)
+    (arguments
+      (integer)
+      (integer)))
+  (function
+    (function_clause
+      (macro
+        (variable))
+      (arguments)
+      (atom)))
+  (function
+    (function_clause
+      (macro
+        (atom)
+        (arguments
+          (atom)))
+      (arguments)
+      (atom)))
+  (macro
+    (atom)
+    (arguments
+      (binary_operator
+        (tuple
+          (atom)
+          (variable))
+        (binary_operator
+          (variable)
+          (integer)))
+      (tuple
+        (atom)
+        (integer))))
+  (line_comment
+    (comment_content))
+  (macro
+    (atom)
+    (arguments
+      (binary_operator
+        (unary_operator
+          (tuple
+            (atom)
+            (variable)))
+        (binary_operator
+          (variable)
+          (integer)))
+      (tuple
+        (atom)
+        (integer))))
+  (function
+    (macro
+      (atom)
+      (arguments
+        (unary_operator
+          (macro
+            (variable))
+          (binary_operator
+            (tuple
+              (atom)
+              (variable))
+            (binary_operator
+              (variable)
+              (integer))))
+        (tuple
+          (atom)
+          (integer))))))
+
+================================================================================
+pound operator
+================================================================================
+
+%% yep, this is syntactically valid.
+<<>>#{a=>b}
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (binary_operator
+    (bitstring)
+    (map_update
+      (map_content
+        (binary_operator
+          (atom)
+          (atom))))))
+
+================================================================================
+maybe block (EEP49)
+================================================================================
+
+%% source: https://www.erlang.org/eeps/eep-0049#specification
+
+maybe
+    Foo = bar(),            % normal exprs still allowed
+    {ok, X} ?= f(Foo),
+    [H|T] ?= g([1,2,3])
+else
+    {error, Y} ->
+        {ok, "default"};
+    {ok, _Term} ->
+        {error, "unexpected wrapper"}
+end
+
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (maybe
+    (body
+      (binary_operator
+        (variable)
+        (call
+          (atom)
+          (arguments)))
+      (comment
+        (comment_content))
+      (binary_operator
+        (tuple
+          (atom)
+          (variable))
+        (call
+          (atom)
+          (arguments
+            (variable))))
+      (binary_operator
+        (list
+          (binary_operator
+            (variable)
+            (variable)))
+        (call
+          (atom)
+          (arguments
+            (list
+              (integer)
+              (integer)
+              (integer))))))
+    (clause
+      (tuple
+        (atom)
+        (variable))
+      (tuple
+        (atom)
+        (string
+          (quoted_content))))
+    (clause
+      (tuple
+        (atom)
+        (variable))
+      (tuple
+        (atom)
+        (string
+          (quoted_content))))))
+
+================================================================================
+maybe block (EEP49) associativity
+================================================================================
+
+%% > the ?= operator should have associativity rules lower than =
+maybe
+    X = [H|T] ?= exp()
+end
+
+--------------------------------------------------------------------------------
+
+(source
+  (line_comment
+    (comment_content))
+  (maybe
+    (binary_operator
+      (binary_operator
+        (variable)
+        (list
+          (binary_operator
+            (variable)
+            (variable))))
+      (call
+        (atom)
+        (arguments)))))
+
+================================================================================
+Multi-line anonymous function within larger expression
+================================================================================
+{foo(bar),
+ fun() ->
+     Foo = foo(bar),
+     Foo = foo(bar),
+     ?assert(foo)
+ end()}
+--------------------------------------------------------------------------------
+
+(source
+  (tuple
+    (call
+      (atom)
+      (arguments
+        (atom)))
+    (call
+      (anonymous_function
+        (stab_clause
+          (arguments)
+          (body
+            (binary_operator
+              (variable)
+              (call
+                (atom)
+                (arguments
+                  (atom))))
+            (binary_operator
+              (variable)
+              (call
+                (atom)
+                (arguments
+                  (atom))))
+            (macro
+              (atom)
+              (arguments
+                (atom))))))
+      (arguments))))

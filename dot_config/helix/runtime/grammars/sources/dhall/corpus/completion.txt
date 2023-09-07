@@ -1,0 +1,13 @@
+==================
+Spaces around completion (unit/CompletionA.dhall)
+==================
+
+T :: r
+
+---
+
+(expression
+  (completion
+    type: (primitive_expression (identifier (label)))
+    (completion_operator)
+    (primitive_expression (identifier (label)))))
