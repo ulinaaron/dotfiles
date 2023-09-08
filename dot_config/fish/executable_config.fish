@@ -9,13 +9,14 @@ fish_add_path -g ~/.cargo/bin
 fish_add_path -g /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
 fish_add_path -g /opt/homebrew/bin/lua
 fish_add_path -g ~/.config/emacs/bin
-fish_add_path -g ~/.config/nnn/scripts
 fish_add_path -g /opt/local/bin
 fish_add_path -g /Users/aaronmazade/.npm-global/lib/node_modules
 fish_add_path -g ~/.config/scripts
 
 set -gx VISUAL helix-ide
 set -gx EDITOR helix-ide
+set -gx OEDITOR ewrap
+set -gx OVISUAL ewrap
 set -gx COLORTERM truecolor
 set -gx DEFAULT_USER $USER
 
@@ -38,20 +39,20 @@ starship init fish | source
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # eval (zellij setup --generate-auto-start fish | string collect)
-
-    export NNN_OPENER=nuke
-    export NNN_PLUG='v:imgview;r:renamer;t:-!~/.config/nnn/scripts/helix-open $PWD/$nnn'
-    export NNN_FCOLORS='0404040000000600010F0F02'
-
 end
 
 ### Functions / Aliases
 alias zshconfig="hx ~/.zshrc"
-alias editor="zellij --layout editor"
-alias zj="zellij"
+alias editor="helix-ide"
+alias notes="helix-notes"
+alias chez="chezmoi"
 alias j="jump"
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-alias fishconfig="hx ~/.config/fish/config.fish"
-alias chezfig="cd ~/.local/share/chezmoi/dot_files"
+
+alias config_fish="chezmoi edit ~/.config/fish/config.fish"
+alias config_hx="chezmoi edit ~/.config/helix/config.toml"
+alias config_zellij="chezmoi edit ~/.config/zellij/config.kdl"
+
+alias chezfig="cd ~/.local/share/chezmoi/dot_config"
 alias litexl='"/Applications/Lite XL.app/Contents/MacOS/lite-xl" &; disown'
 alias prag='"/Applications/Pragtical.app/Contents/MacOS/pragtical" &; disown'

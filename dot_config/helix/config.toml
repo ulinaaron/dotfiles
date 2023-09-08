@@ -79,6 +79,7 @@ C-f = "search"
 C-F = "global_search"
 
 C-n = ":new"
+C-q = ":q"
 
 "C-]" = "indent"
 "C-[" = "unindent"
@@ -113,15 +114,15 @@ C-S-right = "goto_line_end"
 
 [keys.normal.space.c]
 # Configurations 
-r = ":config-reload"
-o = ":config-open"
-l = ":o ~/.config/helix/languages.toml"
+r = [":sh chezmoi apply", ":config-reload"]
+o = ":o ~/.local/share/chezmoi/dot_config/helix/config.toml"
+l = ":o ~/.local/share/chezmoi/dot_config/helix/languages.toml"
 i = ":indent-style 2"
 
 [keys.insert]
 esc = ["collapse_selection", "normal_mode"]
 C-D = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "paste_clipboard_after"]
-C-s = ":write"
+C-s = [":write", "normal_mode"]
 C-z = "undo"
 C-Z = "redo"
 C-P = "command_mode"
@@ -159,7 +160,7 @@ C-x = ["yank_main_selection_to_clipboard", "delete_selection_noyank"]
 C-v = "paste_clipboard_after"
 C-V = "paste_clipboard_before"
 C-a = "select_all"
-C-s = ":write"
+C-s = [":write", "normal_mode"]
 C-z = "undo"
 C-Z = "redo"
 "C-P" = "command_mode"
