@@ -1,3 +1,15 @@
+# Greeting
+# Replace default Fish greeting with Neofetch
+function fish_greeting
+    neofetch
+end
+
+# Use startship for prompt
+starship init fish | source
+
+# asdf
+source "$(brew --prefix asdf)/libexec/asdf.fish"
+
 # Paths
 fish_add_path -g ~/bin ~/usr/local/bin ~/.npm-global/bin /Applications/Lite\ XL.app/Contents/MacOS/lite-xl
 fish_add_path -g /opt/homebrew /opt/homebrew/bin/lua ~/.local/bin ~/.emacs.d
@@ -20,34 +32,14 @@ set -gx OVISUAL ewrap
 set -gx COLORTERM truecolor
 set -gx DEFAULT_USER $USER
 
-if status is-login
-    ssh-add ~/.ssh/id_rsa 2>/dev/null
-end
-
-function fish_greeting
-    neofetch
-end
-
-# Use startship for prompt
-starship init fish | source
-
-# if set -q ZELLIJ
-# else
-#   zellij
-# end
-
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-    # eval (zellij setup --generate-auto-start fish | string collect)
-end
+#if status is-login
+#    ssh-add ~/.ssh/id_rsa 2>/dev/null
+#end
 
 ### Functions / Aliases
-alias zshconfig="hx ~/.zshrc"
 alias editor="helix-ide"
 alias notes="helix-notes"
 alias chez="chezmoi"
-alias j="jump"
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 
 alias config_fish="chezmoi edit ~/.config/fish/config.fish"
 alias config_hx="chezmoi edit ~/.config/helix/config.toml"
