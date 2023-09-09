@@ -50,7 +50,7 @@ gui:
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
-  border: 'single' # one of 'single' | 'double' | 'rounded' | 'hidden'
+  border: 'hidden' # one of 'single' | 'double' | 'rounded' | 'hidden'
   animateExplosion: true # shows an explosion animation when nuking the working tree
 git:
   paging:
@@ -108,7 +108,7 @@ promptToReturnFromSubprocess: true # display confirmation when subprocess termin
 keybinding:
   universal:
     quit: 'q'
-    quit-alt1: '<c-c>' # alternative/alias of quit
+    quit-alt1: '<c-q>' # alternative/alias of quit
     return: '<esc>' # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory: 'Q'
     togglePanel: '<tab>' # goto the next panel

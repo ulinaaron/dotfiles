@@ -48,6 +48,7 @@ auto-format = true
 
 [[language]]
 name = "toml"
+file-types = ["toml", "toml.tmpl"]
 auto-format = true
 
 [[language]]
