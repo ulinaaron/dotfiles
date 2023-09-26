@@ -1,0 +1,9 @@
+wsl = false
+multigrid = false
+vsync = true
+maximized = false
+srgb = false
+idle = true
+neovim_bin = "/opt/homebrew/bin/nvim"
+frame = "Full"
+

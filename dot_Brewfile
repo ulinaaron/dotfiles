@@ -1,0 +1,78 @@
+# -*-mode:ruby-*- vim:ft=ruby
+
+# ~/.Brewfile
+# =============================================================================
+# Project dependencies installed using `brew bundle` or `~/dotfiles.sh`.
+#
+# See https://github.com/Homebrew/homebrew-bundle
+
+tap "homebrew/cask-fonts"
+tap "buo/cask-upgrade"
+tap "homebrew/services"
+
+brew "asdf"                                 # Extendable version manager
+brew "autoconf"                             # Configuration shell script maker
+brew "bash"                                 # Bourne again shell
+brew "bash-completion"                      # Autocompletions for `bash`
+brew "bat"
+brew "chezmoi"                              # Chezmoi dotfiles manager
+brew "colordiff"                            # Colour-highlighted diff output
+brew "direnv"                               # Directory specific env variables
+# brew "ddev"                                 # Local web env
+brew "fish"                                 # My preferred shell
+brew "fisher"                               # Fish pkg mngr
+brew "flake8"                               # Python style guide enforcer
+brew "fswatch"                              # File change monitor
+brew "geoip"                                # Geographic IP lookup
+brew "git-delta"                            # Git diff tool
+brew "gnupg"                                # GNU privacy guard
+brew "htop"                                 # Interactive system-monitor
+#brew "graphicsmagick"                      # GraphicsMagick image processor
+#brew "imagemagick"                         # ImageMagick image processor
+brew "jpegoptim"                            # JPEG compressor/optimizer
+brew "lua"                                  # Lua programming lang
+brew "lua-language-server"                  # Lua LSP
+brew "luajit"                               # Just-in-time compiler for Lua
+brew "luarocks"                             # Lua pkg mngr
+brew "less"                                 # Terminal pager
+brew "lesspipe"                             # Input filter for `less`
+brew "micro"                                # Micro text editor
+brew "nano"                                 # Nano text editor
+brew "xwmx/taps/nb"                         # Terminal notes / markdown
+brew "node"                                 # NodeJS
+brew "npm"                                  # Node package manager
+#brew "optipng"                             # PNG compressor/optimizer
+brew "tidy-html5"                           # HTML corrector
+brew "neofetch"                             # System information tool
+brew "php-code-sniffer"                     # PHP coding standard validator
+brew "phpmd"                                # PHP mess detector
+brew "phpunit"                              # PHP unit testig framework
+brew "pipenv"                               # Python packaging tool
+brew "pyenv"                                # Python version manager
+brew "pyenv-virtualenv"                     # virtualenv and conda manager
+brew "ruby-build"                           # Ruby version managger
+brew "rbenv"                                # Ruby environment manager
+brew "ripgrep"                              # Recursive Regex search tool
+brew "rsync"                                # File transfer and sync tool
+brew "screenfetch"                          # Screenshot information tool
+brew "hudochenkov/sshpass/sshpass"
+brew "starship"                             # Starship cross-shell prompt
+brew "tree-sitter"                          # Semantic highlighter
+brew "unison"                               # Unison file synchronizer
+brew "w3m"
+brew "wget"                                 # Web content downloader
+brew "yarn"
+brew "zellij"                               # Multiplexor of choice
+brew "zoxide"
+
+cask "alacritty"
+cask "1password"
+cask "1password-cli"
+cask "arc"
+cask "lapce"
+cask "raycast"
+cask "slack"
+cask "zed"
+
+cask "font-fira-code-nerd-font"              # Fira Code Nerd Font
+cask "font-hasklug-nerd-font"                # Hasklug Mono Nerd Font

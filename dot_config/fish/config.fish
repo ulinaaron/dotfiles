@@ -22,10 +22,12 @@ if status is-login
     fish_add_path -g ~/.cargo/bin
     fish_add_path -g /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
     fish_add_path -g /opt/homebrew/bin/lua
+    fish_add_path -g /opt/homebrew/bin
     fish_add_path -g ~/.config/emacs/bin
     fish_add_path -g /opt/local/bin
     fish_add_path -g /Users/aaronmazade/.npm-global/lib/node_modules
     fish_add_path -g ~/.config/scripts
+    fish_add_path -g /Users/aaronmazade/Apps/vimr
 
     set -gx VISUAL helix-ide
     set -gx EDITOR helix-ide
@@ -37,6 +39,7 @@ if status is-login
     # ssh-add ~/.ssh/id_rsa 2>/dev/null
     abbr list 'exa -ha --long --grid  --group-directories-first --git --icons'
     abbr fresh 'source ~/.config/fish/config.fish'
+    abbr cp_ssh 'cat ~/.ssh/id_rsa.pub | pbcopy'
 
     ### Functions / Aliases
     alias editor="helix-ide"

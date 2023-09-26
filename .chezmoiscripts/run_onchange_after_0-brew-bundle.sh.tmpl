@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Ensure Homebrew env is set
+eval "$({{ template "homebrew-prefix" . }}/bin/brew shellenv)"
+
+printf '\nInstall Homebrew bundle\n\n'
+
+# dot_Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+if ! brew bundle check --global >/dev/null 2>&1; then
+  brew bundle --global --no-upgrade --verbose
+fi
