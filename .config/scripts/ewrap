@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+FILENAME=$1
+# SECOND=$2
+zellij action go-to-tab-name "Editor"
+zellij action focus-next-pane
+zellij action write-chars ":o $1"
+zellij action write 13
+# zellij action focus-previous-pane
+# zellij action write 13
+# zellij action focus-previous-pane

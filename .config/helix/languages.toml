@@ -1,0 +1,61 @@
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+# formatter = { command = "prettier_d_slim", args = [
+#   "--stdin",
+#   "--stdin-filepath files.ts",
+# ] }
+
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "jsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "json"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "php"
+scope = "source.php"
+injection-regex = "php"
+file-types = ["php", "inc", "tpl"]
+shebangs = ["php"]
+roots = ["composer.json", "index.php"]
+language-server = { command = "intelephense", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "bash"
+auto-format = true
+
+[[language]]
+name = "rust"
+auto-format = true
+
+[[language]]
+name = "toml"
+file-types = ["toml", "toml.tmpl"]
+auto-format = true
+
+[[language]]
+name = "nix"
+auto-format = true
+formatter = { command = "alejandra" }
+
+[[language]]
+name = "hcl"
+auto-format = true

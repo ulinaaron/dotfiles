@@ -1,0 +1,84 @@
+color0 = "#241e36"
+color1 = "#fdaa9b"
+color2 = "#bfd286"
+color3 = "#efc876"
+color4 = "#97c1f2"
+color5 = "#c4b5f4"
+color6 = "#93ddbb"
+color7 = "#d4cbf3"
+color8 = "#665e7e"
+color9 = "#ffccc3"
+color10 = "#d7ea9b"
+color11 = "#ffe2a6"
+color12 = "#b8d8ff"
+color13 = "#dbd0ff"
+color14 = "#aff5d4"
+color15 = "#ebe5ff"
+color16 = "#88d1b0"
+color17 = "#f8c379"
+color18 = "#3f3854"
+color19 = "#595270"
+color20 = "#b0a7cc"
+color21 = "#ebe5ff"
+color22 = "#536127"
+color52 = "#7b4137"
+color231 = "#ffffff"
+color232 = "#161027"
+color233 = "#211b33"
+color234 = "#2c263f"
+color235 = "#36304a"
+color236 = "#413a56"
+color237 = "#4b4461"
+color238 = "#554e6c"
+color239 = "#5f5876"
+color240 = "#696181"
+color241 = "#736b8c"
+color242 = "#7d7596"
+color243 = "#867ea0"
+color244 = "#9088ab"
+color245 = "#9a91b5"
+color246 = "#a39bbf"
+color247 = "#ada4c9"
+color248 = "#b6add3"
+color249 = "#c0b7dd"
+color250 = "#c9c0e7"
+color251 = "#d2c9f1"
+color252 = "#dcd2fb"
+color253 = "#e5ddff"
+color254 = "#ede8ff"
+color255 = "#f5f3ff"
+
+[colors]
+ansi = [
+    '#241e36',
+    '#7b4137',
+    '#536127',
+    '#efc876',
+    '#97c1f2',
+    '#c4b5f4',
+    '#93ddbb',
+    '#b0a7cc',
+]
+background = '#241e36'
+brights = [
+    '#595270',
+    '#fdaa9b',
+    '#d7ea9b',
+    '#ffe2a6',
+    '#b8d8ff',
+    '#dbd0ff',
+    '#aff5d4',
+    '#ede8ff',
+]
+cursor_bg = '#b0a7cc'
+cursor_border = '#b0a7cc'
+cursor_fg = '#ede8ff'
+foreground = '#b0a7cc'
+selection_bg = '#161027'
+selection_fg = '#ede8ff'
+
+[colors.indexed]
+
+[metadata]
+name = 'Varix'
+

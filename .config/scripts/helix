@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+FILENAME=$1
+hx $1

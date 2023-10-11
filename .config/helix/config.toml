@@ -1,0 +1,194 @@
+theme = "catppuccin_light"
+
+[editor]
+# line-number = "relative"
+cursorline = true
+auto-save = false
+auto-format = true
+color-modes = true
+cursorcolumn = false
+bufferline = "multiple"
+mouse = true
+true-color = true
+rulers = [80]
+shell = ["fish", "-c"]
+
+[editor.whitespace.render]
+space = "none"
+nbsp = "none"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = true
+character = "▏"
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 10 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 40
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-inlay-hints = true
+# Disable automatically popups of signature parameter help
+auto-signature-help = true
+# Show LSP messages in the status line
+display-messages = true
+
+[keys.normal]
+# Escape selections as expected
+esc = ["collapse_selection", "keep_primary_selection"]
+C-D = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "paste_clipboard_after"]
+C-c = "yank_main_selection_to_clipboard"
+C-x = ["yank_main_selection_to_clipboard", "delete_selection_noyank"]
+C-v = "paste_clipboard_after"
+C-V = "paste_clipboard_before"
+C-a = "select_all"
+C-s = ":write"
+C-z = "undo"
+C-Z = "redo"
+"C-P" = "command_mode"
+C-p = "file_picker"
+"C-/" = "toggle_comments"
+
+C-d = "no_op"
+
+backspace = "insert_mode"
+C-f = "search"
+C-F = "global_search"
+
+C-n = ":new"
+C-q = ":q"
+
+"C-]" = "indent"
+"C-[" = "unindent"
+
+A-e = ":sh zellij action focus-previous-pane"
+
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+#Buffer Navigation
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
+
+# Search for word under cursor
+"*" = [
+  "move_char_right",
+  "move_prev_word_start",
+  "move_next_word_end",
+  "search_selection",  
+  "search_next",
+]
+
+S-up =   [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down" ]
+
+C-S-down = "goto_last_line"
+C-S-up = "goto_file_start"
+C-S-left = "goto_line_start"
+C-S-right = "goto_line_end"
+
+[keys.normal.space.c]
+# Configurations 
+r = [":sh chezmoi apply", ":config-reload"]
+o = ":o ~/.local/share/chezmoi/dot_config/helix/config.toml"
+l = ":o ~/.local/share/chezmoi/dot_config/helix/languages.toml"
+i = ":indent-style 2"
+
+[keys.insert]
+esc = ["collapse_selection", "normal_mode"]
+C-D = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "paste_clipboard_after"]
+C-s = [":write", "normal_mode"]
+C-z = "undo"
+C-Z = "redo"
+C-P = "command_mode"
+"C-/" = "toggle_comments"
+
+"C-]" = "indent"
+"C-[" = "unindent"
+
+# VSCode-like auto-completeion (pretty much all IDEs do it on C-space)
+"C-space" = "completion"
+
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+#Buffer Navigation
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
+
+C-S-down = "goto_last_line"
+C-S-up = "goto_file_start"
+C-S-left = "goto_line_start"
+C-S-right = "goto_line_end"
+
+S-up =   [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down"]
+
+[keys.select]
+# Escape selections as expected
+esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
+C-D = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "paste_clipboard_after"]
+C-c = "yank_main_selection_to_clipboard"
+C-x = ["yank_main_selection_to_clipboard", "delete_selection_noyank"]
+C-v = "paste_clipboard_after"
+C-V = "paste_clipboard_before"
+C-a = "select_all"
+C-s = [":write", "normal_mode"]
+C-z = "undo"
+C-Z = "redo"
+"C-P" = "command_mode"
+C-p = "file_picker"
+"C-/" = "toggle_comments"
+
+backspace = "insert_mode"
+C-f = "search"
+C-F = "global_search"
+
+C-n = ":new"
+
+"C-]" = "indent"
+"C-[" = "unindent"
+
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+#Buffer Navigation
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
+
+C-S-down = "goto_last_line"
+C-S-up = "goto_file_start"
+C-S-left = "goto_line_start"
+C-S-right = "goto_line_end"
+
+S-up = [ "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up", "move_visual_line_up" ] 
+S-down = [ "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down", "move_visual_line_down" ]

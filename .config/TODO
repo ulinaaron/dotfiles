@@ -1,0 +1,12 @@
+- [] Shortcut from Zellij and minor mode for git in helix
+- [] When selecting text with mouse in Helix, backspace, or delete key deletes selection
+	- [] unbind D
+- [] double clicking a word highlights the word
+- [] Ctrl D multi cursors all matching selections one at a time
+- [] Copying and pasting should be normal
+- [] Remove extra stuff in NNN
+- [] Write a Zellij plugin for detecting npm tasks and sending them to a console
+- [] Dashboard tab of all recent projects and bookmarked projects
+- [] Shift up or down jumps 10 lines
+- [] Fix nuke for json files opening up
+- [] Fix nuke for images
