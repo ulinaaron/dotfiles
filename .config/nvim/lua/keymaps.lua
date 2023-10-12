@@ -144,6 +144,11 @@ if is_available "telescope.nvim" then
   maps.n["<leader>f'"] = { function() require("telescope.builtin").marks() end, desc = "Find marks" }
   maps.n["<leader>f/"] =
   { function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Find words in current buffer" }
+  maps.n["<leader>fB"] = { '<cmd>Telescope file_browser<CR>', desc = "File Browser (RD)" }
+  maps.n["<leader>fb"] = {
+    '<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>',
+    desc = "File Browser (CWD)"
+  }
   maps.n["<leader>vb"] = { function() require("telescope.builtin").buffers() end, desc = "View Buffers" }
   maps.n["<leader>fc"] = { function() require("telescope.builtin").grep_string() end, desc = "Find word under cursor" }
   maps.n["<leader>vc"] = { function() require("telescope.builtin").commands() end, desc = "View Commands" }

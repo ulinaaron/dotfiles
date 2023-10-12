@@ -10,10 +10,20 @@ local M = {
     }, {
     "ahmedkhalf/project.nvim",
   },
-    { 'nvim-telescope/telescope-fzf-native.nvim',
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
       build =
-      'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+      'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      event = "Bufenter"
+    },
   },
+  config = function()
+    require("telescope").load_extension "file_browser"
+  end
+
 }
 
 -- local actions = require "telescope.actions"
@@ -31,6 +41,21 @@ M.opts = {
       --   ["<C-j>"] = actions.move_selection_next,
       --   ["<C-k>"] = actions.move_selection_previous,
       -- },
+    },
+  },
+  extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
     },
   },
 }
