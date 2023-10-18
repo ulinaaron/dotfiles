@@ -3,3 +3,4 @@ misc
 #LICENSE
 ^/.*\.org
 .DS_Store
+\.tmux

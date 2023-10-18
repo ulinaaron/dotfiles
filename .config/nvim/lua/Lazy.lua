@@ -28,6 +28,18 @@ require("lazy").setup({
     commit = "724bd53adfbaf32e129b001658b45d4c5c29ca1a"
   },
   {
+    'DanielWeidinger/nvim-sshfs',
+    event = "VeryLazy",
+    config = function()
+      require("sshfs").setup {
+        mnt_base_dir = vim.fn.expand("$HOME"),
+        width = 0.6, -- host window width
+        height = 0.5, -- host window height
+        connection_icon = "✓", -- icon for connection indication
+      }
+    end
+  },
+  {
     "mrjones2014/smart-splits.nvim",
     opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
   },

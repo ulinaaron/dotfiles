@@ -75,7 +75,7 @@ function M.config()
       lualine_c = {
         { "fancy_cwd", substitute_home = true }
       },
-      lualine_x = { "fancy_diagnostics", "fancy_filetype" },
+      lualine_x = { "overseer", "fancy_diagnostics", "fancy_filetype" },
       lualine_y = { spaces },
       lualine_z = { { "location", padding = 0 } }
     },
