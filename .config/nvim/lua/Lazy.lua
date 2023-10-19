@@ -1,3 +1,6 @@
+-----------------------------------------------------------
+-- Load Lazy Manager
+-----------------------------------------------------------
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -11,45 +14,35 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- example using a list of specs with the default options
-vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
+-----------------------------------------------------------
+-- Start Up
+-----------------------------------------------------------
+vim.g.mapleader = " "
 
--- load lazy
+-----------------------------------------------------------
+-- Keybindings
+-----------------------------------------------------------
+
+
+-----------------------------------------------------------
+-- Plugins
+-----------------------------------------------------------
 require("lazy").setup({
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  { "tpope/vim-sleuth" },
+  {
+    "echasnovski/mini.nvim",
+  }
   {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
     commit = "724bd53adfbaf32e129b001658b45d4c5c29ca1a"
   },
-  {
-    'DanielWeidinger/nvim-sshfs',
-    event = "VeryLazy",
-    config = function()
-      require("sshfs").setup {
-        mnt_base_dir = vim.fn.expand("$HOME"),
-        width = 0.6, -- host window width
-        height = 0.5, -- host window height
-        connection_icon = "✓", -- icon for connection indication
-      }
-    end
-  },
-  {
-    "mrjones2014/smart-splits.nvim",
-    opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
-  },
-  { import = "user" }
+
+
+  -- { import = "user" }
 }, {
-  install = { colorscheme = { require("user.theme_nightfox").name } },
-  defaults = { lazy = true, version = "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
-  ui = { wrap = "true" },
-  change_detection = { enabled = true },
-  debug = false,
+  -- install = { colorscheme = { require("user.theme_nightfox").name } },
   performance = {
     rtp = {
       disabled_plugins = {
