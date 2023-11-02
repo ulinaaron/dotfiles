@@ -61,6 +61,7 @@
         "/Users/aaronmazade/.local/share/nvim/lazy/smart-splits.nvim/lua",
         "/Users/aaronmazade/.local/share/nvim/lazy/toggleterm.nvim/lua",
         "/Users/aaronmazade/.config/nvim/lua",
+        "${3rd}/luv/library",
         "${3rd}/luv/library"
     ]
 }

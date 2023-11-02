@@ -32,7 +32,7 @@ if wezterm.config_builder then
 end
 
 -- For example, changing the color scheme:
-config.color_scheme = 'tokyonight-storm'
+config.color_scheme = 'Varix'
 
 config.native_macos_fullscreen_mode = false
 
@@ -173,7 +173,7 @@ config.colors = {
   },
 }
 
-config.window_background_opacity = 0.96
+config.window_background_opacity = 0.85
 
 -- window_decorations = "RESIZE"
 config.window_decorations = "RESIZE"

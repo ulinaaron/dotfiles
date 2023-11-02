@@ -1,0 +1,37 @@
+default_shell "fish"
+
+pane_frames false
+
+mouse_mode true
+
+scroll_buffer_size 10000
+
+copy_command "xclip -selection clipboard"
+
+copy_clipboard "primary"
+
+copy_on_select true
+
+auto_layout true
+
+layout_dir "/Users/aaronmazade/.config/zellij/layout"
+
+default_layout "minimal"
+
+theme "midnightarcade"
+
+themes {
+    midnightarcade {
+        fg "#C1B7DE"
+        bg "#1D172F"
+        black "#241E35"
+        red "#F08FA1"
+        green "#93D1B5"
+        yellow "#EBCB8B"
+        blue "#9BC3F6"
+        magenta "#C0AEF4"
+        cyan "#88CFDF"
+        white "#f9f9f9"
+        orange "#FDB5A8"
+    }
+}
