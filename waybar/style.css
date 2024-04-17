@@ -1,0 +1,361 @@
+/* 
+ * Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+*/
+
+/** ********** Import Colors ********** **/
+@import "./colors.css";
+
+/** ********** Fonts ********** **/
+* {
+    font-family: "Iosevka Aile", "GeistMono Nerd Font", "Inter", sans-serif;
+    font-size: 10px;
+}
+
+/** ********** Waybar Window ********** **/
+window {
+	border: 0px solid transparent;
+	border-radius: 0px;
+}
+
+window#waybar {
+	background-color: rgba(30,35,38,.65);
+	color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+    margin: 6px;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+/** ********** Custom ********** **/
+
+#custom-menu {
+	background-color: @background;
+	color: @green;
+	font-size: 13px;
+	border-radius: 9px;
+	margin: 4px 6px 4px 4px;
+	padding: 0 12px 0 6px;
+}
+
+#custom-menu:hover {
+	background-color: @green;
+	color: @background;
+}
+
+#custom-themes {
+    background-color: @background;
+}
+
+#custom-power {
+	background-color: @background;
+	font-size: 14px;
+	color: @red;
+}
+
+#custom-power, #custom-themes {
+	color: @red;
+	margin: 4px 4px 4px 6px;
+		border-radius: 9px;
+	padding: 0 8px 0 8px;
+}
+
+#custom-themes {
+	margin-left: 4px;
+	padding: 0px 12px 0 8px;
+	color: @blue;
+}
+
+/** ********** Idle Inhibitor ********** **/
+#idle_inhibitor {
+	background-color: @green;
+	color: @background;
+	margin: 4px 12px 4px 0 ;
+	padding: 0px 12px 0px 6px;
+	border-radius: 0 9px 9px 0;
+}
+#idle_inhibitor.deactivated {
+	background-color: @background;
+	color: @yellow;
+}
+
+/** ********** Tray ********** **/
+#tray {
+	background-color: @background-alt1;
+	margin: 4px 6px 4px 0;
+	padding: 0px 6px;
+		border-radius: 9px;
+
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+#tray > .active {
+}
+
+/** ********** MPD ********** **/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#mpd {
+	color: @foreground;
+	font-size: 12px;
+	font-weight: bold;
+}
+#mpd.disconnected {
+	color: @red;
+}
+#mpd.stopped {
+	color: @red;
+}
+#mpd.playing {
+	color: @cyan;
+}
+#mpd.paused {
+}
+
+#mpd.2 {
+	border-radius: 10px 0px 0px 10px;
+	margin: 6px 0px 6px 6px ;
+	padding: 0px 6px 0px 10px;
+}
+#mpd.3 {
+	margin: 6px 0px 6px 0px ;
+	padding: 0px;
+}
+#mpd.4 {
+	border-radius: 0px 10px 10px 0px;
+	margin: 6px 6px 6px 0px ;
+	padding: 0px 10px 0px 6px;
+}
+#mpd.2,#mpd.3,#mpd.4 {
+	background-color: @background-alt1;
+	font-size: 14px;
+}
+
+/** ********** Spotify ********** **/
+#custom-spotify {
+	background-color: @background-alt1;
+	color: @foreground;
+	margin: 4px 0;
+	padding: 0 8px;
+	font-size: 10px;
+	font-weight: 400;
+	border-radius: 9px;
+}
+
+#custom-spotify.paused {
+	color: @foreground;
+}
+
+#custom-spotify.playing {
+    background: linear-gradient(90deg, @magenta 25%, @green 50%, @yellow 75%, @blue 100%); 
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
+    color: @background;
+}
+
+#custom-spotify.offline {
+	color: @foreground;
+}
+
+
+/** ********** CPU ********** **/
+#cpu {
+	color: @red;
+}
+
+/** ********** Memory ********** **/
+#memory {
+	color: @green;
+}
+
+/** ********** Disk ********** **/
+#disk {
+	color: @yellow;
+}
+
+/** ********** Pulseaudio ********** **/
+#pulseaudio {
+	color: @blue;
+}
+#pulseaudio.bluetooth {
+	color: @cyan;
+}
+#pulseaudio.muted {
+	color: @red;
+}
+
+#pulseaudio.2 {
+}
+#pulseaudio.2.bluetooth {
+}
+#pulseaudio.2.muted {
+}
+
+/** ********** Backlight ********** **/
+#backlight {
+	color: @magenta;
+}
+
+/** ********** Battery ********** **/
+#battery {
+	color: @cyan;
+}
+#battery.charging {
+}
+#battery.plugged {
+}
+@keyframes blink {
+    to {
+        color: @foreground;
+    }
+}
+#battery.critical:not(.charging) {
+	background-color: @background-alt2;
+}
+#battery.2.critical:not(.charging) {
+	background-color: @background-alt1;
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/** ********** Network ********** **/
+/* #network { */
+/* 	color: @green; */
+/* } */
+/* #network.disconnected,#network.disabled { */
+/* 	color: @red; */
+/* } */
+/* #network.linked { */
+/* } */
+/* #network.ethernet { */
+/* } */
+/* #network.wifi { */
+/* } */
+
+/** ********** Bluetooth ********** **/
+#bluetooth {
+	/* color: @blue; */
+}
+#bluetooth.disabled{
+	color: @red;
+}
+#bluetooth.off{
+	color: @red;
+}
+#bluetooth.on{
+}
+#bluetooth.connected{
+}
+#bluetooth.discoverable{
+}
+#bluetooth.discovering{
+}
+#bluetooth.pairable{
+}
+
+/** ********** Clock ********** **/
+#clock {
+	color: @yellow;
+}
+
+/** ********** WLR Desktop ********** **/
+#workspaces {
+	margin: 0;
+	font-size: 10px;
+	padding: 0px;
+	border-radius: 9px;
+	background: @background;
+	margin: 4px 6px;
+}
+#workspaces button{
+	color: @foreground;
+	padding: 0 6px;
+	font-size: 13px;
+	border-radius: 9px;
+	margin: 0;
+}
+
+#workspaces button.active{
+	color: @red;
+}
+#workspaces button.urgent{
+	color: @green;
+}
+#workspaces button.hidden{
+	color: @yellow;
+}
+
+/** ********** Common style ********** **/
+#backlight, 
+#battery,
+#clock,
+#cpu,
+#disk,
+#memory,
+#pulseaudio,
+#network,
+#bluetooth {
+	background-color: @background;
+	margin: 4px 0;
+	padding: 0px 4px 0px 8px;
+	border-radius: 9px 0 0 9px;
+	/* color: @yellow; */
+}
+
+#clock { padding-right: 11px; }
+
+#backlight.2, 
+#battery.2,
+#clock.2,
+#cpu.2,
+#disk.2,
+#memory.2,
+#pulseaudio.2,
+#network.2,
+#bluetooth.2 {
+	background-color: @background;
+	color: @foreground;
+	font-size: 11px;
+	font-weight: 700;
+	border-radius: 0 9px  9px 0;
+	margin: 4px 6px 4px 0;
+	padding: 0px 9px 0px 4px;
+}
+
+#bluetooth, #network {
+	border-radius: 0;
+}
+
+
+#bluetooth {
+}
+
+#custom-notification {
+	background-color: @background;
+	color: @yellow;
+	font-size: 11px;
+	font-weight: 700;
+	border-radius: 9px;
+	margin: 4px 6px 4px 0;
+	padding: 0px 9px 0px 9px;
+}

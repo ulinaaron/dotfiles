@@ -1,0 +1,20 @@
+[pyprland]
+plugins = ["scratchpads","expose"]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.spotify]
+animation = "fromTop"
+command = "flatpak run com.spotify.Client"
+class = "spotify-scratch"
+lazy = true
+process_tracking = false
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50

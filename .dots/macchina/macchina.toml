@@ -1,0 +1,10 @@
+theme = "varix"
+show = [
+	"Kernel",
+	"Distribution",
+	"DesktopEnvironment",
+	"WindowManager",
+	"Resolution",
+	"Shell",
+	"Packages"
+]

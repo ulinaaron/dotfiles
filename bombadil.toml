@@ -1,0 +1,22 @@
+dotfiles_dir = "dotfiles"
+
+[settings]
+
+vars = ["variables.toml"]
+
+[settings.dots]
+alacritty = { source = "alacritty", target = ".config/alacritty" }
+fish = { source = "fish", target = ".config/fish"}
+gitconfig = { source = "git/gitconfig", target = ".gitconfig" }
+gitignore = { source = "git/gitignore", target = ".gitignore" }
+gtk3 = { source = "gtk/gtk-3.0", target = ".config/gtk-3.0" }
+gtk4 = { source = "gtk/gtk-3.0", target = ".config/gtk-4.0" }
+hypr = { source = "hypr", target = ".config/hypr"}
+micro = { source = "editors/micro", target = ".config/micro"}
+helix = { source = "editors/helix", target = ".config/helix"}
+macchina = { source = "macchina", target = ".config/macchina"}
+rofi = { source = "rofi", target = ".config/rofi"}
+swaylock = { source = "swaylock", target = ".config/swaylock"}
+swaync = { source = "swaync", target = ".config/swaync"}
+waybar = { source = "waybar", target = ".config/waybar"}
+starship = { source = "misc/starship.toml", target = ".config/starship.toml" }

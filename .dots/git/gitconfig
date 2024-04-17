@@ -1,0 +1,8 @@
+[core]
+  editor = micro
+  pager = delta
+  excludesFile = ~/.gitignore
+
+[user]
+  email = ulinaaron@tutamail.com
+  name = Aaron Mazade
