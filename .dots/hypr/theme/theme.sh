@@ -5,24 +5,21 @@
 ## Script To Apply Themes
 
 ## Theme ------------------------------------
-DIR="$HOME/.config/hypr"
+DIR="/home/aaron/.config/hypr"
 
 ## Directories ------------------------------
-PATH_ALAC="$DIR/alacritty"
-PATH_KITTY="$DIR/kitty"
-PATH_FOOT="$DIR/foot"
-PATH_MAKO="$DIR/mako"
-PATH_ROFI="$DIR/rofi"
-PATH_WAYB="$DIR/waybar"
-PATH_WLOG="$DIR/wlogout"
-PATH_WOFI="$DIR/wofi"
+PATH_ALAC="/home/aaron/.config/alacritty"
+PATH_ROFI="/home/aaron/.config/rofi"
+PATH_WAYB="/home/aaron/.config/waybar"
+PATH_WLOG="/home/aaron/.config/wlogout"
+PATH_MAKO="/home/aaron/.config/mako"
 # PATH_GTK3="$HOME/.themes/adw-gtk3-dark/gtk-3.0"
-PATH_GTK3="$HOME/.config/gtk-3.0"
+PATH_GTK3="/home/aaron/.config/gtk-3.0"
 
 
 ## Source Theme File ------------------------
-CURRENT_THEME="$DIR/theme/current.bash"
-DEFAULT_THEME="$DIR/theme/default.bash"
+CURRENT_THEME="/home/aaron/.config/hypr/theme/current.bash"
+DEFAULT_THEME="/home/aaron/.config/hypr/theme/default.bash"
 PYWAL_THEME="$HOME/.cache/wal/colors.sh"
 
 ## Check if current file exist
@@ -123,37 +120,6 @@ apply_alacritty() {
 	_EOF_
 }
 
-## Foot --------------------------------------
-apply_foot() {
-	# foot : colors
-	cat > ${PATH_FOOT}/colors.ini <<- _EOF_
-		## Colors configuration
-		[colors]
-		alpha=1.0
-		foreground=${foreground:1}
-		background=${background:1}
-
-		## Normal/regular colors (color palette 0-7)
-		regular0=${color0:1}  # black
-		regular1=${color1:1}  # red
-		regular2=${color2:1}  # green
-		regular3=${color3:1}  # yellow
-		regular4=${color4:1}  # blue
-		regular5=${color5:1}  # magenta
-		regular6=${color6:1}  # cyan
-		regular7=${color7:1}  # white
-
-		## Bright colors (color palette 8-15)
-		bright0=${color8:1}   # bright black
-		bright1=${color9:1}   # bright red
-		bright2=${color10:1}   # bright green
-		bright3=${color11:1}   # bright yellow
-		bright4=${color12:1}   # bright blue
-		bright5=${color13:1}   # bright magenta
-		bright6=${color14:1}   # bright cyan
-		bright7=${color15:1}   # bright white
-	_EOF_
-}
 
 ## Mako --------------------------------------
 apply_mako() {
@@ -300,11 +266,11 @@ fi
 ## Execute Script ---------------------------
 apply_wallpaper
 apply_alacritty
-apply_foot
+# apply_foot
 apply_mako
 apply_rofi
 apply_waybar
 apply_wlogout
-apply_wofi
+# apply_wofi
 apply_hypr
 apply_gtk3

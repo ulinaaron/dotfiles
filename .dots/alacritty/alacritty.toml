@@ -6,7 +6,7 @@
 ## GENERAL --------------------------------------------------------
 
 ## Import additional configuration files.
-import = ["~/.config/hypr/alacritty/colors.toml", "~/.config/hypr/alacritty/fonts.toml"]
+import = ["/home/aaron/.config/alacritty/colors.toml", "/home/aaron/.config/alacritty/fonts.toml"]
 
 ## You can set shell.program to the path of your favorite shell, e.g. /bin/zsh.
 ## Entries in shell.args are passed as arguments to the shell.

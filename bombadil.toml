@@ -1,7 +1,6 @@
 dotfiles_dir = "dotfiles"
 
 [settings]
-
 vars = ["variables.toml"]
 
 [settings.dots]
@@ -12,6 +11,7 @@ gitignore = { source = "git/gitignore", target = ".gitignore" }
 gtk3 = { source = "gtk/gtk-3.0", target = ".config/gtk-3.0" }
 gtk4 = { source = "gtk/gtk-3.0", target = ".config/gtk-4.0" }
 hypr = { source = "hypr", target = ".config/hypr"}
+make = { source = "mako", target = ".config/mako"}
 micro = { source = "editors/micro", target = ".config/micro"}
 helix = { source = "editors/helix", target = ".config/helix"}
 macchina = { source = "macchina", target = ".config/macchina"}

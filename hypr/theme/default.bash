@@ -25,4 +25,4 @@ color14='#62cdcd'
 color15='#e0e5e5'
 
 # Wallpaper
-wallpaper="$HOME/.config/hypr/wallpapers/wallpaper.jpg"
+wallpaper="{{config}}/hypr/wallpapers/wallpaper.jpg"
