@@ -8,8 +8,8 @@ key_color       = "Green"
 separator_color = "White"
 
 [palette]
-type = "Light"
-glyph = " ● "
+type = "Full"
+# glyph = " ● "
 visible = true
 
 [bar]

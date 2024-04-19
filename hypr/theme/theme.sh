@@ -15,6 +15,9 @@ PATH_WLOG="{{config}}/wlogout"
 PATH_MAKO="{{config}}/mako"
 # PATH_GTK3="$HOME/.themes/adw-gtk3-dark/gtk-3.0"
 PATH_GTK3="{{config}}/gtk-3.0"
+PATH_GTK4="{{config}}/gtk-4.0"
+PATH_FLOORP="$HOME/.floorp/vz2uu4wi.default-release"
+PATH_SPICE="{{config}}/spicetify"
 
 
 ## Source Theme File ------------------------
@@ -81,6 +84,22 @@ source_pywal() {
 	altforeground="`pastel color $foreground | pastel darken 0.30 | pastel format hex`"
 	modbackground=(`pastel gradient -n 3 $background $altbackground | pastel format hex`)
 	accent="$color4"
+		color0="`pastel color $color0 | pastel mix -f {{base_dark_black_mix}} {{base_dark_black}} | pastel format hex`"
+		color1="`pastel color $color1 | pastel mix -f {{base_dark_red_mix}} {{base_dark_red}} | pastel format hex`"
+		color2="`pastel color $color2 | pastel mix -f {{base_dark_green_mix}} {{base_dark_green}} | pastel format hex`"
+		color3="`pastel color $color3 | pastel mix -f {{base_dark_yellow_mix}} {{base_dark_yellow}} | pastel format hex`"
+		color4="`pastel color $color4 | pastel mix -f {{base_dark_blue_mix}} {{base_dark_blue}} | pastel format hex`"
+		color5="`pastel color $color5 | pastel mix -f {{base_dark_magenta_mix}} {{base_dark_magenta}} | pastel format hex`"
+		color6="`pastel color $color6 | pastel mix -f {{base_dark_cyan_mix}} {{base_dark_cyan}} | pastel format hex`"
+		color7="`pastel color $color7 | pastel mix -f {{base_dark_white_mix}} {{base_dark_white}} | pastel format hex`"
+		color8="`pastel color $color8 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_black_mix}} {{base_light_black}} | pastel format hex`"
+		color9="`pastel color $color9 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_red_mix}} {{base_light_red}} | pastel format hex`"
+		color10="`pastel color $color10 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_green_mix}} {{base_light_green}} | pastel format hex`"
+		color11="`pastel color $color11 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_yellow_mix}} {{base_light_yellow}} | pastel format hex`"
+		color12="`pastel color $color12 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_blue_mix}} {{base_light_blue}} | pastel format hex`"
+		color13="`pastel color $color13 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_magenta_mix}} {{base_light_magenta}} | pastel format hex`"
+		color14="`pastel color $color14 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_cyan_mix}} {{base_light_cyan}} | pastel format hex`"
+		color15="`pastel color $color15 | pastel lighten {{base_lighten_factor}} | pastel mix -f {{base_light_white_mix}} {{base_light_white}} | pastel format hex`"
 }
 
 ## Wallpaper ---------------------------------
@@ -94,6 +113,58 @@ apply_alacritty() {
 	# alacritty : colors
 	cat > ${PATH_ALAC}/colors.toml <<- _EOF_
 		## Colors configuration
+		[colors.primary]
+		background = "${background}"
+		foreground = "${foreground}"
+		
+		[colors.normal]
+		black   = "${color0}"
+		red     = "${color1}"
+		green   = "${color2}"
+		yellow  = "${color3}"
+		blue    = "${color4}"
+		magenta = "${color5}"
+		cyan    = "${color6}"
+		white   = "${color7}"
+		
+		[colors.bright]
+		black   = "${color8}"
+		red     = "${color9}"
+		green   = "${color10}"
+		yellow  = "${color11}"
+		blue    = "${color12}"
+		magenta = "${color13}"
+		cyan    = "${color14}"
+		white   = "${color15}"
+	_EOF_
+}
+
+apply_spicetify() {
+	cat > ${PATH_SPICE}/Themes/Custom/color.ini <<- EOF
+		[Base]
+			main_fg                               = ${foreground}
+			secondary_fg                          = ${color0}
+			main_bg                               = ${background}
+			sidebar_and_player_bg                 = ${background}
+			cover_overlay_and_shadow              = ${color1}
+			indicator_fg_and_button_bg            = ${color1}
+			pressing_fg                           = ${color7}
+			slider_bg                             = ${background}
+			sidebar_indicator_and_hover_button_bg = ${color1}
+			scrollbar_fg_and_selected_row_bg      = ${background}
+			pressing_button_fg                    = ${color7}
+			pressing_button_bg                    = ${color5}
+			selected_button                       = ${color13}
+			miscellaneous_bg                      = ${background}
+			miscellaneous_hover_bg                = ${color7}
+			preserve_1                            = ${color7}
+	EOF
+
+	# spicetify apply
+}
+
+apply_text_colors() {
+	cat > {{config}}/colors.toml <<- _EOF_
 		[colors.primary]
 		background = "${background}"
 		foreground = "${foreground}"
@@ -245,13 +316,51 @@ apply_hypr() {
 ## GTK 3
 apply_gtk3() {
 	# gtk-3.0 : colors
-		cat > ${PATH_GTK3}/gtk-dark.css <<- EOF
+		cat > ${PATH_GTK3}/gtk.css <<- EOF
 		/** ********** Colors ********** **/
-		@define-color window_bg_color      ${background};
-		@define-color view_bg_color			${background};
+		@define-color window_bg_color ${background};
+		@define-color window_fg_color ${foreground};
+		@define-color view_bg_color ${background};
+		@define-color view_fg_color ${foreground};
+		@define-color headerbar_bg_color ${modbackground[1]};
+		@define-color headerbar_fg_color ${foreground};
+		@define-color headerbar_border_color ${foreground};
+		@define-color headerbar_backdrop_color @window_bg_color;
+		@define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
+		@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+		@define-color sidebar_bg_color ${modbackground[1]};
+		@define-color sidebar_fg_color ${foreground};
+		@define-color sidebar_backdrop_color ${modbackground[1]};
+		@define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
+		@define-color sidebar_border_color rgba(0, 0, 0, 0.36);
+		@define-color card_bg_color rgba(255, 255, 255, 0.08);
+		@define-color card_fg_color ${foreground};
+		@define-color card_shade_color rgba(0, 0, 0, 0.36);
+		@define-color dialog_bg_color ${modbackground[1]};
+		@define-color dialog_fg_color ${foreground};
+		@define-color popover_bg_color ${modbackground[1]};
+		@define-color popover_fg_color ${foreground};
+		@define-color popover_shade_color rgba(0, 0, 0, 0.25);
+		@define-color thumbnail_bg_color ${modbackground[1]};
+		@define-color thumbnail_fg_color ${foreground};
+		@define-color shade_color rgba(0, 0, 0, 0.25);
+		@define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);
+		@define-color incognito_bg_color ${modbackground[2
+		]};
+		@define-color new_title_bg_color ${modbackground[1]};
+
+		.thunar.background, .thunar .frame {
+			background-color: ${background};
+		}
 	EOF
-	
+
+	 # Copy gtk.css to gtk-dark.css
+  	cp ${PATH_GTK3}/gtk.css ${PATH_GTK3}/gtk-dark.css
+  	cp ${PATH_GTK3}/gtk.css ${PATH_GTK4}/gtk.css
+  	cp ${PATH_GTK4}/gtk.css ${PATH_GTK4}/gtk-dark.css
 }
+
+
 
 ## Source Theme Accordingly -----------------
 if [[ "$1" == '--default' ]]; then
@@ -266,6 +375,7 @@ fi
 ## Execute Script ---------------------------
 apply_wallpaper
 apply_alacritty
+apply_text_colors
 # apply_foot
 apply_mako
 apply_rofi
@@ -274,3 +384,4 @@ apply_wlogout
 # apply_wofi
 apply_hypr
 apply_gtk3
+apply_spicetify

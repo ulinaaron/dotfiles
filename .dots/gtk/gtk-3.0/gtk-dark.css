@@ -1,3 +1,34 @@
 /** ********** Colors ********** **/
-@define-color window_bg_color      #090b06;
-@define-color view_bg_color			#090b06;
+@define-color window_bg_color #03142C;
+@define-color window_fg_color #d8d2ce;
+@define-color view_bg_color #03142C;
+@define-color view_fg_color #d8d2ce;
+@define-color headerbar_bg_color #041f43;
+@define-color headerbar_fg_color #d8d2ce;
+@define-color headerbar_border_color #d8d2ce;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+@define-color sidebar_bg_color #041f43;
+@define-color sidebar_fg_color #d8d2ce;
+@define-color sidebar_backdrop_color #041f43;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
+@define-color sidebar_border_color rgba(0, 0, 0, 0.36);
+@define-color card_bg_color rgba(255, 255, 255, 0.08);
+@define-color card_fg_color #d8d2ce;
+@define-color card_shade_color rgba(0, 0, 0, 0.36);
+@define-color dialog_bg_color #041f43;
+@define-color dialog_fg_color #d8d2ce;
+@define-color popover_bg_color #041f43;
+@define-color popover_fg_color #d8d2ce;
+@define-color popover_shade_color rgba(0, 0, 0, 0.25);
+@define-color thumbnail_bg_color #041f43;
+@define-color thumbnail_fg_color #d8d2ce;
+@define-color shade_color rgba(0, 0, 0, 0.25);
+@define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);
+@define-color incognito_bg_color #062a5c;
+@define-color new_title_bg_color #041f43;
+
+.thunar.background, .thunar .frame {
+background-color: #03142C;
+}

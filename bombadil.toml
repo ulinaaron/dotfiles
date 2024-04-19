@@ -18,5 +18,6 @@ macchina = { source = "macchina", target = ".config/macchina"}
 rofi = { source = "rofi", target = ".config/rofi"}
 swaylock = { source = "swaylock", target = ".config/swaylock"}
 swaync = { source = "swaync", target = ".config/swaync"}
+spicetify = { source = "spicetify", target = ".config/spicetify"}
 waybar = { source = "waybar", target = ".config/waybar"}
 starship = { source = "misc/starship.toml", target = ".config/starship.toml" }

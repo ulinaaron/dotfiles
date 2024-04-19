@@ -1,1 +1,64 @@
 config = "/home/aaron/.config"
+
+# Base Mix Factor
+# Determines how much the gathered colors from pywal should be mixed with the true colors.
+# This is helpful for wallpapers that have little color differences. So the entire palette won't end up being the same color.
+base_mix_factor = "0.3"
+
+# Dark Mix Colors
+# You can fine tune the mix factor of an individual color by removing `%base_mix_factor` from the value and setting your own amount.
+
+base_dark_black = "black"
+base_dark_black_mix = "%base_mix_factor"
+
+base_dark_red = "red"
+base_dark_red_mix = "%base_mix_factor"
+
+base_dark_green = "green"
+base_dark_green_mix = "%base_mix_factor"
+
+base_dark_yellow = "yellow"
+base_dark_yellow_mix = "%base_mix_factor"
+
+base_dark_blue = "blue"
+base_dark_blue_mix = "%base_mix_factor"
+
+base_dark_magenta = "magenta"
+base_dark_magenta_mix = "%base_mix_factor"
+
+base_dark_cyan = "cyan"
+base_dark_cyan_mix = "%base_mix_factor"
+
+base_dark_white = "white"
+base_dark_white_mix = "%base_mix_factor"
+
+# Lighteness Amount
+# Determines by how much the light colors will be lightened.
+base_lighten_factor = "0.20"
+
+# Light Mix Colors
+# You can fine tune the mix factor of an individual color by removing `%base_mix_factor` from the value and setting your own amount.
+
+base_light_black = "black"
+base_light_black_mix = "%base_mix_factor"
+
+base_light_red = "red"
+base_light_red_mix = "%base_mix_factor"
+
+base_light_green = "green"
+base_light_green_mix = "%base_mix_factor"
+
+base_light_yellow = "yellow"
+base_light_yellow_mix = "%base_mix_factor"
+
+base_light_blue = "blue"
+base_light_blue_mix = "%base_mix_factor"
+
+base_light_magenta = "magenta"
+base_light_magenta_mix = "%base_mix_factor"
+
+base_light_cyan = "cyan"
+base_light_cyan_mix = "%base_mix_factor"
+
+base_light_white = "white"
+base_light_white_mix = "%base_mix_factor"

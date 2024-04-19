@@ -4,7 +4,7 @@
 ##
 ## Set Wallpaper in Hyprland
 
-WALLPAPER='/home/aaron/Pictures/Themes/1218645.jpg'
+WALLPAPER='/home/aaron/.config/Pictures/Themes/9070071.png'
 
 swaybg --output '*' --mode fill --image "$WALLPAPER"
 
