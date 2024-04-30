@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+WALLPAPER='/home/aaron/Pictures/Themes/whalesky.png'
+
+swaybg --output '*' --mode fill --image "$WALLPAPER"
+

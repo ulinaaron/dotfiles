@@ -23,9 +23,8 @@
     "ipc": true, 					// Control waybar with `swaymsg bar` commands
     // Choose the order of the modules
     //"modules-left": ["custom/menu", "hyprland/workspaces", "tray", "mpd#2", "mpd#3", "mpd#4", "mpd"],
-   //"modules-left": ["custom/menu", "hyprland/workspaces", "tray", "custom/spotify"],
-   "modules-left": ["custom/menu","hyprland/workspaces", "tray", "custom/spotify"],
-    "modules-center": ["clock", "clock#2" ],
-    "modules-right": ["cpu", "cpu#2", "memory", "memory#2", "pulseaudio", "pulseaudio#2",  "battery", "battery#2", "bluetooth", "bluetooth#2", "network", "network#2", "idle_inhibitor","custom/notification", "custom/themes", "custom/power"],
+   "modules-left": ["custom/menu","hyprland/workspaces", "tray", ],
+    "modules-center": ["custom/spotify" ],
+    "modules-right": ["cpu", "cpu#2", "memory", "memory#2", "pulseaudio", "pulseaudio#2",  "battery", "battery#2", "bluetooth", "bluetooth#2", "network", "network#2", "idle_inhibitor","custom/notification", "clock", "clock#2",  "custom/themes", "custom/power"],
 }
 

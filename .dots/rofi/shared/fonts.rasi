@@ -3,5 +3,5 @@
 /* Text Font */
 
 * {
-    font: "GeistMono Nerd Font 10";
+    font: "Iosevka Aile 10";
 }

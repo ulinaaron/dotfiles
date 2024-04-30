@@ -4,11 +4,12 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "run";
+	modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
     display-drun:               "";
     display-run:                "";
     display-filebrowser:        "";
+    display-window: 			"";
 	drun-display-format:        "{name}";
 }
 
@@ -20,10 +21,10 @@ configuration {
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    center;
-    anchor:                      center;
+    location:                    north;
+    anchor:                      north;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -31,11 +32,12 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      2px solid;
+    border:                      0px solid;
     border-radius:               0px;
     border-color:                @background-alt;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            @background-opaque;
+
 }
 
 /*****----- Main Box -----*****/
@@ -45,7 +47,7 @@ mainbox {
     margin:                      0px;
     padding:                     30px;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "inputbar", "listview", "mode-switcher" ];
 }
 
 /*****----- Inputbar -----*****/

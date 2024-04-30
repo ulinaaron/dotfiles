@@ -1,19 +1,34 @@
 [pyprland]
-plugins = ["scratchpads","expose"]
+plugins = ["scratchpads"]
 
 [scratchpads.term]
 animation = "fromTop"
-command = "kitty --class kitty-dropterm"
-class = "kitty-dropterm"
+command = "alacritty --class alacritty-dropterm"
+class = "alacritty-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+excludes = "*"
+lazy = true
+process_tracking = false
+
+[scratchpads.spotify]
+animation = "fromTop"
+command = "alacritty --class spotify-scratch -e ncspot"
+class = "spotify-scratch"
+lazy = true
+excludes = "*"
+process_tracking = false
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
 
-[scratchpads.spotify]
+[scratchpads.btop]
 animation = "fromTop"
-command = "flatpak run com.spotify.Client"
-class = "spotify-scratch"
+command = "alacritty --class btop-scratch -e btop"
+class = "btop-scratch"
 lazy = true
+excludes = "*"
 process_tracking = false
 size = "75% 60%"
 max_size = "1920px 100%"

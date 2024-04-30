@@ -13,11 +13,10 @@ PATH_ROFI="{{config}}/rofi"
 PATH_WAYB="{{config}}/waybar"
 PATH_WLOG="{{config}}/wlogout"
 PATH_MAKO="{{config}}/mako"
-# PATH_GTK3="$HOME/.themes/adw-gtk3-dark/gtk-3.0"
 PATH_GTK3="{{config}}/gtk-3.0"
 PATH_GTK4="{{config}}/gtk-4.0"
-PATH_FLOORP="$HOME/.floorp/vz2uu4wi.default-release"
 PATH_SPICE="{{config}}/spicetify"
+PATH_OBSIDIAN="$HOME/Nextcloud/Notes/.obsidian/snippets"
 
 
 ## Source Theme File ------------------------
@@ -43,27 +42,35 @@ source_default() {
 
 ## Random Theme
 source_pywal() {
-	# Set you wallpaper directory here.
-	WALLDIR="`xdg-user-dir PICTURES`/Themes"
+	 if [[ "$2" == "--file" && -n "$3" ]]; then
+        # wallpaper="$1"
+		WALLDIR="$3"
+    else
+        # wallpaper="outrun-neon.jpg" # or any default wallpaper you want
+		# Set you wallpaper directory here.
+		WALLDIR="`xdg-user-dir PICTURES`/Themes"
+    fi
 
 	# Check for wallpapers
 	check_wallpaper() {
-		if [[ -d "$WALLDIR" ]]; then
-			WFILES="`ls --format=single-column $WALLDIR | wc -l`"
-			if [[ "$WFILES" == 0 ]]; then
-				notify-send -h string:x-canonical-private-synchronous:sys-notify-noimg -u low -i ${PATH_MAKO}/icons/picture.png "There are no wallpapers in : $WALLDIR"
-				exit
-			fi
-		else
-			mkdir -p "$WALLDIR"
-			notify-send -h string:x-canonical-private-synchronous:sys-notify-noimg -u low -i ${PATH_MAKO}/icons/picture.png "Put some wallpapers in : $WALLDIR"
-			exit
-		fi
-	}
+        if [[ -d "$WALLDIR" ]]; then
+            WFILES="`ls --format=single-column $WALLDIR | wc -l`"
+            if [[ "$WFILES" == 0 ]]; then
+                notify-send -h string:x-canonical-private-synchronous:sys-notify-noimg -u low -i ${PATH_MAKO}/icons/picture.png "There are no wallpapers in : $WALLDIR"
+                exit
+            fi
+        else
+            mkdir -p "$WALLDIR"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify-noimg -u low -i ${PATH_MAKO}/icons/picture.png "Put some wallpapers in : $WALLDIR"
+            exit
+        fi
+    }
 
 	# Run `pywal` to generate colors
 	generate_colors() {	
-		check_wallpaper
+		# if [[ -d "$WALLDIR" ]]; then
+		# 	check_wallpaper
+		# fi
 		if [[ `which wal` ]]; then
 			notify-send -t 50000 -h string:x-canonical-private-synchronous:sys-notify-runpywal -i ${PATH_MAKO}/icons/timer.png "Generating Colorscheme. Please wait..."
 			wal -q -n -s -t -e -i "$WALLDIR"
@@ -139,6 +146,44 @@ apply_alacritty() {
 	_EOF_
 }
 
+apply_obsidian() {
+	# obsidian : colors
+	cat > ${PATH_OBSIDIAN}/varix.css <<- _EOF_
+		.theme-dark {
+			--mono-rgb-0: 0, 0, 0;
+			--mono-rgb-100: 255, 255, 255;
+			--color-red-rgb: `pastel color $color9 | pastel format rgb`;
+			--color-red: ${color9};
+			--color-orange-rgb: `pastel color $color9 | pastel format rgb`;
+			--color-orange: ${color9};
+			--color-yellow-rgb: `pastel color $color11 | pastel format rgb`;
+			--color-yellow: ${color11};
+			--color-green-rgb: `pastel color $color10 | pastel format rgb`;
+			--color-green: ${color10};
+			--color-cyan-rgb: `pastel color $color14 | pastel format rgb`;
+			--color-cyan: ${color14};
+			--color-blue-rgb: `pastel color $color4 | pastel format rgb`;
+			--color-blue: ${color4};
+			--color-purple-rgb: `pastel color $color13 | pastel format rgb`;
+			--color-purple: ${color13};
+			--color-pink-rgb: `pastel color $color13 | pastel format rgb`;
+			--color-pink: ${color13};
+			--color-base-00: ${background};
+			--color-base-05: `pastel color $background | pastel lighten 0.05 | pastel format hex`;
+			--color-base-10: `pastel color $background | pastel lighten 0.10 | pastel format hex`;
+			--color-base-20: `pastel color $background | pastel lighten 0.20 | pastel format hex`;
+			--color-base-25: `pastel color $background | pastel lighten 0.25 | pastel format hex`;
+			--color-base-30: `pastel color $background | pastel lighten 0.30 | pastel format hex`;
+			--color-base-35: `pastel color $background | pastel lighten 0.35 | pastel format hex`;
+			--color-base-40: `pastel color $background | pastel lighten 0.40 | pastel format hex`;
+			--color-base-50: `pastel color $background | pastel lighten 0.50 | pastel format hex`;
+			--color-base-60: `pastel color $background | pastel lighten 0.60 | pastel format hex`;
+			--color-base-70: `pastel color $background | pastel lighten 0.70 | pastel format hex`;
+			--color-base-100: `pastel color $background | pastel lighten 0.90 | pastel format hex`;
+		}
+	_EOF_
+}
+
 apply_spicetify() {
 	cat > ${PATH_SPICE}/Themes/Custom/color.ini <<- EOF
 		[Base]
@@ -162,35 +207,6 @@ apply_spicetify() {
 
 	# spicetify apply
 }
-
-apply_text_colors() {
-	cat > {{config}}/colors.toml <<- _EOF_
-		[colors.primary]
-		background = "${background}"
-		foreground = "${foreground}"
-		
-		[colors.normal]
-		black   = "${color0}"
-		red     = "${color1}"
-		green   = "${color2}"
-		yellow  = "${color3}"
-		blue    = "${color4}"
-		magenta = "${color5}"
-		cyan    = "${color6}"
-		white   = "${color7}"
-		
-		[colors.bright]
-		black   = "${color8}"
-		red     = "${color9}"
-		green   = "${color10}"
-		yellow  = "${color11}"
-		blue    = "${color12}"
-		magenta = "${color13}"
-		cyan    = "${color14}"
-		white   = "${color15}"
-	_EOF_
-}
-
 
 ## Mako --------------------------------------
 apply_mako() {
@@ -226,6 +242,7 @@ apply_rofi() {
 	cat > ${PATH_ROFI}/shared/colors.rasi <<- EOF
 		* {
 		    background:     ${background};
+		    background-opaque:     ${background}E6;
 		    background-alt: ${modbackground[1]};
 		    foreground:     ${foreground};
 		    selected:       ${accent};
@@ -349,6 +366,17 @@ apply_gtk3() {
 		]};
 		@define-color new_title_bg_color ${modbackground[1]};
 
+		/********** Thunar * */
+		.thunar .sidebar.frame { border: none; }
+
+		.thunar .sidebar .view:selected, .thunar .sidebar iconview:selected { background-color: ${modbackground[1]}; color: ${color13}; }
+
+		# .thunar .sidebar .view:backdrop, .thunar .sidebar iconview:backdrop { background-color: #211818; }
+
+		.thunar .sidebar .view:backdrop:selected, .thunar .sidebar iconview:backdrop:selected { background-color:  ${modbackground[1]}; color: ${color13}; }
+
+		.thunar .standard-view > .view, .thunar .standard-view > iconview { border-radius: 0; }
+
 		.thunar.background, .thunar .frame {
 			background-color: ${background};
 		}
@@ -360,7 +388,9 @@ apply_gtk3() {
   	cp ${PATH_GTK4}/gtk.css ${PATH_GTK4}/gtk-dark.css
 }
 
-
+apply_startpage() {
+	cp $HOME/.cache/wal/colors.css {{config}}/startpage/colors.css
+}
 
 ## Source Theme Accordingly -----------------
 if [[ "$1" == '--default' ]]; then
@@ -373,15 +403,15 @@ else
 fi
 
 ## Execute Script ---------------------------
+
 apply_wallpaper
 apply_alacritty
-apply_text_colors
-# apply_foot
 apply_mako
 apply_rofi
 apply_waybar
 apply_wlogout
-# apply_wofi
 apply_hypr
 apply_gtk3
 apply_spicetify
+apply_obsidian
+apply_startpage

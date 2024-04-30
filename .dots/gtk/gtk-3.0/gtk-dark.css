@@ -1,34 +1,45 @@
 /** ********** Colors ********** **/
-@define-color window_bg_color #03142C;
-@define-color window_fg_color #d8d2ce;
-@define-color view_bg_color #03142C;
-@define-color view_fg_color #d8d2ce;
-@define-color headerbar_bg_color #041f43;
-@define-color headerbar_fg_color #d8d2ce;
-@define-color headerbar_border_color #d8d2ce;
+@define-color window_bg_color #041516;
+@define-color window_fg_color #c5f1db;
+@define-color view_bg_color #041516;
+@define-color view_fg_color #c5f1db;
+@define-color headerbar_bg_color #0c292b;
+@define-color headerbar_fg_color #c5f1db;
+@define-color headerbar_border_color #c5f1db;
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
 @define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
-@define-color sidebar_bg_color #041f43;
-@define-color sidebar_fg_color #d8d2ce;
-@define-color sidebar_backdrop_color #041f43;
+@define-color sidebar_bg_color #0c292b;
+@define-color sidebar_fg_color #c5f1db;
+@define-color sidebar_backdrop_color #0c292b;
 @define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
 @define-color sidebar_border_color rgba(0, 0, 0, 0.36);
 @define-color card_bg_color rgba(255, 255, 255, 0.08);
-@define-color card_fg_color #d8d2ce;
+@define-color card_fg_color #c5f1db;
 @define-color card_shade_color rgba(0, 0, 0, 0.36);
-@define-color dialog_bg_color #041f43;
-@define-color dialog_fg_color #d8d2ce;
-@define-color popover_bg_color #041f43;
-@define-color popover_fg_color #d8d2ce;
+@define-color dialog_bg_color #0c292b;
+@define-color dialog_fg_color #c5f1db;
+@define-color popover_bg_color #0c292b;
+@define-color popover_fg_color #c5f1db;
 @define-color popover_shade_color rgba(0, 0, 0, 0.25);
-@define-color thumbnail_bg_color #041f43;
-@define-color thumbnail_fg_color #d8d2ce;
+@define-color thumbnail_bg_color #0c292b;
+@define-color thumbnail_fg_color #c5f1db;
 @define-color shade_color rgba(0, 0, 0, 0.25);
 @define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);
-@define-color incognito_bg_color #062a5c;
-@define-color new_title_bg_color #041f43;
+@define-color incognito_bg_color #0c3e41;
+@define-color new_title_bg_color #0c292b;
+
+/********** Thunar * */
+.thunar .sidebar.frame { border: none; }
+
+.thunar .sidebar .view:selected, .thunar .sidebar iconview:selected { background-color: #0c292b; color: #f7c5f0; }
+
+# .thunar .sidebar .view:backdrop, .thunar .sidebar iconview:backdrop { background-color: #211818; }
+
+.thunar .sidebar .view:backdrop:selected, .thunar .sidebar iconview:backdrop:selected { background-color:  #0c292b; color: #f7c5f0; }
+
+.thunar .standard-view > .view, .thunar .standard-view > iconview { border-radius: 0; }
 
 .thunar.background, .thunar .frame {
-background-color: #03142C;
+background-color: #041516;
 }

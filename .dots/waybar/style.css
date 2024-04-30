@@ -151,7 +151,7 @@ window#waybar.hidden {
 #custom-spotify {
 	background-color: @background-alt1;
 	color: @foreground;
-	margin: 4px 0;
+	margin: 6px 0 6px;
 	padding: 0 8px;
 	font-size: 10px;
 	font-weight: 400;
@@ -162,7 +162,8 @@ window#waybar.hidden {
 	color: @foreground;
 }
 
-#custom-spotify.playing {
+#custom-spotify.playing,
+#custom-cava.playing {
     background: linear-gradient(90deg, @magenta 25%, @green 50%, @yellow 75%, @blue 100%); 
     background-size: 300% 300%;
     animation: gradient 10s ease infinite;
@@ -172,6 +173,19 @@ window#waybar.hidden {
 #custom-spotify.offline {
 	color: @foreground;
 }
+
+#custom-cava {
+	background-color: @background-alt1;
+	color: @foreground;
+	margin: 6px 0 6px 6px;
+	padding: 0 8px;
+	font-size: 10px;
+	font-weight: 400;
+	border-radius: 9px;
+
+}
+
+
 
 
 /** ********** CPU ********** **/

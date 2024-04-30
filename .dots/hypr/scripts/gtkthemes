@@ -7,7 +7,7 @@
 THEME='adw-gtk3-dark'
 ICONS='Vimix-dark'
 FONT='Iosevka Aile 9'
-MONO='Iosevka Term SS05 Extended 11'
+MONO='Maple Mono 11'
 CURSOR='Bibata-Modern-Ice'
 
 SCHEMA='gsettings set org.gnome.desktop.interface'

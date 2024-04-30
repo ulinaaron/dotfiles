@@ -34,3 +34,6 @@ nm-applet --indicator &
 
 # Start mpd
 exec mpd &
+
+# Launch Startpage
+~/.config/hypr/scripts/startpage &

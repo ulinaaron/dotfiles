@@ -54,11 +54,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}%",
-        "format-charging": "{capacity}%",
-        "format-plugged": "{capacity}%",
+        "format": "",
+        "format-charging": "",
+        "format-plugged": "",
         "format-full": "",
-        "format-alt": "{time}",
+        "format-alt": "{capacity}% - {time}",
         "format-time": "{H}h {M}min",
         "tooltip": true,
     },
@@ -84,9 +84,9 @@
         //"controller": "controller1",
         //"format-device-preference": "",
         "format": "{status}",
-        "format-on": "{status}",
-        "format-off": "{status}",
-        "format-disabled": "{status}",
+        "format-on": "",
+        "format-off": "",
+        "format-disabled": "",
         "format-connected": "",
         "format-connected-battery": "",
         "tooltip": true,
@@ -123,8 +123,7 @@
     "custom/themes": {
         "format": "",
         "tooltip": false,
-        "on-click": "$HOME/.config/hypr/theme/theme.sh --pywal",
-        "on-click-right": "$HOME/.config/hypr/theme/theme.sh --default",
+        "on-click": "$HOME/.config/walthings/walthings.sh --random ~/Pictures/Themes",
     },
 
     "custom/menu": {
@@ -198,22 +197,11 @@
         "smooth-scrolling-threshold": 1,
     },
 
-    "custom/music": {
-        "format": "{icon}{}",
-        "format-icons": {
-            // "Playing": " ", // Uncomment if not using caway
-            "Paused": " ",
-            "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
-        },
-        "escape": true,
-        "tooltip": true,
-        "exec": "{{config}}/waybar/cava",
-        "return-type": "json",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl previous",
-        "on-scroll-down": "playerctl next",
-        "on-click-right": "g4music",
-        "max-length": 35
+    
+    // This is a custom cava visualizer
+    "custom/cava": {
+        "exec": "{{config}}/waybar/cava.sh",
+        "format": "{}"
     },
 
 	// waybar-mpd
