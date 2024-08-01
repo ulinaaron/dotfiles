@@ -1,35 +1,51 @@
 #!/bin/bash
 
-# Function to convert hex color to RGB values
-hex_to_rgb() {
-    hex=$1
-    r=$(printf "%d" 0x${hex:1:2})
-    g=$(printf "%d" 0x${hex:3:2})
-    b=$(printf "%d" 0x${hex:5:2})
-    echo "$r $g $b"
-}
-
 # Function to calculate distance between two RGB colors
 color_distance() {
     input=($1)
     color=($2)
-    distance=$(((${input[0]} - ${color[0]})**2 + (${input[1]} - ${color[1]})**2 + (${input[2]} - ${color[2]})**2))
+    distance=$(( (${input[0]} - ${color[0]})**2 + (${input[1]} - ${color[1]})**2 + (${input[2]} - ${color[2]})**2 ))
     echo $distance
 }
 
 # Color matching script
 get_closest_color() {
-    input_color=$(echo $1 | tr -d '#')
-    input_rgb=($(hex_to_rgb $input_color))
+    input_rgb=($1)
 
-    colors=("adwaita" "black" "blue" "bluegrey" "breeze" "brown" "carmine" "cyan" "darkcyan" "deeporange" "green" "grey" "indigo" "magenta" "nordic" "orange" "palebrown" "paleorange" "pink" "red" "teal" "violet" "white" "yaru" "yellow")
+    colors=(
+        "adwaita 255 255 255" 
+        "black 0 0 0" 
+        "blue 0 0 255" 
+        "bluegrey 96 125 139" 
+        "breeze 255 255 200" 
+        "brown 139 69 19" 
+        "carmine 255 0 56" 
+        "cyan 0 255 255" 
+        "darkcyan 0 139 139" 
+        "deeporange 255 87 34" 
+        "green 0 255 0" 
+        "grey 128 128 128" 
+        "indigo 75 0 130" 
+        "magenta 255 0 255" 
+        "nordic 59 66 82" 
+        "orange 255 152 0" 
+        "palebrown 110 76 30" 
+        "paleorange 255 167 38" 
+        "pink 255 128 171" 
+        "red 255 0 0" 
+        "teal 0 128 128" 
+        "violet 142 36 170" 
+        "white 255 255 255" 
+        "yaru 53 152 219" 
+        "yellow 255 255 0"
+    )
 
     closest_color=""
     min_distance=999999
-    for color_name in "${colors[@]}"
+    for color in "${colors[@]}"
     do
-        color_hex=$(echo $color_name | tr '[:upper:]' '[:lower:]')
-        color_rgb=($(hex_to_rgb $color_hex))
+        color_name="${color%% *}"
+        color_rgb=(${color#* })
         distance=$(color_distance "${input_rgb[*]}" "${color_rgb[*]}")
         if [ $distance -lt $min_distance ]; then
             min_distance=$distance
@@ -41,8 +57,9 @@ get_closest_color() {
 }
 
 # Get the closest color for the provided input color
-input_color="#1E90FF"  # Example input color
-closest_color=$(get_closest_color $input_color)
+input_color=$1 # Example input color in hex
+input_rgb=($(printf "%d %d %d" 0x${input_color:1:2} 0x${input_color:3:2} 0x${input_color:5:2}))
+input_color_name=$(get_closest_color "${input_rgb[*]}")
 
-# Use the closest color in the papirus-folders command
-papirus-folders -C $closest_color --theme Papirus-Dark
+# Use the closest color name in the papirus-folders command
+papirus-folders -C $input_color_name

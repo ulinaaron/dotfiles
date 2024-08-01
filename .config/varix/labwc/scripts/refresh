@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-
-bombadil link
-
 # Find the PID of the waybar process
 WAYBAR_PID=$(pgrep waybar)
 SWAYNC_PID=$(pgrep swaync-client)
@@ -23,7 +20,7 @@ swaync-client --reload-css
 
 labwc -r &
 
-$HOME/.config/varix/themewal/themewal.sh --refresh &
+$HOME/.config/varix/theming/theme.sh --refresh &
 
 $HOME/.config/varix/scripts/gtkthemes &
 

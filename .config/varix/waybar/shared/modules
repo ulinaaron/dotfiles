@@ -156,7 +156,7 @@
     "custom/theme-random": {
         "format": "󰒝",
         "tooltip-format": "Randomize wallpaper and color theme.",
-        "on-click": "$HOME/.config/varix/themewal/themewal.sh --random ~/Pictures/Themes",
+        "on-click": "$HOME/.config/varix/theming/theme.sh --random ~/Pictures/Themes",
     },
 
     "custom/waypaper": {

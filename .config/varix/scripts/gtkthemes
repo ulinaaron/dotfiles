@@ -5,7 +5,7 @@
 ## Set GTK Themes, Icons, Cursor and Fonts
 
 THEME='Varix'
-ICONS='Papirus-Dark'
+ICONS='Papirus'
 FONT='Cabin 10'
 MONO='Maple Mono 11'
 CURSOR='Bibata-Modern-Ice'

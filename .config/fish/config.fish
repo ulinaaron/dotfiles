@@ -21,7 +21,7 @@ set -Ux EDITOR micro
 function fish_greeting
     # neofetch --ascii ~/.resources/varix.txt --ascii_colors 1 2 3 4 5 6 7 8
     # macchina
-       set wallpaper (bash -c "source ~/.config/varix/themewal//current.bash && echo \$wallpaper")
+       set wallpaper (bash -c "source ~/.config/varix/theming/current.bash && echo \$wallpaper")
     # fastfetch --logo "$wallpaper"
     fastfetch
 end
