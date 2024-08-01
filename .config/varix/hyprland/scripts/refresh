@@ -21,6 +21,6 @@ nohup $HOME/.config/varix/hyprland/scripts/statusbar &>/dev/null &
 swaync-client --reload-config
 swaync-client --reload-css
 
-$HOME/.config/varix/themewal/themewal.sh --refresh
+$HOME/.config/varix/theming/theme.sh --refresh
 
 notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low -i ~/.config/icons/svg/free/cil-check-circle.svg 'Refreshing Environment' 'Varix has been refreshed'

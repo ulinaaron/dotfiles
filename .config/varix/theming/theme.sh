@@ -48,20 +48,20 @@ DIR="$(dirname "$0")"
 TEMPLATES="$DIR/templates"
 
 ## Directories ------------------------------
-PATH_ALAC="$HOME/.config/alacritty"
-PATH_KITTY="$HOME/.config/kitty"
-PATH_ROFI="$HOME/.config/rofi"
-PATH_WAYB="$HOME/.config/varix/waybar/shared"
-PATH_GTK3="$HOME/.themes/Varix/gtk-3.0"
-PATH_GTK4="$HOME/.themes/Varix/gtk-4.0"
+PATH_ALAC="$HOME/dotfiles/.config/alacritty"
+PATH_KITTY="$HOME/dotfiles/.config/kitty"
+PATH_ROFI="$HOME/dotfiles/.config/rofi"
+PATH_WAYB="$HOME/dotfiles/.config/varix/waybar/shared"
+PATH_GTK3="$HOME/dotfiles/.themes/Varix/gtk-3.0"
+PATH_GTK4="$HOME/dotfiles/.themes/Varix/gtk-4.0"
 PATH_OBSIDIAN="$HOME/Nextcloud/Notes/.obsidian/snippets"
 PATH_VSCODIUM="$HOME/.vscode-oss/extensions/ulinaaron.walthings-1.0.0-universal"
 
 ## Source Theme File ------------------------
-CURRENT_THEME="$HOME/.config/varix/themewal/current.bash"
-DARk_THEME="$HOME/.config/varix/themewal/dark.bash"
-LIGHT_THEME="$HOME/.config/varix/themewal/light.bash"
-DEFAULT_THEME="$HOME/.config/varix/themewal/default.bash"
+CURRENT_THEME="$HOME/dotfiles/.config/varix/theming/current.bash"
+DARk_THEME="$HOME/dotfiles/.config/varix/theming/dark.bash"
+LIGHT_THEME="$HOME/dotfiles/.config/varix/theming/light.bash"
+DEFAULT_THEME="$HOME/dotfiles/.config/varix/theming/default.bash"
 PYWAL_THEME="$HOME/.cache/wal/colors.sh"
 
 # Set the default directory
@@ -112,7 +112,7 @@ generate_colors() {
         else
             wal -q -n -s -t -e -i "$SOURCE"
         fi
-        
+
         if [[ "$?" != 0 ]]; then
             notify-send -h string:x-canonical-private-synchronous:sys-notify-runpywal -u normal -i ${DIR}/assets/notifications/palette.png "Walthings"  "Failed to generate colorscheme."
             exit
@@ -150,11 +150,11 @@ modify_colors() {
 ## Sources -----------------------------
 # source_file() {
 #     generate_colors
-#     cat ${PYWAL_THEME} > ${CURRENT_THEME}    
-#     
+#     cat ${PYWAL_THEME} > ${CURRENT_THEME}
+#
 #  #    cat ${PYWAL_THEME} > ${DARK_THEME}
 # 	# cat ${PYWAL_THEME} > ${LIGHT_THEME}
-#     
+#
 # 	source ${CURRENT_THEME}
 #     modify_colors
 # }
@@ -202,12 +202,12 @@ source_current() {
 }
 
 apply_wallpaper() {
-    sed -i -e "s#WALLPAPER=.*#WALLPAPER='$wallpaper'#g" ${DIR}/set_wallpaper
+    sed -i -e "s#WALLPAPER=.*#WALLPAPER='$wallpaper'#g" $HOME/dotfiles/.config/varix/theming/set_wallpaper
 	bash ${DIR}/set_wallpaper &
 }
 
 apply_startpage() {
-	cp $HOME/.cache/wal/colors.css $HOME/.config/startpage/colors.css
+	cp $HOME/.cache/wal/colors.css $HOME/dotfiles/.config/startpage/colors.css
 }
 
 
@@ -260,6 +260,8 @@ if [[ "$1" == '--file' ]]; then
 
 	pkill waybar && bash $HOME/.config/varix/labwc/scripts/statusbar &
 	labwc -r &
+	$HOME/.config/varix/scripts/gtkthemes &
+	$HOME/.config/varix/scripts/icons ${color4} &
 elif [[ "$1" == '--random' ]]; then
 	source_random
 	execute_scripts
@@ -268,7 +270,7 @@ elif [[ "$1" == '--random' ]]; then
 	pkill waybar && bash $HOME/.config/varix/labwc/scripts/statusbar &
 	labwc -r &
 	$HOME/.config/varix/scripts/gtkthemes &
-		$HOME/.config/varix/scripts/icons ${color4} &
+	$HOME/.config/varix/scripts/icons ${color4} &
 elif [[ "$1" == '--refresh' ]]; then
 	source_current
 	execute_scripts

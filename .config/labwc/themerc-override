@@ -3,87 +3,87 @@
         padding.height: 4
 
         # window border
-        window.active.border.color: #be448180
-        window.inactive.border.color: #06041580
+        window.active.border.color: #817fca80
+        window.inactive.border.color: #0c0e1780
 
         # ToggleKeybinds status indicator
-        window.active.indicator.toggled-keybind.color: #9b383a
+        window.active.indicator.toggled-keybind.color: #7f5064
 
         # window titlebar background
-        window.active.title.bg.color: #08061BE6
-        window.inactive.title.bg.color: #08061BE6
+        window.active.title.bg.color: #10121eE6
+        window.inactive.title.bg.color: #10121eE6
 
         # window titlebar text
-        window.active.label.text.color: #f0c8a3
-        window.inactive.label.text.color:  #150f45
+        window.active.label.text.color: #93c7da
+        window.inactive.label.text.color:  #22263f
         window.label.text.justify: center
 
         # window buttons
-        window.active.button.unpressed.image.color: #f0c8a3
-        window.active.button.close.unpressed.image.color:#f0c8a3
-        window.inactive.button.unpressed.image.color: #150f45
-        window.active.button.menu.unpressed.image.color: #f0c8a3
-        window.inactive.button.menu.unpressed.image.color: #150f45
+        window.active.button.unpressed.image.color: #93c7da
+        window.active.button.close.unpressed.image.color:#93c7da
+        window.inactive.button.unpressed.image.color: #22263f
+        window.active.button.menu.unpressed.image.color: #93c7da
+        window.inactive.button.menu.unpressed.image.color: #22263f
 
-        window.active.button.disabled.image.color: #150f45
-        window.active.button.hover.image.color: #907f53
-        window.active.button.toggled.image.color: #907f53
-        window.inactive.button.disabled.image.color: #907f53
-        window.inactive.button.hover.image.color: #907f53
-        window.inactive.button.toggled.image.color: #150f45
+        window.active.button.disabled.image.color: #22263f
+        window.active.button.hover.image.color: #959f7b
+        window.active.button.toggled.image.color: #959f7b
+        window.inactive.button.disabled.image.color: #959f7b
+        window.inactive.button.hover.image.color: #959f7b
+        window.inactive.button.toggled.image.color: #22263f
         
-        window.active.button.iconify.unpressed.image.color: #907f53
-        window.active.button.max.unpressed.image.color: #2a5d4a
-        window.active.button.close.unpressed.image.color: #9b383a
-        window.active.button.shade.unpressed.image.color: #982a79
-        window.active.button.desk.unpressed.image.color: #d2947e
+        window.active.button.iconify.unpressed.image.color: #959f7b
+        window.active.button.max.unpressed.image.color: #2b7476
+        window.active.button.close.unpressed.image.color: #7f5064
+        window.active.button.shade.unpressed.image.color: #8062a9
+        window.active.button.desk.unpressed.image.color: #59afc0
         
-        window.active.button.iconify.pressed.image.color: #907f53
-        window.active.button.max.pressed.image.color: #2a5d4a
-        window.active.button.close.pressed.image.color: #9b383a
-        window.active.button.shade.pressed.image.color: #907f53
-        window.active.button.desk.pressed.image.color: #d2947e
+        window.active.button.iconify.pressed.image.color: #959f7b
+        window.active.button.max.pressed.image.color: #2b7476
+        window.active.button.close.pressed.image.color: #7f5064
+        window.active.button.shade.pressed.image.color: #959f7b
+        window.active.button.desk.pressed.image.color: #59afc0
         
-        window.inactive.button.iconify.unpressed.image.color: #150f45
-        window.inactive.button.max.unpressed.image.color: #150f45
-        window.inactive.button.close.unpressed.image.color: #150f45
-        window.inactive.button.shade.unpressed.image.color: #150f45
-        window.inactive.button.desk.unpressed.image.color: #150f45
+        window.inactive.button.iconify.unpressed.image.color: #22263f
+        window.inactive.button.max.unpressed.image.color: #22263f
+        window.inactive.button.close.unpressed.image.color: #22263f
+        window.inactive.button.shade.unpressed.image.color: #22263f
+        window.inactive.button.desk.unpressed.image.color: #22263f
         
-        window.inactive.button.iconify.pressed.image.color: #150f45
-        window.inactive.button.max.pressed.image.color: #150f45
-        window.inactive.button.close.pressed.image.color: #150f45
-        window.inactive.button.shade.pressed.image.color: #150f45
-        window.inactive.button.desk.pressed.image.color: #150f45
+        window.inactive.button.iconify.pressed.image.color: #22263f
+        window.inactive.button.max.pressed.image.color: #22263f
+        window.inactive.button.close.pressed.image.color: #22263f
+        window.inactive.button.shade.pressed.image.color: #22263f
+        window.inactive.button.desk.pressed.image.color: #22263f
         
         # menu
         menu.overlap.x: 0
         menu.overlap.y: 0
         menu.width.min: 120
         menu.width.max: 200
-        menu.items.bg.color: #08061B
-        menu.items.text.color: #f0c8a3
-        menu.items.active.bg.color: #f0c8a3
-        menu.items.active.text.color: #08061B
+        menu.items.bg.color: #10121e
+        menu.items.text.color: #93c7da
+        menu.items.active.bg.color: #93c7da
+        menu.items.active.text.color: #10121e
         menu.items.padding.x: 12
         menu.items.padding.y: 6
         menu.separator.width: 1
         menu.separator.padding.width: 6
         menu.separator.padding.height: 4
-        menu.separator.color: #120c2f
+        menu.separator.color: #191c2e
 
         # on screen display (window-cycle dialog)
-        osd.bg.color: #08061B
-        osd.border.color: #be4481
+        osd.bg.color: #10121e
+        osd.border.color: #817fca
         osd.border.width: 2
-        osd.label.text.color: #f0c8a3
+        osd.label.text.color: #93c7da
 
         # width can be set as percent (of screen width)
         # example 50% or 75% instead of 600, max 100%
         osd.window-switcher.width: 40%
 
-        snapping.overlay.region.bg.color: #907f5380
-        snapping.overlay.edge.bg.color: #9b383a80
+        snapping.overlay.region.bg.color: #959f7b80
+        snapping.overlay.edge.bg.color: #7f506480
 
         window.active.shadow.size: 160
         window.inactive.shadow-size: 140

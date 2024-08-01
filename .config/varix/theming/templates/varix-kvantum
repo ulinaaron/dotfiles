@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sed -i "$HOME/.config/Kvantum/Varix/Varix.kvconfig" \
+sed -i "$HOME/dotfiles/.config/Kvantum/Varix/Varix.kvconfig" \
   -e "s/window\.color=.*/window.color=${background}/" \
   -e "s/base\.color=.*/base.color=${modbackground[1]}/" \
   -e "s/alt\.base\.color=.*/alt.base.color=${modbackground[2]}/" \

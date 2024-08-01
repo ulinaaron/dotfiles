@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # hyprland : theme
-	sed -i $HOME/.config/varix/hyprland/lib/theme.conf \
+	sed -i $HOME/dotfiles/.config/varix/hyprland/lib/theme.conf \
 		-e "s/\$active_border_col_1 =.*/\$active_border_col_1 = 0xFF${accent:1}/g" \
 		-e "s/\$active_border_col_2 =.*/\$active_border_col_2 = 0xFF${color1:1}/g" \
 		-e "s/\$inactive_border_col_1 =.*/\$inactive_border_col_1 = 0xFF${modbackground[1]:1}/g" \

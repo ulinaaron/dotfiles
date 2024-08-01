@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # swaync: theme
-sed -i "$HOME/.config/swaync/style.css" \
+sed -i "$HOME/dotfiles/.config/swaync/style.css" \
   -e "s/@define-color cc-bg.*/@define-color cc-bg ${background};/" \
   -e "s/@define-color noti-border-color.*/@define-color noti-border-color ${color7};/" \
   -e "s/@define-color noti-bg-opaque.*/@define-color noti-bg-opaque ${color0};/" \
