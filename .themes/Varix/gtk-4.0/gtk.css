@@ -58,35 +58,35 @@
 @define-color error_bg_color @red_4;
 @define-color error_fg_color white;
 @define-color error_color #ff7b63;
-@define-color window_bg_color #0B152F;
-@define-color window_fg_color #c8c0cf;
-@define-color view_bg_color #0B152F;
-@define-color view_fg_color #c8c0cf;
-@define-color headerbar_bg_color #101e43;
-@define-color headerbar_fg_color #c8c0cf;
-@define-color headerbar_border_color #c8c0cf;
+@define-color window_bg_color #08061B;
+@define-color window_fg_color #f0c8a3;
+@define-color view_bg_color #08061B;
+@define-color view_fg_color #f0c8a3;
+@define-color headerbar_bg_color #120c2f;
+@define-color headerbar_fg_color #f0c8a3;
+@define-color headerbar_border_color #f0c8a3;
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
 @define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
-@define-color sidebar_bg_color #101e43;
-@define-color sidebar_fg_color #c8c0cf;
-@define-color sidebar_backdrop_color #101e43;
+@define-color sidebar_bg_color #120c2f;
+@define-color sidebar_fg_color #f0c8a3;
+@define-color sidebar_backdrop_color #120c2f;
 @define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
 @define-color sidebar_border_color rgba(0, 0, 0, 0.36);
 @define-color card_bg_color rgba(255, 255, 255, 0.08);
-@define-color card_fg_color #c8c0cf;
+@define-color card_fg_color #f0c8a3;
 @define-color card_shade_color rgba(0, 0, 0, 0.36);
-@define-color dialog_bg_color #101e43;
-@define-color dialog_fg_color #c8c0cf;
-@define-color popover_bg_color #101e43;
-@define-color popover_fg_color #c8c0cf;
+@define-color dialog_bg_color #120c2f;
+@define-color dialog_fg_color #f0c8a3;
+@define-color popover_bg_color #120c2f;
+@define-color popover_fg_color #f0c8a3;
 @define-color popover_shade_color rgba(0, 0, 0, 0.25);
-@define-color thumbnail_bg_color #101e43;
-@define-color thumbnail_fg_color #c8c0cf;
+@define-color thumbnail_bg_color #120c2f;
+@define-color thumbnail_fg_color #f0c8a3;
 @define-color shade_color rgba(0, 0, 0, 0.25);
 @define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);
-@define-color incognito_bg_color #152858;
-@define-color new_title_bg_color #101e43;
+@define-color incognito_bg_color #150f45;
+@define-color new_title_bg_color #120c2f;
 * { padding: 0; -GtkToolButton-icon-spacing: 4; -GtkTextView-error-underline-color: @error_bg_color; -GtkScrolledWindow-scrollbar-spacing: 0; -GtkToolItemGroup-expander-size: 11; -GtkWidget-text-handle-width: 20; -GtkWidget-text-handle-height: 24; -GtkDialog-button-spacing: 4; -GtkDialog-action-area-border: 0; outline-color: alpha(currentColor,0.3); outline-style: dashed; outline-offset: -3px; outline-width: 1px; -gtk-outline-radius: 4px; -gtk-secondary-caret-color: @accent_bg_color; }
 
 .background { color: @window_fg_color; background-color: @window_bg_color; }
@@ -3252,14 +3252,14 @@ geary-conversation-viewer#conversation_viewer searchbar > revealer > box { backg
 /********** Thunar * */
 .thunar .sidebar.frame { border: none; }
 
-.thunar .sidebar .view:selected, .thunar .sidebar iconview:selected { background-color: #101e43; color: #cb87e0; }
+.thunar .sidebar .view:selected, .thunar .sidebar iconview:selected { background-color: #120c2f; color: #cf5996; }
 
 # .thunar .sidebar .view:backdrop, .thunar .sidebar iconview:backdrop { background-color: #211818; }
 
-.thunar .sidebar .view:backdrop:selected, .thunar .sidebar iconview:backdrop:selected { background-color:  #101e43; color: #cb87e0; }
+.thunar .sidebar .view:backdrop:selected, .thunar .sidebar iconview:backdrop:selected { background-color:  #120c2f; color: #cf5996; }
 
 .thunar .standard-view > .view, .thunar .standard-view > iconview { border-radius: 0; }
 
 .thunar.background, .thunar .frame {
-background-color: #0B152F;
+background-color: #08061B;
 }
