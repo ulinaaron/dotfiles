@@ -1,0 +1,6 @@
+[X-GNOME-Metatheme]
+Name=varix
+Type=X-GNOME-Metatheme
+Comment=varix-gtk-dark theme
+Encoding=UTF-8
+GtkTheme=varix
