@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+## Autostart Programs
+
+# Kill already running process
+_ps=(waybar)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Polkit agent
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/lib/xfce-polkit/xfce-polkit &
+fi
+
+# Set wallpaper
+~/.config/varix/scripts/wallpaper &
+
+# Apply themes
+~/.config/varix/scripts/gtkthemes &
+
+# Lauch notification daemon (swaync)
+~/.config/varix/scripts/notifications &
+
+# Lauch statusbar (waybar)
+# Switching to calling specifically for hyprland
+# ~/.config/varix/scripts/statusbar &
+
+# Start PyWal Fox for Firefox & Thunderbird Themeing
+pywalfox start &
+
+# Start OSD service
+avizo-service &
+
+# Start network manager applet
+nm-applet --indicator &
+
+# Start mpd
+exec mpd &
+
+# User Specific Services
+
+# Launch Nextcloud applet
+# gearlever_nextclouddesktop_2ac0e3_1.appimage --background &
+
+# Launch Startpage
+~/.config/varix/scripts/startpage &

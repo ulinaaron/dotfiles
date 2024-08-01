@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Set Wallpaper in Hyprland
+
+# Get the current wallpaper path from the current.bash file
+source /home/aaron/.config/varix/themewal/current.bash
+WALLPAPER="$wallpaper"
+
+swaybg --output '*' --mode stretch --image "$WALLPAPER"

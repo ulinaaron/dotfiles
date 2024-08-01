@@ -1,0 +1,8 @@
+use_nerdfont = true
+
+
+[keybindings]
+"Ctrl+f" = "search"
+"p" = "playpause"
+"." = "next"
+"," = "previus"

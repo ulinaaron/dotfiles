@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+<menu id="root-menu" label="root-menu">
+  <menu id="Accessories" label="Accessories" icon="applications-accessories">
+    <item label="AppImage Pool" icon="io.github.prateekmedia.appimagepool">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=appimagepool --file-forwarding io.github.prateekmedia.appimagepool @@u  @@</command></action>
+    </item>
+    <item label="Ark" icon="ark">
+      <action name="Execute"><command>ark</command></action>
+    </item>
+    <item label="Barrier" icon="barrier">
+      <action name="Execute"><command>barrier</command></action>
+    </item>
+    <item label="Beeper" icon="/home/aaron/AppImages/.icons/beeper_c5bdef.png">
+      <action name="Execute"><command>/home/aaron/AppImages/beeper_c5bdef.appimage --no-sandbox</command></action>
+    </item>
+    <item label="Bitwarden" icon="com.bitwarden.desktop">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=bitwarden --file-forwarding com.bitwarden.desktop @@u  @@</command></action>
+    </item>
+    <item label="Bottles" icon="com.usebottles.bottles">
+      <action name="Execute"><command>bottles</command></action>
+    </item>
+    <item label="File Manager PCManFM" icon="system-file-manager">
+      <action name="Execute"><command>pcmanfm</command></action>
+    </item>
+    <item label="File Roller" icon="org.gnome.FileRoller">
+      <action name="Execute"><command>file-roller</command></action>
+    </item>
+    <item label="Flatseal" icon="com.github.tchx84.Flatseal">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.github.tchx84.Flatseal com.github.tchx84.Flatseal</command></action>
+    </item>
+    <item label="Gear Lever" icon="it.mijorus.gearlever">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gearlever --file-forwarding it.mijorus.gearlever @@u  @@</command></action>
+    </item>
+    <item label="Grsync" icon="grsync">
+      <action name="Execute"><command>/usr/bin/grsync -i</command></action>
+    </item>
+    <item label="Helix" icon="helix">
+      <action name="Execute"><command>helix</command></action>
+    </item>
+    <item label="Help" icon="org.gnome.Yelp">
+      <action name="Execute"><command>yelp</command></action>
+    </item>
+    <item label="Kate" icon="kate">
+      <action name="Execute"><command>kate -b</command></action>
+    </item>
+    <item label="KCalc" icon="accessories-calculator">
+      <action name="Execute"><command>kcalc</command></action>
+    </item>
+    <item label="Kleopatra" icon="kleopatra">
+      <action name="Execute"><command>kleopatra</command></action>
+    </item>
+    <item label="KMail Import Wizard" icon="kontact-import-wizard">
+      <action name="Execute"><command>akonadiimportwizard</command></action>
+    </item>
+    <item label="Kvantum Manager" icon="kvantum">
+      <action name="Execute"><command>kvantummanager</command></action>
+    </item>
+    <item label="LibreOffice" icon="libreoffice-startcenter">
+      <action name="Execute"><command>libreoffice</command></action>
+    </item>
+    <item label="Logseq" icon="/home/aaron/AppImages/.icons/logseq_4ed23a.png">
+      <action name="Execute"><command>/home/aaron/AppImages/logseq_4ed23a.appimage</command></action>
+    </item>
+    <item label="Neovim" icon="/home/aaron/AppImages/.icons/gearlever_neovim_cf7eb2.png">
+      <action name="Execute"><command>/home/aaron/AppImages/gearlever_neovim_cf7eb2_1.appimage</command></action>
+    </item>
+    <item label="Nextcloud Desktop" icon="/home/aaron/AppImages/.icons/gearlever_nextclouddesktop_2ac0e3.png">
+      <action name="Execute"><command>/home/aaron/AppImages/gearlever_nextclouddesktop_2ac0e3_1.appimage</command></action>
+    </item>
+    <item label="nwg-processes" icon="nwg-processes">
+      <action name="Execute"><command>nwg-processes</command></action>
+    </item>
+    <item label="Openbox Configuration Manager" icon="obconf">
+      <action name="Execute"><command>obconf</command></action>
+    </item>
+    <item label="Passwords and Keys" icon="org.gnome.seahorse.Application">
+      <action name="Execute"><command>seahorse</command></action>
+    </item>
+    <item label="PCManFM-Qt File Manager" icon="system-file-manager">
+      <action name="Execute"><command>pcmanfm-qt</command></action>
+    </item>
+    <item label="SUSE Studio Imagewriter" icon="imagewriter">
+      <action name="Execute"><command>imagewriter</command></action>
+    </item>
+    <item label="Tilda" icon="tilda">
+      <action name="Execute"><command>/usr/bin/tilda</command></action>
+    </item>
+    <item label="XCA" icon="de.hohnstaedt.xca">
+      <action name="Execute"><command>xca</command></action>
+    </item>
+    <item label="YaST" icon="yast-control-center">
+      <action name="Execute"><command>/usr/bin/xdg-su -c /sbin/yast2</command></action>
+    </item>
+  </menu> <!-- Accessories -->
+  <menu id="Development" label="Development" icon="applications-development">
+    <item label="Gittyup" icon="com.github.Murmele.Gittyup">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gittyup com.github.Murmele.Gittyup</command></action>
+    </item>
+    <item label="GTK Demo" icon="org.gtk.Demo4">
+      <action name="Execute"><command>gtk4-demo</command></action>
+    </item>
+    <item label="Icon Browser" icon="org.gtk.IconBrowser4">
+      <action name="Execute"><command>gtk4-icon-browser</command></action>
+    </item>
+    <item label="Insomnia" icon="rest.insomnia.Insomnia">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/insomnia rest.insomnia.Insomnia</command></action>
+    </item>
+    <item label="JetBrains Toolbox" icon="/home/aaron/.local/share/JetBrains/Toolbox/toolbox.svg">
+      <action name="Execute"><command>/home/aaron/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox</command></action>
+    </item>
+    <item label="Kate" icon="kate">
+      <action name="Execute"><command>kate -b</command></action>
+    </item>
+    <item label="KUIViewer" icon="kuiviewer">
+      <action name="Execute"><command>kuiviewer -qwindowtitle</command></action>
+    </item>
+    <item label="Lite XL" icon="lite-xl">
+      <action name="Execute"><command>lite-xl</command></action>
+    </item>
+    <item label="Local" icon="local">
+      <action name="Execute"><command>/opt/Local/local</command></action>
+    </item>
+    <item label="Node Editor" icon="org.gtk.gtk4.NodeEditor">
+      <action name="Execute"><command>gtk4-node-editor</command></action>
+    </item>
+    <item label="PhpStorm 2024.1.4" icon="/home/aaron/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm.svg">
+      <action name="Execute"><command>"/home/aaron/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm.sh"</command></action>
+    </item>
+    <item label="Podman Desktop" icon="io.podman_desktop.PodmanDesktop">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=run.sh --file-forwarding io.podman_desktop.PodmanDesktop @@u  @@</command></action>
+    </item>
+    <item label="Pragtical" icon="/home/aaron/AppImages/.icons/gearlever_pragtical_d0fec7.svg">
+      <action name="Execute"><command>/home/aaron/AppImages/gearlever_pragtical_d0fec7.appimage</command></action>
+    </item>
+    <item label="Print Editor" icon="org.gtk.PrintEditor4">
+      <action name="Execute"><command>gtk4-print-editor</command></action>
+    </item>
+    <item label="VSCodium" icon="vscodium">
+      <action name="Execute"><command>/usr/share/codium/codium --unity-launch</command></action>
+    </item>
+    <item label="Widget Factory" icon="org.gtk.WidgetFactory4">
+      <action name="Execute"><command>gtk4-widget-factory</command></action>
+    </item>
+  </menu> <!-- Development -->
+  <menu id="Education" label="Education" icon="applications-science">
+    <item label="LibreOffice Math" icon="libreoffice-math">
+      <action name="Execute"><command>libreoffice --math</command></action>
+    </item>
+  </menu> <!-- Education -->
+  <menu id="Games" label="Games" icon="applications-games">
+    <item label="Lights Off" icon="org.gnome.LightsOff">
+      <action name="Execute"><command>lightsoff</command></action>
+    </item>
+    <item label="PipeNightDreams" icon="pipenightdreams">
+      <action name="Execute"><command>pipenightdreams</command></action>
+    </item>
+    <item label="RetroArch" icon="org.libretro.RetroArch">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=retroarch org.libretro.RetroArch</command></action>
+    </item>
+    <item label="Reversi" icon="org.gnome.Reversi">
+      <action name="Execute"><command>iagno</command></action>
+    </item>
+    <item label="Steam" icon="com.valvesoftware.Steam">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/steam --file-forwarding com.valvesoftware.Steam @@u  @@</command></action>
+    </item>
+    <item label="Steam" icon="steam">
+      <action name="Execute"><command>/usr/bin/steam</command></action>
+    </item>
+  </menu> <!-- Games -->
+  <menu id="Graphics" label="Graphics" icon="applications-graphics">
+    <item label="Document Scanner" icon="org.gnome.SimpleScan">
+      <action name="Execute"><command>simple-scan</command></action>
+    </item>
+    <item label="Font Manager" icon="com.github.FontManager.FontManager">
+      <action name="Execute"><command>font-manager</command></action>
+    </item>
+    <item label="Font Viewer" icon="com.github.FontManager.FontManager">
+      <action name="Execute"><command>/usr/libexec/font-manager/font-viewer</command></action>
+    </item>
+    <item label="GIMP" icon="gimp">
+      <action name="Execute"><command>gimp-2.10</command></action>
+    </item>
+    <item label="Gwenview" icon="gwenview">
+      <action name="Execute"><command>gwenview</command></action>
+    </item>
+    <item label="Inkscape" icon="org.inkscape.Inkscape">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=inkscape --file-forwarding org.inkscape.Inkscape @@  @@</command></action>
+    </item>
+    <item label="LibreOffice Draw" icon="libreoffice-draw">
+      <action name="Execute"><command>libreoffice --draw</command></action>
+    </item>
+    <item label="Okular" icon="okular">
+      <action name="Execute"><command>okular</command></action>
+    </item>
+  </menu> <!-- Graphics -->
+  <menu id="Internet" label="Internet" icon="applications-internet">
+    <item label="All-in-One Messenger" icon="/home/aaron/AppImages/.icons/allinone_messenger_9a477a.png">
+      <action name="Execute"><command>/home/aaron/AppImages/allinone_messenger_9a477a.appimage</command></action>
+    </item>
+    <item label="Brave" icon="com.brave.Browser">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=brave --file-forwarding com.brave.Browser @@u  @@</command></action>
+    </item>
+    <item label="Brave Web Browser" icon="brave-browser">
+      <action name="Execute"><command>/usr/bin/brave-browser-stable</command></action>
+    </item>
+    <item label="Chromium Web Browser" icon="chromium-browser">
+      <action name="Execute"><command>/usr/bin/chromium-browser</command></action>
+    </item>
+    <item label="Discord" icon="discord">
+      <action name="Execute"><command>/usr/bin/discord</command></action>
+    </item>
+    <item label="FileZilla" icon="filezilla">
+      <action name="Execute"><command>filezilla</command></action>
+    </item>
+    <item label="Firefox" icon="firefox">
+      <action name="Execute"><command>firefox</command></action>
+    </item>
+    <item label="Floorp" icon="one.ablaze.floorp">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=floorp --file-forwarding one.ablaze.floorp @@u  @@</command></action>
+    </item>
+    <item label="KDE Connect" icon="kdeconnect">
+      <action name="Execute"><command>kdeconnect-app</command></action>
+    </item>
+    <item label="KDE Connect Indicator" icon="kdeconnect">
+      <action name="Execute"><command>kdeconnect-indicator</command></action>
+    </item>
+    <item label="KDE Connect SMS" icon="kdeconnect">
+      <action name="Execute"><command>kdeconnect-sms</command></action>
+    </item>
+    <item label="KMail" icon="kmail">
+      <action name="Execute"><command>kmail -qwindowtitle</command></action>
+    </item>
+    <item label="KMail Refresh Settings" icon="kmail">
+      <action name="Execute"><command>kmail-refresh-settings -qwindowtitle</command></action>
+    </item>
+    <item label="KTnef" icon="ktnef">
+      <action name="Execute"><command>ktnef</command></action>
+    </item>
+    <item label="LibreWolf" icon="io.gitlab.librewolf-community">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=librewolf --file-forwarding io.gitlab.librewolf-community @@u  @@</command></action>
+    </item>
+    <item label="MBoxImporter" icon="kmail">
+      <action name="Execute"><command>mboximporter</command></action>
+    </item>
+    <item label="PIM Data Exporter" icon="kontact">
+      <action name="Execute"><command>pimdataexporter</command></action>
+    </item>
+    <item label="Remote Desktop Viewer" icon="preferences-desktop-remote-desktop">
+      <action name="Execute"><command>vinagre</command></action>
+    </item>
+    <item label="Sieve Editor" icon="sieveeditor">
+      <action name="Execute"><command>sieveeditor</command></action>
+    </item>
+    <item label="Slack" icon="com.slack.Slack">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.slack.Slack --file-forwarding com.slack.Slack @@u  @@</command></action>
+    </item>
+    <item label="Steam" icon="com.valvesoftware.Steam">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/steam --file-forwarding com.valvesoftware.Steam @@u  @@</command></action>
+    </item>
+    <item label="Steam" icon="steam">
+      <action name="Execute"><command>/usr/bin/steam</command></action>
+    </item>
+    <item label="Thunderbird" icon="thunderbird">
+      <action name="Execute"><command>thunderbird</command></action>
+    </item>
+  </menu> <!-- Internet -->
+  <menu id="Multimedia" label="Multimedia" icon="applications-multimedia">
+    <item label="Jellyfin Media Player" icon="com.github.iwalton3.jellyfin-media-player">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=jellyfinmediaplayer com.github.iwalton3.jellyfin-media-player</command></action>
+    </item>
+    <item label="mpv Media Player" icon="mpv">
+      <action name="Execute"><command>mpv --player-operation-mode=pseudo-gui --</command></action>
+    </item>
+    <item label="ncspot" icon="ncspot">
+      <action name="Execute"><command>ncspot</command></action>
+    </item>
+    <item label="OpenShot Video Editor" icon="/home/aaron/AppImages/.icons/gearlever_openshotvideoeditor_897937.svg">
+      <action name="Execute"><command>/home/aaron/AppImages/gearlever_openshotvideoeditor_897937_1.appimage</command></action>
+    </item>
+    <item label="PulseAudio Volume Control" icon="multimedia-volume-control">
+      <action name="Execute"><command>pavucontrol</command></action>
+    </item>
+    <item label="Spotify" icon="com.spotify.Client">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=spotify --file-forwarding com.spotify.Client @@u  @@</command></action>
+    </item>
+    <item label="VLC media player" icon="vlc">
+      <action name="Execute"><command>/usr/bin/vlc --started-from-file</command></action>
+    </item>
+  </menu> <!-- Multimedia -->
+  <menu id="Office" label="Office" icon="applications-office">
+    <item label="1Password" icon="1password">
+      <action name="Execute"><command>/opt/1Password/1password</command></action>
+    </item>
+    <item label="KMail" icon="kmail">
+      <action name="Execute"><command>kmail -qwindowtitle</command></action>
+    </item>
+    <item label="KMail Refresh Settings" icon="kmail">
+      <action name="Execute"><command>kmail-refresh-settings -qwindowtitle</command></action>
+    </item>
+    <item label="Kontact" icon="kontact">
+      <action name="Execute"><command>kontact</command></action>
+    </item>
+    <item label="KTnef" icon="ktnef">
+      <action name="Execute"><command>ktnef</command></action>
+    </item>
+    <item label="LibreOffice" icon="libreoffice-startcenter">
+      <action name="Execute"><command>libreoffice</command></action>
+    </item>
+    <item label="LibreOffice Base" icon="libreoffice-base">
+      <action name="Execute"><command>libreoffice --base</command></action>
+    </item>
+    <item label="LibreOffice Calc" icon="libreoffice-calc">
+      <action name="Execute"><command>libreoffice --calc</command></action>
+    </item>
+    <item label="LibreOffice Draw" icon="libreoffice-draw">
+      <action name="Execute"><command>libreoffice --draw</command></action>
+    </item>
+    <item label="LibreOffice Impress" icon="libreoffice-impress">
+      <action name="Execute"><command>libreoffice --impress</command></action>
+    </item>
+    <item label="LibreOffice Math" icon="libreoffice-math">
+      <action name="Execute"><command>libreoffice --math</command></action>
+    </item>
+    <item label="LibreOffice Writer" icon="libreoffice-writer">
+      <action name="Execute"><command>libreoffice --writer</command></action>
+    </item>
+    <item label="MBoxImporter" icon="kmail">
+      <action name="Execute"><command>mboximporter</command></action>
+    </item>
+    <item label="Obsidian" icon="md.obsidian.Obsidian">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=obsidian.sh --file-forwarding md.obsidian.Obsidian @@u  @@</command></action>
+    </item>
+    <item label="Okular" icon="okular">
+      <action name="Execute"><command>okular</command></action>
+    </item>
+    <item label="Sieve Editor" icon="sieveeditor">
+      <action name="Execute"><command>sieveeditor</command></action>
+    </item>
+    <item label="Zathura" icon="org.pwmt.zathura">
+      <action name="Execute"><command>zathura</command></action>
+    </item>
+  </menu> <!-- Office -->
+  <menu id="Settings" label="Settings" icon="preferences-desktop">
+    <item label="Bluetooth Adapters" icon="blueman-device">
+      <action name="Execute"><command>blueman-adapters</command></action>
+    </item>
+    <item label="Bluetooth Manager" icon="blueman">
+      <action name="Execute"><command>blueman-manager</command></action>
+    </item>
+    <item label="Customize Look and Feel" icon="preferences-desktop-theme">
+      <action name="Execute"><command>lxappearance</command></action>
+    </item>
+    <item label="Desktop" icon="user-desktop">
+      <action name="Execute"><command>pcmanfm-qt --desktop-pref=general</command></action>
+    </item>
+    <item label="Desktop Preferences" icon="(null)">
+      <action name="Execute"><command>pcmanfm --desktop-pref</command></action>
+    </item>
+    <item label="Displays" icon="wdisplays">
+      <action name="Execute"><command>wdisplays</command></action>
+    </item>
+    <item label="Displays Settings" icon="nwg-displays">
+      <action name="Execute"><command>nwg-displays</command></action>
+    </item>
+    <item label="GTK Settings" icon="nwg-look">
+      <action name="Execute"><command>nwg-look</command></action>
+    </item>
+    <item label="KDE Connect Settings" icon="kdeconnect">
+      <action name="Execute"><command>kdeconnect-settings</command></action>
+    </item>
+    <item label="Kvantum Manager" icon="kvantum">
+      <action name="Execute"><command>kvantummanager</command></action>
+    </item>
+    <item label="nwg-panel Settings" icon="nwg-panel">
+      <action name="Execute"><command>nwg-panel-config</command></action>
+    </item>
+    <item label="Openbox Configuration Manager" icon="obconf">
+      <action name="Execute"><command>obconf</command></action>
+    </item>
+    <item label="OpenRGB" icon="OpenRGB">
+      <action name="Execute"><command>openrgb</command></action>
+    </item>
+    <item label="Passwords and Keys" icon="org.gnome.seahorse.Application">
+      <action name="Execute"><command>seahorse</command></action>
+    </item>
+    <item label="Print Settings" icon="system-config-printer">
+      <action name="Execute"><command>system-config-printer</command></action>
+    </item>
+    <item label="PulseAudio Volume Control" icon="multimedia-volume-control">
+      <action name="Execute"><command>pavucontrol</command></action>
+    </item>
+    <item label="Qt5 Settings" icon="preferences-desktop-theme">
+      <action name="Execute"><command>qt5ct</command></action>
+    </item>
+    <item label="Qt6 Settings" icon="preferences-desktop-theme">
+      <action name="Execute"><command>qt6ct</command></action>
+    </item>
+    <item label="Removable Drives and Media" icon="org.xfce.volman">
+      <action name="Execute"><command>thunar-volman-settings</command></action>
+    </item>
+    <item label="System Log" icon="yast-messages">
+      <action name="Execute"><command>/sbin/yast2 view_anymsg /var/log/messages</command></action>
+    </item>
+    <item label="Virtualization" icon="yast-vm-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="XScreenSaver" icon="xscreensaver">
+      <action name="Execute"><command>xscreensaver</command></action>
+    </item>
+    <item label="XScreenSaver Settings" icon="xscreensaver">
+      <action name="Execute"><command>xscreensaver-settings</command></action>
+    </item>
+    <item label="YaST" icon="yast-control-center">
+      <action name="Execute"><command>/usr/bin/xdg-su -c /sbin/yast2</command></action>
+    </item>
+    <item label="YaST Add-On Products" icon="yast-addon">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 add-on"</command></action>
+    </item>
+    <item label="YaST Alternatives" icon="yast-alternatives">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 alternatives"</command></action>
+    </item>
+    <item label="YaST AppArmor" icon="yast-apparmor">
+      <action name="Execute"><command>/usr/bin/xdg-su -c '/sbin/yast2 apparmor'</command></action>
+    </item>
+    <item label="YaST Boot Loader" icon="yast-bootloader">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 bootloader"</command></action>
+    </item>
+    <item label="YaST Date and Time" icon="yast-timezone">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 timezone"</command></action>
+    </item>
+    <item label="YaST Filesystem Snapshots" icon="yast-snapper">
+      <action name="Execute"><command>/usr/bin/xdg-su -c '/sbin/yast2 snapper'</command></action>
+    </item>
+    <item label="YaST Firewall" icon="yast-firewall">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 firewall"</command></action>
+    </item>
+    <item label="YaST Hostnames" icon="yast-host">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 host"</command></action>
+    </item>
+    <item label="YaST Install VM" icon="yast-vm-install">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 virtualization"</command></action>
+    </item>
+    <item label="YaST Installation" icon="yast-installation">
+      <action name="Execute"><command>/bin/true</command></action>
+    </item>
+    <item label="YaST Keyboard" icon="yast-keyboard">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 keyboard"</command></action>
+    </item>
+    <item label="YaST Language" icon="yast-language">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 language"</command></action>
+    </item>
+    <item label="YaST Media Check" icon="yast-checkmedia">
+      <action name="Execute"><command>/sbin/yast2 checkmedia</command></action>
+    </item>
+    <item label="YaST Network" icon="yast-lan">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 lan"</command></action>
+    </item>
+    <item label="YaST NTP Configuration" icon="yast-ntp-client">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 ntp-client"</command></action>
+    </item>
+    <item label="YaST Online Update" icon="yast-update-online">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 online_update"</command></action>
+    </item>
+    <item label="YaST Partitioner" icon="yast-disk">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 partitioner"</command></action>
+    </item>
+    <item label="YaST Printer" icon="yast-printer">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 printer"</command></action>
+    </item>
+    <item label="YaST Proxy" icon="yast-proxy">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 proxy"</command></action>
+    </item>
+    <item label="YaST Release Notes" icon="yast-release-notes">
+      <action name="Execute"><command>/sbin/yast2 inst_release_notes</command></action>
+    </item>
+    <item label="YaST Relocation Server" icon="yast-vm-migrate">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 relocation-server"</command></action>
+    </item>
+    <item label="YaST Remote Administration" icon="yast-remote">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 remote"</command></action>
+    </item>
+    <item label="YaST Samba Server" icon="yast-samba-server">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 samba-server"</command></action>
+    </item>
+    <item label="YaST Scanner" icon="yast-scanner">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 scanner"</command></action>
+    </item>
+    <item label="YaST Security Center" icon="yast-security">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 security"</command></action>
+    </item>
+    <item label="YaST Services Manager" icon="yast-services-manager">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 services-manager"</command></action>
+    </item>
+    <item label="YaST Software Management" icon="yast-sw_single">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 sw_single"</command></action>
+    </item>
+    <item label="YaST Software Repositories" icon="yast-sw_source">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 repositories"</command></action>
+    </item>
+    <item label="YaST Sysconfig Editor" icon="yast-sysconfig">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 sysconfig"</command></action>
+    </item>
+    <item label="YaST Systemd Journal" icon="yast-journal">
+      <action name="Execute"><command>/sbin/yast2 journal</command></action>
+    </item>
+    <item label="YaST Upgrade" icon="yast-upgrade">
+      <action name="Execute"><command>/bin/true</command></action>
+    </item>
+    <item label="YaST User and Group Management" icon="yast-users">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 users"</command></action>
+    </item>
+    <item label="YaST Vendor Driver" icon="yast-vendor">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 vendor"</command></action>
+    </item>
+    <item label="YaST Windows Domain Membership" icon="yast-samba-client">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 samba-client"</command></action>
+    </item>
+  </menu> <!-- Settings -->
+  <menu id="System" label="System" icon="applications-system">
+    <item label="Alacritty" icon="Alacritty">
+      <action name="Execute"><command>alacritty</command></action>
+    </item>
+    <item label="btop++" icon="btop">
+      <action name="Execute"><command>btop</command></action>
+    </item>
+    <item label="dconf Editor" icon="ca.desrt.dconf-editor">
+      <action name="Execute"><command>dconf-editor</command></action>
+    </item>
+    <item label="Disk Usage Analyzer" icon="org.gnome.baobab">
+      <action name="Execute"><command>baobab</command></action>
+    </item>
+    <item label="Dolphin" icon="org.kde.dolphin">
+      <action name="Execute"><command>dolphin</command></action>
+    </item>
+    <item label="File Manager - Super User Mode" icon="system-file-manager">
+      <action name="Execute"><command>dbus-launch dolphin -qwindowtitle "" ""</command></action>
+    </item>
+    <item label="File Manager PCManFM" icon="system-file-manager">
+      <action name="Execute"><command>pcmanfm</command></action>
+    </item>
+    <item label="fish" icon="fish">
+      <action name="Execute"><command>fish</command></action>
+    </item>
+    <item label="ISO Image Writer" icon="org.kde.isoimagewriter">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=isoimagewriter org.kde.isoimagewriter</command></action>
+    </item>
+    <item label="KDE Partition Manager" icon="partitionmanager">
+      <action name="Execute"><command>partitionmanager</command></action>
+    </item>
+    <item label="kitty" icon="kitty">
+      <action name="Execute"><command>kitty</command></action>
+    </item>
+    <item label="KWalletManager" icon="kwalletmanager">
+      <action name="Execute"><command>kwalletmanager5</command></action>
+    </item>
+    <item label="KWatchGnuPG" icon="kwatchgnupg">
+      <action name="Execute"><command>kwatchgnupg</command></action>
+    </item>
+    <item label="nwg-processes" icon="nwg-processes">
+      <action name="Execute"><command>nwg-processes</command></action>
+    </item>
+    <item label="Parental Controls" icon="org.freedesktop.MalcontentControl">
+      <action name="Execute"><command>malcontent-control</command></action>
+    </item>
+    <item label="Print Settings" icon="system-config-printer">
+      <action name="Execute"><command>system-config-printer</command></action>
+    </item>
+    <item label="ranger" icon="utilities-terminal">
+      <action name="Execute"><command>ranger</command></action>
+    </item>
+    <item label="RetroArch" icon="org.libretro.RetroArch">
+      <action name="Execute"><command>/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=retroarch org.libretro.RetroArch</command></action>
+    </item>
+    <item label="SUSE Studio Imagewriter" icon="imagewriter">
+      <action name="Execute"><command>imagewriter</command></action>
+    </item>
+    <item label="System Log" icon="yast-messages">
+      <action name="Execute"><command>/sbin/yast2 view_anymsg /var/log/messages</command></action>
+    </item>
+    <item label="Tilda" icon="tilda">
+      <action name="Execute"><command>/usr/bin/tilda</command></action>
+    </item>
+    <item label="Virtualization" icon="yast-vm-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Welcome" icon="org.opensuse.opensuse_welcome">
+      <action name="Execute"><command>/usr/bin/opensuse-welcome</command></action>
+    </item>
+    <item label="XScreenSaver Settings" icon="xscreensaver">
+      <action name="Execute"><command>xscreensaver-settings</command></action>
+    </item>
+    <item label="XTerm" icon="terminal">
+      <action name="Execute"><command>xterm</command></action>
+    </item>
+    <item label="YaST" icon="yast-control-center">
+      <action name="Execute"><command>/usr/bin/xdg-su -c /sbin/yast2</command></action>
+    </item>
+    <item label="YaST Add-On Products" icon="yast-addon">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 add-on"</command></action>
+    </item>
+    <item label="YaST Alternatives" icon="yast-alternatives">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 alternatives"</command></action>
+    </item>
+    <item label="YaST AppArmor" icon="yast-apparmor">
+      <action name="Execute"><command>/usr/bin/xdg-su -c '/sbin/yast2 apparmor'</command></action>
+    </item>
+    <item label="YaST Boot Loader" icon="yast-bootloader">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 bootloader"</command></action>
+    </item>
+    <item label="YaST Date and Time" icon="yast-timezone">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 timezone"</command></action>
+    </item>
+    <item label="YaST Filesystem Snapshots" icon="yast-snapper">
+      <action name="Execute"><command>/usr/bin/xdg-su -c '/sbin/yast2 snapper'</command></action>
+    </item>
+    <item label="YaST Firewall" icon="yast-firewall">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 firewall"</command></action>
+    </item>
+    <item label="YaST Hostnames" icon="yast-host">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 host"</command></action>
+    </item>
+    <item label="YaST Install VM" icon="yast-vm-install">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 virtualization"</command></action>
+    </item>
+    <item label="YaST Installation" icon="yast-installation">
+      <action name="Execute"><command>/bin/true</command></action>
+    </item>
+    <item label="YaST Keyboard" icon="yast-keyboard">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 keyboard"</command></action>
+    </item>
+    <item label="YaST Language" icon="yast-language">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 language"</command></action>
+    </item>
+    <item label="YaST Media Check" icon="yast-checkmedia">
+      <action name="Execute"><command>/sbin/yast2 checkmedia</command></action>
+    </item>
+    <item label="YaST Network" icon="yast-lan">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 lan"</command></action>
+    </item>
+    <item label="YaST NTP Configuration" icon="yast-ntp-client">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 ntp-client"</command></action>
+    </item>
+    <item label="YaST Online Update" icon="yast-update-online">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 online_update"</command></action>
+    </item>
+    <item label="YaST Partitioner" icon="yast-disk">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 partitioner"</command></action>
+    </item>
+    <item label="YaST Printer" icon="yast-printer">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 printer"</command></action>
+    </item>
+    <item label="YaST Proxy" icon="yast-proxy">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 proxy"</command></action>
+    </item>
+    <item label="YaST Release Notes" icon="yast-release-notes">
+      <action name="Execute"><command>/sbin/yast2 inst_release_notes</command></action>
+    </item>
+    <item label="YaST Relocation Server" icon="yast-vm-migrate">
+      <action name="Execute"><command>/usr/bin/xdg-su -c "/sbin/yast2 relocation-server"</command></action>
+    </item>
+    <item label="YaST Remote Administration" icon="yast-remote">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 remote"</command></action>
+    </item>
+    <item label="YaST Samba Server" icon="yast-samba-server">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 samba-server"</command></action>
+    </item>
+    <item label="YaST Scanner" icon="yast-scanner">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 scanner"</command></action>
+    </item>
+    <item label="YaST Security Center" icon="yast-security">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 security"</command></action>
+    </item>
+    <item label="YaST Services Manager" icon="yast-services-manager">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 services-manager"</command></action>
+    </item>
+    <item label="YaST Software" icon="yast-sw_single">
+      <action name="Execute"><command>/usr/lib/YaST2/bin/sw_single_wrapper</command></action>
+    </item>
+    <item label="YaST Software Management" icon="yast-sw_single">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 sw_single"</command></action>
+    </item>
+    <item label="YaST Software Repositories" icon="yast-sw_source">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 repositories"</command></action>
+    </item>
+    <item label="YaST Sysconfig Editor" icon="yast-sysconfig">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 sysconfig"</command></action>
+    </item>
+    <item label="YaST Systemd Journal" icon="yast-journal">
+      <action name="Execute"><command>/sbin/yast2 journal</command></action>
+    </item>
+    <item label="YaST Upgrade" icon="yast-upgrade">
+      <action name="Execute"><command>/bin/true</command></action>
+    </item>
+    <item label="YaST User and Group Management" icon="yast-users">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 users"</command></action>
+    </item>
+    <item label="YaST Vendor Driver" icon="yast-vendor">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 vendor"</command></action>
+    </item>
+    <item label="YaST Windows Domain Membership" icon="yast-samba-client">
+      <action name="Execute"><command>xdg-su -c "/sbin/yast2 samba-client"</command></action>
+    </item>
+  </menu> <!-- System -->
+  <menu id="Other" label="Other">
+    <item label="Hardware" icon="yast-hardware-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="High Availability" icon="yast-high_availability-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Miscellaneous" icon="yast-misc-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Network Services" icon="yast-network-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Notes - Varix Cloud" icon="brave-amolcdjijdhfmggodolhbhkeobiamnhp-Default">
+      <action name="Execute"><command>flatpak 'run' '--command=brave' 'com.brave.Browser' '--profile-directory=Default' '--app-id=amolcdjijdhfmggodolhbhkeobiamnhp'</command></action>
+    </item>
+    <item label="nwg-shell README" icon="nwg-shell">
+      <action name="Execute"><command>nwg-readme-browser -i</command></action>
+    </item>
+    <item label="Rofi" icon="rofi">
+      <action name="Execute"><command>rofi -show</command></action>
+    </item>
+    <item label="Rofi Theme Selector" icon="rofi">
+      <action name="Execute"><command>rofi-theme-selector</command></action>
+    </item>
+    <item label="Security and Users" icon="yast-security-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Software" icon="yast-software-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Steam" icon="/home/aaron/.local/share/bottles/bottles/Steam/icons/steam.svg">
+      <action name="Execute"><command>bottles-cli run -p Steam -b 'Steam' --</command></action>
+    </item>
+    <item label="Support" icon="yast-support-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="System" icon="yast-system-group">
+      <action name="Execute"><command>/sbin/yast2</command></action>
+    </item>
+    <item label="Zed" icon="~/Applications/zed.app/share/icons/hicolor/512x512/apps/zed.png">
+      <action name="Execute"><command>/home/aaron/Applications/zed.app/bin/zed</command></action>
+    </item>
+    <item label="Zed" icon="~/Applications/zed-preview.app/share/icons/hicolor/512x512/apps/zed.png">
+      <action name="Execute"><command>/home/aaron/Applications/zed-preview.app/bin/zed</command></action>
+    </item>
+  </menu> <!-- Other -->
+</menu> <!-- root-menu -->
+</openbox_menu>

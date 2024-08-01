@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+SFWBAR_PID=$(pgrep sfwbar)
+
+if [ -n "$SFWBAR_PID" ]; then
+    kill "$SFWBAR_PID"
+fi
+
+sfwbar &>/dev/null &
+
+notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low -i ~/.config/icons/svg/free/cil-check-circle.svg 'Refreshing Environment' 'Varix has been refreshed'

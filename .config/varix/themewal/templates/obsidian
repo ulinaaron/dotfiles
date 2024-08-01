@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# obsidian : colors
+	cat > ${PATH_OBSIDIAN}/varix.css <<- _EOF_
+		.theme-dark {
+			--mono-rgb-0: 0, 0, 0;
+			--mono-rgb-100: 255, 255, 255;
+			--color-red-rgb: `pastel color $color9 | pastel format rgb`;
+			--color-red: ${color9};
+			--color-orange-rgb: `pastel color $color9 | pastel format rgb`;
+			--color-orange: ${color9};
+			--color-yellow-rgb: `pastel color $color11 | pastel format rgb`;
+			--color-yellow: ${color11};
+			--color-green-rgb: `pastel color $color10 | pastel format rgb`;
+			--color-green: ${color10};
+			--color-cyan-rgb: `pastel color $color14 | pastel format rgb`;
+			--color-cyan: ${color14};
+			--color-blue-rgb: `pastel color $color4 | pastel format rgb`;
+			--color-blue: ${color4};
+			--color-purple-rgb: `pastel color $color13 | pastel format rgb`;
+			--color-purple: ${color13};
+			--color-pink-rgb: `pastel color $color13 | pastel format rgb`;
+			--color-pink: ${color13};
+			--color-base-00: ${background};
+			--color-base-05: `pastel color $background | pastel lighten 0.05 | pastel format hex`;
+			--color-base-10: `pastel color $background | pastel lighten 0.10 | pastel format hex`;
+			--color-base-20: `pastel color $background | pastel lighten 0.20 | pastel format hex`;
+			--color-base-25: `pastel color $background | pastel lighten 0.25 | pastel format hex`;
+			--color-base-30: `pastel color $background | pastel lighten 0.30 | pastel format hex`;
+			--color-base-35: `pastel color $background | pastel lighten 0.35 | pastel format hex`;
+			--color-base-40: `pastel color $background | pastel lighten 0.40 | pastel format hex`;
+			--color-base-50: `pastel color $background | pastel lighten 0.50 | pastel format hex`;
+			--color-base-60: `pastel color $background | pastel lighten 0.60 | pastel format hex`;
+			--color-base-70: `pastel color $background | pastel lighten 0.70 | pastel format hex`;
+			--color-base-100: `pastel color $background | pastel lighten 0.90 | pastel format hex`;
+			--background-modifier-border: var(--color-base-05);
+			--background-secondary-alt: ${modbackground[2]};			
+			--background-secondary: ${background};
+			--titlebar-background-focused: var(--background-secondary);
+			--divider-color: var(--background-secondary);
+
+			    --text-normal: ${foreground};
+    --text-muted: var(--color-base-50);
+    --text-faint: var(--color-base-35);
+    --text-on-accent: white;
+    --text-on-accent-inverted: black;
+			
+			--indentation-guide-color: rgba(var(--mono-rgb-100), 0.08);
+    		--indentation-guide-color-active: rgba(var(--mono-rgb-100), 0.3);
+			--nav-indentation-guide-color: var(--indentation-guide-color);
+			    --nav-collapse-icon-color: var(--collapse-icon-color);
+			    --nav-collapse-icon-color-collapsed: var(--text-faint);
+			    --nav-heading-color: var(--text-normal);
+			    --nav-heading-color-hover: var(--text-normal);
+			    --nav-heading-color-collapsed: var(--text-faint);
+			    --nav-heading-color-collapsed-hover: var(--text-muted);
+
+			    
+    --nav-item-color: var(--text-muted);
+    --nav-item-color-hover: var(--text-normal);
+    --nav-item-color-active: var(--text-normal);
+    --nav-item-color-selected: var(--text-normal);
+    --nav-item-color-highlighted: var(--text-accent);
+    --nav-item-background-hover: var(--background-modifier-hover);
+    --nav-item-background-active: var(--background-modifier-hover);
+    --nav-item-background-selected: hsla(var(--color-accent-hsl), 0.15);
+
+			        --collapse-icon-color: var(--text-faint);
+    --collapse-icon-color-collapsed: var(--text-accent);
+
+			    --icon-color: ${color2};
+
+		}
+
+		.app-container {
+			padding: 0 0 4px 10px;
+		}
+	_EOF_

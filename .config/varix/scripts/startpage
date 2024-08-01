@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+darkhttpd /home/aaron/.config/startpage --header 'Access-Control-Allow-Origin: * ' --daemon --port 8080 --addr 127.0.0.1 &

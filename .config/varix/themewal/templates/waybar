@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# waybar : colors
+	cat > ${PATH_WAYB}/colors.css <<- EOF
+		/** ********** Colors ********** **/
+		@define-color background      ${background};
+		@define-color background-alt1 ${modbackground[1]};
+		@define-color background-alt2 ${modbackground[2]};
+		@define-color foreground      ${foreground};
+		@define-color selected        ${accent};
+		@define-color black           ${color0};
+		@define-color red             ${color1};
+		@define-color green           ${color2};
+		@define-color yellow          ${color3};
+		@define-color blue            ${color4};
+		@define-color magenta         ${color5};
+		@define-color cyan            ${color6};
+		@define-color white           ${color7};
+		@define-color light-black           ${color8};
+		@define-color light-red             ${color9};
+		@define-color light-green           ${color10};
+		@define-color light-yellow          ${color11};
+		@define-color light-blue            ${color12};
+		@define-color light-magenta         ${color13};
+		@define-color light-cyan            ${color14};
+		@define-color light-white           ${color15};
+	EOF
+
+	# pkill waybar && bash $HOME/.config/varix/hyprland/scripts/statusbar &
+	# $HOME/.config/varix/hyprland/scripts/refresh

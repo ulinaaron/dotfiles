@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+CONFIG="$HOME/.config/varix/waybar/labwc"
+STYLE="$HOME/.config/varix/waybar/shared/style.css"
+
+if [[ ! `pidof waybar` ]]; then
+	waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+fi

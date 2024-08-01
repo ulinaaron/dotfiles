@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+# kitty : colors
+	cat > ${PATH_KITTY}/current-theme.conf <<- _EOF_
+	# vim:ft=kitty
+
+        # The basic colors
+        foreground              ${foreground}
+        background              ${background}
+        selection_foreground    ${altforeground}
+        selection_background    ${modbackground[1]}
+
+        # Transparent Background
+        background_opacity .90
+
+        # Cursor colors
+        cursor                   ${color2}
+        cursor_text_color       ${modbackground1}
+
+        # URL underline color when hovering with mouse
+        url_color               ${color4}
+
+        # kitty window border colors
+        active_border_color     ${color5}
+        inactive_border_color   ${altforeground}
+        bell_border_color       ${color1}
+
+        # OS Window titlebar colors
+        wayland_titlebar_color system
+        macos_titlebar_color system
+
+        #: Tab bar colors
+        active_tab_foreground   ${foreground}
+        active_tab_background   ${modbackground[2]}
+        inactive_tab_foreground ${altforeground}
+        inactive_tab_background ${background}
+        tab_bar_background      ${background}
+
+        # Colors for marks (marked text in the terminal)
+
+        mark1_foreground ${background}
+        mark1_background ${color4}
+        mark2_foreground ${background}
+        mark2_background ${color2}
+        mark3_foreground ${background}
+        mark3_background ${color6}
+
+        #: The 16 terminal colors
+
+        #: black
+        color0 ${color0}
+        color8 ${color8}
+
+        #: red
+        color1 ${color1}
+        color9 ${color9}
+
+        #: green
+        color2  ${color2}
+        color10 ${color10}
+
+        #: yellow
+        color3  ${color3}
+        color11 ${color11}
+
+        #: blue
+        color4  ${color4}
+        color12 ${color12}
+
+        #: magenta
+        color5  ${color5}
+        color13 ${color13}
+
+        #: cyan
+        color6  ${color6}
+        color14 ${color14}
+
+        #: white
+        color7  ${color7}
+        color15 ${color15}
+
+        font_size 10
+# 
+#         font_family      Maple Mono NF CN Regular
+#         bold_font        Maple Mono NF CN Bold
+#         italic_font      Maple Mono NF CN Italic
+#         bold_italic_font Maple Mono NF CN Bold Italic
+
+	_EOF_
+
+ kill -SIGUSR1 $(pidof kitty)

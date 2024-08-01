@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+	cat > $HOME/.config/labwc/themerc-override <<- EOF
+        # general
+        border.width: 2
+        padding.height: 4
+
+        # window border
+        window.active.border.color: ${color5}80
+        window.inactive.border.color: ${color0}80
+
+        # ToggleKeybinds status indicator
+        window.active.indicator.toggled-keybind.color: ${color1}
+
+        # window titlebar background
+        window.active.title.bg.color: ${background}E6
+        window.inactive.title.bg.color: ${background}E6
+
+        # window titlebar text
+        window.active.label.text.color: ${foreground}
+        window.inactive.label.text.color:  ${modbackground[2]}
+        window.label.text.justify: center
+
+        # window buttons
+        window.active.button.unpressed.image.color: ${foreground}
+        window.active.button.close.unpressed.image.color:${foreground}
+        window.inactive.button.unpressed.image.color: ${modbackground[2]}
+        window.active.button.menu.unpressed.image.color: ${foreground}
+        window.inactive.button.menu.unpressed.image.color: ${modbackground[2]}
+
+        window.active.button.disabled.image.color: ${modbackground[2]}
+        window.active.button.hover.image.color: ${color3}
+        window.active.button.toggled.image.color: ${color3}
+        window.inactive.button.disabled.image.color: ${color3}
+        window.inactive.button.hover.image.color: ${color3}
+        window.inactive.button.toggled.image.color: ${modbackground[2]}
+        
+        window.active.button.iconify.unpressed.image.color: ${color3}
+        window.active.button.max.unpressed.image.color: ${color2}
+        window.active.button.close.unpressed.image.color: ${color1}
+        window.active.button.shade.unpressed.image.color: ${color4}
+        window.active.button.desk.unpressed.image.color: ${color6}
+        
+        window.active.button.iconify.pressed.image.color: ${color3}
+        window.active.button.max.pressed.image.color: ${color2}
+        window.active.button.close.pressed.image.color: ${color1}
+        window.active.button.shade.pressed.image.color: ${color3}
+        window.active.button.desk.pressed.image.color: ${color6}
+        
+        window.inactive.button.iconify.unpressed.image.color: ${modbackground[2]}
+        window.inactive.button.max.unpressed.image.color: ${modbackground[2]}
+        window.inactive.button.close.unpressed.image.color: ${modbackground[2]}
+        window.inactive.button.shade.unpressed.image.color: ${modbackground[2]}
+        window.inactive.button.desk.unpressed.image.color: ${modbackground[2]}
+        
+        window.inactive.button.iconify.pressed.image.color: ${modbackground[2]}
+        window.inactive.button.max.pressed.image.color: ${modbackground[2]}
+        window.inactive.button.close.pressed.image.color: ${modbackground[2]}
+        window.inactive.button.shade.pressed.image.color: ${modbackground[2]}
+        window.inactive.button.desk.pressed.image.color: ${modbackground[2]}
+        
+        # menu
+        menu.overlap.x: 0
+        menu.overlap.y: 0
+        menu.width.min: 120
+        menu.width.max: 200
+        menu.items.bg.color: ${background}
+        menu.items.text.color: ${foreground}
+        menu.items.active.bg.color: ${foreground}
+        menu.items.active.text.color: ${background}
+        menu.items.padding.x: 12
+        menu.items.padding.y: 6
+        menu.separator.width: 1
+        menu.separator.padding.width: 6
+        menu.separator.padding.height: 4
+        menu.separator.color: ${modbackground[1]}
+
+        # on screen display (window-cycle dialog)
+        osd.bg.color: ${background}
+        osd.border.color: ${color5}
+        osd.border.width: 2
+        osd.label.text.color: ${foreground}
+
+        # width can be set as percent (of screen width)
+        # example 50% or 75% instead of 600, max 100%
+        osd.window-switcher.width: 40%
+
+        snapping.overlay.region.bg.color: ${color3}80
+        snapping.overlay.edge.bg.color: ${color1}80
+
+        window.active.shadow.size: 160
+        window.inactive.shadow-size: 140
+		window.active.shadow.color: #000000FF
+	EOF

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bookmarks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="colors.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg': "var(--background)",
+            'fg': "var(--foreground)",
+            'cursor': "var(--cursor)",
+            'color0': "var(--color0)",
+            'color1': "var(--color1)",
+            'color2': "var(--color2)",
+            'color3': "var(--color3)",
+            'color4': "var(--color4)",
+            'color5': "var(--color5)",
+            'color6': "var(--color6)",
+            'color7': "var(--color7)",
+            'color8': "var(--color8)",
+            'color9': "var(--color9)",
+            'color10': "var(--color10)",
+            'color11': "var(--color11)",
+            'color12': "var(--color12)",
+            'color13': "var(--color13)",
+            'color14': "var(--color14)",
+            'color15': "var(--color15)"
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-bg text-fg transition-colors">
+  <div class="container mx-auto h-screen py-10 flex items-center justify-content-center">
+    <div id="app" class="flex flex-row gap-12 m-auto"></div>
+  </div>
+  <script>
+    fetch('bookmarks.json')
+      .then(response => response.json())
+      .then(data => {
+        const bookmarks = Object.entries(data).map(([categoryName, category]) => ({
+          name: categoryName,
+          color: category.color,
+          bookmarks: category.bookmarks.map(bookmark => ({
+            title: bookmark.title,
+            url: bookmark.url
+          }))
+        }));
+  
+        const app = document.getElementById('app');
+        
+        const template = document.createElement('template');
+  
+        bookmarks.forEach(category => {
+          const categoryHtml = `
+            <div  style="${category.color ? `--category-color: var(--${category.color});` : ''}">
+              <h2 class="text-2xl font-bold mb-4 uppercase tracking-loose" style="${category.color ? `color: var(--category-color);` : ''}">${category.name}</h2>
+              <ul>
+                ${category.bookmarks.map(bookmark => `
+                  <li><a class="font-bold" href="${bookmark.url}">${bookmark.title}</a></li>
+                `).join('')}
+              </ul>
+            </div>
+          `;
+          template.innerHTML += categoryHtml;
+        });
+  
+        app.appendChild(template.content);
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+
+</html>

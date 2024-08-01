@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# hyprland : theme
+	sed -i $HOME/.config/varix/hyprland/lib/theme.conf \
+		-e "s/\$active_border_col_1 =.*/\$active_border_col_1 = 0xFF${accent:1}/g" \
+		-e "s/\$active_border_col_2 =.*/\$active_border_col_2 = 0xFF${color1:1}/g" \
+		-e "s/\$inactive_border_col_1 =.*/\$inactive_border_col_1 = 0xFF${modbackground[1]:1}/g" \
+		-e "s/\$inactive_border_col_2 =.*/\$inactive_border_col_2 = 0xFF${modbackground[2]:1}/g" \
+		-e "s/\$group_border_active_col =.*/\$group_border_active_col = 0xFF${color1:1}/g" \
+		-e "s/\$group_border_inactive_col =.*/\$group_border_inactive_col = 0xFF${color3:1}/g" \
+		-e "s/\$group_border_locked_active_col =.*/\$group_border_locked_active_col = 0xFF${color1:1}/g" \
+		-e "s/\$group_border_locked_inactive_col =.*/\$group_border_locked_inactive_col = 0xFF${color4:1}/g" \
+		-e "s/\$groupbar_text_color =.*/\$groupbar_text_color = 0xFF${background:1}/g"

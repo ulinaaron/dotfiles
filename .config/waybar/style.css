@@ -1,0 +1,535 @@
+/* 
+ * Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+*/
+
+/** ********** Import Colors ********** **/
+@import "./colors.css";
+
+/** ********** Fonts ********** **/
+* {
+    font-family:  "Inter", sans-serif;
+    font-size: 10px;
+}
+
+/** ********** Waybar Window ********** **/
+window {
+
+}
+
+window#waybar {
+	color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;;
+    padding: 8px 0;
+	background: rgba(0,0,0,0);
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+#custom-spacer { 
+	background-color: @background; 
+	color: @background;
+	padding: 0 4px;
+}
+
+#custom-bl,
+#custom-br { 
+	background-color: @background; 
+	color: @background;
+}
+
+#custom-bl {
+	border-radius: 9px 0 0 9px;
+	margin-left: 10px;
+}
+
+#custom-br {
+	border-radius: 0 9px 9px 0;
+	margin-right: 10px;
+}
+
+
+#custom-bl1,
+#custom-br1 { 
+	background-color: @background-alt1; 
+	color: @background-alt1;
+}
+
+#custom-bl1 {
+	border-radius: 9px 0 0 9px;
+	margin-left: 10px;
+}
+
+#custom-br1 {
+	border-radius: 0 9px 9px 0;
+	margin-right: 10px;
+}
+
+
+#custom-open-left,
+#custom-open-right {
+	padding-right: 8px;
+	background-color: @background; 
+	color: rgba(255,255,255,.4);
+	transition-duration: .5s;
+	transition-property: color;
+}
+
+#custom-open-left:hover,
+#custom-open-right:hover {
+	color: @background;
+}
+
+/** ********** Custom ********** **/
+
+#custom-menu {
+	background-color: @background;
+	color: #96cb5c;
+	font-size: 13px;
+	margin: 0 0 0 12px;
+	padding: 0 12px 0 8px;
+	transition-property: background-color;
+	    transition-duration: .5s;
+	    border: 1px solid #96cb5c;
+	    border-radius: 100%;
+}
+
+
+#custom-menu:hover {
+	background-color: #96cb5c;
+	color: @background;
+}
+
+#custom-theme-toggle {
+    background-color: @background;
+    margin: 0 0 0 0;
+    padding: 0 12px 0 6px;
+    font-size: 12px;
+    color: @blue;
+}
+
+#custom-theme-random,
+#custom-waypaper {
+	background-color: @background;
+    margin: 0 0 0 0;
+    padding: 0 8px 0 6px;
+    font-size: 12px;
+    color: @blue;
+}
+
+
+#custom-power,
+#custom-reboot,
+#custom-lock,
+#custom-quit {
+	background-color: @background;
+	font-size: 16px;
+	color: @red;
+	margin: 0 0 0 0;
+	padding: 0 8px 0 8px;
+}
+
+.powermgt #custom-quit {
+	color: @magenta;
+}
+
+.powermgt #custom-reboot {
+	color: @green;
+}
+
+.powermgt #custom-lock {
+	color: @cyan;
+}
+
+#custom-power:hover,
+#custom-reboot:hover,
+#custom-lock:hover,
+#custom-quit:hover {
+	background-color: @red;
+	color: @background;
+	transition-property: background-color;
+	transition-duration: .5s;
+}
+
+#custom-audio-switch {
+	color: @red;
+	margin: 0 0 0 0;
+	border-radius: 0;
+	padding: 0 8px 0 8px;
+}
+
+
+#custom-audio-switch {
+    background-color: @background;
+    margin: 0 0 0 0;
+    padding: 0 8px 0 2px;
+    font-size: 14px;
+    color: @cyan;
+}
+
+
+/** ********** Idle Inhibitor ********** **/
+#idle_inhibitor {
+	background-color: @green;
+	color: @background;
+	margin: 0 4px 0 0 ;
+	padding: 0px 12px 0px 6px;
+	border-radius: 0 9px 9px 0;
+}
+#idle_inhibitor.deactivated {
+	background-color: @background;
+	color: @yellow;
+}
+
+/** ********** Tray ********** **/
+#tray {
+	background-color: @background;
+		margin: 0 0 0 0;
+	padding: 0px 6px 0px 8px;
+		border-radius: 0;
+}
+
+#tray * {
+	font-size: 9px;
+	opacity: .85;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+#tray > .active {
+}
+
+/** ********** MPD ********** **/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#mpd {
+	color: @foreground;
+	font-size: 12px;
+	font-weight: bold;
+}
+#mpd.disconnected {
+	color: @red;
+}
+#mpd.stopped {
+	color: @red;
+}
+#mpd.playing {
+	color: @cyan;
+}
+#mpd.paused {
+}
+
+#mpd.2 {
+	border-radius: 10px 0px 0px 10px;
+	margin: 0 0px 0 6px ;
+	padding: 0px 6px 0px 10px;
+}
+#mpd.3 {
+	margin: 0 0 0 0 ;
+	padding: 0px;
+}
+#mpd.4 {
+	border-radius: 0px 10px 10px 0px;
+	margin: 0 6px 0 0;
+	padding: 0px 10px 0px 6px;
+}
+#mpd.2,#mpd.3,#mpd.4 {
+	background-color: @background-alt1;
+	font-size: 14px;
+}
+
+/** ********** Spotify ********** **/
+#custom-spotify {
+	background-color: @background;
+	color: @foreground;
+	font-weight: 600;
+	margin: 0;
+	padding: 4px 12px;
+	font-size: 11px;
+	border-radius: 9px;
+}
+
+#custom-spotify.paused {
+	color: @foreground;
+}
+
+#custom-spotify.playing,
+#custom-cava.playing {
+    background: linear-gradient(90deg, @magenta 25%, @green 50%, @yellow 75%, @blue 100%); 
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
+    color: @background;
+}
+
+#custom-spotify.offline {
+	color: @foreground;
+}
+
+#custom-cava {
+	background-color: transparent;
+	color: transparent;
+	margin: 0 0 0 6px;
+	padding: 0 8px;
+	font-size: 10px;
+	font-weight: 400;
+	opacity: .5;
+}
+
+#custom-cava.Playing {
+	color: @foreground;
+}
+
+
+
+
+/** ********** CPU ********** **/
+#cpu {
+	color: @red;
+}
+
+/** ********** Memory ********** **/
+#memory {
+	color: @green;
+}
+
+/** ********** Disk ********** **/
+#disk {
+	color: @yellow;
+}
+
+/** ********** Pulseaudio ********** **/
+#pulseaudio {
+	color: @magenta;
+	font-size: 16px;
+}
+#pulseaudio.bluetooth {
+	color: @magenta;
+}
+#pulseaudio.muted {
+	color: @red;
+}
+
+#pulseaudio.2 {
+}
+#pulseaudio.2.bluetooth {
+}
+#pulseaudio.2.muted {
+}
+
+/** ********** Backlight ********** **/
+#backlight {
+	color: @magenta;
+}
+
+/** ********** Battery ********** **/
+#battery {
+	color: @cyan;
+}
+#battery.charging {
+}
+#battery.plugged {
+}
+@keyframes blink {
+    to {
+        color: @foreground;
+    }
+}
+#battery.critical:not(.charging) {
+	background-color: @background-alt2;
+}
+#battery.2.critical:not(.charging) {
+	background-color: @background-alt1;
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/** ********** Network ********** **/
+/* #network { */
+/* 	color: @green; */
+/* } */
+/* #network.disconnected,#network.disabled { */
+/* 	color: @red; */
+/* } */
+/* #network.linked { */
+/* } */
+/* #network.ethernet { */
+/* } */
+ #network.wifi {
+	 color: @green;
+ }
+
+/** ********** Bluetooth ********** **/
+#bluetooth {
+	 color: @blue;
+}
+#bluetooth.disabled{
+	color: @red;
+}
+#bluetooth.off{
+	color: @red;
+}
+#bluetooth.on{
+}
+#bluetooth.connected{
+}
+#bluetooth.discoverable{
+}
+#bluetooth.discovering{
+}
+#bluetooth.pairable{
+}
+
+/** ********** Clock ********** **/
+#clock {
+	color: @yellow;
+}
+
+/** ********** WLR Desktop ********** **/
+#workspaces * {
+	font-size: 16px;
+}
+
+#workspaces {
+	font-size: 20px;
+	padding: 0px 12px 0 0;
+	border-radius: 0;
+	background: @background;
+}
+#workspaces button{
+	color: @foreground;
+	padding: 0 3px;
+	font-size: 20px;
+	border-radius: 9px;
+}
+
+#workspaces button.visible{
+	opacity: 1;
+}
+
+
+#workspaces button.active,
+#workspaces button.focused {
+	color: @yellow;
+	font-size: 20px;
+}
+
+
+#workspaces button.urgent{
+	color: @red;
+}
+#workspaces button.hidden,
+#workspaces button.empty {
+	color: @foreground;
+}
+
+#window {
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0px 12px;
+	color: @white;
+	opacity: 1;
+	background-color: @background;
+}
+
+#mode {
+	color: @foreground;
+	background-color: @background;
+	opacity: 1;
+		margin: 0 0;
+		padding: 0px 8px 0px 8px;
+		border-radius: 9px;
+}
+
+/** ********** Common style ********** **/
+#backlight, 
+#battery,
+#clock,
+#cpu,
+#disk,
+#memory,
+#pulseaudio,
+#network,
+#bluetooth {
+	background-color: @background;
+	padding: 0px 4px 0px 8px;
+	/* color: @yellow; */
+	font-size: 13px;
+}
+
+#clock { padding-right: 2px; }
+
+#pulseaudio {
+	font-size: 18px;
+	padding-right: 8px;
+}
+
+#backlight.2, 
+#battery.2,
+#clock.2,
+#cpu.2,
+#disk.2,
+#memory.2,
+#pulseaudio.2,
+#network.2,
+#bluetooth.2 {
+	background-color: @background;
+	color: @foreground;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 0px 9px 0px 4px;
+}
+
+#bluetooth, #network {
+	border-radius: 0;
+}
+
+
+#bluetooth {
+}
+
+#custom-notification {
+	background-color: @background;
+	color: @yellow;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 0px 4px 0px 2px;
+}
+
+#custom-weather {
+	background-color: @background;
+	color: @cyan;
+	font-size: 16px;
+	font-weight: 700;
+	padding: 0px 4px 0px 12px;
+}
+
+#custom-weather span {
+	color: red;
+}
+
+#custom-weather.2 {
+	background-color: @background;
+	color: @foreground;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 0px 4px 0px 2px;
+}

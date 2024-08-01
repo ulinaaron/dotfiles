@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wlrctl window focus kitten_scratch || kitty --class kitten_scratch

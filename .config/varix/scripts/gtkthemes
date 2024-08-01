@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Set GTK Themes, Icons, Cursor and Fonts
+
+THEME='Varix'
+ICONS='Papirus-Dark'
+FONT='Cabin 10'
+MONO='Maple Mono 11'
+CURSOR='Bibata-Modern-Ice'
+
+SCHEMA='gsettings set org.gnome.desktop.interface'
+
+apply_themes () {
+	${SCHEMA} gtk-theme "$THEME"
+	${SCHEMA} icon-theme "$ICONS"
+	${SCHEMA} cursor-theme "$CURSOR"
+	${SCHEMA} document-font-name "$FONT"
+	${SCHEMA} font-name "$FONT"
+	${SCHEMA} monospace-font-name "$MONO"
+}
+
+apply_themes
+
+  theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+  gsettings set org.gnome.desktop.interface gtk-theme ''
+  sleep 1
+  gsettings set org.gnome.desktop.interface gtk-theme $theme
+
+
+

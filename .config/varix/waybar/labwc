@@ -1,0 +1,134 @@
+// Waybar config file for Hyprland
+{
+    "include": "/home/aaron/.config/varix/waybar/shared/modules",
+    "name": "main-bar", 			// Waybar name
+    "id": "main-bar", 				// Waybar id
+    "layer": "top", 				// Waybar at top layer
+    "mode": "dock", 				// Display mode (dock|hide|invisible|overlay)
+    "exclusive": true, 				// Request an exclusive zone from the compositor
+    "passthrough": false, 			// Pass any pointer events to the window under the bar
+    "position": "bottom", 			// Waybar position (top|bottom|left|right)
+    "height": 30, 					// Waybar height (to be removed for auto height
+    "width": "", 					// Waybar width (empty for auto width)
+    "spacing": 0, 					// Gaps between modules
+    "margin": 0, 					// Space around the bar
+    "margin-top": 10, 				// Space above the bar
+    "margin-bottom": 8, 			// Space below the bar
+    "margin-left": 0, 				// Space to the left of the bar
+    "margin-right": 0, 				// Space to the right of the bar
+    "fixed-center": true, 			// Center modules position
+    "ipc": true, 					// Control waybar with `swaymsg bar` commands
+
+    // Choose the order of the modules
+    "modules-left": ["custom/bl","custom/ws_unique-1", "custom/ws_unique-2", "custom/spacer", "group/apps",  "custom/br", "custom/spotify" ],
+    "modules-center": [],
+    "modules-right": ["custom/bl", "group/system", "tray", "group/theming", "group/charge", "group/sound", "group/bt", "group/wireless", "custom/notification", "clock", "clock#2",  "group/powermgt", "custom/br"],
+
+	"group/apps": {
+         "orientation": "horizontal",
+                "modules": [
+                    "custom/apps",
+                    "wlr/taskbar",
+                ],
+                 "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "powermgt",
+                    "transition-left-to-right": true,
+                },
+    },
+	"group/theming": {
+         "orientation": "horizontal",
+                "modules": [
+                    "custom/theme-toggle", // First element is the "group leader" and won't ever be hidden
+                           "custom/theme-random",
+                           "custom/waypaper",
+                ],
+                 "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "powermgt",
+                    "transition-left-to-right": false,
+                },
+    },
+    "group/powermgt": {
+         "orientation": "horizontal",
+                "modules": [
+                    "custom/power", // First element is the "group leader" and won't ever be hidden
+                           "custom/quit",
+                           "custom/lock",
+                           "custom/reboot",
+                ],
+                 "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "powermgt",
+                    "transition-left-to-right": false,
+                },
+    },
+
+    "group/wireless": {
+         "orientation": "horizontal",
+                "modules": [
+                    "network", "network#2",
+                ],
+                 "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "system",
+                    "transition-left-to-right": true,
+                },
+    },
+    "group/bt": {
+         "orientation": "horizontal",
+                "modules": [
+                    "bluetooth", "bluetooth#2",
+                ],
+                 "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "system",
+                    "transition-left-to-right": true,
+                },
+    },
+    "group/charge": {
+        "orientation": "horizontal",
+            "modules": [
+                "battery", "battery#2",
+            ],
+             "drawer": {
+                "transition-duration": 500,
+                "children-class": "system",
+                "transition-left-to-right": true,
+            },
+    },
+    "group/sound": {
+            "orientation": "horizontal",
+            "modules": [
+                "pulseaudio", "pulseaudio#2", "custom/audio-switch"
+            ],
+             "drawer": {
+                "transition-duration": 500,
+                "children-class": "system",
+                "transition-left-to-right": true,
+            },
+        },
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/open-left", "cpu", "cpu#2", "memory", "memory#2",
+        ],
+         "drawer": {
+            "transition-duration": 500,
+            "children-class": "system",
+            "transition-left-to-right": false,
+        },
+    },
+    "group/traydrawer": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/open-right", "tray",
+        ],
+         "drawer": {
+            "transition-duration": 500,
+            "children-class": "system",
+            "transition-left-to-right": true,
+        },
+    }
+
+}

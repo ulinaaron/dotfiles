@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Set GTK Themes, Icons, Cursor and Fonts
+
+THEME='adw-gtk3-dark'
+ICONS='Vimix-dark'
+FONT='Inter 9'
+MONO='Maple Mono 11'
+CURSOR='Bibata-Modern-Ice'
+
+SCHEMA='gsettings set org.gnome.desktop.interface'
+
+apply_themes () {
+	${SCHEMA} gtk-theme "$THEME"
+	${SCHEMA} icon-theme "$ICONS"
+	${SCHEMA} cursor-theme "$CURSOR"
+	${SCHEMA} document-font-name "$FONT"
+	${SCHEMA} font-name "$FONT"
+	${SCHEMA} monospace-font-name "$MONO"
+}
+
+apply_themes
+

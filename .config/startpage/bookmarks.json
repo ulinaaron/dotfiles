@@ -1,0 +1,66 @@
+{
+    "Work": {
+        "color": "color6",
+        "bookmarks": [
+            {
+                "title": "Active Collab",
+                "url": "https://connect.stevensinc.com/"
+            },
+            {
+                "title": "Tickets",
+                "url": "https://tickets.stevensinc.com/"
+            },
+            {
+                "title": "Bitbucket",
+                "url": "https://bitbucket.org/stevensadvertising/workspace/overview/"
+            }
+        ]
+    },
+    "Servers": {
+        "color": "color4",
+        "bookmarks": [
+            {
+                "title": "Cloudways",
+                "url": "https://platform.cloudways.com/login"
+            },
+            {
+                "title": "Runcloud",
+                "url": "https://manage.runcloud.io/servers"
+            },
+            {
+                "title": "InstaWP",
+                "url": "https://app.instawp.io/dashboard"
+            }
+        ]
+    },
+    "Development": {
+        "color": "color9",
+        "bookmarks": [
+            {
+                "title": "AlpineJS Documentation",
+                "url": "https://alpinejs.dev/"
+            },
+            {
+                "title": "Laravel",
+                "url": "https://laravel.com/docs"
+            },
+            {
+                "title": "Filament PHP",
+                "url": "https://filamentphp.com/docs"
+            }
+        ]
+    },
+    "Network": {
+        "color": "color3",
+        "bookmarks": [
+            {
+                "title": "TrueNAS",
+                "url": "https://alpinejs.dev/"
+            },
+            {
+                "title": "NextCloud",
+                "url": "https://varixvault.site:9001"
+            }
+        ]
+    }
+}

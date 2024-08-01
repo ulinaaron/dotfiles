@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# sed -i '' '/"\[Wal\]": {/,/"textMateRules": \[/ {/"textMateRules": \[/r /home/aaron/.config/walthings/templates/resources/vscode-syntax.json' /home/aaron/.config/VSCodium/User/settings.json
+
+# sed -i '' 's/\("editor.tokenColorCustomizations": {.*}\)/$(cat /home/aaron/.config/walthings/templates/resources/vscode-syntax.json)/' /home/aaron/.config/VSCodium/User/settings.json
+
+# cat /home/aaron/.config/VSCodium/User/settings.json | jq --argjson replacement "$(jq -c  /home/aaron/.config/walthings/templates/resources/vscode-syntax.json)" '.editor.tokenColorCustomizations = $replacement' > temp.json && mv temp.json /home/aaron/.config/VSCodium/User/settings.json
+
+# cat /home/aaron/.config/VSCodium/User/settings.json | jq --argjson replacement "$(jq -c '.editor.tokenColorCustomizations' /home/aaron/.config/walthings/templates/resources/vscode-syntax.json)" '.editor.tokenColorCustomizations = $replacement' > temp.json && mv temp.json /home/aaron/.config/VSCodium/User/settings.json
+
+# cat /home/aaron/.config/VSCodium/User/settings.json | jq --argjson replacement "$(jq 'del(.[] | select(. == null))' /home/aaron/.config/walthings/templates/resources/vscode-syntax.json)" '.editor.tokenColorCustomizations = $replacement' > temp.json && mv temp.json /home/aaron/.config/VSCodium/User/settings.json
+
+
+# cat /home/aaron/.config/VSCodium/User/settings.json | jq --argjson replacement "$(jq --comment-output 'del(.[] | select(. == null))' /home/aaron/.config/walthings/templates/resources/vscode-syntax.json | jq '[.[] | if type == "array" then .[0] else . end]')" '.editor.tokenColorCustomizations = $replacement' > temp.json && mv temp.json /home/aaron/.config/VSCodium/User/settings.json
+
+# 
+# # Pre-process vscode-syntax.json to remove comments and ensure valid JSON
+# cat /home/aaron/.config/walthings/templates/resources/vscode-syntax.json | sed 's#//.*$##' > temp.json
+# 
+# # Update settings.json with the content of pre-processed vscode-syntax.json
+# sed -i '/"editor.tokenColorCustomizations"/ {
+#     N
+#     r temp.json
+#     d
+# }' /home/aaron/.config/VSCodium/User/settings.json
+
+# Update settings.json with the content of vscode-syntax.json
+sed -i '/"editor.tokenColorCustomizations"/ {
+    N
+    r /home/aaron/.config/walthings/templates/resources/vscode-syntax.json
+    d
+}' /home/aaron/.config/VSCodium/User/settings.json
+

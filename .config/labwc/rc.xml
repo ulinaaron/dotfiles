@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+
+<labwc_config>
+
+    <theme>
+        <name>Pelangi</name>
+        <!-- <name>Penumbra</name> -->
+        <cornerRadius>9</cornerRadius>
+        <font>
+			<name>Cabin</name>
+			<size>8</size>
+			<weight>regular</weight>
+        </font>
+            <font place="MenuItem">
+		      <name>Cabin</name>
+		      <size>7</size>
+		      <slant>normal</slant>
+		      <weight>normal</weight>
+		    </font>
+        <dropshadows>yes</dropshadows>
+        <keepborder>yes</keepborder>
+    </theme>
+
+    <placement>
+        <policy>automatic</policy>cd
+    </placement>
+
+    <core>
+        <decoration>server</decoration>
+        <gap>10</gap>
+        <adaptiveSync>no</adaptiveSync>
+        <allowTearing>yes</allowTearing>
+        <reuseOutputMode>yes</reuseOutputMode>
+    </core>
+
+     <snapping>
+       <range>1</range>
+       <topMaximize>yes</topMaximize>
+     </snapping>
+
+    <mouse>
+        <default />
+        <doubleClickTime>500</doubleClickTime>
+        <scrollFactor>1.0</scrollFactor>
+           <context name="Root">
+		      <mousebind button="Left" action="Press">
+		        <action name="none">
+		        </action>
+		      </mousebind>
+		      <mousebind button="Right" action="Press">
+		        <action name="none">
+		        </action>
+		      </mousebind>
+		      <mousebind button="Middle" action="Press">
+		        <action name="none">
+
+		        </action>
+		      </mousebind>
+    		</context>
+    </mouse>
+
+    <libinput>
+      <device category="default">
+        <naturalScroll>no</naturalScroll>
+        <leftHanded>no</leftHanded>
+        <pointerSpeed>0.5</pointerSpeed>
+        <accelProfile>flat</accelProfile>
+        <tap>yes</tap>
+        <tapButtonMap>1mr</tapButtonMap>
+        <tapAndDrag>yes</tapAndDrag>
+        <dragLock>yes</dragLock>
+        <middleEmulation>yes</middleEmulation>
+        <disableWhileTyping>yes</disableWhileTyping>
+      </device>
+    </libinput>
+
+    <desktops>
+        <popupTime>500</popupTime>
+		<names>
+			<name>Workspace 1</name>
+			<name>Workspace 2</name>
+			<name>Workspace 3</name>
+			<name>Workspace 4</name>
+			<name>Workspace 5</name>
+			<name>Workspace 6</name>
+			<name>Workspace 7</name>
+			<name>Workspace 8</name>
+			<name>Workspace 9</name>			
+			<name>Kitten Scratch</name>
+		</names>
+    </desktops>
+
+    <!-- <margin top="10" bottom="0" left="10" right="10" output="" />d -->
+
+    <resistance>
+		<screenEdgeStrength>100</screenEdgeStrength>
+		<windowEdgeStrength>40</windowEdgeStrength>
+	</resistance>
+
+  <!-- Percent based regions based on output usable area, % char is required -->
+    <regions>
+        <region name="top-left"     x="0%"  y="0%"  height="50%"  width="50%"  />
+        <region name="top"          x="0%"  y="0%"  height="50%"  width="100%" />
+        <region name="top-right"    x="50%" y="0%"  height="50%"  width="50%"  />
+        <region name="left"         x="0%"  y="0%"  height="100%" width="50%"  />
+        <region name="left-third"   x="0%"  y="0%"  height="100%" width="33%"  />
+        <region name="left-2third"   x="0%"  y="0%"  height="100%" width="67%"  />
+        <region name="center"       x="10%" y="5%" height="90%"  width="80%"  />
+        <region name="right"        x="50%" y="0%"  height="100%" width="50%"  />
+        <region name="right-third"  x="67%" y="0%"  height="100%" width="33%"  />
+        <region name="right-2third"  x="33%" y="0%"  height="100%" width="67%"  />
+        <region name="bottom-left"  x="0%"  y="50%" height="50%"  width="50%"  />
+        <region name="bottom"       x="0%"  y="50%" height="50%"  width="100%" />
+        <region name="bottom-right" x="50%" y="50%" height="50%"  width="50%"  />
+    </regions>
+
+    <windowSwitcher show="no" preview="" outlines="" allWorkspaces=""></windowSwitcher>
+
+    <keyboard>
+        <default />
+        <keybind key="W-Return">
+            <action name="Execute" command="kitty" />
+        </keybind>
+        <keybind key="W-S-Return">
+            <action name="Execute" command="firefox" />
+        </keybind>
+        <keybind key="W-Space">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_launcher" />
+        </keybind>
+        <keybind key="W-A-Space">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_windows" />
+        </keybind>
+        <keybind key="W-C-Space">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_runner" />
+        </keybind>
+        <keybind key="W-s">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_screenshot" />
+        </keybind>
+
+        <keybind key="W-b">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_bluetooth" />
+        </keybind>
+        <keybind key="W-n">
+            <action name="Execute" command="~/.config/varix/scripts/rofi_network" />
+        </keybind>
+
+        <keybind key="W-E">
+            <action name="Execute" command="nemo" />
+        </keybind>
+
+        <keybind key="W-Q">
+        	<action name="If">
+                 <query identifier="kitten_scratch"/>
+	                 <then>
+	                 	 <action name="SendToDesktop" to="Kitten Scratch" follow="no" />
+	                 </then>
+	                 <else>
+						  <action name="Close" />
+	                 </else>
+               </action>
+        </keybind>
+
+        <keybind key="W-S-Q">
+            <!-- <action name="Execute" command="~/.config/varix/scripts/rofi_powermenu" /> -->
+            <action name="exit" />
+        </keybind>
+
+        <keybind key="W-R">
+            <action name="Execute" command="~/.config/varix/labwc/scripts/refresh" />
+            <action name="Reconfigure" />
+        </keybind>
+
+        <keybind key="W-Tab">
+            <action name="GoToDesktop" to="right" wrap="yes" />
+        </keybind>
+         <keybind key="W-S-Tab">
+            <action name="GoToDesktop" to="left" wrap="yes" />
+      </keybind>
+
+        <keybind key="W-1">
+                <action name="GoToDesktop" to="1" wrap="yes" />
+        </keybind>
+        <keybind key="W-2">
+                <action name="GoToDesktop" to="2" wrap="yes" />
+        </keybind>
+        <keybind key="W-3">
+                <action name="GoToDesktop" to="3" wrap="yes" />
+        </keybind>
+        <keybind key="W-4">
+                <action name="GoToDesktop" to="4" wrap="yes" />
+        </keybind>
+        <keybind key="W-5">
+                <action name="GoToDesktop" to="5" wrap="yes" />
+        </keybind>
+        <keybind key="W-6">
+                <action name="GoToDesktop" to="6" wrap="yes" />
+        </keybind>
+        <keybind key="W-7">
+                <action name="GoToDesktop" to="7" wrap="yes" />
+        </keybind>
+        <keybind key="W-8">
+                <action name="GoToDesktop" to="8" wrap="yes" />
+        </keybind>
+        <keybind key="W-9">
+                <action name="GoToDesktop" to="9" wrap="yes" />
+        </keybind>
+        <keybind key="W-0">
+                <action name="GoToDesktop" to="10" wrap="yes" />
+        </keybind>
+
+        <!-- Send Active Window To A Workspace and Foloow -->
+        <keybind key="W-S-1">
+                <action name="SendToDesktop" to="1" wrap="no" />
+        </keybind>
+        <keybind key="W-S-2">
+                <action name="SendToDesktop" to="2" wrap="no" />
+        </keybind>
+        <keybind key="W-S-3">
+                <action name="SendToDesktop" to="3" wrap="no" />
+        </keybind>
+        <keybind key="W-S-4">
+                <action name="SendToDesktop" to="4" wrap="no" />
+        </keybind>
+        <keybind key="W-S-5">
+                <action name="SendToDesktop" to="5" wrap="no" />
+        </keybind>
+        <keybind key="W-S-6">
+                <action name="SendToDesktop" to="6" wrap="no" />
+        </keybind>
+        <keybind key="W-S-7">
+                <action name="SendToDesktop" to="7" wrap="no" />
+        </keybind>
+        <keybind key="W-S-8">
+                <action name="SendToDesktop" to="8" wrap="no" />
+        </keybind>
+        <keybind key="W-S-9">
+                <action name="SendToDesktop" to="9" wrap="no" />
+        </keybind>
+        <keybind key="W-S-0">
+                <action name="SendToDesktop" to="10" wrap="no" />
+        </keybind>
+
+        <!-- Send Active Window To A Workspace and DO NOT Foloow -->
+        <keybind key="W-C-S-1">
+                <action name="SendToDesktop" to="1" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-2">
+                <action name="SendToDesktop" to="2" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-3">
+                <action name="SendToDesktop" to="3" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-4">
+                <action name="SendToDesktop" to="4" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-5">
+                <action name="SendToDesktop" to="5" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-6">
+                <action name="SendToDesktop" to="6" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-7">
+                <action name="SendToDesktop" to="7" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-8">
+                <action name="SendToDesktop" to="8" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-9">
+                <action name="SendToDesktop" to="9" wrap="yes" follow="no" />
+        </keybind>
+        <keybind key="W-C-S-0">
+                <action name="SendToDesktop" to="10" wrap="yes" follow="no" />
+        </keybind>
+
+        <keybind key="W-c">
+                <action name="SnapToRegion" region="center"/>
+        </keybind>
+        <keybind key="W-S-c">
+                <action name="SnapToEdge" direction="center"/>
+        </keybind>
+
+        <!-- Use a different terminal emulator -->
+		<keybind key="W-right">
+			<action name="NextWindow" />
+		</keybind>
+
+		<keybind key="W-left">
+			<action name="PreviousWindow" />
+		</keybind>
+
+
+        <keybind key="W-S-right">
+                <action name="SnapToRegion" region="right"/>
+        </keybind>
+        <keybind key="W-S-left">
+                <action name="SnapToRegion" region="left"/>
+        </keybind>
+
+        <keybind key="W-z">
+        	<action name="Execute" command="~/.config/varix/themewal/themewal.sh --random ~/Pictures/Themes/" />
+        </keybind>
+
+        <keybind key="W-t">
+        	     <action name="If">
+                	 <query identifier="kitten_scratch"/>
+	                 <then>
+						<!-- <action name="Execute" command="wlrctl window focus kitten_scratch" />						 -->
+						<action name="SendToDesktop" to="Kitten Scratch" follow="no" />
+	                 </then>
+	                 <else>
+						 <action name="Execute" command="~/.config/varix/scripts/kitten_scratch" />
+	                 </else>
+               </action>
+        </keybind>
+
+        <!-- Unbind -->
+        <keybind key="W-F4">
+            <action name="None" />
+        </keybind>
+
+    </keyboard>
+
+    <windowRules>
+    	<windowRule identifier="thunderbird">
+    		<action name="SendToDesktop" to="7" follow="no" />
+			<action name="MoveToOutput" output="eDP-1"  wrap="no" />
+    	</windowRule>
+    	<windowRule title="Picture-in-Picture*">
+		      <action name="ToggleAlwaysOnTop"/>
+		      <action name="SnapToRegion" region="bottom-right"/>
+		      <action name="MoveTo" x="100%" y="100%" />
+		      <action name="ResizeTo" width="480" height="320" />
+		</windowRule>
+		<windowRule identifier="kitten_scratch">
+			 <action name="SnapToRegion" region="top"/>
+			 <action name="ToggleAlwaysOnTop" />
+		</windowRule>
+    </windowRules>
+</labwc_config>

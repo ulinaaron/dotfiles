@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# sway : colors
+	cat > ~/.config/sway/config.d/50_theme <<- EOF
+		client.focused ${modbackground[2]} ${modbackground[2]} ${foreground} ${color4} ${color4}
+		client.unfocused ${background} ${background} ${foreground} ${modbackground[2]} ${modbackground[2]}
+		client.focused_inactive ${modbackground[1]} ${modbackground[1]} ${foreground} ${modbackground[2]} ${modbackground[2]}
+	EOF
+
+	swaymsg reload

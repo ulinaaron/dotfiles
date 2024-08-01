@@ -1,0 +1,35 @@
+[pyprland]
+plugins = ["scratchpads", "shift_monitors"]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "alacritty --class alacritty-dropterm"
+class = "alacritty-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+excludes = "*"
+lazy = true
+process_tracking = false
+
+[scratchpads.spotify]
+animation = "fromTop"
+command = "alacritty --class spotify-scratch -e ncspot"
+class = "spotify-scratch"
+lazy = true
+excludes = "*"
+process_tracking = false
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.btop]
+animation = "fromTop"
+command = "alacritty --class btop-scratch -e btop"
+class = "btop-scratch"
+lazy = true
+excludes = "*"
+process_tracking = false
+size = "75% 60%"
+max_size = "80% 100%"
+margin = 50
