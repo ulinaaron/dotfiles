@@ -1,28 +1,28 @@
-// Waybar config file for Hyprland
+// Waybar config file for LabWC
 {
     "include": "/home/aaron/.config/varix/waybar/shared/modules",
     "name": "main-bar", 			// Waybar name
     "id": "main-bar", 				// Waybar id
     "layer": "top", 				// Waybar at top layer
     "mode": "dock", 				// Display mode (dock|hide|invisible|overlay)
-    "exclusive": true, 				// Request an exclusive zone from the compositor
+    "exclusive": false, 				// Request an exclusive zone from the compositor
     "passthrough": false, 			// Pass any pointer events to the window under the bar
     "position": "bottom", 			// Waybar position (top|bottom|left|right)
-    "height": 30, 					// Waybar height (to be removed for auto height
-    "width": "", 					// Waybar width (empty for auto width)
+    "height": 0, 					// Waybar height (to be removed for auto height
+    "width": 0, 					// Waybar width (empty for auto width)
     "spacing": 0, 					// Gaps between modules
     "margin": 0, 					// Space around the bar
     "margin-top": 10, 				// Space above the bar
     "margin-bottom": 8, 			// Space below the bar
-    "margin-left": 0, 				// Space to the left of the bar
+    "margin-left": "auto", 				// Space to the left of the bar
     "margin-right": 0, 				// Space to the right of the bar
-    "fixed-center": true, 			// Center modules position
+    "fixed-center": false, 			// Center modules position
     "ipc": true, 					// Control waybar with `swaymsg bar` commands
 
     // Choose the order of the modules
-    "modules-left": ["custom/bl","custom/ws_unique-1", "custom/ws_unique-2", "custom/spacer", "group/apps",  "custom/br", "custom/spotify" ],
     "modules-center": [],
-    "modules-right": ["custom/bl", "group/system", "tray", "group/theming", "group/charge", "group/sound", "group/bt", "group/wireless", "custom/notification", "clock", "clock#2",  "group/powermgt", "custom/br"],
+    "modules-left": [],
+    "modules-right": ["custom/spotify","custom/bl","custom/ws_unique-1", "custom/ws_unique-2", "custom/spacer", "group/apps",  "custom/br", "custom/bl", "group/system", "tray", "group/theming", "group/charge", "group/sound", "group/bt", "group/wireless", "custom/notification", "clock", "clock#2",  "group/powermgt", "custom/br"],
 
 	"group/apps": {
          "orientation": "horizontal",

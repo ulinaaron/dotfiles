@@ -43,6 +43,47 @@ BASE_LIGHT_CYAN_MIX=$BASE_MIX_FACTOR
 BASE_LIGHT_WHITE="white"
 BASE_LIGHT_WHITE_MIX=$BASE_MIX_FACTOR
 
+##EDITOR Mixes
+EDITOR_LIGHTEN_FACTOR=0.10
+EDITOR_DESATURATE_FACTOR=0.50
+EDITOR_MIX_FACTOR=0.40
+
+# Dark Mix Colors
+EDITOR_DARK_BLACK="black"
+EDITOR_DARK_BLACK_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_RED="red"
+EDITOR_DARK_RED_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_GREEN="green"
+EDITOR_DARK_GREEN_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_YELLOW="yellow"
+EDITOR_DARK_YELLOW_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_BLUE="blue"
+EDITOR_DARK_BLUE_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_MAGENTA="magenta"
+EDITOR_DARK_MAGENTA_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_CYAN="cyan"
+EDITOR_DARK_CYAN_MIX=$EDITOR_MIX_FACTOR
+EDITOR_DARK_WHITE="white"
+EDITOR_DARK_WHITE_MIX=$EDITOR_MIX_FACTOR
+
+# Light Mix Colors
+EDITOR_LIGHT_BLACK="black"
+EDITOR_LIGHT_BLACK_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_RED="red"
+EDITOR_LIGHT_RED_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_GREEN="green"
+EDITOR_LIGHT_GREEN_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_YELLOW="yellow"
+EDITOR_LIGHT_YELLOW_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_BLUE="blue"
+EDITOR_LIGHT_BLUE_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_MAGENTA="magenta"
+EDITOR_LIGHT_MAGENTA_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_CYAN="cyan"
+EDITOR_LIGHT_CYAN_MIX=$EDITOR_MIX_FACTOR
+EDITOR_LIGHT_WHITE="white"
+EDITOR_LIGHT_WHITE_MIX=$EDITOR_MIX_FACTOR
+
 # Get Current Directory
 DIR="$(dirname "$0")"
 TEMPLATES="$DIR/templates"
@@ -128,6 +169,24 @@ modify_colors() {
     altforeground="`pastel color $foreground | pastel darken 0.30 | pastel format hex`"
     modbackground=(`pastel gradient -n 3 $background $altbackground | pastel format hex`)
     accent="$color4"
+    ecomment="`pastel color $foreground | pastel darken 0.40 | pastel desaturate .6 |  pastel format hex`"
+    eblack="`pastel color $color0 | pastel mix -f $EDITOR_DARK_BLACK_MIX $EDITOR_DARK_BLACK | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    ered="`pastel color $color1 | pastel mix -f $EDITOR_DARK_RED_MIX $EDITOR_DARK_RED | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    egreen="`pastel color $color2 | pastel mix -f $EDITOR_DARK_GREEN_MIX $EDITOR_DARK_GREEN | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    eyellow="`pastel color $color3 | pastel mix -f $EDITOR_DARK_YELLOW_MIX $EDITOR_DARK_YELLOW | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    eblue="`pastel color $color4 | pastel mix -f $EDITOR_DARK_BLUE_MIX $EDITOR_DARK_BLUE | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    emagenta="`pastel color $color5 | pastel mix -f $EDITOR_DARK_MAGENTA_MIX $EDITOR_DARK_MAGENTA | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    ecyan="`pastel color $color6 | pastel mix -f $EDITOR_DARK_CYAN_MIX $EDITOR_DARK_CYAN | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    ewhite="`pastel color $color7 | pastel mix -f $EDITOR_DARK_WHITE_MIX $EDITOR_DARK_WHITE | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elblack="`pastel color $color8 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_BLACK_MIX $EDITOR_LIGHT_BLACK | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elred="`pastel color $color9 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_RED_MIX $EDITOR_LIGHT_RED | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elgreen="`pastel color $color10 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_GREEN_MIX $EDITOR_LIGHT_GREEN | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elyellow="`pastel color $color11 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_YELLOW_MIX $EDITOR_LIGHT_YELLOW | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elblue="`pastel color $color12 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_BLUE_MIX $EDITOR_LIGHT_BLUE | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elmagenta="`pastel color $color13 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_MAGENTA_MIX $EDITOR_LIGHT_MAGENTA | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elcyan="`pastel color $color14 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_CYAN_MIX $EDITOR_LIGHT_CYAN | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+    elwhite="`pastel color $color15 | pastel lighten $EDITOR_LIGHTEN_FACTOR | pastel mix -f $EDITOR_LIGHT_WHITE_MIX $BASE_LIGHT_WHITE | pastel desaturate $EDITOR_DESATURATE_FACTOR | pastel format hex`"
+
     color0="`pastel color $color0 | pastel mix -f $BASE_DARK_BLACK_MIX $BASE_DARK_BLACK | pastel format hex`"
     color1="`pastel color $color1 | pastel mix -f $BASE_DARK_RED_MIX $BASE_DARK_RED | pastel format hex`"
     color2="`pastel color $color2 | pastel mix -f $BASE_DARK_GREEN_MIX $BASE_DARK_GREEN | pastel format hex`"
@@ -247,6 +306,8 @@ execute_scripts() {
 
 	# source "$TEMPLATES/sway"
 
+	source "$TEMPLATES/zed"
+
 	apply_startpage
 
 	pywalfox update
@@ -261,7 +322,7 @@ if [[ "$1" == '--file' ]]; then
 	pkill waybar && bash $HOME/.config/varix/labwc/scripts/statusbar &
 	labwc -r &
 	$HOME/.config/varix/scripts/gtkthemes &
-	$HOME/.config/varix/scripts/icons ${color4} &
+	$HOME/.config/varix/scripts/icons ${color2} &
 elif [[ "$1" == '--random' ]]; then
 	source_random
 	execute_scripts
@@ -270,7 +331,7 @@ elif [[ "$1" == '--random' ]]; then
 	pkill waybar && bash $HOME/.config/varix/labwc/scripts/statusbar &
 	labwc -r &
 	$HOME/.config/varix/scripts/gtkthemes &
-	$HOME/.config/varix/scripts/icons ${color4} &
+	$HOME/.config/varix/scripts/icons ${color2} &
 elif [[ "$1" == '--refresh' ]]; then
 	source_current
 	execute_scripts
@@ -279,7 +340,7 @@ elif [[ "$1" == '--refresh' ]]; then
 	pkill waybar && bash $HOME/.config/varix/labwc/scripts/statusbar &
 	labwc -r &
 	$HOME/.config/varix/scripts/gtkthemes &
-	$HOME/.config/varix/scripts/icons ${color4} &
+	$HOME/.config/varix/scripts/icons ${color2} &
 
 # elif [[ "$1" == '--unlink' ]]; then
 

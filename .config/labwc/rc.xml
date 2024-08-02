@@ -5,7 +5,7 @@
     <theme>
         <name>Pelangi</name>
         <!-- <name>Penumbra</name> -->
-        <cornerRadius>9</cornerRadius>
+        <cornerRadius>12</cornerRadius>
         <font>
 			<name>Cabin</name>
 			<size>8</size>
@@ -22,7 +22,7 @@
     </theme>
 
     <placement>
-        <policy>automatic</policy>cd
+        <policy>automatic</policy>
     </placement>
 
     <core>
@@ -52,11 +52,15 @@
 		        </action>
 		      </mousebind>
 		      <mousebind button="Middle" action="Press">
-		        <action name="none">
-
-		        </action>
+		        <action name="none" />
 		      </mousebind>
-    		</context>
+       	    <mousebind direction="Up" action="Scroll">
+                <action name="None" />
+            </mousebind>
+            <mousebind direction="Down" action="Scroll">
+                <action name="None"/>
+            </mousebind>
+        </context>
     </mouse>
 
     <libinput>
@@ -85,7 +89,7 @@
 			<name>Workspace 6</name>
 			<name>Workspace 7</name>
 			<name>Workspace 8</name>
-			<name>Workspace 9</name>			
+			<name>Workspace 9</name>
 			<name>Kitten Scratch</name>
 		</names>
     </desktops>
@@ -300,6 +304,14 @@
         	<action name="Execute" command="~/.config/varix/theming/theme.sh --random ~/Pictures/Themes/" />
         </keybind>
 
+        <keybind key="W-f">
+        	<action name="ToggleFullscreen" />
+        </keybind>
+
+        <keybind key="W-S-b">
+            <action name="SetDecorations" decorations="full" forceSSD="yes" />
+        </keybind>
+
         <keybind key="W-t">
         	     <action name="If">
                 	 <query identifier="kitten_scratch"/>
@@ -334,6 +346,9 @@
 		<windowRule identifier="kitten_scratch">
 			 <action name="SnapToRegion" region="top"/>
 			 <action name="ToggleAlwaysOnTop" />
+		</windowRule>
+		<windowRule identifier="Beeper">
+			    <action name="SetDecorations" decorations="full" forceSSD="yes" />
 		</windowRule>
     </windowRules>
 </labwc_config>
