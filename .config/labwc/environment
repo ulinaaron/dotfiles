@@ -5,6 +5,7 @@ QT_AUTO_SCREEN_SCALE_FACTOR=1
 MOZ_ENABLE_WAYLAND=1
 GDK_SCALE=1
 WLR_DRM_NO_ATOMIC=1
+ZED_WINDOW_DECORATIONS=server
 
 ##
 ## Use the XKB_DEFAULT_LAYOUT variable to set the keyboard layout. For example

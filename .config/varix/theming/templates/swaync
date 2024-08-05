@@ -6,10 +6,10 @@ sed -i "$HOME/dotfiles/.config/swaync/style.css" \
   -e "s/@define-color noti-border-color.*/@define-color noti-border-color ${color7};/" \
   -e "s/@define-color noti-bg-opaque.*/@define-color noti-bg-opaque ${color0};/" \
   -e "s/@define-color noti-bg-darker.*/@define-color noti-bg-darker ${background};/" \
-  -e "s/@define-color noti-bg-hover.*/@define-color noti-bg-hover ${color0};/" \
+  -e "s/@define-color noti-bg-hover.*/@define-color noti-bg-hover ${modbackground[1]};/" \
   -e "s/@define-color noti-bg-hover-opaque.*/@define-color noti-bg-hover-opaque ${color0};/" \
-  -e "s/@define-color noti-bg-focus.*/@define-color noti-bg-focus ${color0};/" \
-  -e "s/@define-color noti-bg rgba.*/@define-color noti-bg ${background};/" \
+  -e "s/@define-color noti-bg-focus.*/@define-color noti-bg-focus ${modbackground[1]};/" \
+  -e "s/@define-color noti-bg .*/@define-color noti-bg ${background};/" \
   -e "s/@define-color noti-close-bg-hover.*/@define-color noti-close-bg-hover ${color6};/" \
   -e "s/@define-color noti-close-bg.*/@define-color noti-close-bg ${color0};/" \
   -e "s/@define-color text-color-disabled rgba.*/@define-color text-color-disabled ${color6};/" \

@@ -532,7 +532,7 @@
       },
 
     "custom/ws_unique-2": {
-     	"format": "<small>WS</small> {}",
+     	"format": "{}",
       	"on-click": "wtype -M logo -P tab -m logo",
       	"on-click-right": "wtype -M logo -M shift -P tab -m logo -m shift",
       	"on-scroll-up": "wtype -M logo -M shift -P tab -m logo -m shift",

@@ -347,7 +347,10 @@
 			 <action name="SnapToRegion" region="top"/>
 			 <action name="ToggleAlwaysOnTop" />
 		</windowRule>
-		<windowRule identifier="Beeper">
+		<windowRule identifier="*eeper*">
+			    <action name="SetDecorations" decorations="full" forceSSD="yes" />
+		</windowRule>
+		<windowRule identifier="*zed*">
 			    <action name="SetDecorations" decorations="full" forceSSD="yes" />
 		</windowRule>
     </windowRules>
