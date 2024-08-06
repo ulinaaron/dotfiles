@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO: Put a default wallpaper inside of Varix
-WALLPAPER='/home/aaron/Pictures/Themes/heroscreen-painting-A-lone-deer-standing-in-a-serene- (1).png'
+WALLPAPER='/home/aaron/Pictures/Themes/rp6hiifhkn8d1.png'
 
 killall swaybg
 

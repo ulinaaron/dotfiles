@@ -270,6 +270,18 @@ apply_startpage() {
 	cp $HOME/.cache/wal/colors.css $HOME/dotfiles/.config/startpage/colors.css
 }
 
+	# Source the current wallpaper path from the current.bash file
+	source_wallpaper() {
+	    source ~/.config/varix/theming/current.bash
+	    echo $wallpaper
+	}
+	
+	# Copy the wallpaper to the .cache folder as current.jpg
+	copy_wallpaper_to_cache() {
+	    wallpaper_path=$(source_wallpaper)
+	    cp "$wallpaper_path" ~/.cache/current.jpg
+	    cp "$wallpaper_path" ~/dotfiles/.config/rofi/current.jpg
+	}
 
 ## Execute Script ---------------------------
 
@@ -312,6 +324,12 @@ execute_scripts() {
 	apply_startpage
 
 	pywalfox update
+
+	#!/bin/bash
+	
+	
+	# Call the function to copy the wallpaper
+	copy_wallpaper_to_cache
 }
 
 

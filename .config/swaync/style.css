@@ -1,16 +1,16 @@
-@define-color cc-bg #000110;
-@define-color noti-border-color #a2c6ca;
-@define-color noti-bg-opaque #060614;
-@define-color noti-bg-darker #000110;
-@define-color noti-bg-hover #0c0229;
-@define-color noti-bg-hover #0c0229;
-@define-color noti-bg-focus #0c0229;
-@define-color noti-bg #000110;
-@define-color noti-close-bg #060614;
-@define-color noti-close-bg #060614;
-@define-color text-color #a0d0cb;
-@define-color text-color #a0d0cb;
-@define-color bg-selected #42b3b7;
+@define-color cc-bg #0f1217;
+@define-color noti-border-color #cecacb;
+@define-color noti-bg-opaque #101218;
+@define-color noti-bg-darker #0f1217;
+@define-color noti-bg-hover #191e26;
+@define-color noti-bg-hover #191e26;
+@define-color noti-bg-focus #191e26;
+@define-color noti-bg #0f1217;
+@define-color noti-close-bg #101218;
+@define-color noti-close-bg #101218;
+@define-color text-color #dfd7cc;
+@define-color text-color #dfd7cc;
+@define-color bg-selected #9fbbb7;
 .notification-row {
   outline: none;
 }

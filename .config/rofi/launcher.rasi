@@ -16,7 +16,8 @@ configuration {
 /*****----- Global Properties -----*****/
 @import                          "shared/colors.rasi"
 @import                          "shared/fonts.rasi"
-@import						 	                  "shared/interface.rasi"
+@import						 	 "shared/interface.rasi"
+
 
 /*****----- Main Window -----*****/
 window {
@@ -25,30 +26,80 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       900px;
     x-offset:                    0px;
     y-offset:                    0px;
+    height: 400px;
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     30px;
     margin:                      0px;
-    padding:                     30px;
+    padding:                     0;
     background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
+    orientation: horizontal;
+    children:                    [ "imagebox",  "listview" ];
+}
+
+imagebox {
+    padding:                     0;
+    background-color:            transparent;
+    background-image:            url("~/.cache/current.jpg", height);
+    orientation:                 vertical;
+    children:                    ["mode-switcher", "dummy", "inputbar" ];
+	border-radius: 9px 0 0 9px;
+}
+
+dummy {
+    background-color:            transparent;
+    height: 100%;
 }
 
 /*****----- Inputbar -----*****/
-entry {
-    placeholder:                 "Search...";
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px 0px 10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt", "entry"];
+    width: 100%;
 }
+
+prompt {
+    enabled:                     true;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    font: "Inter Bold 10";
+    padding: 8px 12px;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    padding:                     8px 11px;
+    background-color:            var(urgent);
+    text-color:                  @background;
+    border-radius: 9px 0 0 9px;
+}
+entry {
+    enabled:                     true;
+    padding:                     8px 12px 8px 6px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+	border-radius: 0 9px 9px 0;
+}
+
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     3;
+    columns:                     1;
     lines:                       4;
     cycle:                       true;
     dynamic:                     true;
@@ -57,11 +108,12 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+    orientation:  vertical;
     spacing:                     5px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
+    padding: 20px 0;
 }
 scrollbar {
     handle-width:                5px ;

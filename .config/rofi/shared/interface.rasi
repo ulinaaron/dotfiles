@@ -20,14 +20,15 @@ element {
 }
 
 /*****----- Mode Switcher -----*****/
-mode-switcher{
+mode-switcher {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px 250px;
+    padding:                     20px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
+
 button {
     padding:                     10px;
     border-radius:               9px;
