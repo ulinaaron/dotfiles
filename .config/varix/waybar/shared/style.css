@@ -342,6 +342,10 @@ window#waybar.hidden {
 #battery {
     color: @light-magenta;
 }
+
+#battery.critical {
+	color: @light-red;
+}
 #battery.charging {
 }
 #battery.plugged {
@@ -352,10 +356,10 @@ window#waybar.hidden {
     }
 }
 #battery.critical:not(.charging) {
-    background-color: @background-alt2;
+    background-color: @background;
 }
 #battery.2.critical:not(.charging) {
-    background-color: @background-alt1;
+    background-color: @background;
     color: @red;
     animation-name: blink;
     animation-duration: 0.5s;

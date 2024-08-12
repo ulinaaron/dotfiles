@@ -3085,9 +3085,9 @@
 		
 		.nemo-window .nemo-inactive-pane .view, .nemo-window .nemo-inactive-pane iconview { background-color: @window_bg_color; }
 		
-		.nemo-window .nemo-window-pane widget.entry { border: 1px solid; border-radius: 3px; color: @window_fg_color; border-color: @accent_bg_color; background-color: @window_bg_color; }
+		.nemo-window .nemo-window-pane widget.entry { border: 0px solid; border-radius: 3px; color: @window_fg_color; border-color: @accent_bg_color; background-color: @window_bg_color; }
 		
-		.nemo-window .nemo-window-pane widget.entry:selected { border: 1px solid; border-radius: 3px; color: @accent_fg_color; border-color: @accent_bg_color; background-color: @accent_bg_color; }
+		.nemo-window .nemo-window-pane widget.entry:selected { border: 0px solid; border-radius: 3px; color: @accent_fg_color; border-color: @accent_bg_color; background-color: @accent_bg_color; }
 		
 		.nemo-window toolbar.horizontal.primary-toolbar { border-bottom: 1px solid mix(currentColor,@window_bg_color,0.85); }
 		
@@ -3098,6 +3098,16 @@
 		.nemo-window toolbar.horizontal.primary-toolbar toolitem box widget * { min-height: 0; min-width: 0; }
 		
 		.nemo-window toolbar.horizontal.primary-toolbar .linked button { margin-right: 0; }
+
+		.nemo-window .view {
+			background-color: transparent;
+			border: 0;
+			padding: 4px 0;
+		}
+
+		.nemo-window * {
+			border: 0;
+		}
 		
 		#dialog-action_area3 { margin: 5px; }
 		

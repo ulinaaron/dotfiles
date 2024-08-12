@@ -2,7 +2,7 @@
 
 # Source Theme file
 DIR="$HOME/.config/varix"
-source "$DIR"/themewal/current.bash
+source "$DIR"/theming/current.bash
 
 # Colors
 bg=${background:1}  fg=${foreground:1}
@@ -21,7 +21,7 @@ swaylock -f \
 	\
 	`# Appearance` \
 	--color ${bg}E6 \
-	--font 'Inter' --font-size 18 \
+	--font 'Cabin' --font-size 22 \
 	\
 	`# Backspace Key` \
 	--key-hl-color ${green} \
@@ -30,8 +30,9 @@ swaylock -f \
 	--caps-lock-bs-hl-color ${red} \
 	\
 	`# Indicator` \
-	--indicator-radius 120 \
-	--indicator-thickness 10 \
+	--indicator \
+	--indicator-radius 160 \
+	--indicator-thickness 12 \
 	\
 	`# Inside Circle Colors` \
 	--inside-color ${alpha} \
@@ -67,4 +68,10 @@ swaylock -f \
 	--text-clear-color ${fg} \
 	--text-caps-lock-color ${fg} \
 	--text-ver-color ${bg} \
-	--text-wrong-color ${bg}
+	--text-wrong-color ${bg} \
+	--screenshots \
+		--clock \
+		--effect-blur 7x5 \
+		--effect-vignette 0.5:0.5 \
+		--grace 2 \
+		--fade-in 0.2

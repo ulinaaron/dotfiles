@@ -29,7 +29,7 @@ window {
     width:                       900px;
     x-offset:                    0px;
     y-offset:                    0px;
-    height: 400px;
+    height: 440px;
 }
 
 /*****----- Main Box -----*****/
@@ -64,7 +64,7 @@ inputbar {
     margin:                      0px 0px 10px;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "prompt", "entry"];
+    children:                    [ "textbox-prompt-colon",  "entry"];
     width: 100%;
 }
 
@@ -100,7 +100,7 @@ entry {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       4;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -109,11 +109,11 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     orientation:  vertical;
-    spacing:                     5px;
+    spacing:                     2px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
-    padding: 20px 0;
+    padding: 10px 20px 0 0;
 }
 scrollbar {
     handle-width:                5px ;
