@@ -38,19 +38,19 @@ countdown () {
 
 # take shots
 shotnow () {
-	cd ${dir} && sleep 0.5 && grim - | tee "$file" | wl-copy
+	cd ${dir} && sleep 0.5 && grim -o DP-1 - | tee "$file" | wl-copy
 	notify_view
 }
 
 shot5 () {
 	countdown '5'
-	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
+	sleep 1 && cd ${dir} && grim -o DP-1 - | tee "$file" | wl-copy
 	notify_view
 }
 
 shot10 () {
 	countdown '10'
-	sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
+	sleep 1 && cd ${dir} && grim -o DP-1 - | tee "$file" | wl-copy
 	notify_view
 }
 

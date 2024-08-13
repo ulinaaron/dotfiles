@@ -369,16 +369,18 @@ window#waybar.hidden {
 }
 
 /** ********** Network ********** **/
-/* #network { */
-/* 	color: @green; */
-/* } */
-/* #network.disconnected,#network.disabled { */
-/* 	color: @red; */
-/* } */
-/* #network.linked { */
-/* } */
-/* #network.ethernet { */
-/* } */
+#network {
+	 color: @light-magenta;
+}
+#network.disconnected,#network.disabled {
+ color: @light-magenta;
+}
+#network.linked {
+ color: @light-magenta;
+}
+#network.ethernet {
+ color: @light-magenta;
+}
 #network.wifi {
     color: @light-magenta;
 }

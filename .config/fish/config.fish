@@ -1,4 +1,3 @@
-
 # Paths
 fish_add_path -g ~/.config/composer/vendor/bin
 fish_add_path -g ~/.npm/node_modules
@@ -11,6 +10,9 @@ fish_add_path -g ~/AppImages
 fish_add_path -g ~/.npm-global/bin
 fish_add_path -g ~/.local/venv/bin
 fish_add_path -g ~/Applications/zed.app/bin
+fish_add_path /home/aaron/.spicetify
+
+source ~/.config/fish/colors
 
 set -g fish_term24bit 1
 set -Ux VISUAL micro
@@ -60,7 +62,6 @@ alias cd=z
 
 export "MICRO_TRUECOLOR=1"
 
-fish_add_path /home/aaron/.spicetify
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"

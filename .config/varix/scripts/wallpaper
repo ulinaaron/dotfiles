@@ -8,4 +8,4 @@
 source /home/aaron/.config/varix/theming/current.bash
 WALLPAPER="$wallpaper"
 
-swaybg --output '*' --mode stretch --image "$WALLPAPER"
+swaybg --output '*' --mode fill --image "$WALLPAPER"

@@ -88,4 +88,7 @@
 
 	_EOF_
 
- kill -SIGUSR1 $(pidof kitty)
+# kill -SIGUSR1 $(pidof kitty)
+
+## Hacky refresh
+wtype -M ctrl -M shift -P F5 -m ctrl -m shift

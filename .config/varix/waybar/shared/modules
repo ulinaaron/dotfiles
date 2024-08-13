@@ -331,7 +331,7 @@
 	// waybar-network
     "network": {
 		"interval": 5,
-        "interface": "wlp1s0*", // (Optional) To force the use of this interface, set it for netspeed to work
+        //"interface": "wlp1s0*", // (Optional) To force the use of this interface, set it for netspeed to work
         "format-wifi":  "<big>{icon}</big> ",
         "format-ethernet": "",
         "format-linked": "",
@@ -339,8 +339,8 @@
         "format-disabled": "睊",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "tooltip-format": " {ifname} via {gwaddr}",
-        //"on-click": "[[ ! `pidof nm-connection-editor` ]] && nm-connection-editor || pkill nm-connection-e",
-        "on-click": "~/.config/varix/scripts/rofi_network",
+        "on-click": "[[ ! `pidof nm-connection-editor` ]] && nm-connection-editor || pkill nm-connection-e",
+        //"on-click": "~/.config/varix/scripts/rofi_network",
     },
     "network#2": {
 		"interval": 5,
@@ -352,6 +352,7 @@
         "format-disabled": "Disabled",
         "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
         "tooltip-format": "  {ifname} via {gwaddr}",
+         "on-click": "[[ ! `pidof nm-connection-editor` ]] && nm-connection-editor || pkill nm-connection-e",
     },
 
 	// waybar-pulseaudio

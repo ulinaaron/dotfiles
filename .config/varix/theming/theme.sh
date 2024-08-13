@@ -321,6 +321,11 @@ execute_scripts() {
 
 	source "$TEMPLATES/zed"
 
+	source "$TEMPLATES/fish"	
+
+	source "$TEMPLATES/btop"
+
+
 	apply_startpage
 
 	pywalfox update
